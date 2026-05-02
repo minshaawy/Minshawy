@@ -1905,6 +1905,257 @@ footer::before {
   letter-spacing: 0.1em;
 }
 
+/* ============ LIVE RADIO SECTION ============ */
+.live-radio {
+  position: relative;
+  z-index: 2;
+  background: linear-gradient(180deg, #0d0906 0%, #1a1410 50%, #0d0906 100%);
+  padding: 5rem 4rem;
+  text-align: center;
+  overflow: hidden;
+}
+
+.live-radio::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 30%, rgba(198, 151, 73, 0.1) 0%, transparent 60%),
+    radial-gradient(ellipse at 50% 80%, rgba(160, 69, 31, 0.08) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.live-radio::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.live-radio-inner {
+  position: relative;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.live-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(160, 69, 31, 0.25);
+  border: 1px solid rgba(160, 69, 31, 0.4);
+  padding: 0.4rem 1.2rem;
+  border-radius: 30px;
+  margin-bottom: 2rem;
+  font-family: 'Thmanyah Sans', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #e8c170;
+}
+
+.live-dot {
+  width: 8px;
+  height: 8px;
+  background: #c0392b;
+  border-radius: 50%;
+  animation: live-pulse 1.5s ease-in-out infinite;
+  box-shadow: 0 0 6px rgba(192, 57, 43, 0.8);
+}
+
+.radio-playing .live-dot {
+  background: #27ae60;
+  box-shadow: 0 0 6px rgba(39, 174, 96, 0.8);
+  animation: live-pulse-green 1.5s ease-in-out infinite;
+}
+
+@keyframes live-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+}
+
+@keyframes live-pulse-green {
+  0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 6px rgba(39, 174, 96, 0.8); }
+  50% { opacity: 0.8; transform: scale(1.2); box-shadow: 0 0 14px rgba(39, 174, 96, 0.6); }
+}
+
+.live-radio-title {
+  font-family: 'Thmanyah Serif Display', serif;
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 700;
+  color: var(--paper);
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+
+.live-radio-subtitle {
+  font-family: 'Thmanyah Sans', sans-serif;
+  font-size: 0.9rem;
+  font-style: italic;
+  color: rgba(244, 237, 224, 0.5);
+  letter-spacing: 0.08em;
+  margin-bottom: 2.5rem;
+}
+
+.radio-player-card {
+  background: rgba(244, 237, 224, 0.04);
+  border: 1px solid rgba(198, 151, 73, 0.2);
+  border-radius: 12px;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  max-width: 520px;
+  margin: 0 auto;
+  transition: all 0.4s ease;
+}
+
+.radio-player-card:hover {
+  border-color: rgba(198, 151, 73, 0.4);
+  background: rgba(244, 237, 224, 0.06);
+}
+
+.radio-cover-art {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, var(--ochre) 0%, var(--rust) 100%);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(198, 151, 73, 0.3);
+  overflow: hidden;
+}
+
+.radio-cover-art::before {
+  content: '📻';
+  font-size: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.radio-cover-art::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.15), transparent 60%);
+}
+
+.radio-playing .radio-cover-art {
+  animation: subtle-radio-pulse 3s ease-in-out infinite;
+}
+
+@keyframes subtle-radio-pulse {
+  0%, 100% { box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4); }
+  50% { box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 30px rgba(198, 151, 73, 0.2); }
+}
+
+.radio-info {
+  flex: 1;
+  text-align: start;
+  min-width: 0;
+}
+
+.radio-station-name {
+  font-family: 'Thmanyah Serif Display', serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--paper);
+  margin-bottom: 0.3rem;
+}
+
+.radio-station-desc {
+  font-family: 'Thmanyah Sans', sans-serif;
+  font-size: 0.75rem;
+  color: rgba(244, 237, 224, 0.45);
+  letter-spacing: 0.05em;
+}
+
+.radio-status {
+  font-family: 'Thmanyah Sans', sans-serif;
+  font-size: 0.7rem;
+  color: rgba(244, 237, 224, 0.35);
+  margin-top: 0.5rem;
+  letter-spacing: 0.08em;
+  transition: color 0.3s;
+}
+
+.radio-playing .radio-status {
+  color: #27ae60;
+}
+
+.radio-play-btn {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: none;
+  background: var(--paper);
+  color: var(--ink);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 16px rgba(198, 151, 73, 0.3);
+}
+
+.radio-play-btn:hover {
+  background: var(--gold);
+  transform: scale(1.08);
+  box-shadow: 0 6px 24px rgba(198, 151, 73, 0.5);
+}
+
+.radio-play-btn:active {
+  transform: scale(0.95);
+}
+
+.radio-play-btn svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+.radio-wave-bars {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  height: 20px;
+  margin-top: 0.6rem;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.radio-playing .radio-wave-bars {
+  opacity: 1;
+}
+
+.radio-wave-bar {
+  width: 3px;
+  background: var(--gold);
+  border-radius: 1px;
+  animation: radio-vis 0.8s ease-in-out infinite;
+}
+
+.radio-wave-bar:nth-child(1) { height: 30%; animation-delay: 0s; }
+.radio-wave-bar:nth-child(2) { height: 60%; animation-delay: 0.15s; }
+.radio-wave-bar:nth-child(3) { height: 90%; animation-delay: 0.3s; }
+.radio-wave-bar:nth-child(4) { height: 50%; animation-delay: 0.45s; }
+.radio-wave-bar:nth-child(5) { height: 70%; animation-delay: 0.6s; }
+.radio-wave-bar:nth-child(6) { height: 40%; animation-delay: 0.75s; }
+
+@keyframes radio-vis {
+  0%, 100% { transform: scaleY(0.4); }
+  50% { transform: scaleY(1); }
+}
+
 /* ============ ENGLISH MODE ============ */
 body.lang-en { direction: ltr; }
 body.lang-en .lang-ar { display: none; }
@@ -2012,6 +2263,12 @@ body:not(.lang-en) .lang-en-text { display: none; }
   .footer-tagline { font-size: 1rem; }
   .footer-description { font-size: 0.8rem; }
   .footer-quote { font-size: 1.25rem; }
+
+  .live-radio { padding: 4rem 1.5rem; }
+  .radio-player-card { flex-direction: column; text-align: center; padding: 1.5rem; }
+  .radio-info { text-align: center; }
+  .radio-wave-bars { justify-content: center; }
+  .radio-cover-art { width: 70px; height: 70px; }
 }
 
 /* ============ ANIMATIONS ============ */
@@ -2054,6 +2311,7 @@ body:not(.lang-en) .lang-en-text { display: none; }
     <li><a href="#bio"><span class="lang-ar">السيرة</span><span class="lang-en-text">Biography</span></a></li>
     <li><a href="#timeline"><span class="lang-ar">المسيرة</span><span class="lang-en-text">Timeline</span></a></li>
     <li><a href="#library"><span class="lang-ar">المكتبة</span><span class="lang-en-text">Library</span></a></li>
+    <li><a href="#radio"><span class="lang-ar">البث المباشر</span><span class="lang-en-text">Live Radio</span></a></li>
   </ul>
   <button class="lang-toggle" id="langToggle">EN</button>
 </nav>
@@ -2479,6 +2737,55 @@ body:not(.lang-en) .lang-en-text { display: none; }
       <!-- Generated by JS -->
     </div>
   </div>
+</section>
+
+<!-- ============ LIVE RADIO ============ -->
+<section class="live-radio" id="radio">
+  <div class="live-radio-inner">
+    <div class="live-badge">
+      <span class="live-dot"></span>
+      <span class="lang-ar">بث مباشر</span>
+      <span class="lang-en-text">LIVE</span>
+    </div>
+    <h2 class="live-radio-title">
+      <span class="lang-ar">إذاعة القرآن الكريم</span>
+      <span class="lang-en-text">Holy Quran Radio</span>
+    </h2>
+    <p class="live-radio-subtitle">
+      <span class="lang-ar">من القاهرة · بث مباشر من القمر الصناعي</span>
+      <span class="lang-en-text">From Cairo · Live Satellite Broadcast</span>
+    </p>
+    <div class="radio-player-card" id="radioPlayerCard">
+      <div class="radio-cover-art"></div>
+      <div class="radio-info">
+        <div class="radio-station-name">
+          <span class="lang-ar">إذاعة القرآن الكريم من القاهرة</span>
+          <span class="lang-en-text">Quran Radio — Cairo</span>
+        </div>
+        <div class="radio-station-desc">
+          <span class="lang-ar">الهيئة الوطنية للإعلام · FM 98.2</span>
+          <span class="lang-en-text">National Media Authority · FM 98.2</span>
+        </div>
+        <div class="radio-wave-bars">
+          <span class="radio-wave-bar"></span>
+          <span class="radio-wave-bar"></span>
+          <span class="radio-wave-bar"></span>
+          <span class="radio-wave-bar"></span>
+          <span class="radio-wave-bar"></span>
+          <span class="radio-wave-bar"></span>
+        </div>
+        <div class="radio-status" id="radioStatus">
+          <span class="lang-ar">اضغط للاستماع</span>
+          <span class="lang-en-text">Tap to listen</span>
+        </div>
+      </div>
+      <button class="radio-play-btn" id="radioPlayBtn" aria-label="Play/Pause Radio">
+        <svg viewBox="0 0 24 24" id="radioPlayIcon"><path d="M8 5v14l11-7z"/></svg>
+      </button>
+    </div>
+  </div>
+  <audio id="radioAudio" preload="none"></audio>
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest/dist/hls.min.js"></script>
 </section>
 
 <!-- ============ FOOTER ============ -->
@@ -3401,6 +3708,126 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
   document.addEventListener('click', resumeOnInteraction, { once: true });
   document.addEventListener('touchstart', resumeOnInteraction, { once: true });
   document.addEventListener('keydown', resumeOnInteraction, { once: true });
+})();
+
+// ============ LIVE RADIO PLAYER ============
+(function initRadio() {
+  const radioAudio = document.getElementById('radioAudio');
+  const radioPlayBtn = document.getElementById('radioPlayBtn');
+  const radioPlayIcon = document.getElementById('radioPlayIcon');
+  const radioCard = document.getElementById('radioPlayerCard');
+  const radioStatus = document.getElementById('radioStatus');
+  const radioSection = document.querySelector('.live-radio');
+
+  if (!radioAudio || !radioPlayBtn) return;
+
+  let radioPlaying = false;
+  let hls = null;
+
+  const RADIO_STREAM = 'https://service.webvideocore.net/CL1olYogIrDWvwqiIKK7eCxOS4PStqG9DuEjAr2ZjZQtvS3d4y9r0cvRhvS17SGN/a_7a4vuubc6mo8.m3u8';
+
+  function setRadioStatus(arText, enText) {
+    const arSpan = radioStatus.querySelector('.lang-ar');
+    const enSpan = radioStatus.querySelector('.lang-en-text');
+    if (arSpan) arSpan.textContent = arText;
+    if (enSpan) enSpan.textContent = enText;
+  }
+
+  function showPlayIcon() {
+    radioPlayIcon.innerHTML = '<path d="M8 5v14l11-7z"/>';
+  }
+
+  function showPauseIcon() {
+    radioPlayIcon.innerHTML = '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>';
+  }
+
+  function playRadio() {
+    // Pause the main Quran player if playing
+    if (audio && !audio.paused) {
+      audio.pause();
+    }
+
+    setRadioStatus('جاري الاتصال...', 'Connecting...');
+
+    // HLS.js for browsers that don't natively support HLS (Chrome, Firefox, etc.)
+    if (typeof Hls !== 'undefined' && Hls.isSupported()) {
+      if (hls) { hls.destroy(); }
+      hls = new Hls({
+        enableWorker: true,
+        lowLatencyMode: true,
+      });
+      hls.loadSource(RADIO_STREAM);
+      hls.attachMedia(radioAudio);
+      hls.on(Hls.Events.MANIFEST_PARSED, function() {
+        radioAudio.play().then(() => {
+          radioPlaying = true;
+          radioSection.classList.add('radio-playing');
+          showPauseIcon();
+          setRadioStatus('يُبث الآن مباشرة', 'Now playing live');
+        }).catch(err => {
+          console.warn('Radio play error:', err);
+          setRadioStatus('تعذر التشغيل — حاول مرة أخرى', 'Playback failed — try again');
+        });
+      });
+      hls.on(Hls.Events.ERROR, function(event, data) {
+        if (data.fatal) {
+          console.warn('HLS fatal error:', data);
+          pauseRadio();
+          setRadioStatus('انقطع البث — حاول مرة أخرى', 'Stream lost — try again');
+        }
+      });
+    }
+    // Safari supports HLS natively
+    else if (radioAudio.canPlayType('application/vnd.apple.mpegurl')) {
+      radioAudio.src = RADIO_STREAM;
+      radioAudio.load();
+      radioAudio.play().then(() => {
+        radioPlaying = true;
+        radioSection.classList.add('radio-playing');
+        showPauseIcon();
+        setRadioStatus('يُبث الآن مباشرة', 'Now playing live');
+      }).catch(err => {
+        console.warn('Radio play error:', err);
+        setRadioStatus('تعذر التشغيل — حاول مرة أخرى', 'Playback failed — try again');
+      });
+    } else {
+      setRadioStatus('المتصفح لا يدعم البث المباشر', 'Browser does not support live streaming');
+    }
+  }
+
+  function pauseRadio() {
+    radioAudio.pause();
+    if (hls) { hls.destroy(); hls = null; }
+    radioAudio.removeAttribute('src');
+    radioAudio.load();
+    radioPlaying = false;
+    radioSection.classList.remove('radio-playing');
+    showPlayIcon();
+    setRadioStatus('اضغط للاستماع', 'Tap to listen');
+  }
+
+  radioPlayBtn.addEventListener('click', () => {
+    if (radioPlaying) {
+      pauseRadio();
+    } else {
+      playRadio();
+    }
+  });
+
+  // Handle stream errors
+  radioAudio.addEventListener('error', () => {
+    if (radioPlaying) {
+      pauseRadio();
+      setRadioStatus('انقطع البث — حاول مرة أخرى', 'Stream lost — try again');
+    }
+  });
+
+  // If main player starts, stop radio
+  audio.addEventListener('play', () => {
+    if (radioPlaying) {
+      pauseRadio();
+    }
+  });
 })();
 </script>
 
