@@ -3384,6 +3384,25 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.15 });
 
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// ============ AUTO-PLAY AL-FATIHAH ON LOAD ============
+(function autoPlayFatihah() {
+  // Set up the player UI for Surah 1 immediately
+  playSurah(1);
+  // Browsers block autoplay without user gesture — if play() was rejected,
+  // listen for the first interaction and resume playback automatically
+  function resumeOnInteraction() {
+    if (audio.paused && currentSurah && currentSurah.num === 1) {
+      audio.play().catch(() => {});
+    }
+    document.removeEventListener('click', resumeOnInteraction);
+    document.removeEventListener('touchstart', resumeOnInteraction);
+    document.removeEventListener('keydown', resumeOnInteraction);
+  }
+  document.addEventListener('click', resumeOnInteraction, { once: true });
+  document.addEventListener('touchstart', resumeOnInteraction, { once: true });
+  document.addEventListener('keydown', resumeOnInteraction, { once: true });
+})();
 </script>
 
 </body>
