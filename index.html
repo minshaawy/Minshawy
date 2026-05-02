@@ -2791,9 +2791,8 @@ const surahs = [
   { num: 114, ar: "الناس", en: "An-Nas" }
 ];
 
-// Audio source — local files in /Al-Minshawy_Muratal_Quran/ folder
-// Files named 001.mp3 through 114.mp3
-const AUDIO_BASE = 'Al-Minshawy_Muratal_Quran/';
+// Audio source — IPFS-hosted high-quality MP3 files
+const AUDIO_BASE = 'https://ipfs.io/ipfs/QmaNJJsNUbqVzYmo7moqcmWt4Pr7ddD1WALSWyep4pAwcb/Quran_Mohammed_Siddiq_Al-Minshawi-';
 
 function pad(n) { return String(n).padStart(3, '0'); }
 function arabicNum(n) {
