@@ -1,0 +1,3390 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الشيخ محمد صديق المنشاوي · الصوت الباكي</title>
+<meta name="description" content="موقع تكريمي للشيخ محمد صديق المنشاوي، رائد دولة التلاوة، يضم سيرته الذاتية ومكتبة كاملة للمصحف المرتل بصوته.">
+
+<style>
+/* ============ THMANYAH TYPEFACE ============ */
+@font-face {
+  font-family: 'Thmanyah Sans';
+  src: url('fonts/thmanyahsans-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Thmanyah Sans';
+  src: url('fonts/thmanyahsans-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Thmanyah Sans';
+  src: url('fonts/thmanyahsans-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Thmanyah Sans';
+  src: url('fonts/thmanyahsans-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Thmanyah Sans';
+  src: url('fonts/thmanyahsans-Black.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Thmanyah Serif Text';
+  src: url('fonts/thmanyahseriftext-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Thmanyah Serif Text';
+  src: url('fonts/thmanyahseriftext-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Thmanyah Serif Text';
+  src: url('fonts/thmanyahseriftext-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Thmanyah Serif Text';
+  src: url('fonts/thmanyahseriftext-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Thmanyah Serif Text';
+  src: url('fonts/thmanyahseriftext-Black.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Thmanyah Serif Display';
+  src: url('fonts/thmanyahserifdisplay-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Thmanyah Serif Display';
+  src: url('fonts/thmanyahserifdisplay-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Thmanyah Serif Display';
+  src: url('fonts/thmanyahserifdisplay-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Thmanyah Serif Display';
+  src: url('fonts/thmanyahserifdisplay-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Thmanyah Serif Display';
+  src: url('fonts/thmanyahserifdisplay-Black.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* Earthen palette — inspired by old manuscripts & the Saidi land */
+  --paper: #f4ede0;
+  --paper-warm: #ede2cf;
+  --paper-deep: #e0d2b8;
+  --ink: #2a1f12;
+  --ink-soft: #4a3825;
+  --ochre: #b8763a;
+  --ochre-deep: #8b5524;
+  --olive: #5a6442;
+  --olive-deep: #3d4530;
+  --gold: #c69749;
+  --rust: #a0451f;
+  --shadow: rgba(42, 31, 18, 0.12);
+  --shadow-deep: rgba(42, 31, 18, 0.25);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Thmanyah Serif Text', 'Thmanyah Sans', serif;
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.7;
+  overflow-x: hidden;
+  /* Subtle paper texture using SVG noise */
+  background-image:
+    radial-gradient(at 20% 10%, rgba(184, 118, 58, 0.05) 0, transparent 50%),
+    radial-gradient(at 80% 80%, rgba(90, 100, 66, 0.04) 0, transparent 50%);
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 0.16 0 0 0 0 0.12 0 0 0 0 0.07 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.6;
+  mix-blend-mode: multiply;
+}
+
+/* ============ NAVIGATION ============ */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 1.25rem 4rem;
+  background: transparent;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.4s ease;
+}
+
+nav.scrolled {
+  background: rgba(244, 237, 224, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(42, 31, 18, 0.08);
+  padding: 0.85rem 4rem;
+}
+
+.nav-mark {
+  font-family: 'Thmanyah Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--paper);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  transition: color 0.4s ease;
+}
+
+nav.scrolled .nav-mark { color: var(--ink); }
+
+.nav-mark::before {
+  content: '۞';
+  color: var(--gold);
+  font-size: 1.4rem;
+}
+
+nav.scrolled .nav-mark::before { color: var(--ochre); }
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: 'Thmanyah Sans', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: rgba(244, 237, 224, 0.7);
+  text-decoration: none;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  position: relative;
+  padding-bottom: 4px;
+  transition: color 0.3s;
+}
+
+nav.scrolled .nav-links a { color: var(--ink-soft); }
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  height: 1px;
+  background: var(--gold);
+  transition: width 0.3s ease;
+}
+
+nav.scrolled .nav-links a::after { background: var(--ochre); }
+
+.nav-links a:hover { color: var(--gold); }
+nav.scrolled .nav-links a:hover { color: var(--ochre-deep); }
+.nav-links a:hover::after { width: 100%; }
+
+.lang-toggle {
+  background: transparent;
+  border: 1px solid rgba(244, 237, 224, 0.4);
+  color: var(--paper);
+  padding: 0.45rem 1rem;
+  font-family: 'Thmanyah Sans', sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  cursor: pointer;
+  transition: all 0.3s;
+  border-radius: 2px;
+  font-weight: 500;
+}
+
+.lang-toggle:hover {
+  background: var(--gold);
+  color: #0a0604;
+  border-color: var(--gold);
+}
+
+nav.scrolled .lang-toggle {
+  border-color: var(--ink-soft);
+  color: var(--ink-soft);
+}
+
+nav.scrolled .lang-toggle:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+/* ============ CINEMATIC VINTAGE HERO ============ */
+.hero {
+  position: relative;
+  background: #0a0604;
+  color: var(--paper);
+  overflow: hidden;
+  padding: 5rem 0 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Layered backgrounds: gradient + vignette + film grain */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 70% 35%, rgba(198, 151, 73, 0.18) 0%, transparent 55%),
+    radial-gradient(ellipse at 30% 80%, rgba(160, 69, 31, 0.12) 0%, transparent 50%),
+    linear-gradient(180deg, #0a0604 0%, #1a0f08 50%, #0a0604 100%);
+  z-index: 0;
+}
+
+/* Static film grain overlay (no animation) */
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.95 0 0 0 0 0.85 0 0 0 0 0.65 0 0 0 0.12 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+  mix-blend-mode: screen;
+  opacity: 0.4;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Top film strip — perforated edge */
+.film-strip {
+  position: relative;
+  z-index: 3;
+  height: 24px;
+  background:
+    repeating-linear-gradient(90deg,
+      transparent 0,
+      transparent 14px,
+      rgba(244, 237, 224, 0.12) 14px,
+      rgba(244, 237, 224, 0.12) 22px
+    );
+  border-top: 1px solid rgba(198, 151, 73, 0.3);
+  border-bottom: 1px solid rgba(198, 151, 73, 0.3);
+  margin-bottom: 1rem;
+}
+
+.film-strip::before,
+.film-strip::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background-image: radial-gradient(circle, #0a0604 4px, transparent 4.5px);
+  background-size: 22px 6px;
+  background-repeat: repeat-x;
+}
+.film-strip::before { top: 4px; }
+.film-strip::after { bottom: 4px; }
+
+/* Main hero stage — TWO COLUMN: portrait first, text second */
+.hero-stage {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  padding: 2rem 4rem 3rem;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* === LEFT COLUMN: ALL TEXTUAL CONTENT === */
+.hero-left {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.75rem;
+  padding: 1rem 0;
+}
+
+/* Big name */
+.hero-name {
+  font-family: 'Thmanyah Serif Display', serif;
+  font-weight: 900;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--paper);
+  margin: 0;
+  text-shadow:
+    0 2px 30px rgba(198, 151, 73, 0.15),
+    0 0 1px rgba(244, 237, 224, 0.5);
+  position: relative;
+}
+
+/* Tagline below name */
+.hero-tagline {
+  font-family: 'Thmanyah Serif Display', serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(1rem, 1.4vw, 1.25rem);
+  color: var(--gold);
+  letter-spacing: 0.05em;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  line-height: 1.4;
+  margin-top: -0.5rem;
+}
+
+.hero-tagline::before {
+  content: '';
+  width: 40px;
+  height: 1px;
+  background: var(--gold);
+  flex-shrink: 0;
+}
+
+/* Quote block — uses logical properties for proper RTL/LTR support */
+.hero-quote-block {
+  position: relative;
+  padding: 1.25rem 1.5rem;
+  background: rgba(0, 0, 0, 0.3);
+  border-inline-start: 2px solid var(--gold);
+  font-family: 'Thmanyah Serif Text', serif;
+  font-style: italic;
+  font-size: 1rem;
+  color: rgba(244, 237, 224, 0.85);
+  line-height: 1.7;
+  max-width: 580px;
+}
+
+.hero-quote-block .attr {
+  display: block;
+  margin-top: 0.75rem;
+  font-style: normal;
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-family: 'Thmanyah Sans', sans-serif;
+}
+
+/* Year stamps row */
+.hero-meta-row {
+  display: flex;
+  gap: 3rem;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.year-stamp-item {
+  position: relative;
+}
+
+.year-stamp {
+  font-family: 'Thmanyah Serif Display', serif;
+  font-weight: 700;
+  font-size: 3rem;
+  line-height: 0.9;
+  color: var(--gold);
+  letter-spacing: -0.03em;
+  position: relative;
+  display: block;
+}
+
+.year-stamp::after {
+  content: '';
+  position: absolute;
+  inset-inline-start: 0;
+  bottom: -6px;
+  width: 40px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.year-stamp-label {
+  display: block;
+  font-family: 'Thmanyah Sans', sans-serif;
+  font-weight: 400;
+  font-size: 0.65rem;
+  color: rgba(244, 237, 224, 0.5);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-top: 1rem;
+  white-space: nowrap;
+}
+
+/* === PORTRAIT: properly sized and centered === */
+.hero-portrait {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  aspect-ratio: 3 / 4;
+  /* In RTL: col 1 is on the right; justify-self: end pushes it further right */
+  /* In LTR: col 1 is on the left; justify-self: start pushes it further left */
+  justify-self: end;
+}
+
+body[dir="ltr"] .hero-portrait,
+body.lang-en .hero-portrait {
+  justify-self: start;
+}
+
+/* Spotlight glow behind portrait */
+.hero-portrait::before {
+  content: '';
+  position: absolute;
+  inset: -80px;
+  background: radial-gradient(ellipse at center,
+    rgba(198, 151, 73, 0.35) 0%,
+    rgba(198, 151, 73, 0.15) 30%,
+    transparent 60%);
+  filter: blur(20px);
+  z-index: -1;
+}
+
+/* Spotlight beam from above */
+.hero-portrait::after {
+  content: '';
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 200px solid transparent;
+  border-right: 200px solid transparent;
+  border-top: 600px solid rgba(244, 237, 224, 0.04);
+  filter: blur(30px);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.portrait-card {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, #1a1208 0%, #0d0805 100%);
+  border: 1px solid rgba(198, 151, 73, 0.4);
+  overflow: hidden;
+  box-shadow:
+    0 40px 80px rgba(0, 0, 0, 0.7),
+    0 0 0 1px rgba(244, 237, 224, 0.05) inset,
+    0 60px 120px rgba(198, 151, 73, 0.15);
+}
+
+/* Inner ornamental frame */
+.portrait-card::before {
+  content: '';
+  position: absolute;
+  inset: 14px;
+  border: 1px solid rgba(198, 151, 73, 0.25);
+  pointer-events: none;
+  z-index: 4;
+}
+
+.portrait-card::after {
+  content: '';
+  position: absolute;
+  inset: 18px;
+  border: 1px dashed rgba(198, 151, 73, 0.15);
+  pointer-events: none;
+  z-index: 4;
+}
+
+.portrait-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center top;
+  /* Cinematic vintage filter — warm sepia tones */
+  filter: sepia(0.35) contrast(1.08) brightness(0.92) saturate(0.85);
+  transition: filter 0.6s ease;
+}
+
+/* On hover: soften the filter to reveal more detail */
+.portrait-card:hover .portrait-svg {
+  filter: sepia(0.15) contrast(1.05) brightness(1) saturate(0.95);
+}
+
+.portrait-corner {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  z-index: 5;
+  pointer-events: none;
+}
+.portrait-corner.tl { top: 24px; left: 24px; border-top: 2px solid var(--gold); border-left: 2px solid var(--gold); }
+.portrait-corner.tr { top: 24px; right: 24px; border-top: 2px solid var(--gold); border-right: 2px solid var(--gold); }
+.portrait-corner.bl { bottom: 24px; left: 24px; border-bottom: 2px solid var(--gold); border-left: 2px solid var(--gold); }
+.portrait-corner.br { bottom: 24px; right: 24px; border-bottom: 2px solid var(--gold); border-right: 2px solid var(--gold); }
+
+/* Marquee ticker at very bottom */
+.hero-ticker {
+  position: relative;
+  z-index: 2;
+  background: linear-gradient(90deg, var(--gold), var(--ochre));
+  color: #0a0604;
+  padding: 0.75rem 0;
+  overflow: hidden;
+  white-space: nowrap;
+  font-family: 'Thmanyah Serif Display', serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.hero-ticker-track {
+  display: inline-flex;
+  gap: 3rem;
+  animation: ticker-scroll 60s linear infinite;
+  padding-left: 3rem;
+}
+
+.hero-ticker-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 3rem;
+}
+
+.hero-ticker-item::after {
+  content: '✦';
+  color: rgba(10, 6, 4, 0.5);
+  font-size: 0.8rem;
+}
+
+@keyframes ticker-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+body[dir="rtl"] .hero-ticker-track {
+  animation-name: ticker-scroll-rtl;
+}
+
+@keyframes ticker-scroll-rtl {
+  from { transform: translateX(0); }
+  to { transform: translateX(50%); }
+}
+
+/* Lang-specific hide/show inside hero - inherit from main rules */
+
+/* ============ DIVIDER ============ */
+.ornament-divider {
+  text-align: center;
+  margin: 6rem 0;
+  position: relative;
+}
+
+.ornament-divider::before,
+.ornament-divider::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 30%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--ochre), transparent);
+}
+.ornament-divider::before { right: 0; }
+.ornament-divider::after { left: 0; }
+
+.ornament-divider span {
+  font-family: 'Thmanyah Sans', sans-serif;
+  font-size: 1.8rem;
+  color: var(--ochre);
+  background: var(--paper);
+  padding: 0 1.5rem;
+  position: relative;
+}
+
+/* ============ BIOGRAPHY SECTION ============ */
+.biography {
+  padding: 6rem 4rem;
+  position: relative;
+  z-index: 2;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.section-label {
+  font-family: 'Thmanyah Sans', sans-serif;
+  font-style: italic;
+  font-size: 1rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--ochre-deep);
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.section-title {
+  font-family: 'Thmanyah Serif Display', serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  text-align: center;
+  color: var(--ink);
+  margin-bottom: 1rem;
+  line-height: 1.1;
+}
+
+.section-title-en {
+  font-family: 'Thmanyah Sans', sans-serif;
+  font-style: italic;
+  font-size: 1.2rem;
+  color: var(--ink-soft);
+  text-align: center;
+  margin-bottom: 5rem;
+  letter-spacing: 0.05em;
+}
+
+.bio-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 2rem;
+  margin-top: 4rem;
+}
+
+.bio-chapter {
+  position: relative;
+  padding: 2.5rem;
+  background: rgba(237, 226, 207, 0.4);
+  border: 1px solid rgba(42, 31, 18, 0.08);
+  transition: all 0.4s ease;
+}
+
+.bio-chapter:hover {
+  background: rgba(237, 226, 207, 0.7);
+  transform: translateY(-2px);
+  box-shadow: 0 20px 40px var(--shadow);
+}
+
+.bio-chapter.span-7 { grid-column: span 7; }
+.bio-chapter.span-5 { grid-column: span 5; }
+.bio-chapter.span-6 { grid-column: span 6; }
+.bio-chapter.span-12 { grid-column: span 12; }
+
+.chapter-num {
+  font-family: 'Thmanyah Sans', sans-serif;
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--ochre-deep);
+  letter-spacing: 0.2em;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.chapter-title {
+  font-family: 'Thmanyah Serif Display', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.chapter-title-en {
+  display: block;
+  font-family: 'Thmanyah Sans', sans-serif;
+  font-style: italic;
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--ochre-deep);
+  margin-top: 0.4rem;
+  letter-spacing: 0.05em;
+}
+
+.chapter-body {
+  font-family: 'Thmanyah Serif Text', serif;
+  font-size: 1.15rem;
+  line-height: 1.9;
+  color: var(--ink-soft);
+}
+
+.chapter-body p { margin-bottom: 1rem; }
+
+.chapter-body strong {
+  color: var(--ochre-deep);
+  font-weight: 700;
+}
+
+/* Timeline */
+.timeline-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  margin: 3rem 0;
+}
+
+.timeline-row {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 2rem;
+  padding: 1.5rem 0;
+  border-bottom: 1px dashed rgba(42, 31, 18, 0.2);
+  align-items: baseline;
+}
+
+.timeline-year {
+  font-family: 'Thmanyah Sans', sans-serif;
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--ochre-deep);
+  letter-spacing: -0.02em;
+}
+
+.timeline-event {
+  font-family: 'Thmanyah Serif Text', serif;
+  font-size: 1.1rem;
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+
+/* ============ AUDIO LIBRARY ============ */
+.library {
+  padding: 6rem 4rem;
+  background: var(--paper-warm);
+  position: relative;
+  z-index: 2;
+}
+
+.library-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.library::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--ochre), transparent);
+}
+
+.library-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 3rem auto;
+  max-width: 1400px;
+  padding: 1.5rem 2rem;
+  background: var(--paper);
+  border: 1px solid rgba(42, 31, 18, 0.1);
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.search-box {
+  flex: 1;
+  min-width: 280px;
+  position: relative;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 0.8rem 2.8rem 0.8rem 1rem;
+  font-family: 'Thmanyah Serif Display', serif;
+  font-size: 1rem;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--ink-soft);
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.search-box input:focus { border-color: var(--ochre); }
+
+.search-box::after {
+  content: '⌕';
+  position: absolute;
+  left: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--ochre-deep);
+  font-size: 1.4rem;
+  pointer-events: none;
+}
+
+.lib-stats {
+  font-family: 'Thmanyah Sans', sans-serif;
+  font-style: italic;
+  color: var(--ink-soft);
+  font-size: 1rem;
+}
+
+.lib-stats strong {
+  color: var(--ochre-deep);
+  font-weight: 600;
+}
+
+.surahs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.surah-card {
+  display: grid;
+  grid-template-columns: 50px 1fr auto;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  background: var(--paper);
+  border: 1px solid rgba(42, 31, 18, 0.08);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.surah-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 50%, rgba(184, 118, 58, 0.06) 100%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.surah-card:hover {
+  border-color: var(--ochre);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px var(--shadow);
+}
+
+.surah-card:hover::before { opacity: 1; }
+
+.surah-card.playing {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ochre);
+}
+
+.surah-card.playing .surah-num,
+.surah-card.playing .surah-name,
+.surah-card.playing .surah-name-en,
+.surah-card.playing .play-icon {
+  color: var(--paper);
+}
+
+.surah-num {
+  font-family: 'Thmanyah Sans', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--ochre-deep);
+  text-align: center;
+  font-style: italic;
+}
+
+.surah-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.surah-name {
+  font-family: 'Thmanyah Serif Display', serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.2;
+}
+
+.surah-name-en {
+  font-family: 'Thmanyah Sans', sans-serif;
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--ink-soft);
+  letter-spacing: 0.05em;
+}
+
+.play-icon {
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--ochre);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ochre);
+  transition: all 0.3s;
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+}
+
+.play-icon svg { display: block; }
+
+.surah-card:hover .play-icon {
+  background: var(--ochre);
+  color: var(--paper);
+}
+
+.surah-card.playing .play-icon {
+  background: var(--ochre);
+  color: var(--paper);
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(198, 151, 73, 0.6); }
+  50% { box-shadow: 0 0 0 8px rgba(198, 151, 73, 0); }
+}
+
+/* ============ PRO MEDIA PLAYER (FIXED BOTTOM) ============ */
+.media-player {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(180deg, #1a1410 0%, #0d0906 100%);
+  color: var(--paper);
+  z-index: 90;
+  box-shadow: 0 -20px 60px rgba(0, 0, 0, 0.6);
+  transform: translateY(100%);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  border-top: 1px solid rgba(198, 151, 73, 0.25);
+}
+
+.media-player.active { transform: translateY(0); }
+
+/* Spotify-style mini progress bar — always visible at top edge */
+.player-mini-progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: rgba(244, 237, 224, 0.06);
+  overflow: hidden;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.player-mini-progress-fill {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  background: linear-gradient(90deg, var(--ochre), var(--gold));
+  width: 0%;
+  box-shadow: 0 0 8px rgba(198, 151, 73, 0.5);
+  transition: width 0.1s linear;
+}
+
+/* Shimmer accent line */
+.media-player::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(198, 151, 73, 0.6), rgba(198, 151, 73, 0.95), rgba(198, 151, 73, 0.6), transparent);
+  background-size: 200% 100%;
+  z-index: 4;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.media-player.is-playing::before {
+  animation: shimmer 4s linear infinite;
+  opacity: 1;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.player-compact {
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) minmax(400px, 2fr) minmax(220px, 1fr);
+  gap: 1.5rem;
+  align-items: center;
+  padding: 0.95rem 1.5rem;
+  min-height: 84px;
+  position: relative;
+}
+
+.player-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  min-width: 0;
+}
+
+.player-cover {
+  width: 52px;
+  height: 52px;
+  background: linear-gradient(135deg, var(--ochre) 0%, var(--rust) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Thmanyah Sans', sans-serif;
+  font-size: 1.3rem;
+  color: var(--paper);
+  flex-shrink: 0;
+  position: relative;
+  border: 1px solid rgba(198, 151, 73, 0.4);
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.player-cover:hover { transform: scale(1.04); }
+.player-cover:active { transform: scale(0.98); }
+
+.player-cover::before {
+  content: '۞';
+  position: absolute;
+  font-size: 2rem;
+  opacity: 0.22;
+  color: var(--paper);
+}
+
+.player-cover .cover-num {
+  position: relative;
+  z-index: 1;
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+  transition: opacity 0.3s;
+}
+
+/* Expand hint shown on hover */
+.cover-expand-hint {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.2s;
+  z-index: 3;
+}
+
+.player-cover:hover .cover-expand-hint { opacity: 1; }
+.cover-expand-hint svg { width: 18px; height: 18px; fill: var(--paper); }
+
+.media-player.is-playing .player-cover::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border: 1.5px solid transparent;
+  border-top-color: var(--gold);
+  border-right-color: rgba(198, 151, 73, 0.5);
+  border-radius: 6px;
+  animation: spin 3s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes spin {
+  from { transform: rotate(0); }
+  to { transform: rotate(360deg); }
+}
+
+.player-text {
+  min-width: 0;
+  flex: 1;
+}
+
+.player-title {
+  font-family: 'Thmanyah Serif Display', serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--paper);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 3px;
+  letter-spacing: 0.01em;
+}
+
+.player-subtitle {
+  font-family: 'Thmanyah Sans', sans-serif;
+  font-size: 0.72rem;
+  color: rgba(244, 237, 224, 0.5);
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.player-subtitle .dot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(198, 151, 73, 0.6);
+  flex-shrink: 0;
+}
+
+.player-fav {
+  background: transparent;
+  border: none;
+  color: rgba(244, 237, 224, 0.4);
+  cursor: pointer;
+  padding: 0.4rem;
+  transition: all 0.3s;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.player-fav svg { width: 18px; height: 18px; fill: currentColor; transition: transform 0.3s; }
+.player-fav:hover { color: var(--gold); }
+.player-fav:hover svg { transform: scale(1.15); }
+.player-fav.active { color: var(--rust); }
+.player-fav.active svg { animation: heart-pop 0.4s ease; }
+
+@keyframes heart-pop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.4); }
+  100% { transform: scale(1); }
+}
+
+.player-controls-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  max-width: 620px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.player-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.1rem;
+}
+
+.player-btn {
+  background: transparent;
+  border: none;
+  color: rgba(244, 237, 224, 0.65);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 0.45rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  font-family: inherit;
+  border-radius: 50%;
+}
+
+.player-btn:hover {
+  color: var(--paper);
+  transform: scale(1.12);
+}
+
+.player-btn:active { transform: scale(0.95); }
+
+.player-btn.active {
+  color: var(--gold);
+}
+
+.player-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  background: var(--gold);
+  border-radius: 50%;
+  box-shadow: 0 0 6px rgba(198, 151, 73, 0.7);
+}
+
+/* Skip buttons (10s indicators) */
+.player-btn .skip-num {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Thmanyah Sans', sans-serif;
+  font-size: 0.55rem;
+  font-weight: 700;
+  color: currentColor;
+  pointer-events: none;
+}
+
+.player-btn.main {
+  width: 42px;
+  height: 42px;
+  border: none;
+  border-radius: 50%;
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: 0 2px 14px rgba(198, 151, 73, 0.35);
+  transition: all 0.2s ease;
+}
+
+.player-btn.main:hover {
+  background: var(--gold);
+  transform: scale(1.08);
+  box-shadow: 0 4px 22px rgba(198, 151, 73, 0.55);
+}
+
+.player-btn.main:active {
+  transform: scale(0.94);
+}
+
+.player-btn svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+.player-btn.main svg {
+  width: 16px;
+  height: 16px;
+}
+
+.player-progress-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.player-time {
+  font-family: 'Thmanyah Sans', sans-serif;
+  font-size: 0.72rem;
+  color: rgba(244, 237, 224, 0.55);
+  min-width: 42px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.player-progress-row:hover .player-time { color: rgba(244, 237, 224, 0.85); }
+
+.progress-container {
+  flex: 1;
+  height: 24px;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.progress-track {
+  width: 100%;
+  height: 4px;
+  background: rgba(244, 237, 224, 0.08);
+  position: relative;
+  border-radius: 2px;
+  transition: height 0.2s ease;
+}
+
+.progress-container:hover .progress-track {
+  height: 6px;
+}
+
+.progress-buffer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  background: rgba(244, 237, 224, 0.13);
+  border-radius: 2px;
+  width: 0%;
+  transition: width 0.3s ease;
+}
+
+.progress-fill {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  background: linear-gradient(90deg, var(--ochre) 0%, var(--gold) 100%);
+  border-radius: 2px;
+  width: 0%;
+  box-shadow: 0 0 8px rgba(198, 151, 73, 0.4);
+}
+
+/* Thumb is the leading-edge dot of the progress fill */
+.progress-thumb {
+  position: absolute;
+  top: 50%;
+  width: 14px;
+  height: 14px;
+  background: var(--paper);
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.2s, transform 0.2s;
+  pointer-events: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(198, 151, 73, 0.4);
+  /* In RTL, the fill grows leftward, so the thumb sits at left edge */
+  left: 0;
+  transform: translate(-50%, -50%);
+}
+
+/* In LTR languages, fill grows rightward — thumb at right edge */
+body[dir="ltr"] .progress-thumb,
+body.lang-en .progress-thumb {
+  left: auto;
+  right: 0;
+  transform: translate(50%, -50%);
+}
+
+.progress-container:hover .progress-thumb {
+  opacity: 1;
+}
+
+/* Scrub tooltip — shows time on hover */
+.progress-tooltip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  background: rgba(26, 20, 16, 0.95);
+  color: var(--paper);
+  padding: 4px 8px;
+  border-radius: 3px;
+  font-family: 'Thmanyah Sans', sans-serif;
+  font-size: 0.7rem;
+  font-variant-numeric: tabular-nums;
+  border: 1px solid rgba(198, 151, 73, 0.3);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s;
+  white-space: nowrap;
+  transform: translateX(-50%);
+  z-index: 5;
+}
+
+.progress-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 4px solid transparent;
+  border-top-color: rgba(198, 151, 73, 0.3);
+}
+
+.progress-container:hover .progress-tooltip { opacity: 1; }
+
+.player-extras {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.3rem;
+}
+
+.player-mini-btn {
+  background: transparent;
+  border: none;
+  color: rgba(244, 237, 224, 0.55);
+  cursor: pointer;
+  padding: 0.45rem;
+  transition: all 0.2s;
+  font-family: 'Thmanyah Sans', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+}
+
+.player-mini-btn:hover {
+  color: var(--gold);
+  background: rgba(198, 151, 73, 0.08);
+}
+
+.player-mini-btn.active { color: var(--gold); }
+
+.player-mini-btn svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+/* Tooltip on hover */
+.player-mini-btn[data-tooltip]::after,
+.player-btn[data-tooltip]::before {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(26, 20, 16, 0.95);
+  color: var(--paper);
+  padding: 4px 8px;
+  border-radius: 3px;
+  font-family: 'Thmanyah Sans', sans-serif;
+  font-size: 0.7rem;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s 0.3s, transform 0.2s 0.3s;
+  border: 1px solid rgba(198, 151, 73, 0.3);
+  z-index: 6;
+  letter-spacing: 0.05em;
+}
+
+.player-mini-btn[data-tooltip]:hover::after,
+.player-btn[data-tooltip]:hover::before {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-2px);
+}
+
+/* Override default ::after for mini-btn that uses it for active dot */
+.player-btn[data-tooltip]:hover::after {
+  /* keep the active-state dot if any */
+}
+
+.volume-control {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  position: relative;
+  margin-left: 0.25rem;
+}
+
+/* Volume wrapper — holds custom visual + invisible native input */
+.volume-wrapper {
+  position: relative;
+  width: 90px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.volume-wrapper-track {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 4px;
+  transform: translateY(-50%);
+  background: rgba(244, 237, 224, 0.1);
+  border-radius: 2px;
+  pointer-events: none;
+  transition: height 0.2s;
+}
+
+.volume-wrapper:hover .volume-wrapper-track {
+  height: 6px;
+}
+
+.volume-wrapper-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 80%;
+  background: var(--gold);
+  border-radius: 2px;
+}
+
+.volume-wrapper-thumb {
+  position: absolute;
+  top: 50%;
+  left: 80%;
+  width: 12px;
+  height: 12px;
+  background: var(--paper);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(198, 151, 73, 0.3);
+  transition: transform 0.2s;
+  z-index: 2;
+}
+
+.volume-wrapper:hover .volume-wrapper-thumb {
+  transform: translate(-50%, -50%) scale(1.2);
+}
+
+/* Native input — sits invisible on top, captures clicks/drags */
+.volume-slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  outline: none;
+  cursor: pointer;
+  opacity: 0;
+  z-index: 3;
+}
+
+.volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.volume-slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+}
+
+.player-loading-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  background-size: 30% 100%;
+  background-repeat: no-repeat;
+  display: none;
+  z-index: 5;
+}
+
+.media-player.is-loading .player-loading-bar {
+  display: block;
+  animation: loading-slide 1.2s ease-in-out infinite;
+}
+
+.media-player.is-loading .player-mini-progress { opacity: 0.4; }
+
+@keyframes loading-slide {
+  0% { background-position: -30% 0; }
+  100% { background-position: 130% 0; }
+}
+
+.visualizer {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+  padding: 0 12px;
+}
+
+.media-player.is-playing .visualizer { opacity: 1; }
+.media-player.is-playing .player-cover .cover-num { opacity: 0.3; }
+
+.visualizer-bar {
+  width: 2px;
+  background: var(--paper);
+  border-radius: 1px;
+  animation: vis-bounce 0.8s ease-in-out infinite;
+}
+
+.visualizer-bar:nth-child(1) { height: 30%; animation-delay: 0s; }
+.visualizer-bar:nth-child(2) { height: 60%; animation-delay: 0.15s; }
+.visualizer-bar:nth-child(3) { height: 80%; animation-delay: 0.3s; }
+.visualizer-bar:nth-child(4) { height: 50%; animation-delay: 0.45s; }
+.visualizer-bar:nth-child(5) { height: 40%; animation-delay: 0.6s; }
+
+@keyframes vis-bounce {
+  0%, 100% { transform: scaleY(0.4); }
+  50% { transform: scaleY(1); }
+}
+
+.media-player.is-paused .visualizer-bar {
+  animation-play-state: paused;
+}
+
+/* Expanded Mode */
+.player-expanded {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(180deg, #1a1410 0%, #0d0906 100%);
+  z-index: 200;
+  padding: 4rem 2rem 2rem;
+  overflow-y: auto;
+}
+
+.player-expanded.show { display: flex; flex-direction: column; }
+
+.expanded-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: transparent;
+  border: 1px solid rgba(244, 237, 224, 0.2);
+  color: var(--paper);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.expanded-close:hover {
+  background: rgba(244, 237, 224, 0.1);
+  border-color: var(--gold);
+}
+
+.expanded-content {
+  max-width: 800px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  flex: 1;
+  justify-content: center;
+}
+
+.expanded-cover {
+  width: min(360px, 65vw);
+  height: min(360px, 65vw);
+  background: linear-gradient(135deg, var(--ochre) 0%, var(--rust) 100%);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Thmanyah Sans', sans-serif;
+  color: var(--paper);
+  position: relative;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+  border: 1px solid rgba(198, 151, 73, 0.4);
+}
+
+.expanded-cover::before {
+  content: '۞';
+  position: absolute;
+  font-size: 14rem;
+  opacity: 0.15;
+}
+
+.expanded-cover .num {
+  position: relative;
+  z-index: 1;
+  font-size: 5rem;
+  font-weight: 700;
+  text-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.media-player.is-playing .expanded-cover {
+  animation: subtle-pulse 4s ease-in-out infinite;
+}
+
+@keyframes subtle-pulse {
+  0%, 100% { box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), 0 0 0 0 rgba(198, 151, 73, 0); }
+  50% { box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), 0 0 60px 0 rgba(198, 151, 73, 0.2); }
+}
+
+.expanded-info { text-align: center; }
+
+.expanded-title {
+  font-family: 'Thmanyah Serif Display', serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--paper);
+  margin-bottom: 0.5rem;
+}
+
+.expanded-subtitle {
+  font-family: 'Thmanyah Sans', sans-serif;
+  font-style: italic;
+  font-size: 1.1rem;
+  color: rgba(244, 237, 224, 0.6);
+  letter-spacing: 0.08em;
+}
+
+.expanded-progress {
+  width: 100%;
+  max-width: 600px;
+}
+
+.expanded-progress .progress-track { height: 4px; }
+
+.expanded-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.expanded-controls .player-btn { font-size: 1.3rem; }
+
+.expanded-controls .player-btn.main {
+  width: 60px;
+  height: 60px;
+  font-size: 1.4rem;
+}
+
+.expanded-controls .player-btn.main svg { width: 22px; height: 22px; }
+
+.expanded-extras {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+/* Live waveform visualizer in expanded mode */
+.expanded-waveform {
+  width: 100%;
+  max-width: 600px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+}
+
+.wave-bar {
+  flex: 1;
+  background: linear-gradient(180deg, var(--gold), var(--ochre));
+  border-radius: 2px;
+  transition: height 0.1s ease, opacity 0.2s;
+  opacity: 0.4;
+  min-height: 4px;
+}
+
+.wave-bar.active { opacity: 1; }
+
+/* ============ FOOTER ============ */
+footer {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 5rem 4rem 8rem;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+footer::before {
+  content: '۞';
+  display: block;
+  font-size: 2rem;
+  color: var(--gold);
+  margin-bottom: 2rem;
+}
+
+.footer-quote {
+  font-family: 'Thmanyah Serif Text', serif;
+  font-size: 1.5rem;
+  font-style: italic;
+  max-width: 700px;
+  margin: 0 auto 2rem;
+  color: var(--paper);
+  line-height: 1.7;
+}
+
+.footer-meta {
+  font-family: 'Thmanyah Sans', sans-serif;
+  font-style: italic;
+  font-size: 0.95rem;
+  color: rgba(244, 237, 224, 0.6);
+  letter-spacing: 0.1em;
+  margin-top: 2rem;
+}
+
+.footer-divider {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 2.5rem auto;
+  opacity: 0.5;
+}
+
+.footer-tagline {
+  font-family: 'Thmanyah Serif Display', serif;
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: var(--gold);
+  max-width: 600px;
+  margin: 0 auto 0.5rem;
+  line-height: 1.8;
+  letter-spacing: 0.02em;
+}
+
+.footer-description {
+  font-family: 'Thmanyah Sans', sans-serif;
+  font-size: 0.9rem;
+  color: rgba(244, 237, 224, 0.55);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.7;
+  letter-spacing: 0.05em;
+}
+
+.footer-credits {
+  font-family: 'Thmanyah Sans', sans-serif;
+  font-size: 0.85rem;
+  color: rgba(244, 237, 224, 0.4);
+  margin-top: 2rem;
+  letter-spacing: 0.1em;
+}
+
+/* ============ ENGLISH MODE ============ */
+body.lang-en { direction: ltr; }
+body.lang-en .lang-ar { display: none; }
+body.lang-en .lang-en-text { display: inline; }
+
+body:not(.lang-en) .lang-en-text { display: none; }
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 968px) {
+  nav { padding: 1rem 1.5rem; }
+  nav.scrolled { padding: 0.8rem 1.5rem; }
+  .nav-links { display: none; }
+
+  .hero { padding: 6rem 0 0; }
+
+  .hero-stage {
+    grid-template-columns: 1fr;
+    padding: 1rem 1.5rem 3rem;
+    gap: 2.5rem;
+    text-align: center;
+  }
+
+  .hero-left {
+    align-items: center;
+    gap: 1.25rem;
+  }
+
+  .hero-name { font-size: clamp(2rem, 10vw, 3.5rem); }
+
+  .hero-tagline {
+    font-size: 1rem;
+    justify-content: center;
+  }
+
+  .hero-tagline::before { width: 30px; }
+
+  .hero-quote-block {
+    margin: 0 auto;
+    text-align: start;
+    font-size: 0.95rem;
+  }
+
+  .hero-meta-row {
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  .year-stamp { font-size: 2.2rem; }
+  .year-stamp::after { width: 30px; }
+
+  .hero-portrait {
+    width: min(320px, 75vw);
+    margin: 0 auto !important;
+    justify-self: center !important;
+  }
+
+  .hero-ticker {
+    font-size: 0.8rem;
+    padding: 0.6rem 0;
+  }
+
+  .biography, .library { padding: 4rem 1.5rem; }
+
+  .bio-chapter.span-7,
+  .bio-chapter.span-5,
+  .bio-chapter.span-6,
+  .bio-chapter.span-12 { grid-column: span 12; }
+
+  .surahs-grid { grid-template-columns: 1fr; }
+
+  .player-compact {
+    grid-template-columns: 1fr auto;
+    gap: 0.75rem;
+    padding: 0.6rem 1rem;
+    min-height: auto;
+  }
+
+  .player-compact .player-extras {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .player-compact .player-controls-wrapper {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+
+  .player-extras .volume-control { display: none; }
+
+  .player-info { gap: 0.6rem; }
+  .player-cover { width: 44px; height: 44px; font-size: 1.1rem; }
+  .player-fav { display: none; }
+
+  .player-buttons { gap: 0.75rem; }
+
+  .expanded-title { font-size: 1.8rem; }
+  .expanded-cover { width: min(280px, 60vw); height: min(280px, 60vw); }
+  .expanded-cover .num { font-size: 3.5rem; }
+  .expanded-cover::before { font-size: 10rem; }
+  .expanded-controls { gap: 1.25rem; }
+  .expanded-extras { gap: 1rem; flex-wrap: wrap; }
+  .expanded-extras .volume-control { display: none; }
+
+  footer { padding: 4rem 1.5rem 9rem; }
+  .footer-tagline { font-size: 1rem; }
+  .footer-description { font-size: 0.8rem; }
+  .footer-quote { font-size: 1.25rem; }
+}
+
+/* ============ ANIMATIONS ============ */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Hero entrance animations */
+.hero-stage { animation: fadeInUp 1s ease-out 0.3s backwards; }
+.hero-portrait { animation: fadeInUp 1.2s ease-out 0.5s backwards; }
+.hero-left > * { animation: fadeInUp 0.9s ease-out backwards; }
+.hero-left > *:nth-child(1) { animation-delay: 0.4s; }
+.hero-left > *:nth-child(2) { animation-delay: 0.55s; }
+.hero-left > *:nth-child(3) { animation-delay: 0.7s; }
+.hero-left > *:nth-child(4) { animation-delay: 0.85s; }
+.hero-left > *:nth-child(5) { animation-delay: 1s; }
+</style>
+</head>
+<body>
+
+<!-- ============ NAVIGATION ============ -->
+<nav>
+  <div class="nav-mark">
+    <span class="lang-ar">المنشاوي</span>
+    <span class="lang-en-text">Al-Minshawi</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#bio"><span class="lang-ar">السيرة</span><span class="lang-en-text">Biography</span></a></li>
+    <li><a href="#timeline"><span class="lang-ar">المسيرة</span><span class="lang-en-text">Timeline</span></a></li>
+    <li><a href="#library"><span class="lang-ar">المكتبة</span><span class="lang-en-text">Library</span></a></li>
+  </ul>
+  <button class="lang-toggle" id="langToggle">EN</button>
+</nav>
+
+<!-- ============ CINEMATIC VINTAGE HERO ============ -->
+<section class="hero">
+  <div class="film-strip"></div>
+
+  <!-- Main stage: TWO COLUMNS — image first (col 1), text second (col 2) -->
+  <div class="hero-stage">
+
+    <!-- COLUMN 1: PORTRAIT (right in RTL, left in LTR) -->
+    <div class="hero-portrait">
+      <div class="portrait-card">
+        <span class="portrait-corner tl"></span>
+        <span class="portrait-corner tr"></span>
+        <span class="portrait-corner bl"></span>
+        <span class="portrait-corner br"></span>
+
+        <img class="portrait-svg" src="images/sheikh-minshawi.jpg" alt="الشيخ محمد صديق المنشاوي - Sheikh Muhammad Siddiq Al-Minshawi" loading="eager">
+      </div>
+    </div>
+
+    <!-- COLUMN 2: ALL TEXT CONTENT (left in RTL, right in LTR) -->
+    <div class="hero-left">
+
+      <!-- Big name -->
+      <h1 class="hero-name">
+        <span class="lang-ar">محمد صديق المنشاوي</span>
+        <span class="lang-en-text">Muhammad Siddiq Al-Minshawi</span>
+      </h1>
+
+      <!-- Tagline -->
+      <div class="hero-tagline">
+        <span class="lang-ar">الصوت الباكي · حسنة الدهر</span>
+        <span class="lang-en-text">The Weeping Voice · A Blessing of His Age</span>
+      </div>
+
+      <!-- Quote -->
+      <blockquote class="hero-quote-block">
+        <span class="lang-ar">«الشيخ محمد صديق المنشاوي حسنةٌ من حسنات الدهر»</span>
+        <span class="lang-en-text">"Sheikh Muhammad Siddiq al-Minshawi is a blessing of his age."</span>
+        <span class="attr">
+          <span class="lang-ar">— الشيخ عبد الحكيم عبد اللطيف</span>
+          <span class="lang-en-text">— Sheikh Abdul Hakim Abdul Latif</span>
+        </span>
+      </blockquote>
+
+      <!-- Years -->
+      <div class="hero-meta-row">
+        <div class="year-stamp-item">
+          <span class="year-stamp">
+            <span class="lang-ar">١٩٢٠</span>
+            <span class="lang-en-text">1920</span>
+          </span>
+          <span class="year-stamp-label">
+            <span class="lang-ar">المولد · سوهاج</span>
+            <span class="lang-en-text">Born · Sohag</span>
+          </span>
+        </div>
+
+        <div class="year-stamp-item">
+          <span class="year-stamp">
+            <span class="lang-ar">١٩٦٩</span>
+            <span class="lang-en-text">1969</span>
+          </span>
+          <span class="year-stamp-label">
+            <span class="lang-ar">الوفاة · القاهرة</span>
+            <span class="lang-en-text">Died · Cairo</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Marquee ticker -->
+  <div class="hero-ticker">
+    <div class="hero-ticker-track">
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الفاتحة</span>
+        <span class="lang-en-text">Al-Fatihah</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">البقرة</span>
+        <span class="lang-en-text">Al-Baqarah</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">آل عمران</span>
+        <span class="lang-en-text">Al-'Imran</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">يس</span>
+        <span class="lang-en-text">Ya-Sin</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الرحمن</span>
+        <span class="lang-en-text">Ar-Rahman</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الواقعة</span>
+        <span class="lang-en-text">Al-Waqi'ah</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الملك</span>
+        <span class="lang-en-text">Al-Mulk</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">القيامة</span>
+        <span class="lang-en-text">Al-Qiyamah</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الإنسان</span>
+        <span class="lang-en-text">Al-Insan</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">المرسلات</span>
+        <span class="lang-en-text">Al-Mursalat</span>
+      </div>
+      <!-- Duplicate set for seamless loop -->
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الفاتحة</span>
+        <span class="lang-en-text">Al-Fatihah</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">البقرة</span>
+        <span class="lang-en-text">Al-Baqarah</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">آل عمران</span>
+        <span class="lang-en-text">Al-'Imran</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">يس</span>
+        <span class="lang-en-text">Ya-Sin</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الرحمن</span>
+        <span class="lang-en-text">Ar-Rahman</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الواقعة</span>
+        <span class="lang-en-text">Al-Waqi'ah</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الملك</span>
+        <span class="lang-en-text">Al-Mulk</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">القيامة</span>
+        <span class="lang-en-text">Al-Qiyamah</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الإنسان</span>
+        <span class="lang-en-text">Al-Insan</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">المرسلات</span>
+        <span class="lang-en-text">Al-Mursalat</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BIOGRAPHY ============ -->
+<section class="biography" id="bio">
+  <div class="ornament-divider"><span>۞</span></div>
+  <p class="section-label">
+    <span class="lang-ar">السيرة الذاتية</span>
+    <span class="lang-en-text">Life & Legacy</span>
+  </p>
+  <h2 class="section-title">
+    <span class="lang-ar">حياة وُهبت للقرآن</span>
+    <span class="lang-en-text">A Life Devoted to the Quran</span>
+  </h2>
+  <p class="section-title-en">
+    <span class="lang-ar">A Life Devoted to the Quran</span>
+    <span class="lang-en-text">حياة وُهبت للقرآن</span>
+  </p>
+
+  <div class="bio-grid">
+
+    <!-- Chapter 1: Origins -->
+    <div class="bio-chapter span-7 fade-in">
+      <span class="chapter-num">
+        <span class="lang-ar">— الفصل الأول —</span>
+        <span class="lang-en-text">— Chapter One —</span>
+      </span>
+      <h3 class="chapter-title">
+        <span class="lang-ar">النشأة في بيت القرآن</span>
+        <span class="lang-en-text">A House Built on the Quran</span>
+        <span class="chapter-title-en lang-ar">A House Built on the Quran</span>
+        <span class="chapter-title-en lang-en-text">النشأة في بيت القرآن</span>
+      </h3>
+      <div class="chapter-body">
+        <p class="lang-ar">
+          وُلد <strong>محمد بن صديق بن سيد بن ثابت المنشاوي</strong> سنة <strong>١٩٢٠م</strong> بقرية المنشأة بمحافظة سوهاج في صعيد مصر، في أسرة قرآنية عريقة توارثت تلاوة القرآن جيلاً بعد جيل.
+        </p>
+        <p class="lang-ar">
+          أبوه الشيخ <strong>صديق المنشاوي</strong> كان قارئاً مجوداً مشهوراً في صعيد مصر، وجدّه ثابت المنشاوي وجدّ والده كلهم قراء للقرآن. تعلّم الشيخ محمد القراءة على يد والده، وأتمّ حفظ القرآن وهو في <strong>الثامنة من عمره</strong>.
+        </p>
+        <p class="lang-ar">
+          ثم انتقل مع أبيه إلى القاهرة، وفيها بدأ يتعلّم أحكام التجويد على يد كبار الشيوخ، منهم الشيخ محمد النمكي والشيخ محمد أبو العلا.
+        </p>
+
+        <p class="lang-en-text">
+          <strong>Muhammad ibn Siddiq ibn Sayyid ibn Thabit al-Minshawi</strong> was born in <strong>1920</strong> in the village of al-Minsha'ah in Sohag governorate, Upper Egypt, into a long lineage of Quranic reciters that stretched back generations.
+        </p>
+        <p class="lang-en-text">
+          His father, Sheikh <strong>Siddiq al-Minshawi</strong>, was a celebrated reciter throughout Upper Egypt. Both his grandfather Thabit and his great-grandfather were also reciters. Muhammad learned recitation directly from his father and completed memorizing the entire Quran by age <strong>eight</strong>.
+        </p>
+        <p class="lang-en-text">
+          He later moved with his father to Cairo, where he studied the rules of tajweed under masters like Sheikh Muhammad al-Namki and Sheikh Muhammad Abu al-Ula.
+        </p>
+      </div>
+    </div>
+
+    <!-- Chapter 2: The Voice -->
+    <div class="bio-chapter span-5 fade-in">
+      <span class="chapter-num">
+        <span class="lang-ar">— الفصل الثاني —</span>
+        <span class="lang-en-text">— Chapter Two —</span>
+      </span>
+      <h3 class="chapter-title">
+        <span class="lang-ar">الصوت الباكي</span>
+        <span class="lang-en-text">The Weeping Voice</span>
+        <span class="chapter-title-en lang-ar">The Weeping Voice</span>
+        <span class="chapter-title-en lang-en-text">الصوت الباكي</span>
+      </h3>
+      <div class="chapter-body">
+        <p class="lang-ar">
+          تميّز الشيخ بصوتٍ خاشعٍ ذي مسحة من الحزن العميق، فلُقِّب بـ<strong>«الصوت الباكي»</strong>. لم تكن تلاوته مجرد أداء صوتي، بل كانت رحلة روحية تأخذ المستمع إلى أعماق المعنى.
+        </p>
+        <p class="lang-ar">
+          كان متقناً لمقامات القراءة، عميق الانفعال مع معاني الآيات، حتى صار صوته مرتبطاً عند الناس بالسكينة والخشوع.
+        </p>
+
+        <p class="lang-en-text">
+          The Sheikh was distinguished by a reverent voice with a deep undertone of sorrow, earning him the title <strong>"The Weeping Voice."</strong> His recitation was not mere vocal performance but a spiritual journey that drew listeners into the depths of meaning.
+        </p>
+        <p class="lang-en-text">
+          He was a master of all maqamat (musical modes) of recitation, profoundly engaged with the verses he recited — until his voice became, for many, synonymous with serenity itself.
+        </p>
+      </div>
+    </div>
+
+    <!-- Chapter 3: Career -->
+    <div class="bio-chapter span-6 fade-in">
+      <span class="chapter-num">
+        <span class="lang-ar">— الفصل الثالث —</span>
+        <span class="lang-en-text">— Chapter Three —</span>
+      </span>
+      <h3 class="chapter-title">
+        <span class="lang-ar">من سوهاج إلى العالم</span>
+        <span class="lang-en-text">From Sohag to the World</span>
+        <span class="chapter-title-en lang-ar">From Sohag to the World</span>
+        <span class="chapter-title-en lang-en-text">من سوهاج إلى العالم</span>
+      </h3>
+      <div class="chapter-body">
+        <p class="lang-ar">
+          بدأ رحلته مع التلاوة بتجواله مع أبيه وعمه بين السهرات الدينية، حتى قرأ منفرداً سنة <strong>١٩٥٢م</strong> بمحافظة سوهاج، فذاع صيته في الأنحاء.
+        </p>
+        <p class="lang-ar">
+          رفض في البداية الذهاب للإذاعة المصرية بدافع من العزّة والأنفة، حتى أرسل مدير الإذاعة مندوباً إليه سنة <strong>١٩٥٣م</strong>، فاعتُمد قارئاً رسمياً للإذاعة، وحمل لقب <strong>«مقرئ الجمهورية»</strong>.
+        </p>
+        <p class="lang-ar">
+          سافر إلى السعودية وسوريا والأردن والكويت والعراق وليبيا والسودان وإندونيسيا وغيرها، وتلا في المسجد الأقصى. حصل على وسام الاستحقاق من سوريا، وأوسمة كثيرة من ملوك ورؤساء الدول الإسلامية.
+        </p>
+
+        <p class="lang-en-text">
+          His journey began as a young man traveling with his father and uncle to religious gatherings. His first solo recitation in <strong>1952</strong> in Sohag governorate brought him sudden fame across the region.
+        </p>
+        <p class="lang-en-text">
+          He initially refused to record for Egyptian Radio out of pride and dignity, until the radio director sent an envoy in <strong>1953</strong>. He was officially appointed as a reciter and carried the title <strong>"Reciter of the Republic."</strong>
+        </p>
+        <p class="lang-en-text">
+          He traveled to Saudi Arabia, Syria, Jordan, Kuwait, Iraq, Libya, Sudan, Indonesia and beyond, and recited at the Al-Aqsa Mosque. He was awarded Syria's Order of Merit and numerous decorations from kings and presidents across the Islamic world.
+        </p>
+      </div>
+    </div>
+
+    <!-- Chapter 4: Legacy -->
+    <div class="bio-chapter span-6 fade-in">
+      <span class="chapter-num">
+        <span class="lang-ar">— الفصل الرابع —</span>
+        <span class="lang-en-text">— Chapter Four —</span>
+      </span>
+      <h3 class="chapter-title">
+        <span class="lang-ar">الرحيل والإرث</span>
+        <span class="lang-en-text">Departure & Legacy</span>
+        <span class="chapter-title-en lang-ar">Departure & Legacy</span>
+        <span class="chapter-title-en lang-en-text">الرحيل والإرث</span>
+      </h3>
+      <div class="chapter-body">
+        <p class="lang-ar">
+          أصيب الشيخ سنة <strong>١٩٦٦م</strong> بمرض دوالي المريء. ورغم تدهور حالته، ظلّ يقرأ القرآن حتى لحظاته الأخيرة، إلى أن وافته المنية يوم الجمعة <strong>٢٠ يونيو ١٩٦٩م</strong>، وعمره ٤٩ عاماً فقط.
+        </p>
+        <p class="lang-ar">
+          ترك الشيخ ميراثاً ضخماً يتجاوز <strong>١٥٠ تسجيلاً صوتياً</strong> ما بين مرتل ومجوّد، يُعدّ مصحفه المرتل من أعظم المصاحف في تاريخ دولة التلاوة. وأصبح أسلوبه نموذجاً يُحتذى به لأجيال متعاقبة من القراء.
+        </p>
+        <p class="lang-ar">
+          رحم الله الشيخ، فقد كان — بحقّ — حسنةً من حسنات الدهر.
+        </p>
+
+        <p class="lang-en-text">
+          In <strong>1966</strong> the Sheikh was diagnosed with esophageal varices. Despite his deteriorating health, he continued reciting the Quran until his final moments, passing away on Friday, <strong>June 20, 1969</strong>, at just 49 years of age.
+        </p>
+        <p class="lang-en-text">
+          He left behind a vast legacy of more than <strong>150 recordings</strong>, both murattal and mujawwad. His murattal mushaf is considered among the greatest in the history of Quranic recitation. His style became a model emulated by reciters across generations.
+        </p>
+        <p class="lang-en-text">
+          May God have mercy upon him — truly, he was a blessing of his age.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ TIMELINE ============ -->
+<section class="biography" id="timeline" style="padding-top: 0;">
+  <div class="ornament-divider"><span>۞</span></div>
+  <p class="section-label">
+    <span class="lang-ar">المسيرة</span>
+    <span class="lang-en-text">Timeline</span>
+  </p>
+  <h2 class="section-title">
+    <span class="lang-ar">رحلة في تسعٍ وأربعين سنة</span>
+    <span class="lang-en-text">A Journey in 49 Years</span>
+  </h2>
+  <p class="section-title-en">
+    <span class="lang-ar">A Journey in Forty-Nine Years</span>
+    <span class="lang-en-text">رحلة في تسعٍ وأربعين سنة</span>
+  </p>
+
+  <div class="timeline-grid" style="max-width: 900px; margin: 4rem auto;">
+    <div class="timeline-row fade-in">
+      <span class="timeline-year">1920</span>
+      <span class="timeline-event">
+        <span class="lang-ar">وُلد بقرية المنشأة في محافظة سوهاج، في أسرة قرآنية عريقة.</span>
+        <span class="lang-en-text">Born in al-Minsha'ah village, Sohag, into a family of generations of Quranic reciters.</span>
+      </span>
+    </div>
+    <div class="timeline-row fade-in">
+      <span class="timeline-year">1928</span>
+      <span class="timeline-event">
+        <span class="lang-ar">أتمّ حفظ القرآن الكريم كاملاً وهو في الثامنة من عمره.</span>
+        <span class="lang-en-text">Completed memorization of the entire Quran at age eight.</span>
+      </span>
+    </div>
+    <div class="timeline-row fade-in">
+      <span class="timeline-year">1940s</span>
+      <span class="timeline-event">
+        <span class="lang-ar">انتقل إلى القاهرة لتعلّم أحكام التجويد، وعُيّن قارئاً بمسجد الزمالك.</span>
+        <span class="lang-en-text">Moved to Cairo to study tajweed, appointed reciter at the Zamalek Mosque.</span>
+      </span>
+    </div>
+    <div class="timeline-row fade-in">
+      <span class="timeline-year">1952</span>
+      <span class="timeline-event">
+        <span class="lang-ar">انطلق صوته منفرداً لأول مرة في ليلة قرآنية بمحافظة سوهاج.</span>
+        <span class="lang-en-text">First solo recitation in a Quranic night in Sohag governorate.</span>
+      </span>
+    </div>
+    <div class="timeline-row fade-in">
+      <span class="timeline-year">1953</span>
+      <span class="timeline-event">
+        <span class="lang-ar">اعتُمد قارئاً رسمياً في الإذاعة المصرية بعد رفضٍ طويل.</span>
+        <span class="lang-en-text">Officially appointed as a reciter at Egyptian Radio after long refusing.</span>
+      </span>
+    </div>
+    <div class="timeline-row fade-in">
+      <span class="timeline-year">1955</span>
+      <span class="timeline-event">
+        <span class="lang-ar">حصل على وسام رفيع من إندونيسيا، وبدأ سفرياته إلى الدول الإسلامية.</span>
+        <span class="lang-en-text">Awarded a high decoration from Indonesia; began touring Muslim nations.</span>
+      </span>
+    </div>
+    <div class="timeline-row fade-in">
+      <span class="timeline-year">1966</span>
+      <span class="timeline-event">
+        <span class="lang-ar">أُصيب بمرض دوالي المريء، لكنه واصل التلاوة رغم المرض.</span>
+        <span class="lang-en-text">Diagnosed with esophageal varices; continued reciting despite illness.</span>
+      </span>
+    </div>
+    <div class="timeline-row fade-in">
+      <span class="timeline-year">1969</span>
+      <span class="timeline-event">
+        <span class="lang-ar">توفي يوم الجمعة ٢٠ يونيو، وعمره ٤٩ عاماً، تاركاً مصحفاً مرتلاً وأكثر من ١٥٠ تسجيلاً.</span>
+        <span class="lang-en-text">Passed away on Friday, June 20, at age 49 — leaving a complete murattal mushaf and over 150 recordings.</span>
+      </span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ AUDIO LIBRARY ============ -->
+<section class="library" id="library">
+  <div class="library-inner">
+    <div class="ornament-divider"><span>۞</span></div>
+    <p class="section-label">
+      <span class="lang-ar">المكتبة الصوتية</span>
+      <span class="lang-en-text">Audio Library</span>
+    </p>
+    <h2 class="section-title">
+      <span class="lang-ar">المصحف المرتل كاملاً</span>
+      <span class="lang-en-text">The Complete Murattal Mushaf</span>
+    </h2>
+    <p class="section-title-en">
+      <span class="lang-ar">١١٤ سورة بصوت الشيخ — برواية حفص عن عاصم</span>
+      <span class="lang-en-text">114 Surahs — Hafs from 'Asim Narration</span>
+    </p>
+
+    <div class="library-controls">
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="ابحث عن سورة..." />
+      </div>
+      <div class="lib-stats">
+        <span class="lang-ar">يُعرض <strong id="visibleCount">١١٤</strong> من <strong>١١٤</strong> سورة</span>
+        <span class="lang-en-text">Showing <strong id="visibleCountEn">114</strong> of <strong>114</strong> surahs</span>
+      </div>
+    </div>
+
+    <div class="surahs-grid" id="surahsGrid">
+      <!-- Generated by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <p class="footer-quote">
+    <span class="lang-ar">«وَرَتِّلِ الْقُرْآنَ تَرْتِيلًا»</span>
+    <span class="lang-en-text">"And recite the Quran with measured recitation."</span>
+  </p>
+  <p class="footer-meta">
+    <span class="lang-ar">سورة المزمل · الآية ٤</span>
+    <span class="lang-en-text">Surah Al-Muzzammil · Verse 4</span>
+  </p>
+  <div class="footer-divider"></div>
+  <p class="footer-tagline">
+    <span class="lang-ar">استمع، تدبر، وشارك الأجر</span>
+    <span class="lang-en-text">Listen, reflect, and share the reward</span>
+  </p>
+  <p class="footer-description">
+    <span class="lang-ar">تلاوات الشيخ محمد صديق المنشاوي بجودة عالية</span>
+    <span class="lang-en-text">High-quality recitations by Mohamed Siddiq El-Minshawi</span>
+  </p>
+</footer>
+
+<!-- ============ PRO MEDIA PLAYER ============ -->
+<div class="media-player is-paused" id="mediaPlayer">
+  <div class="player-loading-bar"></div>
+
+  <!-- Always-visible top progress (Spotify-style) -->
+  <div class="player-mini-progress">
+    <div class="player-mini-progress-fill" id="miniProgressFill"></div>
+  </div>
+
+  <div class="player-compact">
+    <!-- Left: Track Info -->
+    <div class="player-info">
+      <div class="player-cover" id="playerCover" title="افتح في وضع كامل">
+        <span class="cover-num" id="coverNum">۞</span>
+        <div class="visualizer">
+          <span class="visualizer-bar"></span>
+          <span class="visualizer-bar"></span>
+          <span class="visualizer-bar"></span>
+          <span class="visualizer-bar"></span>
+          <span class="visualizer-bar"></span>
+        </div>
+        <div class="cover-expand-hint">
+          <svg viewBox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
+        </div>
+      </div>
+      <div class="player-text">
+        <div class="player-title" id="playerTitle">—</div>
+        <div class="player-subtitle">
+          <span class="lang-ar">الشيخ المنشاوي</span>
+          <span class="lang-en-text">Sheikh Al-Minshawi</span>
+          <span class="dot"></span>
+          <span class="lang-ar">مرتل</span>
+          <span class="lang-en-text">Murattal</span>
+          <span class="dot"></span>
+          <span id="playerTrackInfo">— / 114</span>
+        </div>
+      </div>
+      <button class="player-fav" id="favBtn" data-tooltip="مفضلة (F)">
+        <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+      </button>
+    </div>
+
+    <!-- Center: Controls + Progress -->
+    <div class="player-controls-wrapper">
+      <div class="player-buttons">
+        <button class="player-btn" id="shuffleBtn" data-tooltip="عشوائي · S">
+          <svg viewBox="0 0 24 24"><path d="M10.59 9.17L5.41 4 4 5.41l5.17 5.17 1.42-1.41zM14.5 4l2.04 2.04L4 18.59 5.41 20 17.96 7.46 20 9.5V4h-5.5zm.33 9.41l-1.41 1.41 3.13 3.13L14.5 20H20v-5.5l-2.04 2.04-3.13-3.13z"/></svg>
+        </button>
+        <button class="player-btn" id="prevBtn" data-tooltip="السابقة">
+          <svg viewBox="0 0 24 24"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
+        </button>
+        <button class="player-btn" id="rewindBtn" data-tooltip="ارجع 10 ثوان">
+          <svg viewBox="0 0 24 24"><path d="M12.5 3C7.81 3 4 6.81 4 11.5h2C6 7.91 8.91 5 12.5 5S19 7.91 19 11.5 16.09 18 12.5 18c-1.79 0-3.41-.74-4.59-1.91L9.83 14.5H4v5.83L6.59 17.74C8.13 19.13 10.21 20 12.5 20c4.69 0 8.5-3.81 8.5-8.5S17.19 3 12.5 3zm-1.4 12.7v-3.55l-1.1.4v-.85l2-.7h.1v4.7h-1z"/></svg>
+        </button>
+        <button class="player-btn main" id="playPauseBtn" data-tooltip="تشغيل · Space">
+          <svg id="playIcon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          <svg id="pauseIcon" viewBox="0 0 24 24" style="display:none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+        </button>
+        <button class="player-btn" id="forwardBtn" data-tooltip="تقدم 10 ثوان">
+          <svg viewBox="0 0 24 24"><path d="M11.5 3c4.69 0 8.5 3.81 8.5 8.5S16.19 20 11.5 20c-2.29 0-4.37-.87-5.91-2.26L4 19.33V13.5h5.83l-1.92 1.59C9.09 16.26 10.71 17 12.5 17c3.59 0 6.5-2.91 6.5-6.5S15.59 5 12.5 5 6 7.91 6 11.5H4C4 6.81 7.81 3 12.5 3zm-1.4 8.2v3.55h-1v-3.05l-.9.31v-.81l1.8-.7h.1z"/></svg>
+        </button>
+        <button class="player-btn" id="nextBtn" data-tooltip="التالية">
+          <svg viewBox="0 0 24 24"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
+        </button>
+        <button class="player-btn" id="repeatBtn" data-tooltip="تكرار · R">
+          <svg viewBox="0 0 24 24"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>
+        </button>
+      </div>
+      <div class="player-progress-row">
+        <span class="player-time" id="currentTime">0:00</span>
+        <div class="progress-container" id="progressContainer">
+          <div class="progress-tooltip" id="progressTooltip">0:00</div>
+          <div class="progress-track">
+            <div class="progress-buffer" id="progressBuffer"></div>
+            <div class="progress-fill" id="progressFill">
+              <div class="progress-thumb"></div>
+            </div>
+          </div>
+        </div>
+        <span class="player-time" id="duration">0:00</span>
+      </div>
+    </div>
+
+    <!-- Right: Volume + Extras -->
+    <div class="player-extras">
+      <button class="player-mini-btn" id="downloadBtn" data-tooltip="تحميل السورة">
+        <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+      </button>
+      <div class="volume-control">
+        <button class="player-mini-btn" id="muteBtn" data-tooltip="كتم · M">
+          <svg id="volIconHigh" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+          <svg id="volIconMute" viewBox="0 0 24 24" style="display:none;"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
+        </button>
+        <div class="volume-wrapper">
+          <div class="volume-wrapper-track">
+            <div class="volume-wrapper-fill" id="volumeFill"></div>
+          </div>
+          <div class="volume-wrapper-thumb" id="volumeThumb"></div>
+          <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="80" aria-label="Volume">
+        </div>
+      </div>
+      <button class="player-mini-btn" id="expandBtn" data-tooltip="عرض كامل">
+        <svg viewBox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <audio id="audioElement" preload="metadata"></audio>
+</div>
+
+<!-- Expanded Player View -->
+<div class="player-expanded" id="playerExpanded">
+  <button class="expanded-close" id="expandedClose">✕</button>
+  <div class="expanded-content">
+    <div class="expanded-cover">
+      <span class="num" id="expandedNum">١</span>
+    </div>
+
+    <div class="expanded-info">
+      <div class="expanded-title" id="expandedTitle">—</div>
+      <div class="expanded-subtitle">
+        <span class="lang-ar">الشيخ محمد صديق المنشاوي · المصحف المرتل</span>
+        <span class="lang-en-text">Sheikh Muhammad Siddiq Al-Minshawi · Murattal Mushaf</span>
+      </div>
+    </div>
+
+    <div class="expanded-waveform" id="expandedWaveform"></div>
+
+    <div class="expanded-progress">
+      <div class="player-progress-row">
+        <span class="player-time" id="currentTimeExp">0:00</span>
+        <div class="progress-container" id="progressContainerExp">
+          <div class="progress-track">
+            <div class="progress-fill" id="progressFillExp">
+              <div class="progress-thumb"></div>
+            </div>
+          </div>
+        </div>
+        <span class="player-time" id="durationExp">0:00</span>
+      </div>
+    </div>
+
+    <div class="expanded-controls">
+      <button class="player-btn" id="shuffleBtnExp" title="عشوائي">
+        <svg viewBox="0 0 24 24"><path d="M10.59 9.17L5.41 4 4 5.41l5.17 5.17 1.42-1.41zM14.5 4l2.04 2.04L4 18.59 5.41 20 17.96 7.46 20 9.5V4h-5.5zm.33 9.41l-1.41 1.41 3.13 3.13L14.5 20H20v-5.5l-2.04 2.04-3.13-3.13z"/></svg>
+      </button>
+      <button class="player-btn" id="prevBtnExp" title="السابقة">
+        <svg viewBox="0 0 24 24"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
+      </button>
+      <button class="player-btn main" id="playPauseBtnExp" title="تشغيل/إيقاف">
+        <svg id="playIconExp" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        <svg id="pauseIconExp" viewBox="0 0 24 24" style="display:none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+      </button>
+      <button class="player-btn" id="nextBtnExp" title="التالية">
+        <svg viewBox="0 0 24 24"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
+      </button>
+      <button class="player-btn" id="repeatBtnExp" title="تكرار">
+        <svg viewBox="0 0 24 24"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>
+      </button>
+    </div>
+
+    <div class="expanded-extras">
+      <span style="font-family: 'Thmanyah Sans', sans-serif; font-style: italic; font-size: 0.85rem; color: rgba(244, 237, 224, 0.5);">
+        <span class="lang-ar">⌨ Space للتشغيل · ← → للتنقل · M للكتم</span>
+        <span class="lang-en-text">⌨ Space to play · ← → to navigate · M to mute</span>
+      </span>
+    </div>
+  </div>
+</div>
+
+<script>
+// ============ SURAH DATA ============
+const surahs = [
+  { num: 1, ar: "الفاتحة", en: "Al-Fatihah" },
+  { num: 2, ar: "البقرة", en: "Al-Baqarah" },
+  { num: 3, ar: "آل عمران", en: "Al-'Imran" },
+  { num: 4, ar: "النساء", en: "An-Nisa'" },
+  { num: 5, ar: "المائدة", en: "Al-Ma'idah" },
+  { num: 6, ar: "الأنعام", en: "Al-An'am" },
+  { num: 7, ar: "الأعراف", en: "Al-A'raf" },
+  { num: 8, ar: "الأنفال", en: "Al-Anfal" },
+  { num: 9, ar: "التوبة", en: "At-Tawbah" },
+  { num: 10, ar: "يونس", en: "Yunus" },
+  { num: 11, ar: "هود", en: "Hud" },
+  { num: 12, ar: "يوسف", en: "Yusuf" },
+  { num: 13, ar: "الرعد", en: "Ar-Ra'd" },
+  { num: 14, ar: "إبراهيم", en: "Ibrahim" },
+  { num: 15, ar: "الحجر", en: "Al-Hijr" },
+  { num: 16, ar: "النحل", en: "An-Nahl" },
+  { num: 17, ar: "الإسراء", en: "Al-Isra'" },
+  { num: 18, ar: "الكهف", en: "Al-Kahf" },
+  { num: 19, ar: "مريم", en: "Maryam" },
+  { num: 20, ar: "طه", en: "Ta-Ha" },
+  { num: 21, ar: "الأنبياء", en: "Al-Anbiya'" },
+  { num: 22, ar: "الحج", en: "Al-Hajj" },
+  { num: 23, ar: "المؤمنون", en: "Al-Mu'minun" },
+  { num: 24, ar: "النور", en: "An-Nur" },
+  { num: 25, ar: "الفرقان", en: "Al-Furqan" },
+  { num: 26, ar: "الشعراء", en: "Ash-Shu'ara'" },
+  { num: 27, ar: "النمل", en: "An-Naml" },
+  { num: 28, ar: "القصص", en: "Al-Qasas" },
+  { num: 29, ar: "العنكبوت", en: "Al-'Ankabut" },
+  { num: 30, ar: "الروم", en: "Ar-Rum" },
+  { num: 31, ar: "لقمان", en: "Luqman" },
+  { num: 32, ar: "السجدة", en: "As-Sajdah" },
+  { num: 33, ar: "الأحزاب", en: "Al-Ahzab" },
+  { num: 34, ar: "سبأ", en: "Saba'" },
+  { num: 35, ar: "فاطر", en: "Fatir" },
+  { num: 36, ar: "يس", en: "Ya-Sin" },
+  { num: 37, ar: "الصافات", en: "As-Saffat" },
+  { num: 38, ar: "ص", en: "Sad" },
+  { num: 39, ar: "الزمر", en: "Az-Zumar" },
+  { num: 40, ar: "غافر", en: "Ghafir" },
+  { num: 41, ar: "فصلت", en: "Fussilat" },
+  { num: 42, ar: "الشورى", en: "Ash-Shura" },
+  { num: 43, ar: "الزخرف", en: "Az-Zukhruf" },
+  { num: 44, ar: "الدخان", en: "Ad-Dukhan" },
+  { num: 45, ar: "الجاثية", en: "Al-Jathiyah" },
+  { num: 46, ar: "الأحقاف", en: "Al-Ahqaf" },
+  { num: 47, ar: "محمد", en: "Muhammad" },
+  { num: 48, ar: "الفتح", en: "Al-Fath" },
+  { num: 49, ar: "الحجرات", en: "Al-Hujurat" },
+  { num: 50, ar: "ق", en: "Qaf" },
+  { num: 51, ar: "الذاريات", en: "Adh-Dhariyat" },
+  { num: 52, ar: "الطور", en: "At-Tur" },
+  { num: 53, ar: "النجم", en: "An-Najm" },
+  { num: 54, ar: "القمر", en: "Al-Qamar" },
+  { num: 55, ar: "الرحمن", en: "Ar-Rahman" },
+  { num: 56, ar: "الواقعة", en: "Al-Waqi'ah" },
+  { num: 57, ar: "الحديد", en: "Al-Hadid" },
+  { num: 58, ar: "المجادلة", en: "Al-Mujadilah" },
+  { num: 59, ar: "الحشر", en: "Al-Hashr" },
+  { num: 60, ar: "الممتحنة", en: "Al-Mumtahanah" },
+  { num: 61, ar: "الصف", en: "As-Saff" },
+  { num: 62, ar: "الجمعة", en: "Al-Jumu'ah" },
+  { num: 63, ar: "المنافقون", en: "Al-Munafiqun" },
+  { num: 64, ar: "التغابن", en: "At-Taghabun" },
+  { num: 65, ar: "الطلاق", en: "At-Talaq" },
+  { num: 66, ar: "التحريم", en: "At-Tahrim" },
+  { num: 67, ar: "الملك", en: "Al-Mulk" },
+  { num: 68, ar: "القلم", en: "Al-Qalam" },
+  { num: 69, ar: "الحاقة", en: "Al-Haqqah" },
+  { num: 70, ar: "المعارج", en: "Al-Ma'arij" },
+  { num: 71, ar: "نوح", en: "Nuh" },
+  { num: 72, ar: "الجن", en: "Al-Jinn" },
+  { num: 73, ar: "المزمل", en: "Al-Muzzammil" },
+  { num: 74, ar: "المدثر", en: "Al-Muddaththir" },
+  { num: 75, ar: "القيامة", en: "Al-Qiyamah" },
+  { num: 76, ar: "الإنسان", en: "Al-Insan" },
+  { num: 77, ar: "المرسلات", en: "Al-Mursalat" },
+  { num: 78, ar: "النبأ", en: "An-Naba'" },
+  { num: 79, ar: "النازعات", en: "An-Nazi'at" },
+  { num: 80, ar: "عبس", en: "'Abasa" },
+  { num: 81, ar: "التكوير", en: "At-Takwir" },
+  { num: 82, ar: "الانفطار", en: "Al-Infitar" },
+  { num: 83, ar: "المطففين", en: "Al-Mutaffifin" },
+  { num: 84, ar: "الانشقاق", en: "Al-Inshiqaq" },
+  { num: 85, ar: "البروج", en: "Al-Buruj" },
+  { num: 86, ar: "الطارق", en: "At-Tariq" },
+  { num: 87, ar: "الأعلى", en: "Al-A'la" },
+  { num: 88, ar: "الغاشية", en: "Al-Ghashiyah" },
+  { num: 89, ar: "الفجر", en: "Al-Fajr" },
+  { num: 90, ar: "البلد", en: "Al-Balad" },
+  { num: 91, ar: "الشمس", en: "Ash-Shams" },
+  { num: 92, ar: "الليل", en: "Al-Layl" },
+  { num: 93, ar: "الضحى", en: "Ad-Duha" },
+  { num: 94, ar: "الشرح", en: "Ash-Sharh" },
+  { num: 95, ar: "التين", en: "At-Tin" },
+  { num: 96, ar: "العلق", en: "Al-'Alaq" },
+  { num: 97, ar: "القدر", en: "Al-Qadr" },
+  { num: 98, ar: "البينة", en: "Al-Bayyinah" },
+  { num: 99, ar: "الزلزلة", en: "Az-Zalzalah" },
+  { num: 100, ar: "العاديات", en: "Al-'Adiyat" },
+  { num: 101, ar: "القارعة", en: "Al-Qari'ah" },
+  { num: 102, ar: "التكاثر", en: "At-Takathur" },
+  { num: 103, ar: "العصر", en: "Al-'Asr" },
+  { num: 104, ar: "الهمزة", en: "Al-Humazah" },
+  { num: 105, ar: "الفيل", en: "Al-Fil" },
+  { num: 106, ar: "قريش", en: "Quraysh" },
+  { num: 107, ar: "الماعون", en: "Al-Ma'un" },
+  { num: 108, ar: "الكوثر", en: "Al-Kawthar" },
+  { num: 109, ar: "الكافرون", en: "Al-Kafirun" },
+  { num: 110, ar: "النصر", en: "An-Nasr" },
+  { num: 111, ar: "المسد", en: "Al-Masad" },
+  { num: 112, ar: "الإخلاص", en: "Al-Ikhlas" },
+  { num: 113, ar: "الفلق", en: "Al-Falaq" },
+  { num: 114, ar: "الناس", en: "An-Nas" }
+];
+
+// Audio source — local files in /Al-Minshawy_Muratal_Quran/ folder
+// Files named 001.mp3 through 114.mp3
+const AUDIO_BASE = 'Al-Minshawy_Muratal_Quran/';
+
+function pad(n) { return String(n).padStart(3, '0'); }
+function arabicNum(n) {
+  const arDigits = ['٠','١','٢','٣','٤','٥','٦','٧','٨','٩'];
+  return String(n).split('').map(d => arDigits[d] || d).join('');
+}
+
+// ============ RENDER LIBRARY ============
+const grid = document.getElementById('surahsGrid');
+const visibleCount = document.getElementById('visibleCount');
+const visibleCountEn = document.getElementById('visibleCountEn');
+
+function renderSurahs(filter = '') {
+  grid.innerHTML = '';
+  const filtered = surahs.filter(s => {
+    if (!filter) return true;
+    const f = filter.toLowerCase();
+    return s.ar.includes(filter) || s.en.toLowerCase().includes(f) || String(s.num).includes(filter);
+  });
+
+  filtered.forEach(s => {
+    const card = document.createElement('div');
+    card.className = 'surah-card';
+    card.dataset.num = s.num;
+    card.innerHTML = `
+      <div class="surah-num">${arabicNum(s.num)}</div>
+      <div class="surah-info">
+        <span class="surah-name">${s.ar}</span>
+        <span class="surah-name-en">${s.en}</span>
+      </div>
+      <div class="play-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
+    `;
+    card.addEventListener('click', () => playSurah(s.num));
+    grid.appendChild(card);
+  });
+
+  visibleCount.textContent = arabicNum(filtered.length);
+  visibleCountEn.textContent = filtered.length;
+}
+
+renderSurahs();
+
+// Search
+document.getElementById('searchInput').addEventListener('input', (e) => {
+  renderSurahs(e.target.value.trim());
+});
+
+// ============ PRO MEDIA PLAYER ============
+const audio = document.getElementById('audioElement');
+const player = document.getElementById('mediaPlayer');
+const playerExpanded = document.getElementById('playerExpanded');
+
+// Compact view elements
+const playerTitle = document.getElementById('playerTitle');
+const coverNum = document.getElementById('coverNum');
+const playPauseBtn = document.getElementById('playPauseBtn');
+const playIcon = document.getElementById('playIcon');
+const pauseIcon = document.getElementById('pauseIcon');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+const rewindBtn = document.getElementById('rewindBtn');
+const forwardBtn = document.getElementById('forwardBtn');
+const shuffleBtn = document.getElementById('shuffleBtn');
+const repeatBtn = document.getElementById('repeatBtn');
+const favBtn = document.getElementById('favBtn');
+const downloadBtn = document.getElementById('downloadBtn');
+const expandBtn = document.getElementById('expandBtn');
+const muteBtn = document.getElementById('muteBtn');
+const volIconHigh = document.getElementById('volIconHigh');
+const volIconMute = document.getElementById('volIconMute');
+const progressContainer = document.getElementById('progressContainer');
+const progressFill = document.getElementById('progressFill');
+const progressBuffer = document.getElementById('progressBuffer');
+const progressTooltip = document.getElementById('progressTooltip');
+const miniProgressFill = document.getElementById('miniProgressFill');
+const playerTrackInfo = document.getElementById('playerTrackInfo');
+const currentTimeEl = document.getElementById('currentTime');
+const durationEl = document.getElementById('duration');
+const volumeSlider = document.getElementById('volumeSlider');
+const volumeFill = document.getElementById('volumeFill');
+const volumeThumb = document.getElementById('volumeThumb');
+const playerCover = document.getElementById('playerCover');
+
+// Helper to update visual volume slider
+function setVolumeUI(percent) {
+  if (volumeFill) volumeFill.style.width = percent + '%';
+  if (volumeThumb) volumeThumb.style.left = percent + '%';
+}
+
+// Expanded view elements
+const expandedClose = document.getElementById('expandedClose');
+const expandedTitle = document.getElementById('expandedTitle');
+const expandedNum = document.getElementById('expandedNum');
+const playPauseBtnExp = document.getElementById('playPauseBtnExp');
+const playIconExp = document.getElementById('playIconExp');
+const pauseIconExp = document.getElementById('pauseIconExp');
+const prevBtnExp = document.getElementById('prevBtnExp');
+const nextBtnExp = document.getElementById('nextBtnExp');
+const shuffleBtnExp = document.getElementById('shuffleBtnExp');
+const repeatBtnExp = document.getElementById('repeatBtnExp');
+const progressContainerExp = document.getElementById('progressContainerExp');
+const progressFillExp = document.getElementById('progressFillExp');
+const currentTimeExp = document.getElementById('currentTimeExp');
+const durationExp = document.getElementById('durationExp');
+const expandedWaveform = document.getElementById('expandedWaveform');
+
+// State
+let currentSurah = null;
+let isShuffleOn = false;
+let repeatMode = 0; // 0 = off, 1 = repeat all, 2 = repeat one
+let isMuted = false;
+let prevVolume = 0.8;
+let favorites = new Set();
+let audioContext = null;
+let analyser = null;
+let dataArray = null;
+let waveformBars = [];
+let animationFrameId = null;
+
+// Build waveform bars
+const WAVE_BARS_COUNT = 48;
+for (let i = 0; i < WAVE_BARS_COUNT; i++) {
+  const bar = document.createElement('div');
+  bar.className = 'wave-bar';
+  bar.style.height = '8px';
+  expandedWaveform.appendChild(bar);
+  waveformBars.push(bar);
+}
+
+function formatTime(seconds) {
+  if (!seconds || isNaN(seconds)) return '0:00';
+  const m = Math.floor(seconds / 60);
+  const s = Math.floor(seconds % 60);
+  return `${m}:${String(s).padStart(2, '0')}`;
+}
+
+function setupAudioVisualizer() {
+  if (audioContext) return;
+  try {
+    audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    const source = audioContext.createMediaElementSource(audio);
+    analyser = audioContext.createAnalyser();
+    analyser.fftSize = 128;
+    source.connect(analyser);
+    analyser.connect(audioContext.destination);
+    dataArray = new Uint8Array(analyser.frequencyBinCount);
+  } catch (err) {
+    console.warn('Audio visualizer setup failed:', err);
+  }
+}
+
+function animateWaveform() {
+  if (!analyser || !audio.paused === false) {
+    animationFrameId = requestAnimationFrame(animateWaveform);
+    return;
+  }
+
+  if (analyser && !audio.paused) {
+    analyser.getByteFrequencyData(dataArray);
+    const step = Math.floor(dataArray.length / WAVE_BARS_COUNT);
+    for (let i = 0; i < WAVE_BARS_COUNT; i++) {
+      const value = dataArray[i * step] || 0;
+      const height = Math.max(4, (value / 255) * 50);
+      waveformBars[i].style.height = `${height}px`;
+      waveformBars[i].classList.toggle('active', value > 30);
+    }
+  } else if (audio.paused) {
+    // Idle animation
+    waveformBars.forEach((bar, i) => {
+      bar.style.height = '4px';
+      bar.classList.remove('active');
+    });
+  }
+
+  animationFrameId = requestAnimationFrame(animateWaveform);
+}
+
+function playSurah(num) {
+  const surah = surahs.find(s => s.num === num);
+  if (!surah) return;
+
+  currentSurah = surah;
+  audio.src = AUDIO_BASE + pad(num) + '.mp3';
+
+  const isArabic = !document.body.classList.contains('lang-en');
+  const titleText = isArabic ? `سورة ${surah.ar}` : `Surah ${surah.en}`;
+  playerTitle.textContent = titleText;
+  expandedTitle.textContent = titleText;
+  coverNum.textContent = arabicNum(num);
+  expandedNum.textContent = arabicNum(num);
+
+  // Update track info "X / 114"
+  if (playerTrackInfo) {
+    playerTrackInfo.textContent = isArabic
+      ? `${arabicNum(num)} / ١١٤`
+      : `${num} / 114`;
+  }
+
+  // Update fav button state
+  favBtn.classList.toggle('active', favorites.has(num));
+
+  // Highlight active card
+  document.querySelectorAll('.surah-card').forEach(c => {
+    const isCurrent = Number(c.dataset.num) === num;
+    c.classList.toggle('playing', isCurrent);
+    const icon = c.querySelector('.play-icon');
+    icon.innerHTML = isCurrent
+      ? '<svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>'
+      : '<svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>';
+  });
+
+  player.classList.add('active');
+  player.classList.add('is-loading');
+
+  // Initialize visualizer on first play (must be after user gesture)
+  setupAudioVisualizer();
+  if (audioContext && audioContext.state === 'suspended') {
+    audioContext.resume();
+  }
+
+  audio.play().catch(err => {
+    console.warn('Playback error:', err);
+    player.classList.remove('is-loading');
+  });
+}
+
+function togglePlayPause() {
+  if (!currentSurah) {
+    playSurah(1);
+    return;
+  }
+  if (audio.paused) audio.play();
+  else audio.pause();
+}
+
+function playPrev() {
+  if (!currentSurah) return;
+  if (isShuffleOn) {
+    playSurah(Math.floor(Math.random() * 114) + 1);
+  } else if (currentSurah.num > 1) {
+    playSurah(currentSurah.num - 1);
+  }
+}
+
+function playNext() {
+  if (!currentSurah) return;
+  if (isShuffleOn) {
+    playSurah(Math.floor(Math.random() * 114) + 1);
+  } else if (currentSurah.num < 114) {
+    playSurah(currentSurah.num + 1);
+  }
+}
+
+// ===== Audio events =====
+audio.addEventListener('canplay', () => player.classList.remove('is-loading'));
+audio.addEventListener('loadeddata', () => player.classList.remove('is-loading'));
+audio.addEventListener('waiting', () => player.classList.add('is-loading'));
+audio.addEventListener('playing', () => {
+  player.classList.remove('is-loading');
+  player.classList.add('is-playing');
+  player.classList.remove('is-paused');
+  // Update icons
+  playIcon.style.display = 'none';
+  pauseIcon.style.display = 'block';
+  playIconExp.style.display = 'none';
+  pauseIconExp.style.display = 'block';
+});
+
+audio.addEventListener('pause', () => {
+  player.classList.remove('is-playing');
+  player.classList.add('is-paused');
+  playIcon.style.display = 'block';
+  pauseIcon.style.display = 'none';
+  playIconExp.style.display = 'block';
+  pauseIconExp.style.display = 'none';
+});
+
+audio.addEventListener('timeupdate', () => {
+  if (audio.duration) {
+    const pct = (audio.currentTime / audio.duration * 100);
+    progressFill.style.width = pct + '%';
+    progressFillExp.style.width = pct + '%';
+    if (miniProgressFill) miniProgressFill.style.width = pct + '%';
+    currentTimeEl.textContent = formatTime(audio.currentTime);
+    currentTimeExp.textContent = formatTime(audio.currentTime);
+  }
+});
+
+audio.addEventListener('progress', () => {
+  if (audio.duration && audio.buffered.length > 0) {
+    const bufferedEnd = audio.buffered.end(audio.buffered.length - 1);
+    const bufferedPct = (bufferedEnd / audio.duration * 100);
+    progressBuffer.style.width = bufferedPct + '%';
+  }
+});
+
+audio.addEventListener('loadedmetadata', () => {
+  durationEl.textContent = formatTime(audio.duration);
+  durationExp.textContent = formatTime(audio.duration);
+});
+
+audio.addEventListener('ended', () => {
+  if (repeatMode === 2) {
+    // Repeat one
+    audio.currentTime = 0;
+    audio.play();
+  } else if (repeatMode === 1 && currentSurah && currentSurah.num === 114) {
+    // Repeat all - go back to first
+    playSurah(1);
+  } else if (currentSurah && currentSurah.num < 114) {
+    playNext();
+  }
+});
+
+audio.addEventListener('error', () => {
+  player.classList.remove('is-loading');
+  console.warn('Audio failed to load');
+});
+
+// ===== Controls =====
+playPauseBtn.addEventListener('click', togglePlayPause);
+playPauseBtnExp.addEventListener('click', togglePlayPause);
+prevBtn.addEventListener('click', playPrev);
+prevBtnExp.addEventListener('click', playPrev);
+nextBtn.addEventListener('click', playNext);
+nextBtnExp.addEventListener('click', playNext);
+
+rewindBtn.addEventListener('click', () => {
+  audio.currentTime = Math.max(0, audio.currentTime - 10);
+});
+forwardBtn.addEventListener('click', () => {
+  audio.currentTime = Math.min(audio.duration || 0, audio.currentTime + 10);
+});
+
+// Shuffle
+function toggleShuffle() {
+  isShuffleOn = !isShuffleOn;
+  shuffleBtn.classList.toggle('active', isShuffleOn);
+  shuffleBtnExp.classList.toggle('active', isShuffleOn);
+}
+shuffleBtn.addEventListener('click', toggleShuffle);
+shuffleBtnExp.addEventListener('click', toggleShuffle);
+
+// Repeat
+function cycleRepeat() {
+  repeatMode = (repeatMode + 1) % 3;
+  const isActive = repeatMode > 0;
+  repeatBtn.classList.toggle('active', isActive);
+  repeatBtnExp.classList.toggle('active', isActive);
+
+  // Update icon based on mode
+  const repeatOneSvg = '<svg viewBox="0 0 24 24"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4zm-4-2v-4h-1l-2 1v1h1.5v3H13z"/></svg>';
+  const repeatAllSvg = '<svg viewBox="0 0 24 24"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>';
+
+  if (repeatMode === 2) {
+    repeatBtn.innerHTML = repeatOneSvg;
+    repeatBtnExp.innerHTML = repeatOneSvg;
+  } else {
+    repeatBtn.innerHTML = repeatAllSvg;
+    repeatBtnExp.innerHTML = repeatAllSvg;
+  }
+}
+repeatBtn.addEventListener('click', cycleRepeat);
+repeatBtnExp.addEventListener('click', cycleRepeat);
+
+// Favorite
+favBtn.addEventListener('click', () => {
+  if (!currentSurah) return;
+  if (favorites.has(currentSurah.num)) {
+    favorites.delete(currentSurah.num);
+    favBtn.classList.remove('active');
+  } else {
+    favorites.add(currentSurah.num);
+    favBtn.classList.add('active');
+  }
+});
+
+// Download
+downloadBtn.addEventListener('click', () => {
+  if (!currentSurah) return;
+  const url = AUDIO_BASE + pad(currentSurah.num) + '.mp3';
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `${pad(currentSurah.num)}-${currentSurah.en}-Minshawi.mp3`;
+  a.target = '_blank';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+});
+
+// Mute
+muteBtn.addEventListener('click', () => {
+  if (isMuted) {
+    audio.volume = prevVolume;
+    volumeSlider.value = prevVolume * 100;
+    setVolumeUI(prevVolume * 100);
+    isMuted = false;
+    volIconHigh.style.display = 'block';
+    volIconMute.style.display = 'none';
+  } else {
+    prevVolume = audio.volume;
+    audio.volume = 0;
+    volumeSlider.value = 0;
+    setVolumeUI(0);
+    isMuted = true;
+    volIconHigh.style.display = 'none';
+    volIconMute.style.display = 'block';
+  }
+});
+
+// Speed control removed — keep playback rate at 1.0
+audio.playbackRate = 1.0;
+
+// Progress click + hover tooltip (handles RTL)
+function setupProgressClick(container) {
+  container.addEventListener('click', (e) => {
+    if (!audio.duration) return;
+    const rect = container.getBoundingClientRect();
+    const isRtl = document.documentElement.dir === 'rtl';
+    const x = e.clientX - rect.left;
+    const ratio = isRtl ? (1 - x / rect.width) : (x / rect.width);
+    audio.currentTime = Math.max(0, Math.min(audio.duration, ratio * audio.duration));
+  });
+}
+setupProgressClick(progressContainer);
+setupProgressClick(progressContainerExp);
+
+// Progress tooltip — shows time at cursor position
+if (progressTooltip) {
+  progressContainer.addEventListener('mousemove', (e) => {
+    if (!audio.duration) {
+      progressTooltip.textContent = '0:00';
+      return;
+    }
+    const rect = progressContainer.getBoundingClientRect();
+    const isRtl = document.documentElement.dir === 'rtl';
+    const x = e.clientX - rect.left;
+    const clampedX = Math.max(0, Math.min(rect.width, x));
+    const ratio = isRtl ? (1 - clampedX / rect.width) : (clampedX / rect.width);
+    const time = ratio * audio.duration;
+    progressTooltip.textContent = formatTime(time);
+    progressTooltip.style.left = clampedX + 'px';
+  });
+}
+
+// Volume slider
+volumeSlider.addEventListener('input', (e) => {
+  const vol = e.target.value / 100;
+  audio.volume = vol;
+  setVolumeUI(e.target.value);
+  if (vol === 0) {
+    isMuted = true;
+    volIconHigh.style.display = 'none';
+    volIconMute.style.display = 'block';
+  } else {
+    isMuted = false;
+    volIconHigh.style.display = 'block';
+    volIconMute.style.display = 'none';
+  }
+});
+audio.volume = 0.8;
+setVolumeUI(80); // Init the visual volume thumb at 80%
+
+// ===== Expanded mode =====
+expandBtn.addEventListener('click', () => {
+  playerExpanded.classList.add('show');
+  document.body.style.overflow = 'hidden';
+  if (!animationFrameId && analyser) animateWaveform();
+});
+
+playerCover.addEventListener('click', () => {
+  if (!currentSurah) return;
+  playerExpanded.classList.add('show');
+  document.body.style.overflow = 'hidden';
+  if (!animationFrameId && analyser) animateWaveform();
+});
+
+expandedClose.addEventListener('click', () => {
+  playerExpanded.classList.remove('show');
+  document.body.style.overflow = '';
+});
+
+// ===== Keyboard shortcuts =====
+document.addEventListener('keydown', (e) => {
+  // Don't trigger when typing in input
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+  if (!currentSurah && e.code !== 'Space') return;
+
+  switch (e.code) {
+    case 'Space':
+      e.preventDefault();
+      togglePlayPause();
+      break;
+    case 'ArrowLeft':
+      if (e.shiftKey) {
+        e.preventDefault();
+        audio.currentTime = Math.max(0, audio.currentTime - 5);
+      } else {
+        // RTL: Left arrow = next, Right = prev
+        const isRtl = document.documentElement.dir === 'rtl';
+        if (isRtl) playNext();
+        else playPrev();
+      }
+      break;
+    case 'ArrowRight':
+      if (e.shiftKey) {
+        e.preventDefault();
+        audio.currentTime = Math.min(audio.duration || 0, audio.currentTime + 5);
+      } else {
+        const isRtl = document.documentElement.dir === 'rtl';
+        if (isRtl) playPrev();
+        else playNext();
+      }
+      break;
+    case 'ArrowUp':
+      e.preventDefault();
+      audio.volume = Math.min(1, audio.volume + 0.1);
+      volumeSlider.value = audio.volume * 100;
+      setVolumeUI(audio.volume * 100);
+      break;
+    case 'ArrowDown':
+      e.preventDefault();
+      audio.volume = Math.max(0, audio.volume - 0.1);
+      volumeSlider.value = audio.volume * 100;
+      setVolumeUI(audio.volume * 100);
+      break;
+    case 'KeyM':
+      muteBtn.click();
+      break;
+    case 'KeyR':
+      cycleRepeat();
+      break;
+    case 'KeyS':
+      toggleShuffle();
+      break;
+    case 'KeyF':
+      if (currentSurah) favBtn.click();
+      break;
+    case 'Escape':
+      if (playerExpanded.classList.contains('show')) {
+        playerExpanded.classList.remove('show');
+        document.body.style.overflow = '';
+      }
+      break;
+  }
+});
+
+// ============ LANGUAGE TOGGLE ============
+const langToggle = document.getElementById('langToggle');
+langToggle.addEventListener('click', () => {
+  const isEn = document.body.classList.toggle('lang-en');
+  document.documentElement.dir = isEn ? 'ltr' : 'rtl';
+  document.documentElement.lang = isEn ? 'en' : 'ar';
+  langToggle.textContent = isEn ? 'عر' : 'EN';
+
+  // Update placeholder
+  document.getElementById('searchInput').placeholder = isEn ? 'Search surah...' : 'ابحث عن سورة...';
+
+  // Update player titles if playing
+  if (currentSurah) {
+    const titleText = isEn ? `Surah ${currentSurah.en}` : `سورة ${currentSurah.ar}`;
+    playerTitle.textContent = titleText;
+    expandedTitle.textContent = titleText;
+    if (playerTrackInfo) {
+      playerTrackInfo.textContent = isEn
+        ? `${currentSurah.num} / 114`
+        : `${arabicNum(currentSurah.num)} / ١١٤`;
+    }
+  }
+});
+
+// ============ SCROLL ANIMATIONS ============
+// Nav scroll state
+const navEl = document.querySelector('nav');
+const updateNav = () => {
+  if (window.scrollY > 80) navEl.classList.add('scrolled');
+  else navEl.classList.remove('scrolled');
+};
+updateNav();
+window.addEventListener('scroll', updateNav, { passive: true });
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
