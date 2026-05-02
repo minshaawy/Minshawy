@@ -584,7 +584,7 @@ body.lang-en .hero-portrait {
   z-index: 2;
   background: linear-gradient(90deg, var(--gold), var(--ochre));
   color: #0a0604;
-  padding: 0.75rem 0;
+  padding: 0.9rem 0;
   overflow: hidden;
   white-space: nowrap;
   font-family: 'Thmanyah Serif Display', serif;
@@ -597,7 +597,7 @@ body.lang-en .hero-portrait {
 .hero-ticker-track {
   display: inline-flex;
   gap: 3rem;
-  animation: ticker-scroll 60s linear infinite;
+  animation: ticker-scroll 600s linear infinite;
   padding-left: 3rem;
 }
 
@@ -618,7 +618,8 @@ body.lang-en .hero-portrait {
   to { transform: translateX(-50%); }
 }
 
-body[dir="rtl"] .hero-ticker-track {
+html[dir="rtl"] .hero-ticker-track,
+body:not(.lang-en) .hero-ticker-track {
   animation-name: ticker-scroll-rtl;
 }
 
@@ -1928,9 +1929,7 @@ footer::before {
 .live-radio::after {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
+  top: 0; left: 0; right: 0;
   height: 1px;
   background: linear-gradient(90deg, transparent, var(--gold), transparent);
 }
@@ -2214,7 +2213,7 @@ body:not(.lang-en) .lang-en-text { display: none; }
 
   .hero-ticker {
     font-size: 0.8rem;
-    padding: 0.6rem 0;
+    padding: 0.75rem 0;
   }
 
   .biography, .library { padding: 4rem 1.5rem; }
@@ -2259,7 +2258,7 @@ body:not(.lang-en) .lang-en-text { display: none; }
   .expanded-extras { gap: 1rem; flex-wrap: wrap; }
   .expanded-extras .volume-control { display: none; }
 
-  footer { padding: 4rem 1.5rem 9rem; }
+  footer { padding: 4rem 1.5rem 12rem; }
   .footer-tagline { font-size: 1rem; }
   .footer-description { font-size: 0.8rem; }
   .footer-quote { font-size: 1.25rem; }
@@ -2297,6 +2296,35 @@ body:not(.lang-en) .lang-en-text { display: none; }
 .hero-left > *:nth-child(3) { animation-delay: 0.7s; }
 .hero-left > *:nth-child(4) { animation-delay: 0.85s; }
 .hero-left > *:nth-child(5) { animation-delay: 1s; }
+
+/* Radio Mode hidden controls */
+.media-player.is-radio .player-fav,
+.media-player.is-radio #shuffleBtn,
+.media-player.is-radio #prevBtn,
+.media-player.is-radio #rewindBtn,
+.media-player.is-radio #forwardBtn,
+.media-player.is-radio #nextBtn,
+.media-player.is-radio #repeatBtn,
+.media-player.is-radio #downloadBtn,
+.media-player.is-radio .player-progress-row,
+.media-player.is-radio .player-mini-progress {
+  display: none !important;
+}
+
+.player-expanded.is-radio .expanded-controls > button:not(#playPauseBtnExp),
+.player-expanded.is-radio .expanded-progress,
+.player-expanded.is-radio #repeatBtnExp,
+.player-expanded.is-radio #shuffleBtnExp,
+.player-expanded.is-radio #downloadBtnExp,
+.player-expanded.is-radio #favBtnExp {
+  display: none !important;
+}
+
+@media (max-width: 968px) {
+  .media-player.is-radio .player-compact {
+    padding-bottom: 1.5rem;
+  }
+}
 </style>
 </head>
 <body>
@@ -2304,14 +2332,14 @@ body:not(.lang-en) .lang-en-text { display: none; }
 <!-- ============ NAVIGATION ============ -->
 <nav>
   <div class="nav-mark">
-    <span class="lang-ar">المنشاوي</span>
-    <span class="lang-en-text">Al-Minshawi</span>
+    <span class="lang-ar">محمد صديق المنشاوي</span>
+    <span class="lang-en-text">Muhammad Siddiq Al-Minshawi</span>
   </div>
   <ul class="nav-links">
     <li><a href="#bio"><span class="lang-ar">السيرة</span><span class="lang-en-text">Biography</span></a></li>
     <li><a href="#timeline"><span class="lang-ar">المسيرة</span><span class="lang-en-text">Timeline</span></a></li>
     <li><a href="#library"><span class="lang-ar">المكتبة</span><span class="lang-en-text">Library</span></a></li>
-    <li><a href="#radio"><span class="lang-ar">البث المباشر</span><span class="lang-en-text">Live Radio</span></a></li>
+    <li><a href="#radio" style="display: inline-flex; align-items: center; gap: 0.4rem;"><span class="live-dot"></span> <span class="lang-ar">البث المباشر</span><span class="lang-en-text">Live Radio</span></a></li>
   </ul>
   <button class="lang-toggle" id="langToggle">EN</button>
 </nav>
@@ -2391,85 +2419,796 @@ body:not(.lang-en) .lang-en-text { display: none; }
   <div class="hero-ticker">
     <div class="hero-ticker-track">
       <div class="hero-ticker-item">
-        <span class="lang-ar">الفاتحة</span>
-        <span class="lang-en-text">Al-Fatihah</span>
+        <span class="lang-ar">الـرحـمـنـ</span>
+        <span class="lang-en-text">Ar Rahmaan</span>
       </div>
       <div class="hero-ticker-item">
-        <span class="lang-ar">البقرة</span>
-        <span class="lang-en-text">Al-Baqarah</span>
+        <span class="lang-ar">الـرحـيـمـ</span>
+        <span class="lang-en-text">Ar Raheem</span>
       </div>
       <div class="hero-ticker-item">
-        <span class="lang-ar">آل عمران</span>
-        <span class="lang-en-text">Al-'Imran</span>
+        <span class="lang-ar">الـمـلـكـ</span>
+        <span class="lang-en-text">Al Malik</span>
       </div>
       <div class="hero-ticker-item">
-        <span class="lang-ar">يس</span>
-        <span class="lang-en-text">Ya-Sin</span>
+        <span class="lang-ar">الـقـدوسـ</span>
+        <span class="lang-en-text">Al Quddus</span>
       </div>
       <div class="hero-ticker-item">
-        <span class="lang-ar">الرحمن</span>
-        <span class="lang-en-text">Ar-Rahman</span>
+        <span class="lang-ar">الـسـلـامـ</span>
+        <span class="lang-en-text">As Salaam</span>
       </div>
       <div class="hero-ticker-item">
-        <span class="lang-ar">الواقعة</span>
-        <span class="lang-en-text">Al-Waqi'ah</span>
+        <span class="lang-ar">الـمـؤمـنـ</span>
+        <span class="lang-en-text">Al Mu'min</span>
       </div>
       <div class="hero-ticker-item">
-        <span class="lang-ar">الملك</span>
-        <span class="lang-en-text">Al-Mulk</span>
+        <span class="lang-ar">الـمـهـيـمـنـ</span>
+        <span class="lang-en-text">Al Muhaymin</span>
       </div>
       <div class="hero-ticker-item">
-        <span class="lang-ar">القيامة</span>
-        <span class="lang-en-text">Al-Qiyamah</span>
+        <span class="lang-ar">الـعـزيـز</span>
+        <span class="lang-en-text">Al Azeez</span>
       </div>
       <div class="hero-ticker-item">
-        <span class="lang-ar">الإنسان</span>
-        <span class="lang-en-text">Al-Insan</span>
+        <span class="lang-ar">الـجـبـار</span>
+        <span class="lang-en-text">Al Jabbaar</span>
       </div>
       <div class="hero-ticker-item">
-        <span class="lang-ar">المرسلات</span>
-        <span class="lang-en-text">Al-Mursalat</span>
-      </div>
-      <!-- Duplicate set for seamless loop -->
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الفاتحة</span>
-        <span class="lang-en-text">Al-Fatihah</span>
+        <span class="lang-ar">الـمـتـكـبـر</span>
+        <span class="lang-en-text">Al Mutakabbir</span>
       </div>
       <div class="hero-ticker-item">
-        <span class="lang-ar">البقرة</span>
-        <span class="lang-en-text">Al-Baqarah</span>
+        <span class="lang-ar">الـخـالـقـ</span>
+        <span class="lang-en-text">Al Khaaliq</span>
       </div>
       <div class="hero-ticker-item">
-        <span class="lang-ar">آل عمران</span>
-        <span class="lang-en-text">Al-'Imran</span>
+        <span class="lang-ar">الـبـارئ</span>
+        <span class="lang-en-text">Al Baari</span>
       </div>
       <div class="hero-ticker-item">
-        <span class="lang-ar">يس</span>
-        <span class="lang-en-text">Ya-Sin</span>
+        <span class="lang-ar">الـمـصـور</span>
+        <span class="lang-en-text">Al Musawwir</span>
       </div>
       <div class="hero-ticker-item">
-        <span class="lang-ar">الرحمن</span>
-        <span class="lang-en-text">Ar-Rahman</span>
+        <span class="lang-ar">الـغـفـار</span>
+        <span class="lang-en-text">Al Ghaffaar</span>
       </div>
       <div class="hero-ticker-item">
-        <span class="lang-ar">الواقعة</span>
-        <span class="lang-en-text">Al-Waqi'ah</span>
+        <span class="lang-ar">الـقـهـار</span>
+        <span class="lang-en-text">Al Qahhaar</span>
       </div>
       <div class="hero-ticker-item">
-        <span class="lang-ar">الملك</span>
-        <span class="lang-en-text">Al-Mulk</span>
+        <span class="lang-ar">الـوهـابـ</span>
+        <span class="lang-en-text">Al Wahhaab</span>
       </div>
       <div class="hero-ticker-item">
-        <span class="lang-ar">القيامة</span>
-        <span class="lang-en-text">Al-Qiyamah</span>
+        <span class="lang-ar">الـرزاقـ</span>
+        <span class="lang-en-text">Ar Razzaaq</span>
       </div>
       <div class="hero-ticker-item">
-        <span class="lang-ar">الإنسان</span>
-        <span class="lang-en-text">Al-Insan</span>
+        <span class="lang-ar">الـفـتـاحـ</span>
+        <span class="lang-en-text">Al Fattaah</span>
       </div>
       <div class="hero-ticker-item">
-        <span class="lang-ar">المرسلات</span>
-        <span class="lang-en-text">Al-Mursalat</span>
+        <span class="lang-ar">الـعـلـيـمـ</span>
+        <span class="lang-en-text">Al 'Aleem</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـقـابـضـ</span>
+        <span class="lang-en-text">Al Qaabid</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـبـاسـطـ</span>
+        <span class="lang-en-text">Al Baasit</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـخـافـضـ</span>
+        <span class="lang-en-text">Al Khaafid</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـرافـعـ</span>
+        <span class="lang-en-text">Ar Raafi'</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـمـعـز</span>
+        <span class="lang-en-text">Al Mu'iz</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـمـذلـ</span>
+        <span class="lang-en-text">Al Mudhil</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـسـمـيـعـ</span>
+        <span class="lang-en-text">As Samee'</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـبـصـيـر</span>
+        <span class="lang-en-text">Al Baseer</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـحـكـمـ</span>
+        <span class="lang-en-text">Al Hakam</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـعـدلـ</span>
+        <span class="lang-en-text">Al 'Adl</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـلـطـيـفـ</span>
+        <span class="lang-en-text">Al Lateef</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـخـبـيـر</span>
+        <span class="lang-en-text">Al Khabeer</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـحـلـيـمـ</span>
+        <span class="lang-en-text">Al Haleem</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـعـظـيـمـ</span>
+        <span class="lang-en-text">Al 'Azeem</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـغـفـور</span>
+        <span class="lang-en-text">Al Ghafoor</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـشـكـور</span>
+        <span class="lang-en-text">Ash Shakoor</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـعـلـيـ</span>
+        <span class="lang-en-text">Al 'Aliyy</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـكـبـيـر</span>
+        <span class="lang-en-text">Al Kabeer</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـحـفـيـظـ</span>
+        <span class="lang-en-text">Al Hafeez</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـمـقـيـتـ</span>
+        <span class="lang-en-text">Al Muqeet</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـحـسـيـبـ</span>
+        <span class="lang-en-text">Al Haseeb</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـجـلـيـلـ</span>
+        <span class="lang-en-text">Al Jaleel</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـكـريـمـ</span>
+        <span class="lang-en-text">Al Kareem</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـرقـيـبـ</span>
+        <span class="lang-en-text">Ar Raqeeb</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـمـجـيـبـ</span>
+        <span class="lang-en-text">Al Mujeeb </span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـواسـعـ</span>
+        <span class="lang-en-text">Al Waasi'</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـحـكـيـمـ</span>
+        <span class="lang-en-text">Al Hakeem</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـودود</span>
+        <span class="lang-en-text">Al Wudood</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـمـجـيـد</span>
+        <span class="lang-en-text">Al Majeed</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـبـاعـثـ</span>
+        <span class="lang-en-text">Al Baa'ith</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـشـهـيـد</span>
+        <span class="lang-en-text">Ash Shaheed</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـحـقـ</span>
+        <span class="lang-en-text">Al Haqq</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـوكـيـلـ</span>
+        <span class="lang-en-text">Al Wakeel</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـقـويـ</span>
+        <span class="lang-en-text">Al Qawiyy</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـمـتـيـنـ</span>
+        <span class="lang-en-text">Al Mateen</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـولـيـ</span>
+        <span class="lang-en-text">Al Waliyy</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـحـمـيـد</span>
+        <span class="lang-en-text">Al Hameed</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـمـحـصـيـ</span>
+        <span class="lang-en-text">Al Muhsi</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـمـبـدئ</span>
+        <span class="lang-en-text">Al Mubdi</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـمـعـيـد</span>
+        <span class="lang-en-text">Al Mu'eed</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـمـحـيـيـ</span>
+        <span class="lang-en-text">Al Muhiy</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـمـمـيـتـ</span>
+        <span class="lang-en-text">Al Mumeet</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـحـيـ</span>
+        <span class="lang-en-text">Al Haiyy</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـقـيـومـ</span>
+        <span class="lang-en-text">Al Qayyoom</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـواجـد</span>
+        <span class="lang-en-text">Al Waajid</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـمـاجـد</span>
+        <span class="lang-en-text">Al Maajid</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـواحـد</span>
+        <span class="lang-en-text">Al Waahid</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـاحـد</span>
+        <span class="lang-en-text">Al Ahad</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـصـمـد</span>
+        <span class="lang-en-text">As Samad</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـقـادر</span>
+        <span class="lang-en-text">Al Qaadir</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـمـقـتـدر</span>
+        <span class="lang-en-text">Al Muqtadir</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـمـقـدمـ</span>
+        <span class="lang-en-text">Al Muqaddim</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـمـؤخـر</span>
+        <span class="lang-en-text">Al Mu’akhir</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـأولـ</span>
+        <span class="lang-en-text">Al Awwal</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـآخـر</span>
+        <span class="lang-en-text">Al Aakhir</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـظـاهـر</span>
+        <span class="lang-en-text">Az Zaahir</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـبـاطـنـ</span>
+        <span class="lang-en-text">Al Baatin</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـوالـيـ</span>
+        <span class="lang-en-text">Al Waali</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـمـتـعـالـيـ</span>
+        <span class="lang-en-text">Al Muta’ali</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـبـر</span>
+        <span class="lang-en-text">Al Barr</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـتـوابـ</span>
+        <span class="lang-en-text">At Tawwaab</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـمـنـتـقـمـ</span>
+        <span class="lang-en-text">Al Muntaqim</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـعـفـو</span>
+        <span class="lang-en-text">Al Afuww</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـرؤوفـ</span>
+        <span class="lang-en-text">Ar Ra’oof</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">مـالـكـ الـمـلـكـ</span>
+        <span class="lang-en-text">Maalik Ul Mulk</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">ذوالـجـلـالـ والـإكـرامـ</span>
+        <span class="lang-en-text">Dhu Al Jalaali Wa Al Ikraam</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـمـقـسـطـ</span>
+        <span class="lang-en-text">Al Muqsit</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـجـامـعـ</span>
+        <span class="lang-en-text">Al Jaami'</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـغـنـيـ</span>
+        <span class="lang-en-text">Al Ghaniyy</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـمـغـنـيـ</span>
+        <span class="lang-en-text">Al Mughi</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـمـانـعـ</span>
+        <span class="lang-en-text">Al Maani'</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـضـار</span>
+        <span class="lang-en-text">Ad Daaarr</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـنـافـعـ</span>
+        <span class="lang-en-text">An Naafi’</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـنـور</span>
+        <span class="lang-en-text">An Noor</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـهـاديـ</span>
+        <span class="lang-en-text">Al Haadi</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـبـديـعـ</span>
+        <span class="lang-en-text">Al Badi'</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـبـاقـيـ</span>
+        <span class="lang-en-text">Al Baaqi</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـوارثـ</span>
+        <span class="lang-en-text">Al Waarith</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـرشـيـد</span>
+        <span class="lang-en-text">Ar Rasheed</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـصـبـور</span>
+        <span class="lang-en-text">As Saboor</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـرحـمـنـ</span>
+        <span class="lang-en-text">Ar Rahmaan</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـرحـيـمـ</span>
+        <span class="lang-en-text">Ar Raheem</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـمـلـكـ</span>
+        <span class="lang-en-text">Al Malik</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـقـدوسـ</span>
+        <span class="lang-en-text">Al Quddus</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـسـلـامـ</span>
+        <span class="lang-en-text">As Salaam</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـمـؤمـنـ</span>
+        <span class="lang-en-text">Al Mu'min</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـمـهـيـمـنـ</span>
+        <span class="lang-en-text">Al Muhaymin</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـعـزيـز</span>
+        <span class="lang-en-text">Al Azeez</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـجـبـار</span>
+        <span class="lang-en-text">Al Jabbaar</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـمـتـكـبـر</span>
+        <span class="lang-en-text">Al Mutakabbir</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـخـالـقـ</span>
+        <span class="lang-en-text">Al Khaaliq</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـبـارئ</span>
+        <span class="lang-en-text">Al Baari</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـمـصـور</span>
+        <span class="lang-en-text">Al Musawwir</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـغـفـار</span>
+        <span class="lang-en-text">Al Ghaffaar</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـقـهـار</span>
+        <span class="lang-en-text">Al Qahhaar</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـوهـابـ</span>
+        <span class="lang-en-text">Al Wahhaab</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـرزاقـ</span>
+        <span class="lang-en-text">Ar Razzaaq</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـفـتـاحـ</span>
+        <span class="lang-en-text">Al Fattaah</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـعـلـيـمـ</span>
+        <span class="lang-en-text">Al 'Aleem</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـقـابـضـ</span>
+        <span class="lang-en-text">Al Qaabid</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـبـاسـطـ</span>
+        <span class="lang-en-text">Al Baasit</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـخـافـضـ</span>
+        <span class="lang-en-text">Al Khaafid</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـرافـعـ</span>
+        <span class="lang-en-text">Ar Raafi'</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـمـعـز</span>
+        <span class="lang-en-text">Al Mu'iz</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـمـذلـ</span>
+        <span class="lang-en-text">Al Mudhil</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـسـمـيـعـ</span>
+        <span class="lang-en-text">As Samee'</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـبـصـيـر</span>
+        <span class="lang-en-text">Al Baseer</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـحـكـمـ</span>
+        <span class="lang-en-text">Al Hakam</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـعـدلـ</span>
+        <span class="lang-en-text">Al 'Adl</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـلـطـيـفـ</span>
+        <span class="lang-en-text">Al Lateef</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـخـبـيـر</span>
+        <span class="lang-en-text">Al Khabeer</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـحـلـيـمـ</span>
+        <span class="lang-en-text">Al Haleem</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـعـظـيـمـ</span>
+        <span class="lang-en-text">Al 'Azeem</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـغـفـور</span>
+        <span class="lang-en-text">Al Ghafoor</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـشـكـور</span>
+        <span class="lang-en-text">Ash Shakoor</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـعـلـيـ</span>
+        <span class="lang-en-text">Al 'Aliyy</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـكـبـيـر</span>
+        <span class="lang-en-text">Al Kabeer</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـحـفـيـظـ</span>
+        <span class="lang-en-text">Al Hafeez</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـمـقـيـتـ</span>
+        <span class="lang-en-text">Al Muqeet</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـحـسـيـبـ</span>
+        <span class="lang-en-text">Al Haseeb</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـجـلـيـلـ</span>
+        <span class="lang-en-text">Al Jaleel</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـكـريـمـ</span>
+        <span class="lang-en-text">Al Kareem</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـرقـيـبـ</span>
+        <span class="lang-en-text">Ar Raqeeb</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـمـجـيـبـ</span>
+        <span class="lang-en-text">Al Mujeeb </span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـواسـعـ</span>
+        <span class="lang-en-text">Al Waasi'</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـحـكـيـمـ</span>
+        <span class="lang-en-text">Al Hakeem</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـودود</span>
+        <span class="lang-en-text">Al Wudood</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـمـجـيـد</span>
+        <span class="lang-en-text">Al Majeed</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـبـاعـثـ</span>
+        <span class="lang-en-text">Al Baa'ith</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـشـهـيـد</span>
+        <span class="lang-en-text">Ash Shaheed</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـحـقـ</span>
+        <span class="lang-en-text">Al Haqq</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـوكـيـلـ</span>
+        <span class="lang-en-text">Al Wakeel</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـقـويـ</span>
+        <span class="lang-en-text">Al Qawiyy</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـمـتـيـنـ</span>
+        <span class="lang-en-text">Al Mateen</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـولـيـ</span>
+        <span class="lang-en-text">Al Waliyy</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـحـمـيـد</span>
+        <span class="lang-en-text">Al Hameed</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـمـحـصـيـ</span>
+        <span class="lang-en-text">Al Muhsi</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـمـبـدئ</span>
+        <span class="lang-en-text">Al Mubdi</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـمـعـيـد</span>
+        <span class="lang-en-text">Al Mu'eed</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـمـحـيـيـ</span>
+        <span class="lang-en-text">Al Muhiy</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـمـمـيـتـ</span>
+        <span class="lang-en-text">Al Mumeet</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـحـيـ</span>
+        <span class="lang-en-text">Al Haiyy</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـقـيـومـ</span>
+        <span class="lang-en-text">Al Qayyoom</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـواجـد</span>
+        <span class="lang-en-text">Al Waajid</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـمـاجـد</span>
+        <span class="lang-en-text">Al Maajid</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـواحـد</span>
+        <span class="lang-en-text">Al Waahid</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـاحـد</span>
+        <span class="lang-en-text">Al Ahad</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـصـمـد</span>
+        <span class="lang-en-text">As Samad</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـقـادر</span>
+        <span class="lang-en-text">Al Qaadir</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـمـقـتـدر</span>
+        <span class="lang-en-text">Al Muqtadir</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـمـقـدمـ</span>
+        <span class="lang-en-text">Al Muqaddim</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـمـؤخـر</span>
+        <span class="lang-en-text">Al Mu’akhir</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـأولـ</span>
+        <span class="lang-en-text">Al Awwal</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـآخـر</span>
+        <span class="lang-en-text">Al Aakhir</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـظـاهـر</span>
+        <span class="lang-en-text">Az Zaahir</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـبـاطـنـ</span>
+        <span class="lang-en-text">Al Baatin</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـوالـيـ</span>
+        <span class="lang-en-text">Al Waali</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـمـتـعـالـيـ</span>
+        <span class="lang-en-text">Al Muta’ali</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـبـر</span>
+        <span class="lang-en-text">Al Barr</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـتـوابـ</span>
+        <span class="lang-en-text">At Tawwaab</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـمـنـتـقـمـ</span>
+        <span class="lang-en-text">Al Muntaqim</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـعـفـو</span>
+        <span class="lang-en-text">Al Afuww</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـرؤوفـ</span>
+        <span class="lang-en-text">Ar Ra’oof</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">مـالـكـ الـمـلـكـ</span>
+        <span class="lang-en-text">Maalik Ul Mulk</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">ذوالـجـلـالـ والـإكـرامـ</span>
+        <span class="lang-en-text">Dhu Al Jalaali Wa Al Ikraam</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـمـقـسـطـ</span>
+        <span class="lang-en-text">Al Muqsit</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـجـامـعـ</span>
+        <span class="lang-en-text">Al Jaami'</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـغـنـيـ</span>
+        <span class="lang-en-text">Al Ghaniyy</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـمـغـنـيـ</span>
+        <span class="lang-en-text">Al Mughi</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـمـانـعـ</span>
+        <span class="lang-en-text">Al Maani'</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـضـار</span>
+        <span class="lang-en-text">Ad Daaarr</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـنـافـعـ</span>
+        <span class="lang-en-text">An Naafi’</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـنـور</span>
+        <span class="lang-en-text">An Noor</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـهـاديـ</span>
+        <span class="lang-en-text">Al Haadi</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـبـديـعـ</span>
+        <span class="lang-en-text">Al Badi'</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـبـاقـيـ</span>
+        <span class="lang-en-text">Al Baaqi</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـوارثـ</span>
+        <span class="lang-en-text">Al Waarith</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـرشـيـد</span>
+        <span class="lang-en-text">Ar Rasheed</span>
+      </div>
+      <div class="hero-ticker-item">
+        <span class="lang-ar">الـصـبـور</span>
+        <span class="lang-en-text">As Saboor</span>
       </div>
     </div>
   </div>
@@ -3278,6 +4017,14 @@ function animateWaveform() {
 }
 
 function playSurah(num) {
+  if (window.radioHls) {
+    window.radioHls.destroy();
+    window.radioHls = null;
+  }
+  
+  player.classList.remove('is-radio');
+  if (playerExpanded) playerExpanded.classList.remove('is-radio');
+  
   const surah = surahs.find(s => s.num === num);
   if (!surah) return;
 
@@ -3329,6 +4076,12 @@ function playSurah(num) {
 function togglePlayPause() {
   if (!currentSurah) {
     playSurah(1);
+    return;
+  }
+  if (currentSurah.isRadio) {
+    const radioAudio = document.getElementById('radioAudio');
+    if (radioAudio.paused) radioAudio.play();
+    else radioAudio.pause();
     return;
   }
   if (audio.paused) audio.play();
@@ -3660,7 +4413,9 @@ langToggle.addEventListener('click', () => {
 
   // Update player titles if playing
   if (currentSurah) {
-    const titleText = isEn ? `Surah ${currentSurah.en}` : `سورة ${currentSurah.ar}`;
+    const titleText = currentSurah.isRadio 
+      ? (isEn ? currentSurah.en : currentSurah.ar)
+      : (isEn ? `Surah ${currentSurah.en}` : `سورة ${currentSurah.ar}`);
     playerTitle.textContent = titleText;
     expandedTitle.textContent = titleText;
     if (playerTrackInfo) {
@@ -3715,14 +4470,10 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
   const radioAudio = document.getElementById('radioAudio');
   const radioPlayBtn = document.getElementById('radioPlayBtn');
   const radioPlayIcon = document.getElementById('radioPlayIcon');
-  const radioCard = document.getElementById('radioPlayerCard');
-  const radioStatus = document.getElementById('radioStatus');
   const radioSection = document.querySelector('.live-radio');
+  const radioStatus = document.getElementById('radioStatus');
 
   if (!radioAudio || !radioPlayBtn) return;
-
-  let radioPlaying = false;
-  let hls = null;
 
   const RADIO_STREAM = 'https://service.webvideocore.net/CL1olYogIrDWvwqiIKK7eCxOS4PStqG9DuEjAr2ZjZQtvS3d4y9r0cvRhvS17SGN/a_7a4vuubc6mo8.m3u8';
 
@@ -3735,33 +4486,52 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
   function showPlayIcon() {
     radioPlayIcon.innerHTML = '<path d="M8 5v14l11-7z"/>';
+    radioSection.classList.remove('radio-playing');
   }
 
   function showPauseIcon() {
     radioPlayIcon.innerHTML = '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>';
+    radioSection.classList.add('radio-playing');
   }
 
   function playRadio() {
-    // Pause the main Quran player if playing
+    if (window.radioHls) {
+      window.radioHls.destroy();
+      window.radioHls = null;
+    }
+    
+    // Pause surah audio if playing
     if (audio && !audio.paused) {
       audio.pause();
     }
 
+    currentSurah = { num: -1, isRadio: true, ar: 'إذاعة القرآن الكريم', en: 'Quran Radio' };
+    const isArabic = !document.body.classList.contains('lang-en');
+    const titleText = isArabic ? currentSurah.ar : currentSurah.en;
+    
+    playerTitle.textContent = titleText;
+    expandedTitle.textContent = titleText;
+    coverNum.textContent = '📻';
+    expandedNum.textContent = '📻';
+    
+    player.classList.add('is-radio');
+    if (typeof playerExpanded !== 'undefined' && playerExpanded) {
+      playerExpanded.classList.add('is-radio');
+    }
+    
+    if (playerTrackInfo) {
+      playerTrackInfo.textContent = isArabic ? 'بث مباشر' : 'Live Stream';
+    }
+    favBtn.classList.remove('active');
+
     setRadioStatus('جاري الاتصال...', 'Connecting...');
 
-    // HLS.js for browsers that don't natively support HLS (Chrome, Firefox, etc.)
     if (typeof Hls !== 'undefined' && Hls.isSupported()) {
-      if (hls) { hls.destroy(); }
-      hls = new Hls({
-        enableWorker: true,
-        lowLatencyMode: true,
-      });
-      hls.loadSource(RADIO_STREAM);
-      hls.attachMedia(radioAudio);
-      hls.on(Hls.Events.MANIFEST_PARSED, function() {
+      window.radioHls = new Hls({ enableWorker: true, lowLatencyMode: true });
+      window.radioHls.loadSource(RADIO_STREAM);
+      window.radioHls.attachMedia(radioAudio);
+      window.radioHls.on(Hls.Events.MANIFEST_PARSED, function() {
         radioAudio.play().then(() => {
-          radioPlaying = true;
-          radioSection.classList.add('radio-playing');
           showPauseIcon();
           setRadioStatus('يُبث الآن مباشرة', 'Now playing live');
         }).catch(err => {
@@ -3769,21 +4539,16 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
           setRadioStatus('تعذر التشغيل — حاول مرة أخرى', 'Playback failed — try again');
         });
       });
-      hls.on(Hls.Events.ERROR, function(event, data) {
+      window.radioHls.on(Hls.Events.ERROR, function(event, data) {
         if (data.fatal) {
           console.warn('HLS fatal error:', data);
-          pauseRadio();
           setRadioStatus('انقطع البث — حاول مرة أخرى', 'Stream lost — try again');
         }
       });
-    }
-    // Safari supports HLS natively
-    else if (radioAudio.canPlayType('application/vnd.apple.mpegurl')) {
+    } else if (radioAudio.canPlayType('application/vnd.apple.mpegurl')) {
       radioAudio.src = RADIO_STREAM;
       radioAudio.load();
       radioAudio.play().then(() => {
-        radioPlaying = true;
-        radioSection.classList.add('radio-playing');
         showPauseIcon();
         setRadioStatus('يُبث الآن مباشرة', 'Now playing live');
       }).catch(err => {
@@ -3797,35 +4562,49 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
   function pauseRadio() {
     radioAudio.pause();
-    if (hls) { hls.destroy(); hls = null; }
+    if (window.radioHls) { window.radioHls.destroy(); window.radioHls = null; }
     radioAudio.removeAttribute('src');
     radioAudio.load();
-    radioPlaying = false;
-    radioSection.classList.remove('radio-playing');
     showPlayIcon();
     setRadioStatus('اضغط للاستماع', 'Tap to listen');
   }
 
   radioPlayBtn.addEventListener('click', () => {
-    if (radioPlaying) {
+    if (currentSurah && currentSurah.isRadio && !radioAudio.paused) {
       pauseRadio();
     } else {
       playRadio();
     }
   });
 
-  // Handle stream errors
-  radioAudio.addEventListener('error', () => {
-    if (radioPlaying) {
-      pauseRadio();
-      setRadioStatus('انقطع البث — حاول مرة أخرى', 'Stream lost — try again');
+  // Sync with global audio events
+  radioAudio.addEventListener('play', () => {
+    if (currentSurah && currentSurah.isRadio) {
+      showPauseIcon();
+      setRadioStatus('يُبث الآن مباشرة', 'Now playing live');
+      
+      // Update global player UI
+      player.classList.remove('is-paused');
+      player.classList.add('is-playing');
+      playIcon.style.display = 'none';
+      pauseIcon.style.display = 'block';
+      playIconExp.style.display = 'none';
+      pauseIconExp.style.display = 'block';
     }
   });
 
-  // If main player starts, stop radio
-  audio.addEventListener('play', () => {
-    if (radioPlaying) {
-      pauseRadio();
+  radioAudio.addEventListener('pause', () => {
+    if (currentSurah && currentSurah.isRadio) {
+      showPlayIcon();
+      setRadioStatus('متوقف', 'Paused');
+      
+      // Update global player UI
+      player.classList.remove('is-playing');
+      player.classList.add('is-paused');
+      playIcon.style.display = 'block';
+      pauseIcon.style.display = 'none';
+      playIconExp.style.display = 'block';
+      pauseIconExp.style.display = 'none';
     }
   });
 })();
