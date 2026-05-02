@@ -2160,6 +2160,11 @@ body.lang-en { direction: ltr; }
 body.lang-en .lang-ar { display: none; }
 body.lang-en .lang-en-text { display: inline; }
 
+/* Prevent letter-spacing from breaking Arabic cursive on WebKit/iOS */
+body:not(.lang-en) * {
+  letter-spacing: 0 !important;
+}
+
 body:not(.lang-en) .lang-en-text { display: none; }
 
 /* ============ RESPONSIVE ============ */
