@@ -3735,7 +3735,7 @@ body:not(.lang-en) .lang-en-text { display: none; }
     </div>
   </div>
 
-  <audio id="audioElement" preload="metadata"></audio>
+  <audio id="audioElement" preload="metadata" crossorigin="anonymous"></audio>
 </div>
 
 <!-- Expanded Player View -->
@@ -3917,8 +3917,8 @@ const surahs = [
   { num: 114, ar: "الناس", en: "An-Nas" }
 ];
 
-// Audio source — IPFS-hosted high-quality MP3 files
-const AUDIO_BASE = 'https://ipfs.io/ipfs/QmaNJJsNUbqVzYmo7moqcmWt4Pr7ddD1WALSWyep4pAwcb/Quran_Mohammed_Siddiq_Al-Minshawi-';
+// Audio source — High-quality MP3 files from Mp3Quran.net CDN
+const AUDIO_BASE = 'https://server10.mp3quran.net/minsh/';
 
 function pad(n) { return String(n).padStart(3, '0'); }
 function arabicNum(n) {
