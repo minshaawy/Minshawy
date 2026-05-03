@@ -2211,6 +2211,34 @@ body:not(.lang-en) * {
 
 body:not(.lang-en) .lang-en-text { display: none; }
 
+
+.recitation-toggle {
+  display: flex;
+  background: rgba(20, 26, 31, 0.6);
+  border-radius: 30px;
+  padding: 4px;
+  margin: 1.5rem auto 2rem;
+  width: fit-content;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+}
+.recitation-btn {
+  background: transparent;
+  border: none;
+  color: rgba(244, 237, 224, 0.6);
+  font-family: 'Thmanyah Sans', sans-serif;
+  font-size: 1rem;
+  padding: 0.5rem 1.5rem;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.recitation-btn.active {
+  background: #d4af37;
+  color: #0b0f13;
+  font-weight: 600;
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+}
+
 /* ============ RESPONSIVE ============ */
 @media (max-width: 968px) {
   nav { 
@@ -3538,6 +3566,18 @@ body:not(.lang-en) .lang-en-text { display: none; }
       <span class="lang-en-text">114 Surahs — Hafs from 'Asim Narration</span>
     </p>
 
+    <!-- Recitation Type Toggle -->
+    <div class="recitation-toggle">
+      <button class="recitation-btn active" id="btnMurattal">
+        <span class="lang-ar">المرتل</span>
+        <span class="lang-en-text">Murattal</span>
+      </button>
+      <button class="recitation-btn" id="btnMujawwad">
+        <span class="lang-ar">المجود</span>
+        <span class="lang-en-text">Mujawwad</span>
+      </button>
+    </div>
+
     <div class="library-controls">
       <div class="search-box">
         <input type="text" id="searchInput" placeholder="ابحث عن سورة..."></input>
@@ -3918,7 +3958,39 @@ const surahs = [
 ];
 
 // Audio source — High-quality MP3 files from Mp3Quran.net CDN
-const AUDIO_BASE = 'https://server10.mp3quran.net/minsh/';
+
+const AUDIO_BASES = {
+  murattal: 'https://server10.mp3quran.net/minsh/',
+  mujawwad: 'https://server10.mp3quran.net/minsh/Almusshaf-Al-Mojawwad/'
+};
+let currentRecitationType = 'murattal';
+let AUDIO_BASE = AUDIO_BASES.murattal;
+
+const btnMurattal = document.getElementById('btnMurattal');
+const btnMujawwad = document.getElementById('btnMujawwad');
+
+function setRecitationType(type) {
+  if (currentRecitationType === type) return;
+  currentRecitationType = type;
+  AUDIO_BASE = AUDIO_BASES[type];
+  
+  if (type === 'murattal') {
+    if (btnMurattal) btnMurattal.classList.add('active');
+    if (btnMujawwad) btnMujawwad.classList.remove('active');
+  } else {
+    if (btnMujawwad) btnMujawwad.classList.add('active');
+    if (btnMurattal) btnMurattal.classList.remove('active');
+  }
+  
+  // If playing, restart the current surah with the new audio type
+  if (currentSurah && !audio.paused) {
+    playSurah(currentSurah.num);
+  }
+}
+
+if (btnMurattal) btnMurattal.addEventListener('click', () => setRecitationType('murattal'));
+if (btnMujawwad) btnMujawwad.addEventListener('click', () => setRecitationType('mujawwad'));
+
 
 function pad(n) { return String(n).padStart(3, '0'); }
 function arabicNum(n) {
@@ -4110,6 +4182,7 @@ function playSurah(num) {
 
   currentSurah = surah;
   audio.src = AUDIO_BASE + pad(num) + '.mp3';
+  audio.load(); // force reload to clear any previous error state
 
   const isArabic = !document.body.classList.contains('lang-en');
   const titleText = isArabic ? `سورة ${surah.ar}` : `Surah ${surah.en}`;
@@ -4164,8 +4237,17 @@ function togglePlayPause() {
     else radioAudio.pause();
     return;
   }
-  if (audio.paused) audio.play();
-  else audio.pause();
+  if (audio.paused) {
+    // If the audio is in an error state or not loaded yet, do a full reload
+    if (audio.error || audio.readyState === 0) {
+      playSurah(currentSurah.num);
+    } else {
+      if (audioContext && audioContext.state === 'suspended') audioContext.resume();
+      audio.play().catch(() => playSurah(currentSurah.num));
+    }
+  } else {
+    audio.pause();
+  }
 }
 
 function playPrev() {
@@ -4688,13 +4770,13 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
     }
   });
   
-  // Auto-load and attempt to play Surah Al-Fatihah (Surah 1) on load
-  window.addEventListener('DOMContentLoaded', () => {
-    // A slight delay ensures the UI is fully rendered before triggering the player
-    setTimeout(() => {
-      playSurah(1);
-    }, 500);
-  });
+  // Auto-load Surah Al-Fatihah on page open
+  // Uses setTimeout to ensure all UI is rendered first.
+  // Note: browsers may require a user gesture to auto-play audio.
+  // The player will be loaded and ready; it will play if the browser allows it.
+  setTimeout(() => {
+    playSurah(1);
+  }, 800);
 })();
 </script>
 
