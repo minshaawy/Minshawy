@@ -4687,6 +4687,14 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
       pauseIconExp.style.display = 'none';
     }
   });
+  
+  // Auto-load and attempt to play Surah Al-Fatihah (Surah 1) on load
+  window.addEventListener('DOMContentLoaded', () => {
+    // A slight delay ensures the UI is fully rendered before triggering the player
+    setTimeout(() => {
+      playSurah(1);
+    }, 500);
+  });
 })();
 </script>
 
