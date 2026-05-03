@@ -770,27 +770,51 @@ body:not(.lang-en) .hero-ticker-track {
 
 /* Timeline */
 .timeline-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 0;
-  margin: 3rem 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  margin: 4rem 0;
+}
+
+.timeline-grid::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  inset-inline-start: 136px;
+  width: 2px;
+  background: rgba(42, 31, 18, 0.15);
 }
 
 .timeline-row {
   display: grid;
-  grid-template-columns: 100px 1fr;
+  grid-template-columns: 120px 1fr;
   gap: 2rem;
-  padding: 1.5rem 0;
-  border-bottom: 1px dashed rgba(42, 31, 18, 0.2);
-  align-items: baseline;
+  position: relative;
+  align-items: start;
+}
+
+.timeline-row::before {
+  content: '';
+  position: absolute;
+  top: 0.6rem;
+  inset-inline-start: 132px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--ochre);
+  border: 2px solid var(--paper);
+  box-shadow: 0 0 0 4px rgba(184, 134, 11, 0.1);
+  z-index: 2;
 }
 
 .timeline-year {
   font-family: 'Thmanyah Sans', sans-serif;
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: 600;
   color: var(--ochre-deep);
-  letter-spacing: -0.02em;
+  text-align: end;
 }
 
 .timeline-event {
@@ -2169,9 +2193,31 @@ body:not(.lang-en) .lang-en-text { display: none; }
 
 /* ============ RESPONSIVE ============ */
 @media (max-width: 968px) {
-  nav { padding: 1rem 1.5rem; }
+  nav { 
+    padding: 1rem 1.5rem; 
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
   nav.scrolled { padding: 0.8rem 1.5rem; }
-  .nav-links { display: none; }
+  
+  .nav-mark {
+    flex: 1 1 100%;
+    justify-content: center;
+  }
+  
+  .nav-links { 
+    display: flex; 
+    gap: 1.25rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .lang-toggle {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem; /* Will be adjusted by RTL if needed, but absolute right is fine usually */
+  }
 
   .hero { padding: 6rem 0 0; }
 
@@ -2219,6 +2265,23 @@ body:not(.lang-en) .lang-en-text { display: none; }
   .hero-ticker {
     font-size: 0.8rem;
     padding: 0.75rem 0;
+  }
+
+  .timeline-grid::before {
+    inset-inline-start: 16px;
+  }
+  .timeline-row::before {
+    inset-inline-start: 11px;
+    top: 0.8rem;
+  }
+  .timeline-row {
+    grid-template-columns: 1fr;
+    padding-inline-start: 3rem;
+    gap: 0.5rem;
+  }
+  .timeline-year {
+    text-align: start;
+    font-size: 1.5rem;
   }
 
   .biography, .library { padding: 4rem 1.5rem; }
@@ -3251,16 +3314,12 @@ body:not(.lang-en) .lang-en-text { display: none; }
       </h3>
       <div class="chapter-body">
         <p class="lang-ar">
-          وُلد <strong>محمد بن صديق بن سيد بن ثابت المنشاوي</strong> سنة <strong>١٩٢٠م</strong> بقرية المنشأة بمحافظة سوهاج في صعيد مصر، في أسرة قرآنية عريقة توارثت تلاوة القرآن جيلاً بعد جيل.
+          هو محمد بن صديق بن سيد بن ثابت المنشاوي، ولد بمدينة المنشاة التابعة لمحافظة سوهاج في مصر عام ١٣٣٨هجرية / ٢٠ يناير ١٩٢٠ ميلادية حفظ القرآن الكريم في الثامنة من عمره وكانت قراءة القرآن هي نهج عائلته منذ القدم حيث أن أبوه هو صديق المنشاوي الذي كان أول قارئ في صعيد مصر يقرأ بالعشر روايات القرآنية، وعمه هو أحمد السيد المنشاوي قارئ أيضًا.
         </p>
         <p class="lang-ar">
-          أبوه الشيخ <strong>صديق المنشاوي</strong> كان قارئاً مجوداً مشهوراً في صعيد مصر، وجدّه ثابت المنشاوي وجدّ والده كلهم قراء للقرآن. تعلّم الشيخ محمد القراءة على يد والده، وأتمّ حفظ القرآن وهو في <strong>الثامنة من عمره</strong>.
+          تتلمذ الشيخ في حفظه على يد والده "صديق المنشاوي" ثم أتم الحفظ على يد الشيخ "محمد النمكي" وأحكم التجويد بإحكامه المتقن على يد الشيخ "محمد أبو العلا".
         </p>
-        <p class="lang-ar">
-          ثم انتقل مع أبيه إلى القاهرة، وفيها بدأ يتعلّم أحكام التجويد على يد كبار الشيوخ، منهم الشيخ محمد النمكي والشيخ محمد أبو العلا.
-        </p>
-
-        <p class="lang-en-text">
+<p class="lang-en-text">
           <strong>Muhammad ibn Siddiq ibn Sayyid ibn Thabit al-Minshawi</strong> was born in <strong>1920</strong> in the village of al-Minsha'ah in Sohag governorate, Upper Egypt, into a long lineage of Quranic reciters that stretched back generations.
         </p>
         <p class="lang-en-text">
@@ -3286,13 +3345,15 @@ body:not(.lang-en) .lang-en-text { display: none; }
       </h3>
       <div class="chapter-body">
         <p class="lang-ar">
-          تميّز الشيخ بصوتٍ خاشعٍ ذي مسحة من الحزن العميق، فلُقِّب بـ<strong>«الصوت الباكي»</strong>. لم تكن تلاوته مجرد أداء صوتي، بل كانت رحلة روحية تأخذ المستمع إلى أعماق المعنى.
+          لقب الشيخ محمد "بالصوت الباكي" في قراءته القرآنية، بسبب عذوبة الصوت وجماله، وقوة الأداء وجلاله، إضافة إلى إتقانه تعدد مقامات القراءة، وانفعاله العميق بالمعاني والألفاظ القرآنية.
         </p>
         <p class="lang-ar">
-          كان متقناً لمقامات القراءة، عميق الانفعال مع معاني الآيات، حتى صار صوته مرتبطاً عند الناس بالسكينة والخشوع.
+          قال عنه الشيخ الشعراوي رحمه الله: "أن المنشاوي والحصري والبنا والبهتيمي يركبون مركبًا ويبحرون في بحر القرآن ولن يتوقف هذا المركب إلى أن يرث الله الأرض ومن عليها".
         </p>
-
-        <p class="lang-en-text">
+        <p class="lang-ar">
+          وقال عنه الشيخ عبد الحكيم عبد اللطيف شيخ عموم المقارئ المصرية: «إن الشيخ محمد صديق المنشاوي حسنة من حسنات الدهر».
+        </p>
+<p class="lang-en-text">
           The Sheikh was distinguished by a reverent voice with a deep undertone of sorrow, earning him the title <strong>"The Weeping Voice."</strong> His recitation was not mere vocal performance but a spiritual journey that drew listeners into the depths of meaning.
         </p>
         <p class="lang-en-text">
@@ -3315,16 +3376,12 @@ body:not(.lang-en) .lang-en-text { display: none; }
       </h3>
       <div class="chapter-body">
         <p class="lang-ar">
-          بدأ رحلته مع التلاوة بتجواله مع أبيه وعمه بين السهرات الدينية، حتى قرأ منفرداً سنة <strong>١٩٥٢م</strong> بمحافظة سوهاج، فذاع صيته في الأنحاء.
+          رفض الشيخ في بداية حياته التسجيل للإذاعة المصرية ورفض اعتماده فيها قارئًا فاضطرت الإذاعة بنفسها أن تحضر إليه في إحدى المناسبات التي كان يقرأ فيها، فسجلت له ما تيسر من القرآن الكريم، وتمَّ اعتماده قارئًا في الإذاعة على إثر ذلك بعد طول رفض وممانعة.
         </p>
         <p class="lang-ar">
-          رفض في البداية الذهاب للإذاعة المصرية بدافع من العزّة والأنفة، حتى أرسل مدير الإذاعة مندوباً إليه سنة <strong>١٩٥٣م</strong>، فاعتُمد قارئاً رسمياً للإذاعة، وحمل لقب <strong>«مقرئ الجمهورية»</strong>.
+          سجل الشيخ القرآن الكريم كاملًا في ختمة مرتلة، كما سجل ختمة قرآنية مجودة بـالإذاعة المصرية، وله كذلك قراءة مشتركة برواية الدوري مع القارئين كامل البهتيمي وفؤاد العروسي. وله أيضًا العديد من التسجيلات في المسجد الأقصى والكويت وسوريا وليبيا. تلا القرآن في المساجد الرئيسية في العالم الإسلامي، كالمسجد الحرام في مكة المكرمة، والمسجد النبوي في المدينة المنورة، والمسجد الأقصى في القدس.
         </p>
-        <p class="lang-ar">
-          سافر إلى السعودية وسوريا والأردن والكويت والعراق وليبيا والسودان وإندونيسيا وغيرها، وتلا في المسجد الأقصى. حصل على وسام الاستحقاق من سوريا، وأوسمة كثيرة من ملوك ورؤساء الدول الإسلامية.
-        </p>
-
-        <p class="lang-en-text">
+<p class="lang-en-text">
           His journey began as a young man traveling with his father and uncle to religious gatherings. His first solo recitation in <strong>1952</strong> in Sohag governorate brought him sudden fame across the region.
         </p>
         <p class="lang-en-text">
@@ -3350,16 +3407,9 @@ body:not(.lang-en) .lang-en-text { display: none; }
       </h3>
       <div class="chapter-body">
         <p class="lang-ar">
-          أصيب الشيخ سنة <strong>١٩٦٦م</strong> بمرض دوالي المريء. ورغم تدهور حالته، ظلّ يقرأ القرآن حتى لحظاته الأخيرة، إلى أن وافته المنية يوم الجمعة <strong>٢٠ يونيو ١٩٦٩م</strong>، وعمره ٤٩ عاماً فقط.
+          تزوج الشيخ مرتين وله من البنين تسعة ومن البنات ست، أصيب الشيخ بمرض دوالي المريء في عام ١٩٦٦ وتوفي في ٢٠ يونيو عام الـ ١٩٦٩، تاركًا وراءه كنز من التلاوات القرآنية التي علمت عشرات الأجيال حتى يومنا هذا.
         </p>
-        <p class="lang-ar">
-          ترك الشيخ ميراثاً ضخماً يتجاوز <strong>١٥٠ تسجيلاً صوتياً</strong> ما بين مرتل ومجوّد، يُعدّ مصحفه المرتل من أعظم المصاحف في تاريخ دولة التلاوة. وأصبح أسلوبه نموذجاً يُحتذى به لأجيال متعاقبة من القراء.
-        </p>
-        <p class="lang-ar">
-          رحم الله الشيخ، فقد كان — بحقّ — حسنةً من حسنات الدهر.
-        </p>
-
-        <p class="lang-en-text">
+<p class="lang-en-text">
           In <strong>1966</strong> the Sheikh was diagnosed with esophageal varices. Despite his deteriorating health, he continued reciting the Quran until his final moments, passing away on Friday, <strong>June 20, 1969</strong>, at just 49 years of age.
         </p>
         <p class="lang-en-text">
@@ -3382,7 +3432,7 @@ body:not(.lang-en) .lang-en-text { display: none; }
     <span class="lang-en-text">Timeline</span>
   </p>
   <h2 class="section-title">
-    <span class="lang-ar">رحلة في تسعٍ وأربعين سنة</span>
+    <span class="lang-ar">رحلة في تسع وأربعين سنة</span>
     <span class="lang-en-text">A Journey in 49 Years</span>
   </h2>
   <p class="section-title-en">
@@ -3392,56 +3442,56 @@ body:not(.lang-en) .lang-en-text { display: none; }
 
   <div class="timeline-grid" style="max-width: 900px; margin: 4rem auto;">
     <div class="timeline-row fade-in">
-      <span class="timeline-year">1920</span>
+      <span class="timeline-year"><span class="lang-ar">١٩٢٠</span><span class="lang-en-text">1920</span></span>
       <span class="timeline-event">
         <span class="lang-ar">وُلد بقرية المنشأة في محافظة سوهاج، في أسرة قرآنية عريقة.</span>
         <span class="lang-en-text">Born in al-Minsha'ah village, Sohag, into a family of generations of Quranic reciters.</span>
       </span>
     </div>
     <div class="timeline-row fade-in">
-      <span class="timeline-year">1928</span>
+      <span class="timeline-year"><span class="lang-ar">١٩٢٨</span><span class="lang-en-text">1928</span></span>
       <span class="timeline-event">
         <span class="lang-ar">أتمّ حفظ القرآن الكريم كاملاً وهو في الثامنة من عمره.</span>
         <span class="lang-en-text">Completed memorization of the entire Quran at age eight.</span>
       </span>
     </div>
     <div class="timeline-row fade-in">
-      <span class="timeline-year">1940s</span>
+      <span class="timeline-year"><span class="lang-ar">١٩٤٠</span><span class="lang-en-text">1940</span></span>
       <span class="timeline-event">
         <span class="lang-ar">انتقل إلى القاهرة لتعلّم أحكام التجويد، وعُيّن قارئاً بمسجد الزمالك.</span>
         <span class="lang-en-text">Moved to Cairo to study tajweed, appointed reciter at the Zamalek Mosque.</span>
       </span>
     </div>
     <div class="timeline-row fade-in">
-      <span class="timeline-year">1952</span>
+      <span class="timeline-year"><span class="lang-ar">١٩٥٢</span><span class="lang-en-text">1952</span></span>
       <span class="timeline-event">
         <span class="lang-ar">انطلق صوته منفرداً لأول مرة في ليلة قرآنية بمحافظة سوهاج.</span>
         <span class="lang-en-text">First solo recitation in a Quranic night in Sohag governorate.</span>
       </span>
     </div>
     <div class="timeline-row fade-in">
-      <span class="timeline-year">1953</span>
+      <span class="timeline-year"><span class="lang-ar">١٩٥٣</span><span class="lang-en-text">1953</span></span>
       <span class="timeline-event">
         <span class="lang-ar">اعتُمد قارئاً رسمياً في الإذاعة المصرية بعد رفضٍ طويل.</span>
         <span class="lang-en-text">Officially appointed as a reciter at Egyptian Radio after long refusing.</span>
       </span>
     </div>
     <div class="timeline-row fade-in">
-      <span class="timeline-year">1955</span>
+      <span class="timeline-year"><span class="lang-ar">١٩٥٥</span><span class="lang-en-text">1955</span></span>
       <span class="timeline-event">
         <span class="lang-ar">حصل على وسام رفيع من إندونيسيا، وبدأ سفرياته إلى الدول الإسلامية.</span>
         <span class="lang-en-text">Awarded a high decoration from Indonesia; began touring Muslim nations.</span>
       </span>
     </div>
     <div class="timeline-row fade-in">
-      <span class="timeline-year">1966</span>
+      <span class="timeline-year"><span class="lang-ar">١٩٦٦</span><span class="lang-en-text">1966</span></span>
       <span class="timeline-event">
         <span class="lang-ar">أُصيب بمرض دوالي المريء، لكنه واصل التلاوة رغم المرض.</span>
         <span class="lang-en-text">Diagnosed with esophageal varices; continued reciting despite illness.</span>
       </span>
     </div>
     <div class="timeline-row fade-in">
-      <span class="timeline-year">1969</span>
+      <span class="timeline-year"><span class="lang-ar">١٩٦٩</span><span class="lang-en-text">1969</span></span>
       <span class="timeline-event">
         <span class="lang-ar">توفي يوم الجمعة ٢٠ يونيو، وعمره ٤٩ عاماً، تاركاً مصحفاً مرتلاً وأكثر من ١٥٠ تسجيلاً.</span>
         <span class="lang-en-text">Passed away on Friday, June 20, at age 49 — leaving a complete murattal mushaf and over 150 recordings.</span>
@@ -3469,7 +3519,7 @@ body:not(.lang-en) .lang-en-text { display: none; }
 
     <div class="library-controls">
       <div class="search-box">
-        <input type="text" id="searchInput" placeholder="ابحث عن سورة..." />
+        <input type="text" id="searchInput" placeholder="ابحث عن سورة..."></input>
       </div>
       <div class="lib-stats">
         <span class="lang-ar">يُعرض <strong id="visibleCount">١١٤</strong> من <strong>١١٤</strong> سورة</span>
@@ -3507,7 +3557,7 @@ body:not(.lang-en) .lang-en-text { display: none; }
           <span class="lang-en-text">Quran Radio — Cairo</span>
         </div>
         <div class="radio-station-desc">
-          <span class="lang-ar">الهيئة الوطنية للإعلام · FM 98.2</span>
+          <span class="lang-ar">الهيئة الوطنية للإعلام · FM ٩٨.٢</span>
           <span class="lang-en-text">National Media Authority · FM 98.2</span>
         </div>
         <div class="radio-wave-bars">
@@ -3524,7 +3574,7 @@ body:not(.lang-en) .lang-en-text { display: none; }
         </div>
       </div>
       <button class="radio-play-btn" id="radioPlayBtn" aria-label="Play/Pause Radio">
-        <svg viewBox="0 0 24 24" id="radioPlayIcon"><path d="M8 5v14l11-7z"/></svg>
+        <svg viewbox="0 0 24 24" id="radioPlayIcon"><path d="M8 5v14l11-7z"></path></svg>
       </button>
     </div>
   </div>
@@ -3575,7 +3625,7 @@ body:not(.lang-en) .lang-en-text { display: none; }
           <span class="visualizer-bar"></span>
         </div>
         <div class="cover-expand-hint">
-          <svg viewBox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
+          <svg viewbox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"></path></svg>
         </div>
       </div>
       <div class="player-text">
@@ -3591,7 +3641,7 @@ body:not(.lang-en) .lang-en-text { display: none; }
         </div>
       </div>
       <button class="player-fav" id="favBtn" data-tooltip="مفضلة (F)">
-        <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+        <svg viewbox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path></svg>
       </button>
     </div>
 
@@ -3599,26 +3649,26 @@ body:not(.lang-en) .lang-en-text { display: none; }
     <div class="player-controls-wrapper">
       <div class="player-buttons">
         <button class="player-btn" id="shuffleBtn" data-tooltip="عشوائي · S">
-          <svg viewBox="0 0 24 24"><path d="M10.59 9.17L5.41 4 4 5.41l5.17 5.17 1.42-1.41zM14.5 4l2.04 2.04L4 18.59 5.41 20 17.96 7.46 20 9.5V4h-5.5zm.33 9.41l-1.41 1.41 3.13 3.13L14.5 20H20v-5.5l-2.04 2.04-3.13-3.13z"/></svg>
+          <svg viewbox="0 0 24 24"><path d="M10.59 9.17L5.41 4 4 5.41l5.17 5.17 1.42-1.41zM14.5 4l2.04 2.04L4 18.59 5.41 20 17.96 7.46 20 9.5V4h-5.5zm.33 9.41l-1.41 1.41 3.13 3.13L14.5 20H20v-5.5l-2.04 2.04-3.13-3.13z"></path></svg>
         </button>
         <button class="player-btn" id="prevBtn" data-tooltip="السابقة">
-          <svg viewBox="0 0 24 24"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
+          <svg viewbox="0 0 24 24"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"></path></svg>
         </button>
         <button class="player-btn" id="rewindBtn" data-tooltip="ارجع 10 ثوان">
-          <svg viewBox="0 0 24 24"><path d="M12.5 3C7.81 3 4 6.81 4 11.5h2C6 7.91 8.91 5 12.5 5S19 7.91 19 11.5 16.09 18 12.5 18c-1.79 0-3.41-.74-4.59-1.91L9.83 14.5H4v5.83L6.59 17.74C8.13 19.13 10.21 20 12.5 20c4.69 0 8.5-3.81 8.5-8.5S17.19 3 12.5 3zm-1.4 12.7v-3.55l-1.1.4v-.85l2-.7h.1v4.7h-1z"/></svg>
+          <svg viewbox="0 0 24 24"><path d="M12.5 3C7.81 3 4 6.81 4 11.5h2C6 7.91 8.91 5 12.5 5S19 7.91 19 11.5 16.09 18 12.5 18c-1.79 0-3.41-.74-4.59-1.91L9.83 14.5H4v5.83L6.59 17.74C8.13 19.13 10.21 20 12.5 20c4.69 0 8.5-3.81 8.5-8.5S17.19 3 12.5 3zm-1.4 12.7v-3.55l-1.1.4v-.85l2-.7h.1v4.7h-1z"></path></svg>
         </button>
         <button class="player-btn main" id="playPauseBtn" data-tooltip="تشغيل · Space">
-          <svg id="playIcon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-          <svg id="pauseIcon" viewBox="0 0 24 24" style="display:none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+          <svg id="playIcon" viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
+          <svg id="pauseIcon" viewbox="0 0 24 24" style="display:none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"></path></svg>
         </button>
         <button class="player-btn" id="forwardBtn" data-tooltip="تقدم 10 ثوان">
-          <svg viewBox="0 0 24 24"><path d="M11.5 3c4.69 0 8.5 3.81 8.5 8.5S16.19 20 11.5 20c-2.29 0-4.37-.87-5.91-2.26L4 19.33V13.5h5.83l-1.92 1.59C9.09 16.26 10.71 17 12.5 17c3.59 0 6.5-2.91 6.5-6.5S15.59 5 12.5 5 6 7.91 6 11.5H4C4 6.81 7.81 3 12.5 3zm-1.4 8.2v3.55h-1v-3.05l-.9.31v-.81l1.8-.7h.1z"/></svg>
+          <svg viewbox="0 0 24 24"><path d="M11.5 3c4.69 0 8.5 3.81 8.5 8.5S16.19 20 11.5 20c-2.29 0-4.37-.87-5.91-2.26L4 19.33V13.5h5.83l-1.92 1.59C9.09 16.26 10.71 17 12.5 17c3.59 0 6.5-2.91 6.5-6.5S15.59 5 12.5 5 6 7.91 6 11.5H4C4 6.81 7.81 3 12.5 3zm-1.4 8.2v3.55h-1v-3.05l-.9.31v-.81l1.8-.7h.1z"></path></svg>
         </button>
         <button class="player-btn" id="nextBtn" data-tooltip="التالية">
-          <svg viewBox="0 0 24 24"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
+          <svg viewbox="0 0 24 24"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"></path></svg>
         </button>
         <button class="player-btn" id="repeatBtn" data-tooltip="تكرار · R">
-          <svg viewBox="0 0 24 24"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>
+          <svg viewbox="0 0 24 24"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"></path></svg>
         </button>
       </div>
       <div class="player-progress-row">
@@ -3639,12 +3689,12 @@ body:not(.lang-en) .lang-en-text { display: none; }
     <!-- Right: Volume + Extras -->
     <div class="player-extras">
       <button class="player-mini-btn" id="downloadBtn" data-tooltip="تحميل السورة">
-        <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+        <svg viewbox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"></path></svg>
       </button>
       <div class="volume-control">
         <button class="player-mini-btn" id="muteBtn" data-tooltip="كتم · M">
-          <svg id="volIconHigh" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
-          <svg id="volIconMute" viewBox="0 0 24 24" style="display:none;"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
+          <svg id="volIconHigh" viewbox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"></path></svg>
+          <svg id="volIconMute" viewbox="0 0 24 24" style="display:none;"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"></path></svg>
         </button>
         <div class="volume-wrapper">
           <div class="volume-wrapper-track">
@@ -3655,7 +3705,7 @@ body:not(.lang-en) .lang-en-text { display: none; }
         </div>
       </div>
       <button class="player-mini-btn" id="expandBtn" data-tooltip="عرض كامل">
-        <svg viewBox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
+        <svg viewbox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"></path></svg>
       </button>
     </div>
   </div>
@@ -3697,20 +3747,20 @@ body:not(.lang-en) .lang-en-text { display: none; }
 
     <div class="expanded-controls">
       <button class="player-btn" id="shuffleBtnExp" title="عشوائي">
-        <svg viewBox="0 0 24 24"><path d="M10.59 9.17L5.41 4 4 5.41l5.17 5.17 1.42-1.41zM14.5 4l2.04 2.04L4 18.59 5.41 20 17.96 7.46 20 9.5V4h-5.5zm.33 9.41l-1.41 1.41 3.13 3.13L14.5 20H20v-5.5l-2.04 2.04-3.13-3.13z"/></svg>
+        <svg viewbox="0 0 24 24"><path d="M10.59 9.17L5.41 4 4 5.41l5.17 5.17 1.42-1.41zM14.5 4l2.04 2.04L4 18.59 5.41 20 17.96 7.46 20 9.5V4h-5.5zm.33 9.41l-1.41 1.41 3.13 3.13L14.5 20H20v-5.5l-2.04 2.04-3.13-3.13z"></path></svg>
       </button>
       <button class="player-btn" id="prevBtnExp" title="السابقة">
-        <svg viewBox="0 0 24 24"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
+        <svg viewbox="0 0 24 24"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"></path></svg>
       </button>
       <button class="player-btn main" id="playPauseBtnExp" title="تشغيل/إيقاف">
-        <svg id="playIconExp" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-        <svg id="pauseIconExp" viewBox="0 0 24 24" style="display:none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+        <svg id="playIconExp" viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
+        <svg id="pauseIconExp" viewbox="0 0 24 24" style="display:none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"></path></svg>
       </button>
       <button class="player-btn" id="nextBtnExp" title="التالية">
-        <svg viewBox="0 0 24 24"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
+        <svg viewbox="0 0 24 24"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"></path></svg>
       </button>
       <button class="player-btn" id="repeatBtnExp" title="تكرار">
-        <svg viewBox="0 0 24 24"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>
+        <svg viewbox="0 0 24 24"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"></path></svg>
       </button>
     </div>
 
@@ -4411,7 +4461,7 @@ langToggle.addEventListener('click', () => {
   const isEn = document.body.classList.toggle('lang-en');
   document.documentElement.dir = isEn ? 'ltr' : 'rtl';
   document.documentElement.lang = isEn ? 'en' : 'ar';
-  langToggle.textContent = isEn ? 'عر' : 'EN';
+  langToggle.textContent = isEn ? 'عربي' : 'EN';
 
   // Update placeholder
   document.getElementById('searchInput').placeholder = isEn ? 'Search surah...' : 'ابحث عن سورة...';
