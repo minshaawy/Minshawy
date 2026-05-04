@@ -810,7 +810,7 @@ body:not(.lang-en) .hero-ticker-track {
   content: '';
   position: absolute;
   top: 0.6rem;
-  inset-inline-start: 132px;
+  inset-inline-start: 130px;
   width: 10px;
   height: 10px;
   border-radius: 50%;
@@ -1050,6 +1050,82 @@ body:not(.lang-en) .hero-ticker-track {
 
 .media-player.active { transform: translateY(0); }
 
+/* ===== QUEUE PANEL ===== */
+.queue-panel {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  right: 0;
+  background: linear-gradient(180deg, #151009 0%, #1a140d 100%);
+  border-top: 1px solid rgba(198, 151, 73, 0.2);
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 89;
+}
+.queue-panel.open {
+  max-height: 360px;
+  overflow-y: auto;
+  box-shadow: 0 -12px 40px rgba(0,0,0,0.5);
+}
+.queue-panel::-webkit-scrollbar { width: 4px; }
+.queue-panel::-webkit-scrollbar-track { background: transparent; }
+.queue-panel::-webkit-scrollbar-thumb { background: rgba(198,151,73,0.3); border-radius: 2px; }
+.queue-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.9rem 1.5rem 0.6rem;
+  border-bottom: 1px solid rgba(198,151,73,0.1);
+  font-family: 'Thmanyah Sans', sans-serif;
+  font-size: 0.85rem;
+  color: rgba(244,237,224,0.5);
+  position: sticky;
+  top: 0;
+  background: #151009;
+  z-index: 1;
+}
+.queue-list {
+  list-style: none;
+  padding: 0.4rem 0;
+  margin: 0;
+}
+.queue-item {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.55rem 1.5rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  font-family: 'Thmanyah Sans', sans-serif;
+}
+.queue-item:hover { background: rgba(198,151,73,0.08); }
+.queue-item.active {
+  background: rgba(198,151,73,0.15);
+  border-inline-start: 2px solid #d4af37;
+}
+.queue-item-num {
+  font-size: 0.75rem;
+  color: rgba(244,237,224,0.35);
+  min-width: 1.8rem;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+.queue-item-name {
+  flex: 1;
+  font-size: 0.95rem;
+  color: rgba(244,237,224,0.85);
+}
+.queue-item.active .queue-item-name { color: #d4af37; }
+.queue-item-playing {
+  display: none;
+  width: 14px;
+  height: 14px;
+  color: #d4af37;
+}
+.queue-item.active .queue-item-playing { display: block; }
+
+
 /* Spotify-style mini progress bar — always visible at top edge */
 .player-mini-progress {
   position: absolute;
@@ -1203,6 +1279,29 @@ body:not(.lang-en) .hero-ticker-track {
   text-overflow: ellipsis;
   margin-bottom: 3px;
   letter-spacing: 0.01em;
+}
+
+.player-title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.player-queue-chevron {
+  background: transparent;
+  border: none;
+  color: rgba(244, 237, 224, 0.45);
+  cursor: pointer;
+  padding: 2px;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  flex-shrink: 0;
+}
+.player-queue-chevron:hover { color: rgba(244, 237, 224, 0.85); }
+.player-queue-chevron.open {
+  color: #d4af37;
+  transform: rotate(180deg);
 }
 
 .player-subtitle {
@@ -2319,7 +2418,7 @@ body:not(.lang-en) .lang-en-text { display: none; }
     inset-inline-start: 16px;
   }
   .timeline-row::before {
-    inset-inline-start: 11px;
+    inset-inline-start: 10px;
     top: 0.8rem;
   }
   .timeline-row {
@@ -3694,7 +3793,12 @@ body:not(.lang-en) .lang-en-text { display: none; }
         </div>
       </div>
       <div class="player-text">
-        <div class="player-title" id="playerTitle">—</div>
+        <div class="player-title-row">
+          <div class="player-title" id="playerTitle">—</div>
+          <button class="player-queue-chevron" id="queueBtn" data-tooltip="قائمة السور" aria-label="Queue">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg>
+          </button>
+        </div>
         <div class="player-subtitle">
           <span class="lang-ar">الشيخ المنشاوي</span>
           <span class="lang-en-text">Sheikh Al-Minshawi</span>
@@ -3776,6 +3880,15 @@ body:not(.lang-en) .lang-en-text { display: none; }
   </div>
 
   <audio id="audioElement" preload="metadata" crossorigin="anonymous"></audio>
+
+  <!-- Queue Panel -->
+  <div class="queue-panel" id="queuePanel">
+    <div class="queue-header">
+      <span class="lang-ar">قائمة السور (114)</span>
+      <span class="lang-en-text">Surah Queue (114)</span>
+    </div>
+    <ul class="queue-list" id="queueList"></ul>
+  </div>
 </div>
 
 <!-- Expanded Player View -->
@@ -3991,6 +4104,83 @@ function setRecitationType(type) {
 if (btnMurattal) btnMurattal.addEventListener('click', () => setRecitationType('murattal'));
 if (btnMujawwad) btnMujawwad.addEventListener('click', () => setRecitationType('mujawwad'));
 
+// ============ QUEUE PANEL ============
+const queueBtn   = document.getElementById('queueBtn');
+const queuePanel = document.getElementById('queuePanel');
+const queueList  = document.getElementById('queueList');
+let queueOpen = false;
+
+function buildQueue() {
+  if (!queueList) return;
+  queueList.innerHTML = '';
+  const isArabic = !document.body.classList.contains('lang-en');
+  surahs.forEach(s => {
+    const li = document.createElement('li');
+    li.className = 'queue-item' + (currentSurah && currentSurah.num === s.num ? ' active' : '');
+    li.dataset.num = s.num;
+    li.innerHTML = `
+      <span class="queue-item-num">${isArabic ? arabicNum(s.num) : s.num}</span>
+      <span class="queue-item-name">${isArabic ? 'سورة ' + s.ar : 'Surah ' + s.en}</span>
+      <svg class="queue-item-playing" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/>
+      </svg>`;
+    li.addEventListener('click', () => {
+      playSurah(s.num);
+      updateQueueActive();
+    });
+    queueList.appendChild(li);
+  });
+}
+
+function updateQueueActive() {
+  if (!queueList) return;
+  queueList.querySelectorAll('.queue-item').forEach(li => {
+    const isActive = currentSurah && Number(li.dataset.num) === currentSurah.num;
+    li.classList.toggle('active', isActive);
+    if (isActive) {
+      li.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+    }
+  });
+}
+
+function toggleQueue() {
+  queueOpen = !queueOpen;
+  if (queueOpen) {
+    buildQueue();
+    queuePanel.classList.add('open');
+    if (queueBtn) queueBtn.classList.add('open');
+    setTimeout(() => {
+      const active = queuePanel.querySelector('.queue-item.active');
+      if (active) active.scrollIntoView({ block: 'center', behavior: 'smooth' });
+    }, 460);
+  } else {
+    queuePanel.classList.remove('open');
+    if (queueBtn) queueBtn.classList.remove('open');
+  }
+}
+
+if (queueBtn) queueBtn.addEventListener('click', toggleQueue);
+
+const playerCompact = document.querySelector('.player-compact');
+if (playerCompact) {
+  playerCompact.addEventListener('click', (e) => {
+    // Ignore clicks on buttons, inputs, timeline, cover, etc.
+    if (e.target.closest('button, input, .progress-container, .player-cover, .volume-wrapper, .queue-panel')) {
+      return;
+    }
+    toggleQueue();
+  });
+}
+
+// Close queue when clicking outside the entire media player
+document.addEventListener('click', (e) => {
+  const mediaPlayer = document.getElementById('mediaPlayer');
+  if (queueOpen && mediaPlayer && !mediaPlayer.contains(e.target)) {
+    queueOpen = false;
+    queuePanel.classList.remove('open');
+    if (queueBtn) queueBtn.classList.remove('open');
+  }
+});
 
 function pad(n) { return String(n).padStart(3, '0'); }
 function arabicNum(n) {
@@ -4213,6 +4403,7 @@ function playSurah(num) {
 
   player.classList.add('active');
   player.classList.add('is-loading');
+  if (typeof updateQueueActive === 'function') updateQueueActive();
 
   // Initialize visualizer on first play (must be after user gesture)
   setupAudioVisualizer();
