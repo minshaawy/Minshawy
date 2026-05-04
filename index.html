@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.elminshawy.net; media-src 'self' https://server10.mp3quran.net https://n05.radiojar.com; connect-src 'self' https://server10.mp3quran.net https://n05.radiojar.com; font-src 'self' data:;">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <title>الشيخ محمد صديق المنشاوي · الصوت الباكي</title>
 <meta name="description" content="موقع تكريمي للشيخ محمد صديق المنشاوي، رائد دولة التلاوة، يضم سيرته الذاتية ومكتبة كاملة للمصحف المرتل بصوته.">
 
@@ -3739,7 +3741,7 @@ body:not(.lang-en) .lang-en-text { display: none; }
     </div>
   </div>
   <audio id="radioAudio" preload="none"></audio>
-  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest/dist/hls.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hls.js/1.5.8/hls.min.js" integrity="sha384-xLhS5rbIdhv65H3GLX+caQgMSiEK/Hkw8Z6HITolgRxvXs0omcbeYD639tkJ2Wu6" crossorigin="anonymous"></script>
 </section>
 
 <!-- ============ FOOTER ============ -->
@@ -4591,6 +4593,7 @@ downloadBtn.addEventListener('click', () => {
   a.href = url;
   a.download = `${pad(currentSurah.num)}-${currentSurah.en}-Minshawi.mp3`;
   a.target = '_blank';
+  a.rel = 'noopener noreferrer';
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);
