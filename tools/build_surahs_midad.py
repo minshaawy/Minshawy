@@ -92,7 +92,7 @@ h1{font:700 clamp(2.6rem,9vw,4rem)/1.1 'Thmanyah Serif Display',serif}
 .pager a small{display:block;font:400 .8rem 'Thmanyah Sans',sans-serif;color:var(--muted)}
 .pager a:hover{color:var(--accent)}
 .pager .next{grid-column:2;text-align:left}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);list-style:none;margin-top:28px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(170px,100%),1fr));gap:1px;background:var(--line);border:1px solid var(--line);list-style:none;margin-top:28px}
 .grid a{display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--card);transition:background .15s}
 .grid a:hover{background:var(--bg)}
 .grid b{font:700 1rem 'Thmanyah Serif Display',serif;color:var(--muted);min-width:2.2ch}
@@ -104,7 +104,8 @@ h1{font:700 clamp(2.6rem,9vw,4rem)/1.1 'Thmanyah Serif Display',serif}
 .site-footer p{color:var(--muted);font-size:.8rem;margin-top:18px}
 @media (max-width:640px){
   .site-header nav .hide-sm{display:none}
-  .grid{grid-template-columns:repeat(2,1fr)}
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .grid a{min-width:0;overflow-wrap:anywhere}
   .rec{padding:16px}
   .facts li{min-width:0;padding-inline-end:8px}
   .facts li b{font-size:1.15rem}
@@ -156,6 +157,7 @@ def head(title, desc, url, ld):
 <link rel="apple-touch-icon" sizes="180x180" href="/images/icons/apple-touch-icon.png">
 <link rel="manifest" href="/manifest.webmanifest">
 <meta name="theme-color" content="#f7f4ee">
+<meta name="color-scheme" content="light dark">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ar_EG">
 <meta property="og:site_name" content="الشيخ محمد صديق المنشاوي · الصوت الباكي">

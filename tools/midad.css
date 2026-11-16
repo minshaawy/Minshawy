@@ -290,3 +290,37 @@ section.block{padding:clamp(56px,10vh,112px) 0;border-top:1px solid var(--line)}
 .media-player.is-radio .player-cover,.player-expanded.is-radio .expanded-cover{border-color:rgba(var(--p-fg-rgb),.2)!important}
 .media-player.is-playing .expanded-cover{animation:none!important}
 .media-player.is-radio .sub-type{display:none}
+
+/* ---- header radio button: looks tappable, plays in place ---- */
+.nav-radio{display:inline-flex;align-items:center;gap:7px;height:32px;padding:0 12px;border:1px solid var(--fg);border-radius:999px;background:transparent;color:var(--fg);font:500 .9rem 'Thmanyah Sans',sans-serif;cursor:pointer;white-space:nowrap;transition:background .2s,color .2s}
+.nav-radio svg{width:12px;height:12px;fill:currentColor;flex:none}
+.nav-radio .i-pause{display:none}
+.nav-radio .live-dot{margin:0;width:6px;height:6px;animation:none;opacity:.9}
+.nav-radio:hover{background:var(--fg);color:var(--bg)}
+.nav-radio.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.nav-radio.on .i-play{display:none}
+.nav-radio.on .i-pause{display:block}
+.nav-radio.on .live-dot{background:#fff;animation:pulse 1.6s infinite}
+.site-header nav{align-items:center}
+@media (max-width:900px){.nav-radio{height:30px;font-size:.85rem}.site-header nav{padding-inline-end:2px}}
+
+/* ---- very narrow screens (Galaxy Fold cover screen, large text / page zoom) ---- */
+@media (max-width:900px){
+  .surahs-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .surah-card{min-width:0}
+  .surah-info{min-width:0;overflow-wrap:anywhere}
+}
+@media (max-width:420px){
+  #rewindBtn,#forwardBtn{display:none!important}
+  .player-buttons{gap:.4rem!important}
+}
+@media (max-width:340px){
+  #shuffleBtn,#repeatBtn{display:none!important}
+  .surahs-grid{grid-template-columns:minmax(0,1fr)}
+  .site-header .wrap{gap:0}
+  .tools{gap:6px}
+  .hero .logo{width:min(70%,200px)}
+  .years b{font-size:1.5rem}
+  .timeline li{grid-template-columns:52px minmax(0,1fr)}
+  .player-compact{padding:.5rem .6rem!important}
+}

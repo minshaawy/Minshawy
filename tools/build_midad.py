@@ -118,7 +118,10 @@ body = f'''<body>
       <a href="#bio">{ar_en("السيرة", "Biography")}</a>
       <a href="#timeline">{ar_en("المسيرة", "Timeline")}</a>
       <a href="#library">{ar_en("التلاوات", "Recitations")}</a>
-      <a href="#radio"><span class="live-dot"></span>{ar_en("إذاعة القرآن الكريم", "Quran Radio")}</a>
+      <button class="nav-radio" id="navRadio" type="button" aria-label="تشغيل إذاعة القرآن الكريم">
+        <svg class="i-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg><svg class="i-pause" viewBox="0 0 24 24"><path d="M6 5h4v14H6zm8 0h4v14h-4z"/></svg>
+        {ar_en("إذاعة القرآن الكريم", "Quran Radio")}<span class="live-dot"></span>
+      </button>
     </nav>
     <div class="tools">
       <button class="icon-btn" id="themeToggle" aria-label="الوضع الليلي / Dark mode" title="الوضع الليلي">
@@ -251,6 +254,15 @@ THEME_JS = """<script>
   if(mq.addEventListener)mq.addEventListener('change',sync);
   sync();
 })();
+// Header radio button: plays/stops the live radio in place, and mirrors its state
+(function(){
+  var nb=document.getElementById('navRadio'),card=document.getElementById('radioPlayBtn'),sec=document.querySelector('.live-radio');
+  if(!nb||!card||!sec)return;
+  nb.addEventListener('click',function(){card.click();});
+  function upd(){var on=sec.classList.contains('radio-playing');nb.classList.toggle('on',on);
+    nb.setAttribute('aria-label',on?'إيقاف إذاعة القرآن الكريم':'تشغيل إذاعة القرآن الكريم');}
+  new MutationObserver(upd).observe(sec,{attributes:true,attributeFilter:['class']});upd();
+})();
 // Player subtitle follows murattal / mujawwad
 (function(){
   var mj=document.getElementById('btnMujawwad'),ar=document.getElementById('subTypeAr'),en=document.getElementById('subTypeEn');
@@ -266,7 +278,8 @@ head = re.sub(r"<title>[^<]*</title>", "<title>الشيخ محمد صديق ال
 if "/test/" in OUT.replace(os.sep, "/") or OUT.endswith("test/index.html"):
     head = head.replace('<meta name="robots" content="index, follow, max-image-preview:large">',
                         '<meta name="robots" content="noindex, nofollow">')
-head = head.replace('<meta name="theme-color" content="#2a1f12">', '<meta name="theme-color" content="#f7f4ee">')
+head = head.replace('<meta name="theme-color" content="#2a1f12">',
+                    '<meta name="theme-color" content="#f7f4ee">\n<meta name="color-scheme" content="light dark">')
 # Link previews (WhatsApp, X, Facebook…): Midad share card, 1200×630.
 head = (head.replace("images/social-thumbnail.jpg", "images/share-card.jpg")
             .replace('<meta property="og:image:width" content="1024">', '<meta property="og:image:width" content="1200">')
