@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.elminshawy.net; media-src 'self' blob: https://cdn.mp3quran.net https://server10.mp3quran.net https://n05.radiojar.com https://*.webvideocore.net; connect-src 'self' https://cdn.mp3quran.net https://server10.mp3quran.net https://n05.radiojar.com https://*.webvideocore.net; font-src 'self' data:; worker-src 'self' blob:;">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>الشيخ محمد صديق المنشاوي · الصوت الباكي</title>
-<meta name="description" content="موقع تكريمي للشيخ محمد صديق المنشاوي، رائد دولة التلاوة، يضم سيرته الذاتية ومكتبة كاملة للمصحف المرتل بصوته.">
+<meta name="description" content="موقع تكريمي للشيخ محمد صديق المنشاوي، أحد أعلام دولة التلاوة، يضم سيرته الذاتية ومكتبة كاملة للمصحفين المرتل والمجود بصوته.">
 <meta name="keywords" content="محمد صديق المنشاوي, المنشاوي, المصحف المرتل, القرآن الكريم, تلاوات, الصوت الباكي, دولة التلاوة, قراء مصر, Minshawi, Quran recitation, Muhammad Siddiq Al-Minshawi">
 <meta name="author" content="محمد صديق المنشاوي">
 <meta name="robots" content="index, follow, max-image-preview:large">
@@ -16,7 +16,6 @@
 <!-- App icon (Add to Home Screen — iPhone & Android) -->
 <link rel="manifest" href="/manifest.webmanifest">
 <link rel="icon" type="image/png" sizes="32x32" href="/images/icons/favicon-32.png">
-<link rel="icon" type="image/png" sizes="192x192" href="/images/icons/icon-192.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/images/icons/apple-touch-icon.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
@@ -29,14 +28,17 @@
 <meta property="og:locale" content="ar_EG">
 <meta property="og:locale:alternate" content="en_US">
 <meta property="og:title" content="الشيخ محمد صديق المنشاوي · الصوت الباكي">
-<meta property="og:description" content="موقع تكريمي للشيخ محمد صديق المنشاوي، رائد دولة التلاوة، يضم سيرته الذاتية ومكتبة كاملة للمصحف المرتل بصوته.">
-<meta property="og:image" content="https://www.elminshawy.net/images/social-thumbnail.png">
+<meta property="og:description" content="موقع تكريمي للشيخ محمد صديق المنشاوي، أحد أعلام دولة التلاوة، يضم سيرته الذاتية ومكتبة كاملة للمصحفين المرتل والمجود بصوته.">
+<meta property="og:image" content="https://www.elminshawy.net/images/social-thumbnail.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1024">
+<meta property="og:image:height" content="537">
 <meta property="og:url" content="https://www.elminshawy.net/">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="الشيخ محمد صديق المنشاوي · الصوت الباكي">
-<meta name="twitter:description" content="موقع تكريمي للشيخ محمد صديق المنشاوي، رائد دولة التلاوة، يضم سيرته الذاتية ومكتبة كاملة للمصحف المرتل بصوته.">
-<meta name="twitter:image" content="https://www.elminshawy.net/images/social-thumbnail.png">
+<meta name="twitter:description" content="موقع تكريمي للشيخ محمد صديق المنشاوي، أحد أعلام دولة التلاوة، يضم سيرته الذاتية ومكتبة كاملة للمصحفين المرتل والمجود بصوته.">
+<meta name="twitter:image" content="https://www.elminshawy.net/images/social-thumbnail.jpg">
 
 <!-- Structured Data (Schema.org JSON-LD) -->
 <script type="application/ld+json">
@@ -48,7 +50,7 @@
       "@id": "https://www.elminshawy.net/#website",
       "url": "https://www.elminshawy.net/",
       "name": "الشيخ محمد صديق المنشاوي · الصوت الباكي",
-      "description": "موقع تكريمي للشيخ محمد صديق المنشاوي، رائد دولة التلاوة، يضم سيرته الذاتية ومكتبة كاملة للمصحف المرتل بصوته.",
+      "description": "موقع تكريمي للشيخ محمد صديق المنشاوي، أحد أعلام دولة التلاوة، يضم سيرته الذاتية ومكتبة كاملة للمصحفين المرتل والمجود بصوته.",
       "inLanguage": "ar",
       "publisher": { "@id": "https://www.elminshawy.net/#person" }
     },
@@ -61,7 +63,7 @@
       "deathDate": "1969",
       "birthPlace": {
         "@type": "Place",
-        "name": "المنشاة، سوهاج، مصر"
+        "name": "المنشأة، سوهاج، مصر"
       },
       "nationality": "مصري",
       "jobTitle": "قارئ القرآن الكريم",
@@ -230,15 +232,16 @@ body {
     radial-gradient(at 80% 80%, rgba(90, 100, 66, 0.04) 0, transparent 50%);
 }
 
+/* Paper grain: tiny tiled PNG, no blend mode — the old full-screen SVG noise with
+   mix-blend-mode had to be re-composited on every scroll frame on phones */
 body::before {
   content: '';
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 1;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 0.16 0 0 0 0 0.12 0 0 0 0 0.07 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  opacity: 0.6;
-  mix-blend-mode: multiply;
+  background: url('images/grain-dark.png') repeat;
+  background-size: 96px 96px;
 }
 
 /* ============ NAVIGATION ============ */
@@ -383,9 +386,8 @@ nav.scrolled .lang-toggle:hover {
   content: '';
   position: absolute;
   inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.95 0 0 0 0 0.85 0 0 0 0 0.65 0 0 0 0.12 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
-  mix-blend-mode: screen;
-  opacity: 0.4;
+  background: url('images/grain-light.png') repeat;
+  background-size: 96px 96px;
   z-index: 1;
   pointer-events: none;
 }
@@ -579,7 +581,6 @@ body.lang-en .hero-portrait {
     rgba(198, 151, 73, 0.35) 0%,
     rgba(198, 151, 73, 0.15) 30%,
     transparent 60%);
-  filter: blur(20px);
   z-index: -1;
 }
 
@@ -629,6 +630,12 @@ body.lang-en .hero-portrait {
   border: 1px dashed rgba(198, 151, 73, 0.15);
   pointer-events: none;
   z-index: 4;
+}
+
+.portrait-card picture {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 .portrait-svg {
@@ -2649,7 +2656,11 @@ body:not(.lang-en) .lang-en-text { display: none; }
         <span class="portrait-corner bl"></span>
         <span class="portrait-corner br"></span>
 
-        <img class="portrait-svg" src="images/sheikh-minshawi.jpg" alt="الشيخ محمد صديق المنشاوي - Sheikh Muhammad Siddiq Al-Minshawi" loading="eager">
+        <picture>
+          <source srcset="images/sheikh-minshawi.avif" type="image/avif">
+          <source srcset="images/sheikh-minshawi.webp" type="image/webp">
+          <img class="portrait-svg" src="images/sheikh-minshawi.jpg" alt="الشيخ محمد صديق المنشاوي - Sheikh Muhammad Siddiq Al-Minshawi" width="765" height="1024" loading="eager" fetchpriority="high">
+        </picture>
       </div>
     </div>
 
@@ -2664,17 +2675,17 @@ body:not(.lang-en) .lang-en-text { display: none; }
 
       <!-- Tagline -->
       <div class="hero-tagline">
-        <span class="lang-ar">الصوت الباكي · حسنة الدهر</span>
-        <span class="lang-en-text">The Weeping Voice · A Blessing of His Age</span>
+        <span class="lang-ar">الصوت الباكي · من أعلام دولة التلاوة</span>
+        <span class="lang-en-text">The Weeping Voice · A Master of Quranic Recitation</span>
       </div>
 
       <!-- Quote -->
       <blockquote class="hero-quote-block">
-        <span class="lang-ar">«الشيخ محمد صديق المنشاوي حسنةٌ من حسنات الدهر»</span>
-        <span class="lang-en-text">"Sheikh Muhammad Siddiq al-Minshawi is a blessing of his age."</span>
+        <span class="lang-ar">﴿وَرَتِّلِ الْقُرْآنَ تَرْتِيلًا﴾</span>
+        <span class="lang-en-text">"And recite the Quran with measured recitation."</span>
         <span class="attr">
-          <span class="lang-ar">— الشيخ عبد الحكيم عبد اللطيف</span>
-          <span class="lang-en-text">— Sheikh Abdul Hakim Abdul Latif</span>
+          <span class="lang-ar">— سورة المزمل، الآية ٤</span>
+          <span class="lang-en-text">— Surah Al-Muzzammil, 73:4</span>
         </span>
       </blockquote>
 
@@ -2894,7 +2905,7 @@ body:not(.lang-en) .lang-en-text { display: none; }
       </div>
       <div class="hero-ticker-item">
         <span class="lang-ar">الـودود</span>
-        <span class="lang-en-text">Al Wudood</span>
+        <span class="lang-en-text">Al Wadood</span>
       </div>
       <div class="hero-ticker-item">
         <span class="lang-ar">الـمـجـيـد</span>
@@ -2946,7 +2957,7 @@ body:not(.lang-en) .lang-en-text { display: none; }
       </div>
       <div class="hero-ticker-item">
         <span class="lang-ar">الـمـحـيـيـ</span>
-        <span class="lang-en-text">Al Muhiy</span>
+        <span class="lang-en-text">Al Muhyi</span>
       </div>
       <div class="hero-ticker-item">
         <span class="lang-ar">الـمـمـيـتـ</span>
@@ -2954,7 +2965,7 @@ body:not(.lang-en) .lang-en-text { display: none; }
       </div>
       <div class="hero-ticker-item">
         <span class="lang-ar">الـحـيـ</span>
-        <span class="lang-en-text">Al Haiyy</span>
+        <span class="lang-en-text">Al Hayy</span>
       </div>
       <div class="hero-ticker-item">
         <span class="lang-ar">الـقـيـومـ</span>
@@ -2973,7 +2984,7 @@ body:not(.lang-en) .lang-en-text { display: none; }
         <span class="lang-en-text">Al Waahid</span>
       </div>
       <div class="hero-ticker-item">
-        <span class="lang-ar">الـاحـد</span>
+        <span class="lang-ar">الـأحـد</span>
         <span class="lang-en-text">Al Ahad</span>
       </div>
       <div class="hero-ticker-item">
@@ -3045,7 +3056,7 @@ body:not(.lang-en) .lang-en-text { display: none; }
         <span class="lang-en-text">Maalik Ul Mulk</span>
       </div>
       <div class="hero-ticker-item">
-        <span class="lang-ar">ذوالـجـلـالـ والـإكـرامـ</span>
+        <span class="lang-ar">ذو الـجـلـالـ والـإكـرامـ</span>
         <span class="lang-en-text">Dhu Al Jalaali Wa Al Ikraam</span>
       </div>
       <div class="hero-ticker-item">
@@ -3062,7 +3073,7 @@ body:not(.lang-en) .lang-en-text { display: none; }
       </div>
       <div class="hero-ticker-item">
         <span class="lang-ar">الـمـغـنـيـ</span>
-        <span class="lang-en-text">Al Mughi</span>
+        <span class="lang-en-text">Al Mughni</span>
       </div>
       <div class="hero-ticker-item">
         <span class="lang-ar">الـمـانـعـ</span>
@@ -3070,7 +3081,7 @@ body:not(.lang-en) .lang-en-text { display: none; }
       </div>
       <div class="hero-ticker-item">
         <span class="lang-ar">الـضـار</span>
-        <span class="lang-en-text">Ad Daaarr</span>
+        <span class="lang-en-text">Ad Daarr</span>
       </div>
       <div class="hero-ticker-item">
         <span class="lang-ar">الـنـافـعـ</span>
@@ -3290,7 +3301,7 @@ body:not(.lang-en) .lang-en-text { display: none; }
       </div>
       <div class="hero-ticker-item">
         <span class="lang-ar">الـودود</span>
-        <span class="lang-en-text">Al Wudood</span>
+        <span class="lang-en-text">Al Wadood</span>
       </div>
       <div class="hero-ticker-item">
         <span class="lang-ar">الـمـجـيـد</span>
@@ -3342,7 +3353,7 @@ body:not(.lang-en) .lang-en-text { display: none; }
       </div>
       <div class="hero-ticker-item">
         <span class="lang-ar">الـمـحـيـيـ</span>
-        <span class="lang-en-text">Al Muhiy</span>
+        <span class="lang-en-text">Al Muhyi</span>
       </div>
       <div class="hero-ticker-item">
         <span class="lang-ar">الـمـمـيـتـ</span>
@@ -3350,7 +3361,7 @@ body:not(.lang-en) .lang-en-text { display: none; }
       </div>
       <div class="hero-ticker-item">
         <span class="lang-ar">الـحـيـ</span>
-        <span class="lang-en-text">Al Haiyy</span>
+        <span class="lang-en-text">Al Hayy</span>
       </div>
       <div class="hero-ticker-item">
         <span class="lang-ar">الـقـيـومـ</span>
@@ -3369,7 +3380,7 @@ body:not(.lang-en) .lang-en-text { display: none; }
         <span class="lang-en-text">Al Waahid</span>
       </div>
       <div class="hero-ticker-item">
-        <span class="lang-ar">الـاحـد</span>
+        <span class="lang-ar">الـأحـد</span>
         <span class="lang-en-text">Al Ahad</span>
       </div>
       <div class="hero-ticker-item">
@@ -3441,7 +3452,7 @@ body:not(.lang-en) .lang-en-text { display: none; }
         <span class="lang-en-text">Maalik Ul Mulk</span>
       </div>
       <div class="hero-ticker-item">
-        <span class="lang-ar">ذوالـجـلـالـ والـإكـرامـ</span>
+        <span class="lang-ar">ذو الـجـلـالـ والـإكـرامـ</span>
         <span class="lang-en-text">Dhu Al Jalaali Wa Al Ikraam</span>
       </div>
       <div class="hero-ticker-item">
@@ -3458,7 +3469,7 @@ body:not(.lang-en) .lang-en-text { display: none; }
       </div>
       <div class="hero-ticker-item">
         <span class="lang-ar">الـمـغـنـيـ</span>
-        <span class="lang-en-text">Al Mughi</span>
+        <span class="lang-en-text">Al Mughni</span>
       </div>
       <div class="hero-ticker-item">
         <span class="lang-ar">الـمـانـعـ</span>
@@ -3466,7 +3477,7 @@ body:not(.lang-en) .lang-en-text { display: none; }
       </div>
       <div class="hero-ticker-item">
         <span class="lang-ar">الـضـار</span>
-        <span class="lang-en-text">Ad Daaarr</span>
+        <span class="lang-en-text">Ad Daarr</span>
       </div>
       <div class="hero-ticker-item">
         <span class="lang-ar">الـنـافـعـ</span>
@@ -3536,19 +3547,19 @@ body:not(.lang-en) .lang-en-text { display: none; }
       </h3>
       <div class="chapter-body">
         <p class="lang-ar">
-          هو محمد بن صديق بن سيد بن ثابت المنشاوي، ولد بمدينة المنشاة التابعة لمحافظة سوهاج في مصر عام ١٣٣٨ هجرية / ٢٠ يناير ١٩٢٠ ميلادية. حفظ القرآن الكريم في الثامنة من عمره وكانت قراءة القرآن هي نهج عائلته منذ القدم حيث أن أبوه هو صديق المنشاوي الذي كان أول قارئ في صعيد مصر يقرأ بالعشر روايات القرآنية، وعمه هو أحمد السيد المنشاوي قارئ أيضًا.
+          هو محمد بن صديق بن سيد بن ثابت المنشاوي، وُلد في المنشأة بمحافظة سوهاج في مصر عام ١٣٣٨ هجرية / ٢٠ يناير ١٩٢٠ ميلادية، ونشأ في أسرة توارثت تلاوة القرآن جيلًا بعد جيل؛ إذ إنّ أباه الشيخ صديق المنشاوي كان من كبار قرّاء الصعيد، وعمّه الشيخ أحمد السيد المنشاوي قارئ أيضًا، وكذلك أخواه أحمد ومحمود. أتمّ حفظ القرآن الكريم في الثامنة من عمره (وقيل في الحادية عشرة).
         </p>
         <p class="lang-ar">
-          تتلمذ الشيخ في حفظه على يد والده "صديق المنشاوي" ثم أتم الحفظ على يد الشيخ "محمد النمكي" وأحكم التجويد بإحكامه المتقن على يد الشيخ "محمد أبو العلا".
+          تتلمذ في الحفظ على يد والده الشيخ صديق المنشاوي، وسافر صغيرًا مع عمّه إلى القاهرة سنة ١٩٢٧ فحفظ فيها ربع القرآن، ثم عاد إلى المنشأة فأتمّ الحفظ على يد الشيخ محمد النمكي، وأحكم التجويد على يد الشيخ محمد أبو العلا، وأخذ كذلك عن الشيخ رشوان أبو مسلم.
         </p>
 <p class="lang-en-text">
-          <strong>Muhammad ibn Siddiq ibn Sayyid ibn Thabit al-Minshawi</strong> was born in <strong>1920</strong> in the village of al-Minsha'ah in Sohag governorate, Upper Egypt, into a long lineage of Quranic reciters that stretched back generations.
+          <strong>Muhammad ibn Siddiq ibn Sayyid ibn Thabit al-Minshawi</strong> was born on <strong>20 January 1920</strong> in al-Minsha'ah, Sohag governorate, Upper Egypt, into a long lineage of Quranic reciters that stretched back generations.
         </p>
         <p class="lang-en-text">
-          His father, Sheikh <strong>Siddiq al-Minshawi</strong>, was a celebrated reciter throughout Upper Egypt. Both his grandfather Thabit and his great-grandfather were also reciters. Muhammad learned recitation directly from his father and completed memorizing the entire Quran by age <strong>eight</strong>.
+          His father, Sheikh <strong>Siddiq al-Minshawi</strong>, was one of the leading reciters of Upper Egypt, and his uncle Sheikh Ahmad al-Sayyid al-Minshawi and his brothers Ahmad and Mahmoud were reciters too. Muhammad learned from his father and completed memorizing the entire Quran at age <strong>eight</strong> (some sources say eleven).
         </p>
         <p class="lang-en-text">
-          He later moved with his father to Cairo, where he studied the rules of tajweed under masters like Sheikh Muhammad al-Namki and Sheikh Muhammad Abu al-Ula.
+          In <strong>1927</strong> he went to Cairo with his uncle, memorizing a quarter of the Quran there, then returned home to complete his memorization under Sheikh Muhammad al-Namki and master tajweed under Sheikh Muhammad Abu al-Ula. He also studied with Sheikh Rashwan Abu Muslim.
         </p>
       </div>
     </div>
@@ -3567,13 +3578,10 @@ body:not(.lang-en) .lang-en-text { display: none; }
       </h3>
       <div class="chapter-body">
         <p class="lang-ar">
-          لقب الشيخ محمد "بالصوت الباكي" في قراءته القرآنية، بسبب عذوبة الصوت وجماله، وقوة الأداء وجلاله، إضافة إلى إتقانه تعدد مقامات القراءة، وانفعاله العميق بالمعاني والألفاظ القرآنية.
+          لُقِّب الشيخ بـ«الصوت الباكي» لعذوبة صوته وجماله، وقوة الأداء وجلاله، إضافة إلى إتقانه تعدد مقامات القراءة، وانفعاله العميق بالمعاني والألفاظ القرآنية.
         </p>
         <p class="lang-ar">
-          قال عنه الشيخ الشعراوي رحمه الله: "أن المنشاوي والحصري والبنا والبهتيمي يركبون مركبًا ويبحرون في بحر القرآن ولن يتوقف هذا المركب إلى أن يرث الله الأرض ومن عليها".
-        </p>
-        <p class="lang-ar">
-          وقال عنه الشيخ عبد الحكيم عبد اللطيف شيخ عموم المقارئ المصرية: «إن الشيخ محمد صديق المنشاوي حسنة من حسنات الدهر».
+          ويُروى عن الشيخ محمد متولي الشعراوي رحمه الله قوله: «إنّ المنشاوي والحصري والبهتيمي وعبد الباسط والبنا يركبون مركبًا ويبحرون في بحر القرآن، ولن يتوقف هذا المركب إلى أن يرث الله الأرض ومن عليها».
         </p>
 <p class="lang-en-text">
           The Sheikh was distinguished by a reverent voice with a deep undertone of sorrow, earning him the title <strong>"The Weeping Voice."</strong> His recitation was not mere vocal performance but a spiritual journey that drew listeners into the depths of meaning.
@@ -3598,19 +3606,19 @@ body:not(.lang-en) .lang-en-text { display: none; }
       </h3>
       <div class="chapter-body">
         <p class="lang-ar">
-          رفض الشيخ في بداية حياته التسجيل للإذاعة المصرية ورفض اعتماده فيها قارئًا فاضطرت الإذاعة بنفسها أن تحضر إليه في إحدى المناسبات التي كان يقرأ فيها، فسجلت له ما تيسر من القرآن الكريم، وتمَّ اعتماده قارئًا في الإذاعة على إثر ذلك بعد طول رفض وممانعة.
+          رفض الشيخ في بداية حياته التسجيل للإذاعة المصرية ورفض اعتماده فيها قارئًا، فاضطرت الإذاعة أن تذهب إليه بنفسها، فسجّلت له في إحدى ليالي رمضان بمدينة إسنا ما تيسّر من القرآن الكريم، واعتُمد قارئًا في الإذاعة على إثر ذلك سنة ١٩٥٣ (وقيل ١٩٥٤) بعد طول رفض وممانعة. ومن المروي أنه تقدّم مع أبيه لاختبار الإذاعة، ولمّا كانت قواعدها لا تسمح باعتمادهما معًا انسحب الأب ليُفسح الطريق لابنه.
         </p>
         <p class="lang-ar">
-          سجل الشيخ القرآن الكريم كاملًا في ختمة مرتلة، كما سجل ختمة قرآنية مجودة بـالإذاعة المصرية، وله كذلك قراءة مشتركة برواية الدوري مع القارئين كامل البهتيمي وفؤاد العروسي. وله أيضًا العديد من التسجيلات في المسجد الأقصى والكويت وسوريا وليبيا. تلا القرآن في المساجد الرئيسية في العالم الإسلامي، كالمسجد الحرام في مكة المكرمة، والمسجد النبوي في المدينة المنورة، والمسجد الأقصى في القدس.
+          سجّل الشيخ القرآن الكريم كاملًا في ختمة مرتّلة سنة ١٩٦٥ على ٨٢ شريطًا، ثم طلب في العام التالي إعادة تسجيل ٣٢ شريطًا منها على نفقته، وسجّل كذلك ختمة مجوّدة بالإذاعة المصرية، وله قراءة مشتركة برواية الدوري مع القارئين كامل البهتيمي وفؤاد العروسي. وله أيضًا العديد من التسجيلات في المسجد الأقصى والكويت وسوريا وليبيا، ولُقِّب أيام الوحدة بين مصر وسوريا بـ«مقرئ الجمهورية العربية المتحدة»، وقرأ في الجامع الأموي بدمشق، ومُنح وسام الاستحقاق السوري من الدرجة الثانية، ووسامًا من إندونيسيا. وتلا القرآن في المساجد الرئيسية في العالم الإسلامي، كالمسجد الحرام في مكة المكرمة، والمسجد النبوي في المدينة المنورة، والمسجد الأقصى في القدس.
         </p>
 <p class="lang-en-text">
           His journey began as a young man traveling with his father and uncle to religious gatherings. His first solo recitation in <strong>1952</strong> in Sohag governorate brought him sudden fame across the region.
         </p>
         <p class="lang-en-text">
-          He initially refused to record for Egyptian Radio out of pride and dignity, until the radio director sent an envoy in <strong>1953</strong>. He was officially appointed as a reciter and carried the title <strong>"Reciter of the Republic."</strong>
+          He initially refused to record for Egyptian Radio, so the radio came to him, recording him during a Ramadan night in Esna. He was officially accredited in <strong>1953</strong> (some sources say 1954). During the union of Egypt and Syria he carried the title <strong>"Reciter of the United Arab Republic,"</strong> and recited at the Umayyad Mosque in Damascus.
         </p>
         <p class="lang-en-text">
-          He traveled to Saudi Arabia, Syria, Jordan, Kuwait, Iraq, Libya, Sudan, Indonesia and beyond, and recited at the Al-Aqsa Mosque. He was awarded Syria's Order of Merit and numerous decorations from kings and presidents across the Islamic world.
+          He traveled to Saudi Arabia, Syria, Jordan, Kuwait, Iraq, Libya, Sudan, Indonesia and beyond, and recited at the Al-Aqsa Mosque. He was awarded Syria's Order of Merit (second class), a decoration from Indonesia, and honors from leaders across the Islamic world.
         </p>
       </div>
     </div>
@@ -3629,16 +3637,16 @@ body:not(.lang-en) .lang-en-text { display: none; }
       </h3>
       <div class="chapter-body">
         <p class="lang-ar">
-          تزوج الشيخ مرتين وله من البنين تسعة ومن البنات ست، أصيب الشيخ بمرض دوالي المريء في عام ١٩٦٦ وتوفي في ٢٠ يونيو عام الـ ١٩٦٩، تاركًا وراءه كنز من التلاوات القرآنية التي علمت عشرات الأجيال حتى يومنا هذا.
+          تزوّج الشيخ مرتين، وتوفيت زوجته الثانية في الحج قبل وفاته بعام، وأنجب نحو خمسة عشر ابنًا وابنة على خلاف في العدد. أُصيب بمرض دوالي المريء عام ١٩٦٦، وتوفي يوم الجمعة ٢٠ يونيو عام ١٩٦٩، ودُفن في بلدته المنشأة، تاركًا وراءه كنزًا من التلاوات القرآنية تتعلّم منه الأجيال حتى يومنا هذا.
         </p>
 <p class="lang-en-text">
           In <strong>1966</strong> the Sheikh was diagnosed with esophageal varices. Despite his deteriorating health, he continued reciting the Quran until his final moments, passing away on Friday, <strong>June 20, 1969</strong>, at just 49 years of age.
         </p>
         <p class="lang-en-text">
-          He left behind a vast legacy of more than <strong>150 recordings</strong>, both murattal and mujawwad. His murattal mushaf is considered among the greatest in the history of Quranic recitation. His style became a model emulated by reciters across generations.
+          He left behind a vast legacy of recordings, both murattal and mujawwad. His complete murattal mushaf, recorded in <strong>1965</strong> on 82 tapes, is considered among the greatest in the history of Quranic recitation. He was buried in his hometown, al-Minsha'ah. His style became a model emulated by reciters across generations.
         </p>
         <p class="lang-en-text">
-          May God have mercy upon him — truly, he was a blessing of his age.
+          May God have mercy upon him.
         </p>
       </div>
     </div>
@@ -3671,17 +3679,17 @@ body:not(.lang-en) .lang-en-text { display: none; }
       </span>
     </div>
     <div class="timeline-row fade-in">
-      <span class="timeline-year"><span class="lang-ar">١٩٢٨</span><span class="lang-en-text">1928</span></span>
+      <span class="timeline-year"><span class="lang-ar">١٩٢٧</span><span class="lang-en-text">1927</span></span>
       <span class="timeline-event">
-        <span class="lang-ar">أتمّ حفظ القرآن الكريم كاملاً وهو في الثامنة من عمره.</span>
-        <span class="lang-en-text">Completed memorization of the entire Quran at age eight.</span>
+        <span class="lang-ar">سافر مع عمّه إلى القاهرة فحفظ فيها ربع القرآن، ثم عاد إلى المنشأة ليُتمّ الحفظ.</span>
+        <span class="lang-en-text">Travelled to Cairo with his uncle, memorized a quarter of the Quran there, then returned home to finish.</span>
       </span>
     </div>
     <div class="timeline-row fade-in">
-      <span class="timeline-year"><span class="lang-ar">١٩٤٠</span><span class="lang-en-text">1940</span></span>
+      <span class="timeline-year"><span class="lang-ar">١٩٢٨</span><span class="lang-en-text">1928</span></span>
       <span class="timeline-event">
-        <span class="lang-ar">انتقل إلى القاهرة لتعلّم أحكام التجويد، وعُيّن قارئاً بمسجد الزمالك.</span>
-        <span class="lang-en-text">Moved to Cairo to study tajweed, appointed reciter at the Zamalek Mosque.</span>
+        <span class="lang-ar">أتمّ حفظ القرآن الكريم كاملاً وهو في الثامنة من عمره (وقيل في الحادية عشرة).</span>
+        <span class="lang-en-text">Completed memorization of the entire Quran at age eight (some say eleven).</span>
       </span>
     </div>
     <div class="timeline-row fade-in">
@@ -3694,15 +3702,22 @@ body:not(.lang-en) .lang-en-text { display: none; }
     <div class="timeline-row fade-in">
       <span class="timeline-year"><span class="lang-ar">١٩٥٣</span><span class="lang-en-text">1953</span></span>
       <span class="timeline-event">
-        <span class="lang-ar">اعتُمد قارئاً رسمياً في الإذاعة المصرية بعد رفضٍ طويل.</span>
-        <span class="lang-en-text">Officially appointed as a reciter at Egyptian Radio after long refusing.</span>
+        <span class="lang-ar">اعتُمد قارئاً رسمياً في الإذاعة المصرية بعد أن سجّلت له في إسنا، إثر رفضٍ طويل (وقيل ١٩٥٤).</span>
+        <span class="lang-en-text">Accredited at Egyptian Radio after it came to record him in Esna (some say 1954).</span>
       </span>
     </div>
     <div class="timeline-row fade-in">
-      <span class="timeline-year"><span class="lang-ar">١٩٥٥</span><span class="lang-en-text">1955</span></span>
+      <span class="timeline-year"><span class="lang-ar">١٩٥٩</span><span class="lang-en-text">1959</span></span>
       <span class="timeline-event">
-        <span class="lang-ar">حصل على وسام رفيع من إندونيسيا، وبدأ سفرياته إلى الدول الإسلامية.</span>
-        <span class="lang-en-text">Awarded a high decoration from Indonesia; began touring Muslim nations.</span>
+        <span class="lang-ar">قرأ في الجامع الأموي بدمشق أيام الوحدة، ولُقّب بمقرئ الجمهورية العربية المتحدة.</span>
+        <span class="lang-en-text">Recited at the Umayyad Mosque in Damascus during the Egypt–Syria union, as Reciter of the United Arab Republic.</span>
+      </span>
+    </div>
+    <div class="timeline-row fade-in">
+      <span class="timeline-year"><span class="lang-ar">١٩٦٥</span><span class="lang-en-text">1965</span></span>
+      <span class="timeline-event">
+        <span class="lang-ar">سجّل المصحف المرتّل كاملاً على ٨٢ شريطاً، وأعاد تسجيل ٣٢ منها على نفقته في العام التالي.</span>
+        <span class="lang-en-text">Recorded the complete murattal mushaf on 82 tapes, re-recording 32 of them at his own expense the next year.</span>
       </span>
     </div>
     <div class="timeline-row fade-in">
@@ -3715,8 +3730,8 @@ body:not(.lang-en) .lang-en-text { display: none; }
     <div class="timeline-row fade-in">
       <span class="timeline-year"><span class="lang-ar">١٩٦٩</span><span class="lang-en-text">1969</span></span>
       <span class="timeline-event">
-        <span class="lang-ar">توفي يوم الجمعة ٢٠ يونيو، وعمره ٤٩ عاماً، تاركاً مصحفاً مرتلاً وأكثر من ١٥٠ تسجيلاً.</span>
-        <span class="lang-en-text">Passed away on Friday, June 20, at age 49 — leaving a complete murattal mushaf and over 150 recordings.</span>
+        <span class="lang-ar">توفي يوم الجمعة ٢٠ يونيو وعمره ٤٩ عاماً، ودُفن في بلدته المنشأة، تاركاً مصحفين مرتلاً ومجوداً وتلاوات كثيرة.</span>
+        <span class="lang-en-text">Passed away on Friday, June 20, at age 49, and was buried in al-Minsha'ah — leaving complete murattal and mujawwad mushafs and many recitations.</span>
       </span>
     </div>
   </div>
@@ -3731,8 +3746,8 @@ body:not(.lang-en) .lang-en-text { display: none; }
       <span class="lang-en-text">Audio Library</span>
     </p>
     <h2 class="section-title">
-      <span class="lang-ar">المصحف المرتل كاملاً</span>
-      <span class="lang-en-text">The Complete Murattal Mushaf</span>
+      <span class="lang-ar">المصحف الشريف كاملاً</span>
+      <span class="lang-en-text">The Complete Mushaf</span>
     </h2>
     <p class="section-title-en">
       <span class="lang-ar">١١٤ سورة بصوت الشيخ — برواية حفص عن عاصم</span>
@@ -3780,8 +3795,8 @@ body:not(.lang-en) .lang-en-text { display: none; }
       <span class="lang-en-text">Holy Quran Radio</span>
     </h2>
     <p class="live-radio-subtitle">
-      <span class="lang-ar">من القاهرة · بث مباشر من القمر الصناعي</span>
-      <span class="lang-en-text">From Cairo · Live Satellite Broadcast</span>
+      <span class="lang-ar">من القاهرة · بث مباشر</span>
+      <span class="lang-en-text">From Cairo · Live Broadcast</span>
     </p>
     <div class="radio-player-card" id="radioPlayerCard">
       <div class="radio-speaker">
@@ -3812,7 +3827,6 @@ body:not(.lang-en) .lang-en-text { display: none; }
     </div>
   </div>
   <audio id="radioAudio" preload="none"></audio>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/hls.js/1.5.8/hls.min.js" integrity="sha384-xLhS5rbIdhv65H3GLX+caQgMSiEK/Hkw8Z6HITolgRxvXs0omcbeYD639tkJ2Wu6" crossorigin="anonymous"></script>
 </section>
 
 <!-- ============ FOOTER ============ -->
@@ -3832,7 +3846,7 @@ body:not(.lang-en) .lang-en-text { display: none; }
   </p>
   <p class="footer-description">
     <span class="lang-ar">تلاوات الشيخ محمد صديق المنشاوي بجودة عالية</span>
-    <span class="lang-en-text">High-quality recitations by Mohamed Siddiq El-Minshawi</span>
+    <span class="lang-en-text">High-quality recitations by Sheikh Muhammad Siddiq Al-Minshawi</span>
   </p>
   <p class="footer-disclaimer">
     <span class="lang-ar">تلاوات القرآن الكريم بصوت الشيخ محمد صديق المنشاوي محفوظة الحقوق لمالكيها الأصليين. هذا الموقع غير تجاري ويهدف لنشر القرآن الكريم.</span>
@@ -5102,6 +5116,24 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
     radioSection.classList.add('radio-playing');
   }
 
+  // Load hls.js on demand (once)
+  let hlsPromise = null;
+  function loadHls() {
+    if (typeof Hls !== 'undefined') return Promise.resolve();
+    if (!hlsPromise) {
+      hlsPromise = new Promise((resolve, reject) => {
+        const sc = document.createElement('script');
+        sc.src = 'https://cdnjs.cloudflare.com/ajax/libs/hls.js/1.5.8/hls.min.js';
+        sc.integrity = 'sha384-xLhS5rbIdhv65H3GLX+caQgMSiEK/Hkw8Z6HITolgRxvXs0omcbeYD639tkJ2Wu6';
+        sc.crossOrigin = 'anonymous';
+        sc.onload = () => resolve();
+        sc.onerror = () => { hlsPromise = null; reject(new Error('hls.js failed to load')); };
+        document.head.appendChild(sc);
+      });
+    }
+    return hlsPromise;
+  }
+
   // Each start/stop bumps this, so a slow play() from an older attempt can't change the UI later
   let radioAttempt = 0;
   const isCurrentAttempt = (id) => id === radioAttempt && currentSurah && currentSurah.isRadio;
@@ -5165,30 +5197,39 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
         console.warn('Radio play error:', err);
         setRadioStatus('تعذر التشغيل — حاول مرة أخرى', 'Playback failed — try again');
       });
-    } else if (typeof Hls !== 'undefined' && Hls.isSupported()) {
-      window.radioHls = new Hls({ enableWorker: true, lowLatencyMode: true });
-      window.radioHls.loadSource(RADIO_STREAM);
-      window.radioHls.attachMedia(radioAudio);
-      window.radioHls.on(Hls.Events.MANIFEST_PARSED, function() {
-        if (!isCurrentAttempt(attempt)) return;
-        radioAudio.play().then(() => {
-          if (!isCurrentAttempt(attempt)) return;
-          showPauseIcon();
-          setRadioStatus('يُبث الآن مباشرة', 'Now playing live');
-        }).catch(err => {
-          if (!isCurrentAttempt(attempt)) return; // interrupted on purpose (e.g. a surah was picked)
-          console.warn('Radio play error:', err);
-          setRadioStatus('تعذر التشغيل — حاول مرة أخرى', 'Playback failed — try again');
-        });
-      });
-      window.radioHls.on(Hls.Events.ERROR, function(event, data) {
-        if (data.fatal && isCurrentAttempt(attempt)) {
-          console.warn('HLS fatal error:', data);
-          setRadioStatus('انقطع البث — حاول مرة أخرى', 'Stream lost — try again');
-        }
-      });
     } else {
-      setRadioStatus('المتصفح لا يدعم البث المباشر', 'Browser does not support live streaming');
+      // hls.js (~100 KB) is only downloaded when it's actually needed: browsers without
+      // native HLS (Chrome/Edge/Firefox on Android & desktop), and only on the first radio tap.
+      loadHls().then(() => {
+        if (!isCurrentAttempt(attempt)) return;
+        if (!Hls.isSupported()) {
+          setRadioStatus('المتصفح لا يدعم البث المباشر', 'Browser does not support live streaming');
+          return;
+        }
+        window.radioHls = new Hls({ enableWorker: true, lowLatencyMode: true });
+        window.radioHls.loadSource(RADIO_STREAM);
+        window.radioHls.attachMedia(radioAudio);
+        window.radioHls.on(Hls.Events.MANIFEST_PARSED, function() {
+          if (!isCurrentAttempt(attempt)) return;
+          radioAudio.play().then(() => {
+            if (!isCurrentAttempt(attempt)) return;
+            showPauseIcon();
+            setRadioStatus('يُبث الآن مباشرة', 'Now playing live');
+          }).catch(err => {
+            if (!isCurrentAttempt(attempt)) return; // interrupted on purpose (e.g. a surah was picked)
+            console.warn('Radio play error:', err);
+            setRadioStatus('تعذر التشغيل — حاول مرة أخرى', 'Playback failed — try again');
+          });
+        });
+        window.radioHls.on(Hls.Events.ERROR, function(event, data) {
+          if (data.fatal && isCurrentAttempt(attempt)) {
+            console.warn('HLS fatal error:', data);
+            setRadioStatus('انقطع البث — حاول مرة أخرى', 'Stream lost — try again');
+          }
+        });
+      }).catch(() => {
+        if (isCurrentAttempt(attempt)) setRadioStatus('تعذر التشغيل — حاول مرة أخرى', 'Playback failed — try again');
+      });
     }
   }
 
