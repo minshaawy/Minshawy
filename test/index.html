@@ -1432,11 +1432,6 @@ section.block{padding:clamp(56px,10vh,112px) 0;border-top:1px solid var(--line)}
 .media-player.is-playing .expanded-cover{animation:none!important}
 .media-player.is-radio .sub-type{display:none}
 
-/* ---- paper grain: one small tiled PNG, no blend modes (cheap on phones) ---- */
-body::after{content:'';position:fixed;inset:0;z-index:55;pointer-events:none;background:url('/images/grain.png') repeat;background-size:128px 128px;opacity:.5}
-:root[data-theme="dark"] body::after{opacity:.55}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) body::after{opacity:.55}}
-
 </style>
 </head>
 <body>
