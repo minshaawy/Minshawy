@@ -4523,23 +4523,14 @@ function syncSurahCards() {
 }
 
 function playSurah(num) {
-  if (window.radioHls) {
-    window.radioHls.destroy();
-    window.radioHls = null;
-  }
-  // Native-HLS radio (iPhone/Safari) isn't stopped by hls.js — stop it explicitly
-  const radioEl = document.getElementById('radioAudio');
-  if (radioEl && radioEl.getAttribute('src')) {
-    radioEl.pause();
-    radioEl.removeAttribute('src');
-    radioEl.load();
-  }
-  
+  const surah = surahs.find(s => s.num === num);
+  if (!surah) return; // validate first, so a bad number never kills the radio for nothing
+
+  // Only one thing plays at a time: a surah stops the live radio (stream + its UI)
+  if (window.stopRadio) window.stopRadio();
+
   player.classList.remove('is-radio');
   if (playerExpanded) playerExpanded.classList.remove('is-radio');
-  
-  const surah = surahs.find(s => s.num === num);
-  if (!surah) return;
 
   currentSurah = surah;
   audio.src = AUDIO_BASE + pad(num) + '.mp3';
@@ -4591,8 +4582,13 @@ function togglePlayPause() {
   }
   if (currentSurah.isRadio) {
     const radioAudio = document.getElementById('radioAudio');
-    if (radioAudio.paused) radioAudio.play();
-    else radioAudio.pause();
+    if (!radioAudio.paused) {
+      radioAudio.pause();
+    } else if (radioAudio.getAttribute('src') || window.radioHls) {
+      radioAudio.play().catch(() => { if (window.startRadio) window.startRadio(); });
+    } else if (window.startRadio) {
+      window.startRadio(); // stream was fully stopped (radio card button) — reconnect
+    }
     return;
   }
   if (audio.paused) {
@@ -4609,7 +4605,7 @@ function togglePlayPause() {
 }
 
 function playPrev() {
-  if (!currentSurah) return;
+  if (!currentSurah || currentSurah.isRadio) return; // no "previous" on the live radio
   if (isShuffleOn) {
     playSurah(Math.floor(Math.random() * 114) + 1);
   } else if (currentSurah.num > 1) {
@@ -4618,7 +4614,7 @@ function playPrev() {
 }
 
 function playNext() {
-  if (!currentSurah) return;
+  if (!currentSurah || currentSurah.isRadio) return; // no "next" on the live radio
   if (isShuffleOn) {
     playSurah(Math.floor(Math.random() * 114) + 1);
   } else if (currentSurah.num < 114) {
@@ -4680,7 +4676,7 @@ audio.addEventListener('ended', () => {
   if (repeatMode === 2) {
     // Repeat one
     audio.currentTime = 0;
-    audio.play();
+    audio.play().catch(() => {});
   } else if (repeatMode === 1 && currentSurah && currentSurah.num === 114) {
     // Repeat all - go back to first
     playSurah(1);
@@ -5103,16 +5099,30 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
     radioSection.classList.add('radio-playing');
   }
 
+  // Each start/stop bumps this, so a slow play() from an older attempt can't change the UI later
+  let radioAttempt = 0;
+  const isCurrentAttempt = (id) => id === radioAttempt && currentSurah && currentSurah.isRadio;
+
+  // Fully stop the stream and reset the radio card. Also used by playSurah (window.stopRadio).
+  function stopRadioStream() {
+    radioAttempt++;
+    radioAudio.pause();
+    if (window.radioHls) { window.radioHls.destroy(); window.radioHls = null; }
+    if (radioAudio.getAttribute('src')) {
+      radioAudio.removeAttribute('src');
+      radioAudio.load();
+    }
+    showPlayIcon();
+    setRadioStatus('اضغط للاستماع', 'Tap to listen');
+  }
+  window.stopRadio = stopRadioStream;
+
   function playRadio() {
-    if (window.radioHls) {
-      window.radioHls.destroy();
-      window.radioHls = null;
-    }
-    
-    // Pause surah audio if playing
-    if (audio && !audio.paused) {
-      audio.pause();
-    }
+    stopRadioStream();
+    const attempt = radioAttempt;
+
+    // Only one thing plays at a time: the radio stops any surah
+    if (!audio.paused) audio.pause();
 
     currentSurah = { num: -1, isRadio: true, ar: 'إذاعة القرآن الكريم', en: 'Quran Radio' };
     const isArabic = !document.body.classList.contains('lang-en');
@@ -5143,9 +5153,11 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
       radioAudio.src = RADIO_STREAM;
       radioAudio.load();
       radioAudio.play().then(() => {
+        if (!isCurrentAttempt(attempt)) return;
         showPauseIcon();
         setRadioStatus('يُبث الآن مباشرة', 'Now playing live');
       }).catch(err => {
+        if (!isCurrentAttempt(attempt)) return; // interrupted on purpose (e.g. a surah was picked)
         console.warn('Radio play error:', err);
         setRadioStatus('تعذر التشغيل — حاول مرة أخرى', 'Playback failed — try again');
       });
@@ -5154,16 +5166,19 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
       window.radioHls.loadSource(RADIO_STREAM);
       window.radioHls.attachMedia(radioAudio);
       window.radioHls.on(Hls.Events.MANIFEST_PARSED, function() {
+        if (!isCurrentAttempt(attempt)) return;
         radioAudio.play().then(() => {
+          if (!isCurrentAttempt(attempt)) return;
           showPauseIcon();
           setRadioStatus('يُبث الآن مباشرة', 'Now playing live');
         }).catch(err => {
+          if (!isCurrentAttempt(attempt)) return; // interrupted on purpose (e.g. a surah was picked)
           console.warn('Radio play error:', err);
           setRadioStatus('تعذر التشغيل — حاول مرة أخرى', 'Playback failed — try again');
         });
       });
       window.radioHls.on(Hls.Events.ERROR, function(event, data) {
-        if (data.fatal) {
+        if (data.fatal && isCurrentAttempt(attempt)) {
           console.warn('HLS fatal error:', data);
           setRadioStatus('انقطع البث — حاول مرة أخرى', 'Stream lost — try again');
         }
@@ -5174,13 +5189,23 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
   }
 
   function pauseRadio() {
-    radioAudio.pause();
-    if (window.radioHls) { window.radioHls.destroy(); window.radioHls = null; }
-    radioAudio.removeAttribute('src');
-    radioAudio.load();
-    showPlayIcon();
-    setRadioStatus('اضغط للاستماع', 'Tap to listen');
+    stopRadioStream();
   }
+  window.startRadio = playRadio;
+
+  // Safety net — whatever starts the sound (buttons, keyboard, lock screen, headphones,
+  // auto-play), a surah and the radio never overlap. `currentSurah` says which one the
+  // visitor chose last; that one wins and the other is stopped. (Play events arrive a moment
+  // late, so after fast clicks the late event must not stop the player chosen afterwards.)
+  const radioIsActive = () => !radioAudio.paused || window.radioHls || radioAudio.getAttribute('src');
+  audio.addEventListener('play', () => {
+    if (currentSurah && currentSurah.isRadio) audio.pause();      // radio was chosen after this surah
+    else if (radioIsActive()) stopRadioStream();                   // surah chosen → stop radio
+  });
+  radioAudio.addEventListener('play', () => {
+    if (currentSurah && currentSurah.isRadio) { if (!audio.paused) audio.pause(); } // radio chosen → stop surah
+    else stopRadioStream();                                                          // a surah was chosen after the radio
+  });
 
   radioPlayBtn.addEventListener('click', () => {
     if (currentSurah && currentSurah.isRadio && !radioAudio.paused) {
