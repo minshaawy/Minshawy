@@ -2213,99 +2213,72 @@ footer::before {
   margin-bottom: 2.5rem;
 }
 
+/* --- Speaker-circle radio card --- */
 .radio-player-card {
-  background: rgba(244, 237, 224, 0.04);
-  border: 1px solid rgba(198, 151, 73, 0.2);
-  border-radius: 12px;
-  padding: 2rem;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 1.5rem;
+  text-align: center;
   max-width: 520px;
   margin: 0 auto;
-  transition: all 0.4s ease;
 }
 
-.radio-player-card:hover {
-  border-color: rgba(198, 151, 73, 0.4);
-  background: rgba(244, 237, 224, 0.06);
+/* Speaker: grille disc + pulsing rings while live */
+.radio-speaker {
+  position: relative;
+  width: 210px;
+  height: 210px;
+  margin-bottom: 1.75rem;
 }
 
-.radio-cover-art {
-  width: 80px;
-  height: 80px;
-  background: linear-gradient(135deg, var(--ochre) 0%, var(--rust) 100%);
-  border-radius: 10px;
+.radio-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid var(--gold);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.radio-playing .radio-ring { animation: radio-ring 2.7s ease-out infinite; }
+.radio-playing .radio-ring:nth-child(2) { animation-delay: 0.9s; }
+.radio-playing .radio-ring:nth-child(3) { animation-delay: 1.8s; }
+
+@keyframes radio-ring {
+  0%   { transform: scale(1);    opacity: 0.55; }
+  100% { transform: scale(1.55); opacity: 0; }
+}
+
+.radio-grille {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: repeating-radial-gradient(circle, #2c2116 0 3px, #17110b 3px 8px);
+  border: 1px solid rgba(198, 151, 73, 0.35);
+  box-shadow:
+    inset 0 0 0 6px #1a130c,
+    inset 0 0 0 7px rgba(198, 151, 73, 0.25),
+    inset 0 10px 30px rgba(0, 0, 0, 0.6),
+    0 18px 40px rgba(0, 0, 0, 0.45);
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
-  position: relative;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(198, 151, 73, 0.3);
-  overflow: hidden;
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
 }
 
-.radio-cover-art::before {
-  content: '📻';
-  font-size: 2rem;
-  position: relative;
-  z-index: 1;
-}
-
-.radio-cover-art::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.15), transparent 60%);
-}
-
-.radio-playing .radio-cover-art {
-  animation: subtle-radio-pulse 3s ease-in-out infinite;
-}
-
-@keyframes subtle-radio-pulse {
-  0%, 100% { box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4); }
-  50% { box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 30px rgba(198, 151, 73, 0.2); }
-}
-
-.radio-info {
-  flex: 1;
-  text-align: start;
-  min-width: 0;
-}
-
-.radio-station-name {
-  font-family: 'Thmanyah Serif Display', serif;
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: var(--paper);
-  margin-bottom: 0.3rem;
-}
-
-.radio-station-desc {
-  font-family: 'Thmanyah Sans', sans-serif;
-  font-size: 0.75rem;
-  color: rgba(244, 237, 224, 0.45);
-  letter-spacing: 0.05em;
-}
-
-.radio-status {
-  font-family: 'Thmanyah Sans', sans-serif;
-  font-size: 0.7rem;
-  color: rgba(244, 237, 224, 0.35);
-  margin-top: 0.5rem;
-  letter-spacing: 0.08em;
-  transition: color 0.3s;
-}
-
-.radio-playing .radio-status {
-  color: #27ae60;
+.radio-playing .radio-grille {
+  border-color: rgba(198, 151, 73, 0.7);
+  box-shadow:
+    inset 0 0 0 6px #1a130c,
+    inset 0 0 0 7px rgba(198, 151, 73, 0.45),
+    inset 0 10px 30px rgba(0, 0, 0, 0.6),
+    0 18px 40px rgba(0, 0, 0, 0.45),
+    0 0 40px rgba(198, 151, 73, 0.15);
 }
 
 .radio-play-btn {
-  width: 52px;
-  height: 52px;
+  width: 92px;
+  height: 92px;
   border-radius: 50%;
   border: none;
   background: var(--paper);
@@ -2315,57 +2288,88 @@ footer::before {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  transition: all 0.25s ease;
-  box-shadow: 0 4px 16px rgba(198, 151, 73, 0.3);
+  transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5), 0 0 0 6px rgba(244, 237, 224, 0.06);
+  position: relative;
+  z-index: 1;
 }
 
 .radio-play-btn:hover {
   background: var(--gold);
-  transform: scale(1.08);
-  box-shadow: 0 6px 24px rgba(198, 151, 73, 0.5);
+  transform: scale(1.06);
 }
 
-.radio-play-btn:active {
-  transform: scale(0.95);
+.radio-play-btn:active { transform: scale(0.95); }
+
+/* No browser-blue ring on click; a gold ring only for keyboard users */
+.radio-play-btn:focus { outline: none; }
+.radio-play-btn:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 5px;
 }
 
 .radio-play-btn svg {
-  width: 20px;
-  height: 20px;
+  width: 34px;
+  height: 34px;
   fill: currentColor;
 }
 
-.radio-wave-bars {
-  display: flex;
+.radio-station-name {
+  font-family: 'Thmanyah Serif Display', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--paper);
+  margin-bottom: 0.35rem;
+}
+
+.radio-station-desc {
+  font-family: 'Thmanyah Sans', sans-serif;
+  font-size: 0.85rem;
+  color: rgba(244, 237, 224, 0.5);
+  margin-bottom: 1.1rem;
+}
+
+.radio-status-pill {
+  display: inline-flex;
   align-items: center;
-  gap: 2px;
-  height: 20px;
-  margin-top: 0.6rem;
-  opacity: 0;
-  transition: opacity 0.3s;
+  gap: 0.55rem;
+  padding: 0.4rem 1.1rem;
+  border-radius: 30px;
+  border: 1px solid rgba(198, 151, 73, 0.25);
+  background: rgba(244, 237, 224, 0.04);
+  transition: border-color 0.3s;
 }
 
-.radio-playing .radio-wave-bars {
-  opacity: 1;
-}
+.radio-playing .radio-status-pill { border-color: rgba(39, 174, 96, 0.45); }
 
-.radio-wave-bar {
-  width: 3px;
+/* idle: quiet gold dot; live: the shared green pulsing .live-dot style */
+.radio-status-pill .live-dot {
   background: var(--gold);
-  border-radius: 1px;
-  animation: radio-vis 0.8s ease-in-out infinite;
+  box-shadow: none;
+  animation: none;
+  opacity: 0.6;
+}
+.radio-playing .radio-status-pill .live-dot {
+  background: #27ae60;
+  opacity: 1;
+  animation: live-pulse-green 1.5s ease-in-out infinite;
 }
 
-.radio-wave-bar:nth-child(1) { height: 30%; animation-delay: 0s; }
-.radio-wave-bar:nth-child(2) { height: 60%; animation-delay: 0.15s; }
-.radio-wave-bar:nth-child(3) { height: 90%; animation-delay: 0.3s; }
-.radio-wave-bar:nth-child(4) { height: 50%; animation-delay: 0.45s; }
-.radio-wave-bar:nth-child(5) { height: 70%; animation-delay: 0.6s; }
-.radio-wave-bar:nth-child(6) { height: 40%; animation-delay: 0.75s; }
+.radio-status {
+  font-family: 'Thmanyah Sans', sans-serif;
+  font-size: 0.85rem;
+  color: rgba(244, 237, 224, 0.6);
+  transition: color 0.3s;
+}
 
-@keyframes radio-vis {
-  0%, 100% { transform: scaleY(0.4); }
-  50% { transform: scaleY(1); }
+.radio-playing .radio-status { color: #5fcf8a; }
+
+/* Small radio icon used on the mini/expanded player cover */
+.radio-cover-icon { width: 1em; height: 1em; fill: currentColor; vertical-align: middle; }
+
+@media (prefers-reduced-motion: reduce) {
+  .radio-playing .radio-ring,
+  .radio-playing .radio-status-pill .live-dot { animation: none; }
 }
 
 /* ============ ENGLISH MODE ============ */
@@ -2550,10 +2554,10 @@ body:not(.lang-en) .lang-en-text { display: none; }
   .footer-disclaimer { font-size: 0.65rem; margin-top: 1.5rem; }
 
   .live-radio { padding: 4rem 1.5rem; }
-  .radio-player-card { flex-direction: column; text-align: center; padding: 1.5rem; }
-  .radio-info { text-align: center; }
-  .radio-wave-bars { justify-content: center; }
-  .radio-cover-art { width: 70px; height: 70px; }
+  .radio-speaker { width: 176px; height: 176px; }
+  .radio-play-btn { width: 80px; height: 80px; }
+  .radio-play-btn svg { width: 30px; height: 30px; }
+  .radio-station-name { font-size: 1.3rem; }
 }
 
 /* ============ ANIMATIONS ============ */
@@ -3780,32 +3784,31 @@ body:not(.lang-en) .lang-en-text { display: none; }
       <span class="lang-en-text">From Cairo · Live Satellite Broadcast</span>
     </p>
     <div class="radio-player-card" id="radioPlayerCard">
-      <div class="radio-cover-art"></div>
-      <div class="radio-info">
-        <div class="radio-station-name">
-          <span class="lang-ar">إذاعة القرآن الكريم من القاهرة</span>
-          <span class="lang-en-text">Quran Radio — Cairo</span>
-        </div>
-        <div class="radio-station-desc">
-          <span class="lang-ar">الهيئة الوطنية للإعلام · FM ٩٨.٢</span>
-          <span class="lang-en-text">National Media Authority · FM 98.2</span>
-        </div>
-        <div class="radio-wave-bars">
-          <span class="radio-wave-bar"></span>
-          <span class="radio-wave-bar"></span>
-          <span class="radio-wave-bar"></span>
-          <span class="radio-wave-bar"></span>
-          <span class="radio-wave-bar"></span>
-          <span class="radio-wave-bar"></span>
-        </div>
-        <div class="radio-status" id="radioStatus">
-          <span class="lang-ar">اضغط للاستماع</span>
-          <span class="lang-en-text">Tap to listen</span>
+      <div class="radio-speaker">
+        <span class="radio-ring"></span>
+        <span class="radio-ring"></span>
+        <span class="radio-ring"></span>
+        <div class="radio-grille">
+          <button class="radio-play-btn" id="radioPlayBtn" aria-label="Play/Pause Radio">
+            <svg viewbox="0 0 24 24" id="radioPlayIcon"><path d="M8 5v14l11-7z"></path></svg>
+          </button>
         </div>
       </div>
-      <button class="radio-play-btn" id="radioPlayBtn" aria-label="Play/Pause Radio">
-        <svg viewbox="0 0 24 24" id="radioPlayIcon"><path d="M8 5v14l11-7z"></path></svg>
-      </button>
+      <div class="radio-station-name">
+        <span class="lang-ar">إذاعة القرآن الكريم من القاهرة</span>
+        <span class="lang-en-text">Quran Radio — Cairo</span>
+      </div>
+      <div class="radio-station-desc">
+        <span class="lang-ar">الهيئة الوطنية للإعلام · FM ٩٨٫٢</span>
+        <span class="lang-en-text">National Media Authority · FM 98.2</span>
+      </div>
+      <div class="radio-status-pill">
+        <span class="live-dot"></span>
+        <span class="radio-status" id="radioStatus">
+          <span class="lang-ar">اضغط للاستماع</span>
+          <span class="lang-en-text">Tap to listen</span>
+        </span>
+      </div>
     </div>
   </div>
   <audio id="radioAudio" preload="none"></audio>
@@ -5130,8 +5133,9 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
     
     playerTitle.textContent = titleText;
     expandedTitle.textContent = titleText;
-    coverNum.textContent = '📻';
-    expandedNum.textContent = '📻';
+    const RADIO_ICON = '<svg class="radio-cover-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.24 6.15C2.51 6.43 2 7.17 2 8v12c0 1.1.89 2 2 2h16c1.11 0 2-.9 2-2V8c0-1.11-.89-2-2-2H8.3l8.26-3.34L15.88 1 3.24 6.15zM7 20c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm13-8h-2v-2h-2v2H4V8h16v4z"/></svg>';
+    coverNum.innerHTML = RADIO_ICON;
+    expandedNum.innerHTML = RADIO_ICON;
     
     player.classList.add('is-radio');
     if (typeof playerExpanded !== 'undefined' && playerExpanded) {
