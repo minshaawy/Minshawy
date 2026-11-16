@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-"""Build one static page per surah under surah/<slug>/index.html, the
-surah index at surah/index.html, and sitemap.xml.
+"""Build one static page per surah under surah/<slug>/index.html (Arabic) and
+en/surah/<slug>/index.html (English), both indexes, 404.html and sitemap.xml.
 
 Surah names are read from the `surahs` array in index.html so the site
 keeps a single source of truth. Run from the repo root:
@@ -111,6 +111,14 @@ h1{font-family:'Thmanyah Serif Display',serif;font-weight:700;font-size:clamp(2.
 .grid b{font-weight:500;color:var(--ochre-deep);min-width:2.2em}
 footer{background:var(--ink);color:var(--paper-deep);font-size:.85rem;text-align:center;padding:24px 20px}
 footer a{color:var(--paper)}
+.top nav{display:flex;gap:16px;align-items:center;flex:none}
+.top nav a{white-space:nowrap}
+.top .brand{min-width:0}
+@media (max-width:440px){.top-in{padding:12px 14px;gap:8px}.top .brand{font-size:.95rem}.top nav{gap:10px;font-size:.9rem}.top .brand::before{display:none}}
+.top .lang{border:1px solid rgba(244,237,224,.4);border-radius:999px;padding:2px 12px;font-size:.85rem}
+html[dir=ltr] .sub span{direction:rtl;text-align:left}
+html[dir=ltr] .pager .next{text-align:right}
+html[dir=ltr] .top .brand::before{margin-inline-end:8px}
 """
 
 HEAD_ICONS = """<link rel="icon" href="/favicon.ico" sizes="48x48">
@@ -119,10 +127,30 @@ HEAD_ICONS = """<link rel="icon" href="/favicon.ico" sizes="48x48">
 <link rel="manifest" href="/manifest.webmanifest">
 <meta name="theme-color" content="#2a1f12">"""
 
-TOP = """<header class="top"><div class="top-in">
+def top_ar(en_href):
+    return f"""<header class="top"><div class="top-in">
   <a class="brand" href="/">محمد صديق المنشاوي</a>
-  <a href="/surah/">فهرس السور</a>
+  <nav><a href="/surah/">فهرس السور</a><a class="lang" href="{en_href}" hreflang="en" lang="en">English</a></nav>
 </div></header>"""
+
+
+def top_en(ar_href):
+    return f"""<header class="top"><div class="top-in">
+  <a class="brand" href="/">Muhammad Siddiq Al-Minshawi</a>
+  <nav><a href="/en/surah/">All surahs</a><a class="lang" href="{ar_href}" hreflang="ar" lang="ar">العربية</a></nav>
+</div></header>"""
+
+
+FOOTER_EN = """<footer>
+  <p>A non-commercial site sharing the recitations of Sheikh Muhammad Siddiq Al-Minshawi · Recordings are copyrighted to their owners.</p>
+  <p><a href="/">Home</a> · <a href="/en/surah/">All surahs</a> · <a href="/surah/">فهرس السور</a></p>
+</footer>"""
+
+
+def alternates(ar_url, en_url):
+    return (f'<link rel="alternate" hreflang="ar" href="{ar_url}">\n'
+            f'<link rel="alternate" hreflang="en" href="{en_url}">\n'
+            f'<link rel="alternate" hreflang="x-default" href="{ar_url}">')
 
 FOOTER = """<footer>
   <p>موقع غير تجاري لنشر تلاوات الشيخ محمد صديق المنشاوي · حقوق التلاوات محفوظة لمالكيها الأصليين.</p>
@@ -195,6 +223,7 @@ def page(s, prev, nxt):
 <title>{e(title)}</title>
 <meta name="description" content="{e(desc)}">
 <link rel="canonical" href="{url}">
+{alternates(url, f"{SITE}/en/surah/{slug}/")}
 {HEAD_ICONS}
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ar_EG">
@@ -208,7 +237,7 @@ def page(s, prev, nxt):
 <style>{STYLE}</style>
 </head>
 <body>
-{TOP}
+{top_ar(f"/en/surah/{slug}/")}
 <main>
   <nav class="crumbs" aria-label="مسار التصفح"><a href="/">الرئيسية</a> › <a href="/surah/">فهرس السور</a> › سورة {ar}</nav>
   <h1>سورة {ar}</h1>
@@ -264,6 +293,7 @@ def index_page(surahs):
 <title>{e(title)}</title>
 <meta name="description" content="{e(desc)}">
 <link rel="canonical" href="{url}">
+{alternates(url, f"{SITE}/en/surah/")}
 {HEAD_ICONS}
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ar_EG">
@@ -275,7 +305,7 @@ def index_page(surahs):
 <style>{STYLE}</style>
 </head>
 <body>
-{TOP}
+{top_ar("/en/surah/")}
 <main>
   <nav class="crumbs" aria-label="مسار التصفح"><a href="/">الرئيسية</a> › فهرس السور</nav>
   <h1>فهرس السور</h1>
@@ -283,6 +313,170 @@ def index_page(surahs):
   <ul class="grid">
 {items}
   </ul>
+</main>
+{FOOTER}
+</body>
+</html>
+"""
+
+
+def page_en(s, prev, nxt):
+    n, ar, en, slug = s["num"], s["ar"], s["en"], s["slug"]
+    url = f"{SITE}/en/surah/{slug}/"
+    ar_url = f"{SITE}/surah/{slug}/"
+    kind = "Medinan" if s["medinan"] else "Meccan"
+    title = f"Surah {en} by Sheikh Muhammad Siddiq Al-Minshawi | Murattal & Mujawwad MP3"
+    desc = (f"Listen to and download Surah {en} (سورة {ar}) recited by Sheikh Muhammad Siddiq Al-Minshawi: "
+            f"the complete murattal and mujawwad recitations, Hafs from 'Asim. Free MP3.")
+    m_url, j_url = AUDIO["murattal"] + s["file"], AUDIO["mujawwad"] + s["file"]
+    ld = {"@context": "https://schema.org", "@graph": [
+        {"@type": "BreadcrumbList", "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": SITE + "/"},
+            {"@type": "ListItem", "position": 2, "name": "All surahs", "item": SITE + "/en/surah/"},
+            {"@type": "ListItem", "position": 3, "name": f"Surah {en}", "item": url}]},
+        {"@type": "AudioObject", "name": f"Surah {en} - Murattal - Muhammad Siddiq Al-Minshawi", "contentUrl": m_url,
+         "encodingFormat": "audio/mpeg", "inLanguage": "ar", "byArtist": {"@id": SITE + "/#person"}},
+        {"@type": "AudioObject", "name": f"Surah {en} - Mujawwad - Muhammad Siddiq Al-Minshawi", "contentUrl": j_url,
+         "encodingFormat": "audio/mpeg", "inLanguage": "ar", "byArtist": {"@id": SITE + "/#person"}}]}
+
+    def nav(o, cls, label):
+        return f'<a class="{cls}" href="/en/surah/{o["slug"]}/"><small>{label}</small>Surah {html.escape(o["en"])}</a>' if o else ""
+
+    e = html.escape
+    return f"""<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="{CSP}">
+<title>{e(title)}</title>
+<meta name="description" content="{e(desc)}">
+<link rel="canonical" href="{url}">
+{alternates(ar_url, url)}
+{HEAD_ICONS}
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Sheikh Muhammad Siddiq Al-Minshawi · The Weeping Voice">
+<meta property="og:title" content="{e(f'Surah {en} by Sheikh Muhammad Siddiq Al-Minshawi')}">
+<meta property="og:description" content="{e(desc)}">
+<meta property="og:url" content="{url}">
+<meta property="og:image" content="{SITE}/images/social-thumbnail.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>
+<style>{STYLE}</style>
+</head>
+<body>
+{top_en(f"/surah/{slug}/")}
+<main>
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › <a href="/en/surah/">All surahs</a> › Surah {e(en)}</nav>
+  <h1>Surah {e(en)}</h1>
+  <p class="sub">Recited by Sheikh Muhammad Siddiq Al-Minshawi<span>سورة {ar} · الشيخ محمد صديق المنشاوي</span></p>
+  <ul class="facts">
+    <li>Surah {n} of 114</li>
+    <li>{s['ayat']} verses</li>
+    <li>{kind}</li>
+  </ul>
+
+  <section class="rec">
+    <h2>Murattal</h2>
+    <audio controls preload="none" src="{m_url}" data-title="Surah {e(en)}" data-album="Murattal"></audio>
+    <a class="dl" href="{m_url}" rel="nofollow">Download Surah {e(en)}, murattal (MP3)</a>
+  </section>
+  <section class="rec">
+    <h2>Mujawwad</h2>
+    <audio controls preload="none" src="{j_url}" data-title="Surah {e(en)}" data-album="Mujawwad"></audio>
+    <a class="dl" href="{j_url}" rel="nofollow">Download Surah {e(en)}, mujawwad (MP3)</a>
+  </section>
+
+  <p class="about">Surah {e(en)} (سورة {ar}) is surah {n} of the Holy Quran, a {kind.lower()} surah of {s['ayat']} verses.
+  Listen to it here in full, recited by Sheikh Muhammad Siddiq Al-Minshawi, “the Weeping Voice”, in both the murattal and mujawwad styles, Hafs from 'Asim.</p>
+  <a class="home-cta" href="/#library">Listen to the complete Quran</a>
+
+  <nav class="pager" aria-label="Neighbouring surahs">{nav(prev, "prev", "Previous surah")}{nav(nxt, "next", "Next surah")}</nav>
+</main>
+{FOOTER_EN}
+{PLAYER_JS.replace("الشيخ محمد صديق المنشاوي", "Sheikh Muhammad Siddiq Al-Minshawi")}
+</body>
+</html>
+"""
+
+
+def index_page_en(surahs):
+    url = f"{SITE}/en/surah/"
+    title = "All 114 surahs recited by Sheikh Muhammad Siddiq Al-Minshawi | Murattal & Mujawwad MP3"
+    desc = ("The complete Quran recited by Sheikh Muhammad Siddiq Al-Minshawi. Pick a surah to listen to or download "
+            "the murattal and mujawwad recitations, Hafs from 'Asim.")
+    items = "\n".join(
+        f'    <li><a href="/en/surah/{s["slug"]}/"><b>{s["num"]}</b>{html.escape(s["en"])}</a></li>' for s in surahs)
+    ld = {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": SITE + "/"},
+        {"@type": "ListItem", "position": 2, "name": "All surahs", "item": url}]}
+    e = html.escape
+    return f"""<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="{CSP}">
+<title>{e(title)}</title>
+<meta name="description" content="{e(desc)}">
+<link rel="canonical" href="{url}">
+{alternates(SITE + "/surah/", url)}
+{HEAD_ICONS}
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="{e(title)}">
+<meta property="og:description" content="{e(desc)}">
+<meta property="og:url" content="{url}">
+<meta property="og:image" content="{SITE}/images/social-thumbnail.jpg">
+<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>
+<style>{STYLE}</style>
+</head>
+<body>
+{top_en("/surah/")}
+<main>
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › All surahs</nav>
+  <h1>All surahs</h1>
+  <p class="sub">The complete Quran recited by Sheikh Muhammad Siddiq Al-Minshawi, murattal and mujawwad</p>
+  <ul class="grid">
+{items}
+  </ul>
+</main>
+{FOOTER_EN}
+</body>
+</html>
+"""
+
+
+def page_404():
+    return f"""<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="{CSP}">
+<title>الصفحة غير موجودة · الشيخ محمد صديق المنشاوي</title>
+<meta name="robots" content="noindex">
+{HEAD_ICONS}
+<style>{STYLE}
+.nf{{text-align:center;padding-top:40px}}.nf h1{{font-size:clamp(2.2rem,7vw,3.2rem)}}
+.nf .links{{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:26px}}
+.nf .links a{{display:inline-block;border:1px solid var(--paper-deep);background:#fbf7ef;border-radius:999px;padding:8px 18px;text-decoration:none}}
+.nf .en{{direction:ltr;margin-top:36px;color:var(--ink-soft)}}</style>
+</head>
+<body>
+{top_ar("/en/surah/")}
+<main class="nf">
+  <p style="font-size:3rem;margin:0;color:var(--gold)">۞</p>
+  <h1>الصفحة غير موجودة</h1>
+  <p class="about">ربما تغيّر الرابط أو كُتب خطأ. تقدر تكمّل من هنا:</p>
+  <div class="links">
+    <a href="/">الصفحة الرئيسية</a>
+    <a href="/#library">المصحف كاملًا</a>
+    <a href="/surah/">فهرس السور</a>
+    <a href="/#radio">إذاعة القرآن الكريم</a>
+  </div>
+  <p class="en">Page not found. Try the <a href="/">home page</a> or <a href="/en/surah/">all surahs</a>.</p>
 </main>
 {FOOTER}
 </body>
@@ -307,6 +501,15 @@ def sitemap(surahs):
     <loc>{SITE}/surah/{s['slug']}/</loc>
     <lastmod>{today}</lastmod>
   </url>""")
+    urls.append(f"""  <url>
+    <loc>{SITE}/en/surah/</loc>
+    <lastmod>{today}</lastmod>
+  </url>""")
+    for s in surahs:
+        urls.append(f"""  <url>
+    <loc>{SITE}/en/surah/{s['slug']}/</loc>
+    <lastmod>{today}</lastmod>
+  </url>""")
     return ('<?xml version="1.0" encoding="UTF-8"?>\n'
             '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"\n'
             '        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n'
@@ -325,6 +528,16 @@ def main():
             f.write(page(s, prev, nxt))
     with open(os.path.join(out, "index.html"), "w", encoding="utf-8") as f:
         f.write(index_page(surahs))
+    out_en = os.path.join(ROOT, "en", "surah")
+    for i, s in enumerate(surahs):
+        d = os.path.join(out_en, s["slug"])
+        os.makedirs(d, exist_ok=True)
+        with open(os.path.join(d, "index.html"), "w", encoding="utf-8") as f:
+            f.write(page_en(s, surahs[i - 1] if i else None, surahs[i + 1] if i < len(surahs) - 1 else None))
+    with open(os.path.join(out_en, "index.html"), "w", encoding="utf-8") as f:
+        f.write(index_page_en(surahs))
+    with open(os.path.join(ROOT, "404.html"), "w", encoding="utf-8") as f:
+        f.write(page_404())
     with open(os.path.join(ROOT, "sitemap.xml"), "w", encoding="utf-8") as f:
         f.write(sitemap(surahs))
     # Slug map for the home page's library links.
