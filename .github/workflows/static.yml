@@ -33,11 +33,16 @@ jobs:
         uses: actions/checkout@v4
       - name: Setup Pages
         uses: actions/configure-pages@v5
+      - name: Collect site files
+        # Publish only what the site uses, so repo extras (README, ticker.html,
+        # start scripts) don't become public pages that search engines index.
+        run: |
+          mkdir _site
+          cp -r index.html manifest.webmanifest robots.txt sitemap.xml favicon.ico fonts images _site/
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload entire repository
-          path: '.'
+          path: '_site'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
