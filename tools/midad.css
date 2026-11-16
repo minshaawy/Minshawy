@@ -278,3 +278,15 @@ section.block{padding:clamp(56px,10vh,112px) 0;border-top:1px solid var(--line)}
 /* dark theme: keep the radio block distinct from the page */
 :root[data-theme="dark"] .live-radio{border-block:1px solid var(--line)}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .live-radio{border-block:1px solid var(--line)}}
+
+/* ---- calm player: no spinning ring, bouncing bars or glow ---- */
+.media-player.is-playing .player-cover::after{display:none!important;animation:none!important}
+.player-cover::before{display:none!important}
+.visualizer{display:none!important}
+.media-player.is-playing .player-cover .cover-num{opacity:1!important}
+.player-cover .cover-num{text-shadow:none!important}
+.player-cover .cover-num svg{width:22px;height:22px;fill:currentColor}
+.player-cover:hover{transform:none!important}
+.media-player.is-radio .player-cover,.player-expanded.is-radio .expanded-cover{border-color:rgba(var(--p-fg-rgb),.2)!important}
+.media-player.is-playing .expanded-cover{animation:none!important}
+.media-player.is-radio .sub-type{display:none}

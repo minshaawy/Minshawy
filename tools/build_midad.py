@@ -45,6 +45,16 @@ player_css = player_css.replace("url('images/", "url('/images/").replace('url("i
 
 player_html = between(SRC, "<!-- ============ PRO MEDIA PLAYER ============ -->", "\n<script>\n")
 script = SRC[SRC.rindex("\n<script>\n"):SRC.rindex("</body>")]
+# Tag the "مرتل" bit of the player subtitle so it can follow the chosen
+# recitation and hide during the radio.
+player_html = player_html.replace(
+    """          <span class="dot"></span>
+          <span class="lang-ar">مرتل</span>
+          <span class="lang-en-text">Murattal</span>""",
+    """          <span class="dot sub-type"></span>
+          <span class="lang-ar sub-type" id="subTypeAr">مرتل</span>
+          <span class="lang-en-text sub-type" id="subTypeEn">Murattal</span>""", 1)
+assert 'id="subTypeAr"' in player_html
 
 # Logo as one <symbol>, reused everywhere.
 vb = re.search(r'viewBox="([^"]+)"', LOGO).group(1)
@@ -236,6 +246,13 @@ THEME_JS = """<script>
     try{localStorage.setItem('theme',next);}catch(e){}sync();});
   if(mq.addEventListener)mq.addEventListener('change',sync);
   sync();
+})();
+// Player subtitle follows murattal / mujawwad
+(function(){
+  var mj=document.getElementById('btnMujawwad'),ar=document.getElementById('subTypeAr'),en=document.getElementById('subTypeEn');
+  if(!mj||!ar)return;
+  function upd(){var on=mj.classList.contains('active');ar.textContent=on?'مجوّد':'مرتل';en.textContent=on?'Mujawwad':'Murattal';}
+  new MutationObserver(upd).observe(mj,{attributes:true,attributeFilter:['class']});upd();
 })();
 </script>
 """
