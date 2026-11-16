@@ -17,6 +17,8 @@ SRC = open(os.path.join(ROOT, "index.html"), encoding="utf-8").read()
 CSS = open(os.path.join(ROOT, "tools", "midad.css"), encoding="utf-8").read()
 LOGO = open(os.path.join(ROOT, "images", "logo-minshawi.svg"), encoding="utf-8").read()
 OUT = sys.argv[1] if len(sys.argv) > 1 else os.path.join(ROOT, "test", "index.html")
+# Links stay inside the copy being built: /test/… for the test site, /… for the real one.
+BASE = "/test" if OUT.replace(os.sep, "/").endswith("test/index.html") else ""
 
 
 def between(s, a, b, inclusive_a=True):
@@ -45,6 +47,8 @@ player_css = player_css.replace("url('images/", "url('/images/").replace('url("i
 
 player_html = between(SRC, "<!-- ============ PRO MEDIA PLAYER ============ -->", "\n<script>\n")
 script = SRC[SRC.rindex("\n<script>\n"):SRC.rindex("</body>")]
+script = script.replace('href="/surah/${surahSlug(s)}/"', 'href="' + BASE + '/surah/${surahSlug(s)}/"')
+assert BASE == "" or (BASE + "/surah/${surahSlug(s)}/") in script
 # Tag the "مرتل" bit of the player subtitle so it can follow the chosen
 # recitation and hide during the radio.
 player_html = player_html.replace(
@@ -187,7 +191,7 @@ body = f'''<body>
       </div>
     </div>
     <div class="surahs-grid" id="surahsGrid"></div>
-    <p class="lib-more">{ar_en('لكل سورة صفحة خاصة بها — <a href="/surah/">فهرس السور</a>', 'Every surah has its own page — <a href="/surah/">All surahs</a>')}</p>
+    <p class="lib-more">{ar_en(f'لكل سورة صفحة خاصة بها — <a href="{BASE}/surah/">فهرس السور</a>', f'Every surah has its own page — <a href="{BASE}/surah/">All surahs</a>')}</p>
   </div>
 </section>
 
@@ -216,7 +220,7 @@ body = f'''<body>
     <nav>
       <a href="#bio">{ar_en("السيرة", "Biography")}</a>
       <a href="#library">{ar_en("التلاوات", "Recitations")}</a>
-      <a href="/surah/">{ar_en("فهرس السور", "All Surahs")}</a>
+      <a href="{BASE}/surah/">{ar_en("فهرس السور", "All Surahs")}</a>
       <a href="#radio">{ar_en("إذاعة القرآن الكريم", "Quran Radio")}</a>
     </nav>
     <p class="fine">{ar_en("تلاوات القرآن الكريم بصوت الشيخ محمد صديق المنشاوي محفوظة الحقوق لمالكيها الأصليين. هذا الموقع غير تجاري ويهدف لنشر القرآن الكريم.", "Quran recitations by Sheikh Muhammad Siddiq Al-Minshawi are copyrighted to their original owners. This is a non-commercial website aimed at spreading the Holy Quran.")}</p>

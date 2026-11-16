@@ -1545,7 +1545,7 @@ section.block{padding:clamp(56px,10vh,112px) 0;border-top:1px solid var(--line)}
       </div>
     </div>
     <div class="surahs-grid" id="surahsGrid"></div>
-    <p class="lib-more"><span class="lang-ar">لكل سورة صفحة خاصة بها — <a href="/surah/">فهرس السور</a></span><span class="lang-en-text">Every surah has its own page — <a href="/surah/">All surahs</a></span></p>
+    <p class="lib-more"><span class="lang-ar">لكل سورة صفحة خاصة بها — <a href="/test/surah/">فهرس السور</a></span><span class="lang-en-text">Every surah has its own page — <a href="/test/surah/">All surahs</a></span></p>
   </div>
 </section>
 
@@ -1574,7 +1574,7 @@ section.block{padding:clamp(56px,10vh,112px) 0;border-top:1px solid var(--line)}
     <nav>
       <a href="#bio"><span class="lang-ar">السيرة</span><span class="lang-en-text">Biography</span></a>
       <a href="#library"><span class="lang-ar">التلاوات</span><span class="lang-en-text">Recitations</span></a>
-      <a href="/surah/"><span class="lang-ar">فهرس السور</span><span class="lang-en-text">All Surahs</span></a>
+      <a href="/test/surah/"><span class="lang-ar">فهرس السور</span><span class="lang-en-text">All Surahs</span></a>
       <a href="#radio"><span class="lang-ar">إذاعة القرآن الكريم</span><span class="lang-en-text">Quran Radio</span></a>
     </nav>
     <p class="fine"><span class="lang-ar">تلاوات القرآن الكريم بصوت الشيخ محمد صديق المنشاوي محفوظة الحقوق لمالكيها الأصليين. هذا الموقع غير تجاري ويهدف لنشر القرآن الكريم.</span><span class="lang-en-text">Quran recitations by Sheikh Muhammad Siddiq Al-Minshawi are copyrighted to their original owners. This is a non-commercial website aimed at spreading the Holy Quran.</span></p>
@@ -2070,7 +2070,7 @@ function renderSurahs(filter = '') {
     card.dataset.num = s.num;
     card.innerHTML = `
       <div class="surah-num">${arabicNum(s.num)}</div>
-      <a class="surah-info" href="/surah/${surahSlug(s)}/">
+      <a class="surah-info" href="/test/surah/${surahSlug(s)}/">
         <span class="surah-name">${s.ar}</span>
         <span class="surah-name-en">${s.en}</span>
       </a>
