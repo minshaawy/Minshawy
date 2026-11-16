@@ -47,7 +47,7 @@ STYLE = """
 @font-face{font-family:'Thmanyah Serif Text';src:url('/fonts/thmanyahseriftext-Regular.woff2') format('woff2');font-weight:400;font-display:swap}
 @font-face{font-family:'Thmanyah Serif Display';src:url('/fonts/thmanyahserifdisplay-Bold.woff2') format('woff2');font-weight:700;font-display:swap}
 :root{--bg:#f7f4ee;--bg-2:#efebe2;--card:#fffdf9;--fg:#111;--fg-2:#2b2925;--muted:#6a645a;
-  --line:rgba(17,17,17,.12);--line-2:rgba(17,17,17,.26);--accent:#9b2a1a;--btn:#111;--btn-fg:#f7f4ee;color-scheme:light}
+  --line:rgba(17,17,17,.12);--line-2:rgba(17,17,17,.26);--accent:#9b2a1a;--btn:#111;--btn-fg:#f7f4ee;color-scheme:only light}
 :root[data-theme="dark"]{__DARK__}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){__DARK__}}
 *{box-sizing:border-box;margin:0;padding:0}
@@ -157,7 +157,7 @@ def head(title, desc, url, ld):
 <link rel="apple-touch-icon" sizes="180x180" href="/images/icons/apple-touch-icon.png">
 <link rel="manifest" href="/manifest.webmanifest">
 <meta name="theme-color" content="#f7f4ee">
-<meta name="color-scheme" content="light dark">
+<meta name="color-scheme" content="only light">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ar_EG">
 <meta property="og:site_name" content="الشيخ محمد صديق المنشاوي · الصوت الباكي">

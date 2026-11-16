@@ -10,7 +10,7 @@
   /* media player */
   --p-bg:#111; --p-fg:#f7f4ee; --p-fg-rgb:247,244,238; --p-acc:#f7f4ee; --p-acc-rgb:247,244,238;
   --wrap:1200px; --gut:clamp(16px,5vw,64px);
-  color-scheme:light;
+  color-scheme:only light;
 }
 :root[data-theme="dark"]{
   --bg:#121110; --bg-2:#181614; --card:#1c1a17;
