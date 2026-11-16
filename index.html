@@ -13,6 +13,17 @@
 <meta name="theme-color" content="#2a1f12">
 <link rel="canonical" href="https://www.elminshawy.net/">
 
+<!-- App icon (Add to Home Screen — iPhone & Android) -->
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/images/icons/icon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="المنشاوي">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="application-name" content="المنشاوي">
+
 <!-- Social Media Meta Tags -->
 <meta property="og:site_name" content="الشيخ محمد صديق المنشاوي · الصوت الباكي">
 <meta property="og:locale" content="ar_EG">
@@ -4155,8 +4166,10 @@ function setRecitationType(type) {
   }
   
   // If playing, restart the current surah with the new audio type
-  if (currentSurah && !audio.paused) {
+  if (currentSurah && !currentSurah.isRadio && !audio.paused) {
     playSurah(currentSurah.num);
+  } else if (typeof updateMediaSession === 'function') {
+    updateMediaSession();
   }
 }
 
@@ -4430,8 +4443,17 @@ function formatTime(seconds) {
   return `${m}:${String(s).padStart(2, '0')}`;
 }
 
+// On phones/tablets the real visualizer is skipped on purpose: routing the <audio> through
+// Web Audio (createMediaElementSource) makes iOS/Android suspend the sound when the screen
+// locks or the browser goes to the background. Without it the plain <audio> element keeps
+// playing in the background; the waveform then uses a gentle synthetic animation instead.
+const IS_MOBILE_DEVICE =
+  /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) ||
+  (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1) ||
+  window.matchMedia('(pointer: coarse)').matches;
+
 function setupAudioVisualizer() {
-  if (audioContext) return;
+  if (audioContext || IS_MOBILE_DEVICE) return;
   try {
     audioContext = new (window.AudioContext || window.webkitAudioContext)();
     const source = audioContext.createMediaElementSource(audio);
@@ -4446,23 +4468,37 @@ function setupAudioVisualizer() {
 }
 
 function animateWaveform() {
-  if (!analyser || !audio.paused === false) {
-    animationFrameId = requestAnimationFrame(animateWaveform);
+  // Stop the loop while the expanded player is closed (saves battery); reopening restarts it
+  if (!playerExpanded.classList.contains('show')) {
+    animationFrameId = null;
     return;
   }
 
-  if (analyser && !audio.paused) {
+  const radioEl = document.getElementById('radioAudio');
+  const isPlaying = currentSurah && currentSurah.isRadio
+    ? (radioEl && !radioEl.paused)
+    : !audio.paused;
+
+  if (isPlaying && analyser && !(currentSurah && currentSurah.isRadio)) {
+    // Real frequency data (desktop)
     analyser.getByteFrequencyData(dataArray);
-    const step = Math.floor(dataArray.length / WAVE_BARS_COUNT);
+    const step = Math.max(1, Math.floor(dataArray.length / WAVE_BARS_COUNT));
     for (let i = 0; i < WAVE_BARS_COUNT; i++) {
       const value = dataArray[i * step] || 0;
-      const height = Math.max(4, (value / 255) * 50);
-      waveformBars[i].style.height = `${height}px`;
+      waveformBars[i].style.height = `${Math.max(4, (value / 255) * 50)}px`;
       waveformBars[i].classList.toggle('active', value > 30);
     }
-  } else if (audio.paused) {
-    // Idle animation
-    waveformBars.forEach((bar, i) => {
+  } else if (isPlaying) {
+    // Synthetic waveform (mobile, or radio)
+    const t = performance.now() / 1000;
+    for (let i = 0; i < WAVE_BARS_COUNT; i++) {
+      const v = 0.5 + 0.3 * Math.sin(t * 3 + i * 0.45) + 0.2 * Math.sin(t * 5.3 + i * 1.7);
+      waveformBars[i].style.height = `${Math.max(4, v * 40)}px`;
+      waveformBars[i].classList.toggle('active', v > 0.55);
+    }
+  } else {
+    // Idle
+    waveformBars.forEach(bar => {
       bar.style.height = '4px';
       bar.classList.remove('active');
     });
@@ -4491,6 +4527,13 @@ function playSurah(num) {
     window.radioHls.destroy();
     window.radioHls = null;
   }
+  // Native-HLS radio (iPhone/Safari) isn't stopped by hls.js — stop it explicitly
+  const radioEl = document.getElementById('radioAudio');
+  if (radioEl && radioEl.getAttribute('src')) {
+    radioEl.pause();
+    radioEl.removeAttribute('src');
+    radioEl.load();
+  }
   
   player.classList.remove('is-radio');
   if (playerExpanded) playerExpanded.classList.remove('is-radio');
@@ -4518,6 +4561,9 @@ function playSurah(num) {
 
   // Update fav button state
   favBtn.classList.toggle('active', favorites.has(num));
+
+  // Lock-screen title / artwork / buttons
+  updateMediaSession();
 
   // Highlight active card
   syncSurahCards();
@@ -4798,14 +4844,14 @@ setVolumeUI(80); // Init the visual volume thumb at 80%
 expandBtn.addEventListener('click', () => {
   playerExpanded.classList.add('show');
   document.body.style.overflow = 'hidden';
-  if (!animationFrameId && analyser) animateWaveform();
+  if (!animationFrameId) animateWaveform();
 });
 
 playerCover.addEventListener('click', () => {
   if (!currentSurah) return;
   playerExpanded.classList.add('show');
   document.body.style.overflow = 'hidden';
-  if (!animationFrameId && analyser) animateWaveform();
+  if (!animationFrameId) animateWaveform();
 });
 
 expandedClose.addEventListener('click', () => {
@@ -4878,6 +4924,84 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
+// ============ LOCK SCREEN / BACKGROUND CONTROLS (Media Session API) ============
+// Shows the surah name + the sheikh's photo on the phone's lock screen, notification
+// shade, car display and headphones, with play/pause/next/previous/seek buttons.
+const HAS_MEDIA_SESSION = 'mediaSession' in navigator;
+const MEDIA_ARTWORK = [
+  { src: '/images/icons/icon-192.png', sizes: '192x192', type: 'image/png' },
+  { src: '/images/icons/icon-512.png', sizes: '512x512', type: 'image/png' }
+];
+
+function isAnythingPlaying() {
+  if (currentSurah && currentSurah.isRadio) {
+    const r = document.getElementById('radioAudio');
+    return r && !r.paused;
+  }
+  return !audio.paused;
+}
+
+function setMediaAction(action, handler) {
+  try { navigator.mediaSession.setActionHandler(action, handler); } catch (e) { /* unsupported action */ }
+}
+
+function updateMediaSession() {
+  if (!HAS_MEDIA_SESSION || !currentSurah || typeof MediaMetadata === 'undefined') return;
+  const isEn = document.body.classList.contains('lang-en');
+  const isRadio = !!currentSurah.isRadio;
+  const typeAr = currentRecitationType === 'mujawwad' ? 'المصحف المجود' : 'المصحف المرتل';
+  const typeEn = currentRecitationType === 'mujawwad' ? 'Mujawwad' : 'Murattal';
+
+  navigator.mediaSession.metadata = new MediaMetadata({
+    title: isRadio
+      ? (isEn ? 'Holy Quran Radio' : 'إذاعة القرآن الكريم')
+      : (isEn ? `Surah ${currentSurah.en}` : `سورة ${currentSurah.ar}`),
+    artist: isRadio
+      ? (isEn ? 'Live from Cairo' : 'بث مباشر من القاهرة')
+      : (isEn ? 'Sheikh Muhammad Siddiq Al-Minshawi' : 'الشيخ محمد صديق المنشاوي'),
+    album: isRadio ? (isEn ? 'Live Radio' : 'البث المباشر') : (isEn ? typeEn : typeAr),
+    artwork: MEDIA_ARTWORK
+  });
+
+  // Track navigation and seeking only make sense for surahs, not the live radio
+  setMediaAction('previoustrack', isRadio ? null : playPrev);
+  setMediaAction('nexttrack',     isRadio ? null : playNext);
+  setMediaAction('seekbackward',  isRadio ? null : (d) => { audio.currentTime = Math.max(0, audio.currentTime - ((d && d.seekOffset) || 10)); });
+  setMediaAction('seekforward',   isRadio ? null : (d) => { audio.currentTime = Math.min(audio.duration || 0, audio.currentTime + ((d && d.seekOffset) || 10)); });
+  setMediaAction('seekto',        isRadio ? null : (d) => {
+    if (d.fastSeek && 'fastSeek' in audio) audio.fastSeek(d.seekTime);
+    else audio.currentTime = d.seekTime;
+    updatePositionState();
+  });
+}
+
+function updatePositionState() {
+  if (!HAS_MEDIA_SESSION || !('setPositionState' in navigator.mediaSession)) return;
+  if (!currentSurah || currentSurah.isRadio || !isFinite(audio.duration) || audio.duration <= 0) return;
+  try {
+    navigator.mediaSession.setPositionState({
+      duration: audio.duration,
+      playbackRate: audio.playbackRate || 1,
+      position: Math.min(audio.currentTime, audio.duration)
+    });
+  } catch (e) {}
+}
+
+function setMediaPlaybackState() {
+  if (HAS_MEDIA_SESSION) navigator.mediaSession.playbackState = isAnythingPlaying() ? 'playing' : 'paused';
+}
+
+if (HAS_MEDIA_SESSION) {
+  setMediaAction('play',  () => { if (!isAnythingPlaying()) togglePlayPause(); });
+  setMediaAction('pause', () => { if (isAnythingPlaying()) togglePlayPause(); });
+  setMediaAction('stop',  () => { if (isAnythingPlaying()) togglePlayPause(); });
+
+  ['play', 'pause', 'playing'].forEach(ev => audio.addEventListener(ev, setMediaPlaybackState));
+  ['loadedmetadata', 'seeked', 'ratechange', 'playing'].forEach(ev => audio.addEventListener(ev, updatePositionState));
+  const radioEl = document.getElementById('radioAudio');
+  if (radioEl) ['play', 'pause', 'playing'].forEach(ev => radioEl.addEventListener(ev, setMediaPlaybackState));
+}
+
 // ============ LANGUAGE TOGGLE ============
 const langToggle = document.getElementById('langToggle');
 langToggle.addEventListener('click', () => {
@@ -4900,10 +5024,11 @@ langToggle.addEventListener('click', () => {
     playerTitle.textContent = titleText;
     expandedTitle.textContent = titleText;
     if (playerTrackInfo) {
-      playerTrackInfo.textContent = isEn
-        ? `${currentSurah.num} / 114`
-        : `${arabicNum(currentSurah.num)} / ١١٤`;
+      playerTrackInfo.textContent = currentSurah.isRadio
+        ? (isEn ? 'Live Stream' : 'بث مباشر')
+        : (isEn ? `${currentSurah.num} / 114` : `${arabicNum(currentSurah.num)} / ١١٤`);
     }
+    updateMediaSession();
   }
 });
 
@@ -5008,10 +5133,23 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
     }
     favBtn.classList.remove('active');
     syncSurahCards();
+    updateMediaSession();
 
     setRadioStatus('جاري الاتصال...', 'Connecting...');
 
-    if (typeof Hls !== 'undefined' && Hls.isSupported()) {
+    // Prefer the browser's own HLS player (iPhone/iPad/Safari): it keeps playing when the
+    // screen locks. hls.js (Media Source) is used on browsers without native HLS (Chrome/Android/Windows).
+    if (radioAudio.canPlayType('application/vnd.apple.mpegurl')) {
+      radioAudio.src = RADIO_STREAM;
+      radioAudio.load();
+      radioAudio.play().then(() => {
+        showPauseIcon();
+        setRadioStatus('يُبث الآن مباشرة', 'Now playing live');
+      }).catch(err => {
+        console.warn('Radio play error:', err);
+        setRadioStatus('تعذر التشغيل — حاول مرة أخرى', 'Playback failed — try again');
+      });
+    } else if (typeof Hls !== 'undefined' && Hls.isSupported()) {
       window.radioHls = new Hls({ enableWorker: true, lowLatencyMode: true });
       window.radioHls.loadSource(RADIO_STREAM);
       window.radioHls.attachMedia(radioAudio);
@@ -5029,16 +5167,6 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
           console.warn('HLS fatal error:', data);
           setRadioStatus('انقطع البث — حاول مرة أخرى', 'Stream lost — try again');
         }
-      });
-    } else if (radioAudio.canPlayType('application/vnd.apple.mpegurl')) {
-      radioAudio.src = RADIO_STREAM;
-      radioAudio.load();
-      radioAudio.play().then(() => {
-        showPauseIcon();
-        setRadioStatus('يُبث الآن مباشرة', 'Now playing live');
-      }).catch(err => {
-        console.warn('Radio play error:', err);
-        setRadioStatus('تعذر التشغيل — حاول مرة أخرى', 'Playback failed — try again');
       });
     } else {
       setRadioStatus('المتصفح لا يدعم البث المباشر', 'Browser does not support live streaming');
