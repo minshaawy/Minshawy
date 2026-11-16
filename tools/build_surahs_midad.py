@@ -164,13 +164,14 @@ def head(title, desc, url, ld):
 <meta property="og:title" content="{e(title)}">
 <meta property="og:description" content="{e(desc)}">
 <meta property="og:url" content="{share_url}">
-<meta property="og:image" content="{SITE}/images/share-card.jpg">
+<meta property="og:image" content="{SITE}/images/og-minshawi.jpg">
+<meta property="og:image:secure_url" content="{SITE}/images/og-minshawi.jpg">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="الشيخ محمد صديق المنشاوي · الصوت الباكي">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="{SITE}/images/share-card.jpg">
+<meta name="twitter:image" content="{SITE}/images/og-minshawi.jpg">
 <script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>
 {THEME_HEAD}
 <style>{STYLE}</style>

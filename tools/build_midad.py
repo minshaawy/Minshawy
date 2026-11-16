@@ -281,13 +281,15 @@ if "/test/" in OUT.replace(os.sep, "/") or OUT.endswith("test/index.html"):
 head = head.replace('<meta name="theme-color" content="#2a1f12">',
                     '<meta name="theme-color" content="#f7f4ee">\n<meta name="color-scheme" content="only light">')
 # Link previews (WhatsApp, X, Facebook…): Midad share card, 1200×630.
-head = (head.replace("images/social-thumbnail.jpg", "images/share-card.jpg")
+head = (head.replace("images/social-thumbnail.jpg", "images/og-minshawi.jpg")
+            .replace('<meta property="og:image:type" content="image/jpeg">',
+                     '<meta property="og:image:secure_url" content="https://www.elminshawy.net/images/og-minshawi.jpg">\n<meta property="og:image:type" content="image/jpeg">')
             .replace('<meta property="og:image:width" content="1024">', '<meta property="og:image:width" content="1200">')
             .replace('<meta property="og:image:height" content="537">',
                      '<meta property="og:image:height" content="630">\n<meta property="og:image:alt" content="الشيخ محمد صديق المنشاوي · الصوت الباكي">')
             .replace('<meta property="og:url" content="https://www.elminshawy.net/">',
                      f'<meta property="og:url" content="https://www.elminshawy.net{BASE}/">'))
-assert "share-card.jpg" in head and 'content="1200"' in head
+assert "og-minshawi.jpg" in head and 'content="1200"' in head
 
 page = (head + THEME_HEAD + "<style>\n" + fonts_css + "\n" + player_css + "\n" + CSS + "\n</style>\n</head>\n"
         + body + script + THEME_JS + "</body>\n</html>\n")
