@@ -176,7 +176,7 @@ def head(lang, title, desc, url, ld, other_path, ar_url, en_url):
 <html lang="{lang}" dir="{t['dir']}">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta http-equiv="Content-Security-Policy" content="{CSP}">
 <title>{e(title)}</title>
 <meta name="description" content="{e(desc)}">
