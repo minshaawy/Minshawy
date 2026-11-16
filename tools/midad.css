@@ -326,7 +326,17 @@ section.block{padding:clamp(56px,10vh,112px) 0;border-top:1px solid var(--line)}
   #rewindBtn,#forwardBtn{display:none!important}
   .player-buttons{gap:.4rem!important}
 }
+@media (max-width:380px){
+  /* English labels are wider: keep the radio button inside the row */
+  .site-header nav{gap:14px;font-size:.82rem;justify-content:space-between}
+  .nav-radio{padding:0 9px;gap:5px;font-size:.78rem}
+}
+@media (max-width:300px){
+  /* ~280px Fold cover: the biography is one scroll away, keep the radio visible */
+  .site-header nav a[href="#bio"]{display:none}
+}
 @media (max-width:340px){
+  .nav-radio svg{display:none}
   #shuffleBtn,#repeatBtn{display:none!important}
   .surahs-grid{grid-template-columns:minmax(0,1fr)}
   .site-header .wrap{gap:0}

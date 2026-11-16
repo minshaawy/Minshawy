@@ -47,8 +47,12 @@ player_css = player_css.replace("url('images/", "url('/images/").replace('url("i
 
 player_html = between(SRC, "<!-- ============ PRO MEDIA PLAYER ============ -->", "\n<script>\n")
 script = SRC[SRC.rindex("\n<script>\n"):SRC.rindex("</body>")]
-script = script.replace('href="/surah/${surahSlug(s)}/"', 'href="' + BASE + '/surah/${surahSlug(s)}/"')
-assert BASE == "" or (BASE + "/surah/${surahSlug(s)}/") in script
+CARD_HREF = "href=\"${isEnglish() ? '/en' : ''}/surah/${surahSlug(s)}/\""
+assert CARD_HREF in script
+script = script.replace(CARD_HREF, 'href="' + BASE + CARD_HREF[6:])
+# Language picked before paint (?lang= → /en/ → saved choice), same as index.html
+EARLY_LANG = "<script>" + between(SRC, "<body>\n<script>", "</script>\n", inclusive_a=False) + "</script>"
+assert "__initialLang" in EARLY_LANG
 # Tag the "مرتل" bit of the player subtitle so it can follow the chosen
 # recitation and hide during the radio.
 player_html = player_html.replace(
@@ -109,15 +113,16 @@ timeline = "\n".join(f'      <li class="fade-in"><b>{ar_en(ya, ye)}</b><span>{ar
 PLAY = '<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>'
 
 body = f'''<body>
+{EARLY_LANG}
 {logo_symbol}
 
 <header class="site-header">
   <div class="wrap">
-    <a class="brand" href="#top" aria-label="أعلى الصفحة">{logo()}</a>
+    <a class="brand" href="#top" aria-label="أعلى الصفحة" data-aria-en="Back to top">{logo()}</a>
     <nav>
       <a href="#library">{ar_en("التلاوات", "Recitations")}</a>
       <a href="#bio">{ar_en("السيرة", "Biography")}</a>
-      <button class="nav-radio" id="navRadio" type="button" aria-label="تشغيل إذاعة القرآن الكريم">
+      <button class="nav-radio" id="navRadio" type="button">
         <svg class="i-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg><svg class="i-pause" viewBox="0 0 24 24"><path d="M6 5h4v14H6zm8 0h4v14h-4z"/></svg>
         {ar_en("إذاعة القرآن الكريم", "Quran Radio")}<span class="live-dot"></span>
       </button>
@@ -175,7 +180,7 @@ body = f'''<body>
       </div>
     </div>
     <div class="surahs-grid" id="surahsGrid"></div>
-    <p class="lib-more">{ar_en(f'لكل سورة صفحة خاصة بها — <a href="{BASE}/surah/">فهرس السور</a>', f'Every surah has its own page — <a href="{BASE}/surah/">All surahs</a>')}</p>
+    <p class="lib-more">{ar_en(f'لكل سورة صفحة خاصة بها — <a href="{BASE}/surah/">فهرس السور</a>', f'Every surah has its own page — <a href="{BASE}/en/surah/">All surahs</a>')}</p>
   </div>
 </section>
 
@@ -189,7 +194,7 @@ body = f'''<body>
     <div class="radio-control">
       <div class="radio-speaker">
         <span class="radio-ring"></span><span class="radio-ring"></span><span class="radio-ring"></span>
-        <button class="radio-play-btn" id="radioPlayBtn" aria-label="Play/Pause Radio">
+        <button class="radio-play-btn" id="radioPlayBtn" aria-label="تشغيل/إيقاف الإذاعة" data-aria-en="Play/Pause radio">
           <svg viewBox="0 0 24 24" id="radioPlayIcon"><path d="M8 5v14l11-7z"></path></svg>
         </button>
       </div>
@@ -224,7 +229,7 @@ body = f'''<body>
     <nav>
       <a href="#library">{ar_en("التلاوات", "Recitations")}</a>
       <a href="#bio">{ar_en("السيرة", "Biography")}</a>
-      <a href="{BASE}/surah/">{ar_en("فهرس السور", "All Surahs")}</a>
+      <a href="{BASE}/surah/" data-href-ar="{BASE}/surah/" data-href-en="{BASE}/en/surah/">{ar_en("فهرس السور", "All Surahs")}</a>
       <a href="#radio">{ar_en("إذاعة القرآن الكريم", "Quran Radio")}</a>
     </nav>
     <p class="fine">{ar_en("تلاوات القرآن الكريم بصوت الشيخ محمد صديق المنشاوي محفوظة الحقوق لمالكيها الأصليين. هذا الموقع غير تجاري ويهدف لنشر القرآن الكريم.", "Quran recitations by Sheikh Muhammad Siddiq Al-Minshawi are copyrighted to their original owners. This is a non-commercial website aimed at spreading the Holy Quran.")}</p>
@@ -248,11 +253,12 @@ THEME_JS = """<script>
   function isDark(){var t=root.getAttribute('data-theme');return t?t==='dark':mq.matches;}
   function sync(){if(meta)meta.setAttribute('content',isDark()?'#121110':'#f7f4ee');
     if(btn){var en=document.body.classList.contains('lang-en');
-      btn.title=isDark()?(en?'Light mode':'الوضع النهاري'):(en?'Dark mode':'الوضع الليلي');}}
+      btn.title=isDark()?(en?'Light mode':'الوضع النهاري'):(en?'Dark mode':'الوضع الليلي');btn.setAttribute('aria-label',btn.title);}}
   if(btn)btn.addEventListener('click',function(){
     var next=isDark()?'light':'dark';root.setAttribute('data-theme',next);
     try{localStorage.setItem('theme',next);}catch(e){}sync();});
   if(mq.addEventListener)mq.addEventListener('change',sync);
+  new MutationObserver(sync).observe(document.body,{attributes:true,attributeFilter:['class']});
   sync();
 })();
 // Header radio button: plays/stops the live radio in place, and mirrors its state
@@ -260,9 +266,10 @@ THEME_JS = """<script>
   var nb=document.getElementById('navRadio'),card=document.getElementById('radioPlayBtn'),sec=document.querySelector('.live-radio');
   if(!nb||!card||!sec)return;
   nb.addEventListener('click',function(){card.click();});
-  function upd(){var on=sec.classList.contains('radio-playing');nb.classList.toggle('on',on);
-    nb.setAttribute('aria-label',on?'إيقاف إذاعة القرآن الكريم':'تشغيل إذاعة القرآن الكريم');}
-  new MutationObserver(upd).observe(sec,{attributes:true,attributeFilter:['class']});upd();
+  function upd(){var on=sec.classList.contains('radio-playing'),en=document.body.classList.contains('lang-en');nb.classList.toggle('on',on);
+    nb.setAttribute('aria-label',on?(en?'Stop Quran radio':'إيقاف إذاعة القرآن الكريم'):(en?'Play Quran radio':'تشغيل إذاعة القرآن الكريم'));}
+  new MutationObserver(upd).observe(sec,{attributes:true,attributeFilter:['class']});
+  new MutationObserver(upd).observe(document.body,{attributes:true,attributeFilter:['class']});upd();
 })();
 // Full biography: open it when the address points inside it (e.g. #timeline)
 (function(){
@@ -305,3 +312,11 @@ page = (head + THEME_HEAD + "<style>\n" + fonts_css + "\n" + player_css + "\n" +
 os.makedirs(os.path.dirname(OUT), exist_ok=True)
 open(OUT, "w", encoding="utf-8").write(page)
 print("wrote", OUT, len(page.encode()), "bytes")
+
+# English home of this copy: <base>/en/
+if OUT.replace(os.sep, "/").endswith("/index.html") and os.path.basename(os.path.dirname(OUT)) != "en":
+    import build_en_home  # noqa: E402
+    out_en = os.path.join(os.path.dirname(OUT), "en", "index.html")
+    os.makedirs(os.path.dirname(out_en), exist_ok=True)
+    open(out_en, "w", encoding="utf-8").write(build_en_home.build(page, base=BASE))
+    print("wrote", out_en)

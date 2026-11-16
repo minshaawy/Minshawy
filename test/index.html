@@ -13,6 +13,9 @@
 <meta name="theme-color" content="#f7f4ee">
 <meta name="color-scheme" content="only light">
 <link rel="canonical" href="https://www.elminshawy.net/">
+<link rel="alternate" hreflang="ar" href="https://www.elminshawy.net/">
+<link rel="alternate" hreflang="en" href="https://www.elminshawy.net/en/">
+<link rel="alternate" hreflang="x-default" href="https://www.elminshawy.net/">
 
 <!-- App icon (Add to Home Screen — iPhone & Android) -->
 <link rel="manifest" href="/manifest.webmanifest">
@@ -1470,7 +1473,17 @@ section.block{padding:clamp(56px,10vh,112px) 0;border-top:1px solid var(--line)}
   #rewindBtn,#forwardBtn{display:none!important}
   .player-buttons{gap:.4rem!important}
 }
+@media (max-width:380px){
+  /* English labels are wider: keep the radio button inside the row */
+  .site-header nav{gap:14px;font-size:.82rem;justify-content:space-between}
+  .nav-radio{padding:0 9px;gap:5px;font-size:.78rem}
+}
+@media (max-width:300px){
+  /* ~280px Fold cover: the biography is one scroll away, keep the radio visible */
+  .site-header nav a[href="#bio"]{display:none}
+}
 @media (max-width:340px){
+  .nav-radio svg{display:none}
   #shuffleBtn,#repeatBtn{display:none!important}
   .surahs-grid{grid-template-columns:minmax(0,1fr)}
   .site-header .wrap{gap:0}
@@ -1541,15 +1554,29 @@ section.block{padding:clamp(56px,10vh,112px) 0;border-top:1px solid var(--line)}
 </style>
 </head>
 <body>
+<script>
+// Pick the language before anything paints: ?lang= → /en/ path → saved choice.
+// (No guessing from the browser language, so search engines always see / in Arabic.)
+(function () {
+  var q = new URLSearchParams(location.search).get('lang'), l = null;
+  if (q === 'en' || q === 'ar') l = q;
+  else if (/(^|\/)en(\/|\/index\.html)?$/.test(location.pathname)) l = 'en';
+  else { try { l = localStorage.getItem('lang'); } catch (e) {} }
+  if (l !== 'en' && l !== 'ar') l = document.documentElement.lang === 'en' ? 'en' : 'ar';
+  window.__initialLang = l;
+  if (l === 'en') { document.body.classList.add('lang-en'); document.documentElement.lang = 'en'; document.documentElement.dir = 'ltr'; }
+  else { document.body.classList.remove('lang-en'); document.documentElement.lang = 'ar'; document.documentElement.dir = 'rtl'; }
+})();
+</script>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="logo" viewBox="284.13 249.48 255.50 163.61"><path transform="matrix(1,0,0,-1,386.16,295.94)" d="M0 0-10.94-3.79C-8.60 .084-6.17 3.36-3.54 6.87L14.54 13.37 22.96 16.48C26.27 17.81 29.12 19.45 32.36 21.38 27.61 12.30 24.49 9.28 15.18 5.57Z"/><path transform="matrix(1,0,0,-1,308.93,407.76)" d="M0 0-7.62 7.30-14.63 .01-22.8 8.03-15.43 15.86-7.88 8.52-.818 15.86 7.31 7.84Z"/><path transform="matrix(1,0,0,-1,398.67,277.99)" d="M0 0-4.25-2.63-8.56 16.44-.039 22.76Z"/><path transform="matrix(1,0,0,-1,435.80,261.75)" d="M0 0 8.46-8.10 .872-16.02-7.58-7.92Z"/><path transform="matrix(1,0,0,-1,444.89,271.32)" d="M0 0 8.48-8.00 .997-15.93-7.48-7.92Z"/><path transform="matrix(1,0,0,-1,428.30,271.33)" d="M0 0 8.41-7.97 .899-15.91-7.52-7.93Z"/><path transform="matrix(1,0,0,-1,432.98,340.74)" d="M0 0-8.09 7.95-.353 16.00 7.35 7.89Z"/><path transform="matrix(1,0,0,-1,491.20,347.55)" d="M0 0C.482 1.14 .488 2.59-.094 3.68-1.32 5.98-2.75 8.12-4.30 10.26L-12.64-.754C-9.53-3.05-1.59-3.79 0 0M10.3-2.86C8.81-11.58 2.28-20.72-7.24-20.13-14.60-19.67-17.91-13.72-17.40-6.57-22.89-12.39-31.96-22.41-40.88-18.94-45.38-17.2-45.90-12.27-46.21-8.06-47.13-12.27-47.85-16.53-46.80-20.92-44.83-29.12-38.92-35.61-30.97-38.71-17.35-44.00 3.09-41.72 10.90-27.82 13.28-23.59 13.95-18.97 13.53-14.10L11.17 60.43 26.12 72.79 25.82 47.30 25.32-8.59C25.23-19.46 22.51-29.87 16.69-39.01 12.23-46.01 6.08-51.30-1.56-54.63-8.88-57.81-16.81-59.30-24.83-58.75-39.77-57.71-52.99-46.95-53.25-31.08-53.42-21.08-49.04-10.32-45.76-.892-49.29-6.04-53.21-10.62-58.21-14.35-64.28-18.87-74.03-21.31-79.63-14.61-81.40-12.49-82.68-9.90-83.26-7.13-85.84 5.21-79.09 15.67-72.06 25.35-74.64 24.52-77.15 24.16-79.45 25.47-84.10 28.11-82.98 35.68-81.54 40.34-86.18 34.22-92.08 27.66-99.61 24.50-104.38 22.50-109.50 22.09-114.41 23.85-120.66 26.08-124.51 32.44-126.36 38.54-127.93 43.71-128.38 48.77-128.41 54.25L-128.62 89.28-119.42 96.08-119.35 54.82C-119.35 49.63-117.35 44.78-113.49 41.38-107.72 36.29-96.86 34.92-90.74 38.55-84.30 42.37-77.43 51.37-72.95 57.52L-69.23 57.26C-71.60 52.94-74.84 47.67-73.92 42.46-73.58 40.51-71.91 39.38-69.94 39.65-62.62 40.68-56.69 51.18-53.81 57.40L-51.66 57.34C-52.28 52.69-51.55 48.16-49.27 44.11-46.11 38.52-40.97 37.64-34.77 37.81-36.24 43.16-38.05 48.04-40.05 53.12L-30.87 64.08C-29.48 57.07-27.21 51.93-25.98 45.01-25.67 43.22-25.65 41.05-26.39 39.42-27.78 36.39-29.33 33.61-31.01 30.80-32.83 27.76-35.61 25.94-39.02 25.07-42.38 24.22-45.77 23.76-49.12 24.73-56.37 26.54-58.81 34.47-59.35 41.42L-66.66 29.70C-70.24 23.96-73.64 11.94-71.72 4.73-69.92-2.03-62.36-3.7-56.17-1.98-47.29 .481-41.85 8.39-39.11 16.82-36.93 18.38-34.57 19.76-31.98 21.06L-34.80 10.71C-35.65 7.58-36.33 .367-32.90-1.75-28.76-4.32-23.56-.183-20.62 2.95-15.28 8.65-11.00 14.93-6.89 21.73-5.24 21.84-3.66 21.77-1.95 21.59Z"/><path transform="matrix(1,0,0,-1,511.77,406.12)" d="M0 0C5.95 7.62 9.40 14.67 11.47 24.10 12.97 30.96 13.54 37.63 13.29 44.76L10.97 120.35 25.85 132.65 24.70 56.82C24.62 49.11 24.12 41.88 22.63 34.40 20.61 24.27 16.14 13.12 8.71 5.85 6.21 3.40 3.61 1.19 0 0"/><path transform="matrix(1,0,0,-1,491.94,313.14)" d="M0 0-1.81 3.77-4.41-.153C-2.82-.449-1.62-.421 0 0M-6.31-2.54C-9.85-7.02-16.26-9.65-21.30-6.66-24.43-4.80-25.53-1.09-25.36 2.38-20.39-.112-14.59-.543-9.25-.341-6.67 1.78-4.72 4.44-2.89 7.16-2.59 7.59-1.47 7.59-.875 7.41 .124 4.66 2.10 2.14 2.82-.685 3.40-2.96 1.30-5.60-.335-6.73-1.78-7.73-3.37-7.57-4.60-6.77-5.88-5.94-6.35-4.33-6.31-2.54"/><path transform="matrix(1,0,0,-1,296.40,373.78)" d="M0 0C-4.91 9.74-5.10 20.25-2.67 30.86-2.45 31.81 1.32 45.24 2.18 43.51 2.25 43.36 2.41 42.88 2.35 42.59 1.48 38.22 1.18 33.34 1.65 28.76 2.98 15.57 12.41 4.93 25.34 2.12 34.35 .172 43.54 .688 52.30 3.63 56.13 4.92 59.44 6.91 62.45 9.58 62.46 14.38 59.08 18.11 54.45 19.20 51.68 19.85 48.96 19.86 46.04 19.97L10.36 21.38C9.13 26.56 8.25 31.45 7.42 36.75L15.88 35.43C19.67 42.32 24.50 48.42 30.74 52.99 35.67 56.60 41.41 57.81 47.27 56.24L55.76 53.18 46.08 41.18C36.32 46.92 27.18 42.87 20.11 34.77 30.10 33.59 39.57 33.41 49.32 33.23 56.41 33.10 64.87 33.52 67.1 25.83 70.45 14.24 64.98 3.05 56.39-4.72 50.32-10.21 43.15-14.08 35.08-15.59 28.46-16.83 21.96-16.51 15.74-14.1 8.84-11.42 3.32-6.59 0 0"/><path transform="matrix(1,0,0,-1,393.04,360.08)" d="M0 0-13.29 21.10C-14.78 17.92-15.31 14.62-14.89 11.27-13.90 3.36-7.63-.364 0 0M-55.45-33.72C-40.53-33.10-10.82-26.84 1.07-17.32 5.37-13.88 3.84-7.25 1.56-2.86L-6.79-11.47C-11.06-12.41-15.67-12.31-19.61-10.07-26.57-6.11-28.45 3.03-24.06 9.65-21.56 13.60-18.69 16.92-15.66 20.45-11.97 24.75-8.39 28.80-4.27 32.84L7.94 13.47C9.64 10.77 11.13 8.20 12.60 5.39 13.77 1.51 13.71-2.41 12.53-6.36 10.45-13.34 7.22-19.74 2.84-25.59-3.24-33.72-10.71-40.56-19.62-45.38-27.24-49.51-35.6-51.00-44.12-49.57-56.31-47.51-67.66-41.84-77.92-34.67Z"/><path transform="matrix(1,0,0,-1,433.83,406.24)" d="M0 0C-.172 1.37-.031 2.77-.93 3.65-2.06 4.76-3.58 5.48-5.16 5.74-14.79 7.37-29.97 4.82-39.78 2.85L-49.71 .873C-49.98 .82-50.42 1.46-50.28 1.58-49.39 2.37-42.41 5.67-39.19 7.98-28.29 15.80-24.91 28.63-24.94 41.61-18.08 39.63-11.37 34.50-13.91 26.59-15.80 20.71-21.30 16.18-26.38 12.93-20.45 15.59-14.91 18.37-8.82 20.41-5.96 21.37-2.94 21.76-.098 20.75 7.30 18.11 5.00 4.65 0 0"/><path transform="matrix(1,0,0,-1,364.81,346.02)" d="M0 0C1.49 2.69 2.74 5.30 3.64 8.17 5.10 12.79-2.12 15.55-6.21 15.03-5.98 17.40-5.55 19.58-4.68 21.62-3.24 24.98 .295 26.29 3.65 24.85 6.42 23.67 8.10 20.78 8.01 17.62 7.85 11.87 3.79 4.39 1.21-.593Z"/></symbol></svg>
 
 <header class="site-header">
   <div class="wrap">
-    <a class="brand" href="#top" aria-label="أعلى الصفحة"><svg class="logo" viewBox="0 0 255.50 163.61" role="img" aria-label="الشيخ محمد صديق المنشاوي"><use href="#logo"/></svg></a>
+    <a class="brand" href="#top" aria-label="أعلى الصفحة" data-aria-en="Back to top"><svg class="logo" viewBox="0 0 255.50 163.61" role="img" aria-label="الشيخ محمد صديق المنشاوي"><use href="#logo"/></svg></a>
     <nav>
       <a href="#library"><span class="lang-ar">التلاوات</span><span class="lang-en-text">Recitations</span></a>
       <a href="#bio"><span class="lang-ar">السيرة</span><span class="lang-en-text">Biography</span></a>
-      <button class="nav-radio" id="navRadio" type="button" aria-label="تشغيل إذاعة القرآن الكريم">
+      <button class="nav-radio" id="navRadio" type="button">
         <svg class="i-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg><svg class="i-pause" viewBox="0 0 24 24"><path d="M6 5h4v14H6zm8 0h4v14h-4z"/></svg>
         <span class="lang-ar">إذاعة القرآن الكريم</span><span class="lang-en-text">Quran Radio</span><span class="live-dot"></span>
       </button>
@@ -1607,7 +1634,7 @@ section.block{padding:clamp(56px,10vh,112px) 0;border-top:1px solid var(--line)}
       </div>
     </div>
     <div class="surahs-grid" id="surahsGrid"></div>
-    <p class="lib-more"><span class="lang-ar">لكل سورة صفحة خاصة بها — <a href="/test/surah/">فهرس السور</a></span><span class="lang-en-text">Every surah has its own page — <a href="/test/surah/">All surahs</a></span></p>
+    <p class="lib-more"><span class="lang-ar">لكل سورة صفحة خاصة بها — <a href="/test/surah/">فهرس السور</a></span><span class="lang-en-text">Every surah has its own page — <a href="/test/en/surah/">All surahs</a></span></p>
   </div>
 </section>
 
@@ -1621,7 +1648,7 @@ section.block{padding:clamp(56px,10vh,112px) 0;border-top:1px solid var(--line)}
     <div class="radio-control">
       <div class="radio-speaker">
         <span class="radio-ring"></span><span class="radio-ring"></span><span class="radio-ring"></span>
-        <button class="radio-play-btn" id="radioPlayBtn" aria-label="Play/Pause Radio">
+        <button class="radio-play-btn" id="radioPlayBtn" aria-label="تشغيل/إيقاف الإذاعة" data-aria-en="Play/Pause radio">
           <svg viewBox="0 0 24 24" id="radioPlayIcon"><path d="M8 5v14l11-7z"></path></svg>
         </button>
       </div>
@@ -1684,7 +1711,7 @@ section.block{padding:clamp(56px,10vh,112px) 0;border-top:1px solid var(--line)}
     <nav>
       <a href="#library"><span class="lang-ar">التلاوات</span><span class="lang-en-text">Recitations</span></a>
       <a href="#bio"><span class="lang-ar">السيرة</span><span class="lang-en-text">Biography</span></a>
-      <a href="/test/surah/"><span class="lang-ar">فهرس السور</span><span class="lang-en-text">All Surahs</span></a>
+      <a href="/test/surah/" data-href-ar="/test/surah/" data-href-en="/test/en/surah/"><span class="lang-ar">فهرس السور</span><span class="lang-en-text">All Surahs</span></a>
       <a href="#radio"><span class="lang-ar">إذاعة القرآن الكريم</span><span class="lang-en-text">Quran Radio</span></a>
     </nav>
     <p class="fine"><span class="lang-ar">تلاوات القرآن الكريم بصوت الشيخ محمد صديق المنشاوي محفوظة الحقوق لمالكيها الأصليين. هذا الموقع غير تجاري ويهدف لنشر القرآن الكريم.</span><span class="lang-en-text">Quran recitations by Sheikh Muhammad Siddiq Al-Minshawi are copyrighted to their original owners. This is a non-commercial website aimed at spreading the Holy Quran.</span></p>
@@ -1703,7 +1730,7 @@ section.block{padding:clamp(56px,10vh,112px) 0;border-top:1px solid var(--line)}
   <div class="player-compact">
     <!-- Left: Track Info -->
     <div class="player-info">
-      <div class="player-cover" id="playerCover" title="افتح في وضع كامل">
+      <div class="player-cover" id="playerCover" title="افتح في وضع كامل" data-title-en="Open full view">
         <span class="cover-num" id="coverNum">۞</span>
         <div class="visualizer">
           <span class="visualizer-bar"></span>
@@ -1719,7 +1746,7 @@ section.block{padding:clamp(56px,10vh,112px) 0;border-top:1px solid var(--line)}
       <div class="player-text">
         <div class="player-title-row">
           <div class="player-title" id="playerTitle">—</div>
-          <button class="player-queue-chevron" id="queueBtn" data-tooltip="قائمة السور" aria-label="Queue">
+          <button class="player-queue-chevron" id="queueBtn" data-tooltip="قائمة السور" data-tooltip-en="Surah list">
             <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg>
           </button>
         </div>
@@ -1733,7 +1760,7 @@ section.block{padding:clamp(56px,10vh,112px) 0;border-top:1px solid var(--line)}
           <span id="playerTrackInfo">— / 114</span>
         </div>
       </div>
-      <button class="player-fav" id="favBtn" data-tooltip="مفضلة (F)">
+      <button class="player-fav" id="favBtn" data-tooltip="مفضلة (F)" data-tooltip-en="Favorite (F)">
         <svg viewbox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path></svg>
       </button>
     </div>
@@ -1741,26 +1768,26 @@ section.block{padding:clamp(56px,10vh,112px) 0;border-top:1px solid var(--line)}
     <!-- Center: Controls + Progress -->
     <div class="player-controls-wrapper">
       <div class="player-buttons">
-        <button class="player-btn" id="shuffleBtn" data-tooltip="عشوائي · S">
+        <button class="player-btn" id="shuffleBtn" data-tooltip="عشوائي · S" data-tooltip-en="Shuffle · S">
           <svg viewbox="0 0 24 24"><path d="M10.59 9.17L5.41 4 4 5.41l5.17 5.17 1.42-1.41zM14.5 4l2.04 2.04L4 18.59 5.41 20 17.96 7.46 20 9.5V4h-5.5zm.33 9.41l-1.41 1.41 3.13 3.13L14.5 20H20v-5.5l-2.04 2.04-3.13-3.13z"></path></svg>
         </button>
-        <button class="player-btn" id="prevBtn" data-tooltip="السابقة">
+        <button class="player-btn" id="prevBtn" data-tooltip="السابقة" data-tooltip-en="Previous">
           <svg viewbox="0 0 24 24"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"></path></svg>
         </button>
-        <button class="player-btn" id="rewindBtn" data-tooltip="ارجع 10 ثوان">
+        <button class="player-btn" id="rewindBtn" data-tooltip="ارجع ١٠ ثوانٍ" data-tooltip-en="Back 10 seconds">
           <svg viewbox="0 0 24 24"><path d="M12.5 3C7.81 3 4 6.81 4 11.5h2C6 7.91 8.91 5 12.5 5S19 7.91 19 11.5 16.09 18 12.5 18c-1.79 0-3.41-.74-4.59-1.91L9.83 14.5H4v5.83L6.59 17.74C8.13 19.13 10.21 20 12.5 20c4.69 0 8.5-3.81 8.5-8.5S17.19 3 12.5 3zm-1.4 12.7v-3.55l-1.1.4v-.85l2-.7h.1v4.7h-1z"></path></svg>
         </button>
-        <button class="player-btn main" id="playPauseBtn" data-tooltip="تشغيل · Space">
+        <button class="player-btn main" id="playPauseBtn" data-tooltip="تشغيل/إيقاف · Space" data-tooltip-en="Play/Pause · Space">
           <svg id="playIcon" viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
           <svg id="pauseIcon" viewbox="0 0 24 24" style="display:none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"></path></svg>
         </button>
-        <button class="player-btn" id="forwardBtn" data-tooltip="تقدم 10 ثوان">
+        <button class="player-btn" id="forwardBtn" data-tooltip="تقدّم ١٠ ثوانٍ" data-tooltip-en="Forward 10 seconds">
           <svg viewbox="0 0 24 24"><path d="M11.5 3c4.69 0 8.5 3.81 8.5 8.5S16.19 20 11.5 20c-2.29 0-4.37-.87-5.91-2.26L4 19.33V13.5h5.83l-1.92 1.59C9.09 16.26 10.71 17 12.5 17c3.59 0 6.5-2.91 6.5-6.5S15.59 5 12.5 5 6 7.91 6 11.5H4C4 6.81 7.81 3 12.5 3zm-1.4 8.2v3.55h-1v-3.05l-.9.31v-.81l1.8-.7h.1z"></path></svg>
         </button>
-        <button class="player-btn" id="nextBtn" data-tooltip="التالية">
+        <button class="player-btn" id="nextBtn" data-tooltip="التالية" data-tooltip-en="Next">
           <svg viewbox="0 0 24 24"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"></path></svg>
         </button>
-        <button class="player-btn" id="repeatBtn" data-tooltip="تكرار · R">
+        <button class="player-btn" id="repeatBtn" data-tooltip="تكرار · R" data-tooltip-en="Repeat · R">
           <svg viewbox="0 0 24 24"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"></path></svg>
         </button>
       </div>
@@ -1781,11 +1808,11 @@ section.block{padding:clamp(56px,10vh,112px) 0;border-top:1px solid var(--line)}
 
     <!-- Right: Volume + Extras -->
     <div class="player-extras">
-      <button class="player-mini-btn" id="downloadBtn" data-tooltip="تحميل السورة">
+      <button class="player-mini-btn" id="downloadBtn" data-tooltip="تحميل السورة" data-tooltip-en="Download surah">
         <svg viewbox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"></path></svg>
       </button>
       <div class="volume-control">
-        <button class="player-mini-btn" id="muteBtn" data-tooltip="كتم · M">
+        <button class="player-mini-btn" id="muteBtn" data-tooltip="كتم · M" data-tooltip-en="Mute · M">
           <svg id="volIconHigh" viewbox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"></path></svg>
           <svg id="volIconMute" viewbox="0 0 24 24" style="display:none;"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"></path></svg>
         </button>
@@ -1794,10 +1821,10 @@ section.block{padding:clamp(56px,10vh,112px) 0;border-top:1px solid var(--line)}
             <div class="volume-wrapper-fill" id="volumeFill"></div>
           </div>
           <div class="volume-wrapper-thumb" id="volumeThumb"></div>
-          <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="80" aria-label="Volume">
+          <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="80" aria-label="مستوى الصوت" data-aria-en="Volume">
         </div>
       </div>
-      <button class="player-mini-btn" id="expandBtn" data-tooltip="عرض كامل">
+      <button class="player-mini-btn" id="expandBtn" data-tooltip="عرض كامل" data-tooltip-en="Full view">
         <svg viewbox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"></path></svg>
       </button>
     </div>
@@ -1817,7 +1844,7 @@ section.block{padding:clamp(56px,10vh,112px) 0;border-top:1px solid var(--line)}
 
 <!-- Expanded Player View -->
 <div class="player-expanded" id="playerExpanded">
-  <button class="expanded-close" id="expandedClose">✕</button>
+  <button class="expanded-close" id="expandedClose" aria-label="إغلاق" data-aria-en="Close">✕</button>
   <div class="expanded-content">
     <div class="expanded-cover">
       <span class="num" id="expandedNum">١</span>
@@ -1848,20 +1875,20 @@ section.block{padding:clamp(56px,10vh,112px) 0;border-top:1px solid var(--line)}
     </div>
 
     <div class="expanded-controls">
-      <button class="player-btn" id="shuffleBtnExp" title="عشوائي">
+      <button class="player-btn" id="shuffleBtnExp" title="عشوائي" data-title-en="Shuffle">
         <svg viewbox="0 0 24 24"><path d="M10.59 9.17L5.41 4 4 5.41l5.17 5.17 1.42-1.41zM14.5 4l2.04 2.04L4 18.59 5.41 20 17.96 7.46 20 9.5V4h-5.5zm.33 9.41l-1.41 1.41 3.13 3.13L14.5 20H20v-5.5l-2.04 2.04-3.13-3.13z"></path></svg>
       </button>
-      <button class="player-btn" id="prevBtnExp" title="السابقة">
+      <button class="player-btn" id="prevBtnExp" title="السابقة" data-title-en="Previous">
         <svg viewbox="0 0 24 24"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"></path></svg>
       </button>
-      <button class="player-btn main" id="playPauseBtnExp" title="تشغيل/إيقاف">
+      <button class="player-btn main" id="playPauseBtnExp" title="تشغيل/إيقاف" data-title-en="Play/Pause">
         <svg id="playIconExp" viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
         <svg id="pauseIconExp" viewbox="0 0 24 24" style="display:none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"></path></svg>
       </button>
-      <button class="player-btn" id="nextBtnExp" title="التالية">
+      <button class="player-btn" id="nextBtnExp" title="التالية" data-title-en="Next">
         <svg viewbox="0 0 24 24"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"></path></svg>
       </button>
-      <button class="player-btn" id="repeatBtnExp" title="تكرار">
+      <button class="player-btn" id="repeatBtnExp" title="تكرار" data-title-en="Repeat">
         <svg viewbox="0 0 24 24"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"></path></svg>
       </button>
     </div>
@@ -2114,6 +2141,9 @@ function arabicNum(n) {
   const arDigits = ['٠','١','٢','٣','٤','٥','٦','٧','٨','٩'];
   return String(n).split('').map(d => arDigits[d] || d).join('');
 }
+const isEnglish = () => document.body.classList.contains('lang-en');
+// Arabic-Indic digits in Arabic, Western digits in English
+const localNum = n => isEnglish() ? String(n) : arabicNum(n);
 
 // ============ RENDER LIBRARY ============
 const grid = document.getElementById('surahsGrid');
@@ -2179,8 +2209,8 @@ function renderSurahs(filter = '') {
     card.className = 'surah-card';
     card.dataset.num = s.num;
     card.innerHTML = `
-      <div class="surah-num">${arabicNum(s.num)}</div>
-      <a class="surah-info" href="/test/surah/${surahSlug(s)}/">
+      <div class="surah-num">${localNum(s.num)}</div>
+      <a class="surah-info" href="/test${isEnglish() ? '/en' : ''}/surah/${surahSlug(s)}/">
         <span class="surah-name">${s.ar}</span>
         <span class="surah-name-en">${s.en}</span>
       </a>
@@ -2273,6 +2303,7 @@ const expandedWaveform = document.getElementById('expandedWaveform');
 
 // State
 let currentSurah = null;
+let lastSurah = null; // the last surah loaded, kept while the radio plays so the player can go back to it
 let isShuffleOn = false;
 let repeatMode = 0; // 0 = off, 1 = repeat all, 2 = repeat one
 let isMuted = false;
@@ -2388,26 +2419,29 @@ function syncSurahCards() {
   });
 }
 
-function playSurah(num) {
-  const surah = surahs.find(s => s.num === num);
-  if (!surah) return; // validate first, so a bad number never kills the radio for nothing
+// Main player play/pause icons (shared by the surahs and the radio)
+function setPlayerIcons(playing) {
+  player.classList.toggle('is-playing', playing);
+  player.classList.toggle('is-paused', !playing);
+  playIcon.style.display = playing ? 'none' : 'block';
+  pauseIcon.style.display = playing ? 'block' : 'none';
+  playIconExp.style.display = playing ? 'none' : 'block';
+  pauseIconExp.style.display = playing ? 'block' : 'none';
+}
 
-  // Only one thing plays at a time: a surah stops the live radio (stream + its UI)
-  if (window.stopRadio) window.stopRadio();
-
+// Put a surah in the player (title, number, buttons) without loading or playing it
+function showSurahInPlayer(surah) {
   player.classList.remove('is-radio');
   if (playerExpanded) playerExpanded.classList.remove('is-radio');
 
-  currentSurah = surah;
-  audio.src = AUDIO_BASE + pad(num) + '.mp3';
-  audio.load(); // force reload to clear any previous error state
-
+  currentSurah = lastSurah = surah;
+  const num = surah.num;
   const isArabic = !document.body.classList.contains('lang-en');
   const titleText = isArabic ? `سورة ${surah.ar}` : `Surah ${surah.en}`;
   playerTitle.textContent = titleText;
   expandedTitle.textContent = titleText;
-  coverNum.textContent = arabicNum(num);
-  expandedNum.textContent = arabicNum(num);
+  coverNum.textContent = localNum(num);
+  expandedNum.textContent = localNum(num);
 
   // Update track info "X / 114"
   if (playerTrackInfo) {
@@ -2424,10 +2458,31 @@ function playSurah(num) {
 
   // Highlight active card
   syncSurahCards();
+  if (typeof updateQueueActive === 'function') updateQueueActive();
+}
+
+// The radio was switched off from its own button: the player goes back to the last
+// surah (paused where it was), so its play button, the keyboard and the lock screen
+// resume the Quran instead of turning the radio back on.
+function returnToSurah() {
+  if (lastSurah) showSurahInPlayer(lastSurah);
+  setPlayerIcons(false);
+  if (typeof setMediaPlaybackState === 'function') setMediaPlaybackState();
+}
+
+function playSurah(num) {
+  const surah = surahs.find(s => s.num === num);
+  if (!surah) return; // validate first, so a bad number never kills the radio for nothing
+
+  // Only one thing plays at a time: a surah stops the live radio (stream + its UI)
+  if (window.stopRadio) window.stopRadio();
+
+  showSurahInPlayer(surah);
+  audio.src = AUDIO_BASE + pad(num) + '.mp3';
+  audio.load(); // force reload to clear any previous error state
 
   player.classList.add('active');
   player.classList.add('is-loading');
-  if (typeof updateQueueActive === 'function') updateQueueActive();
 
   // Initialize visualizer on first play (must be after user gesture)
   setupAudioVisualizer();
@@ -2438,6 +2493,7 @@ function playSurah(num) {
   audio.play().catch(err => {
     console.warn('Playback error:', err);
     player.classList.remove('is-loading');
+    if (audio.paused && currentSurah === surah) setPlayerIcons(false);
   });
 }
 
@@ -2492,25 +2548,16 @@ function playNext() {
 audio.addEventListener('canplay', () => player.classList.remove('is-loading'));
 audio.addEventListener('loadeddata', () => player.classList.remove('is-loading'));
 audio.addEventListener('waiting', () => player.classList.add('is-loading'));
+// While the radio is in the player, its own events drive the play/pause icons:
+// a late event from the surah being stopped must not flip them.
 audio.addEventListener('playing', () => {
   player.classList.remove('is-loading');
-  player.classList.add('is-playing');
-  player.classList.remove('is-paused');
-  // Update icons
-  playIcon.style.display = 'none';
-  pauseIcon.style.display = 'block';
-  playIconExp.style.display = 'none';
-  pauseIconExp.style.display = 'block';
+  if (!(currentSurah && currentSurah.isRadio)) setPlayerIcons(true);
   syncSurahCards();
 });
 
 audio.addEventListener('pause', () => {
-  player.classList.remove('is-playing');
-  player.classList.add('is-paused');
-  playIcon.style.display = 'block';
-  pauseIcon.style.display = 'none';
-  playIconExp.style.display = 'block';
-  pauseIconExp.style.display = 'none';
+  if (!(currentSurah && currentSurah.isRadio)) setPlayerIcons(false);
   syncSurahCards();
 });
 
@@ -2729,6 +2776,8 @@ document.addEventListener('keydown', (e) => {
 
   switch (e.code) {
     case 'Space':
+      // On a focused button Space presses that button; toggling here as well would undo it
+      if (e.target.closest && e.target.closest('button, summary, [role="button"]')) break;
       e.preventDefault();
       togglePlayPause();
       break;
@@ -2864,27 +2913,65 @@ if (HAS_MEDIA_SESSION) {
   if (radioEl) ['play', 'pause', 'playing'].forEach(ev => radioEl.addEventListener(ev, setMediaPlaybackState));
 }
 
-// ============ LANGUAGE TOGGLE ============
+// ============ LANGUAGE ============
 const langToggle = document.getElementById('langToggle');
-langToggle.addEventListener('click', () => {
-  const isEn = document.body.classList.toggle('lang-en');
+const PAGE_TITLES = {
+  ar: 'الشيخ محمد صديق المنشاوي | المصحف المرتل والمجود كاملاً · الصوت الباكي',
+  en: 'Sheikh Muhammad Siddiq Al-Minshawi | Complete Murattal & Mujawwad Quran · The Weeping Voice'
+};
+
+// Swap an attribute between its Arabic original and the data-*-en version
+function swapAttr(sel, enKey, arKey, attr, isEn) {
+  document.querySelectorAll(sel).forEach(el => {
+    if (el.dataset[arKey] === undefined) el.dataset[arKey] = el.getAttribute(attr) || '';
+    el.setAttribute(attr, isEn ? el.dataset[enKey] : el.dataset[arKey]);
+  });
+}
+
+function applyLang(lang, save = true) {
+  const isEn = lang === 'en';
+  document.body.classList.toggle('lang-en', isEn);
   document.documentElement.dir = isEn ? 'ltr' : 'rtl';
   document.documentElement.lang = isEn ? 'en' : 'ar';
   langToggle.textContent = isEn ? 'عربي' : 'EN';
-  document.title = isEn
-    ? 'Sheikh Muhammad Siddiq Al-Minshawi · The Weeping Voice'
-    : 'الشيخ محمد صديق المنشاوي · الصوت الباكي';
+  langToggle.setAttribute('lang', isEn ? 'ar' : 'en');
+  langToggle.setAttribute('aria-label', isEn ? 'التبديل إلى العربية' : 'Switch to English');
+  document.title = PAGE_TITLES[isEn ? 'en' : 'ar'];
+  if (save) { try { localStorage.setItem('lang', isEn ? 'en' : 'ar'); } catch (e) {} }
 
-  // Update placeholder
-  document.getElementById('searchInput').placeholder = isEn ? 'Search surah...' : 'ابحث عن سورة...';
+  // Keep the address on the matching page (/ or /en/) so reloads and shares keep the language
+  // (this script only runs on the home pages: / and /en/, or /test/ and /test/en/)
+  const home = location.pathname.match(/^(.*?\/)(en\/)?(index\.html)?$/);
+  if (home) history.replaceState(history.state, '', home[1] + (isEn ? 'en/' : '') + location.hash);
 
-  // Update player titles if playing
+  // Tooltips, titles, labels and links that have an English version
+  swapAttr('[data-tooltip-en]', 'tooltipEn', 'tooltipAr', 'data-tooltip', isEn);
+  swapAttr('[data-title-en]', 'titleEn', 'titleAr', 'title', isEn);
+  swapAttr('[data-aria-en]', 'ariaEn', 'ariaAr', 'aria-label', isEn);
+  swapAttr('[data-href-en]', 'hrefEn', 'hrefAr', 'href', isEn);
+  // Icon-only buttons: their tooltip is also their accessible name
+  document.querySelectorAll('[data-tooltip]:not([data-aria-en])').forEach(el => el.setAttribute('aria-label', el.dataset.tooltip));
+
+  const search = document.getElementById('searchInput');
+  search.placeholder = isEn ? 'Search surah...' : 'ابحث عن سورة...';
+  search.setAttribute('aria-label', isEn ? 'Search surah' : 'ابحث عن سورة');
+
+  // Surah cards carry links and numbers in the page language
+  renderSurahs(search.value.trim());
+  syncSurahCards();
+  if (queueOpen) buildQueue();
+
+  // Player titles if something is loaded
   if (currentSurah) {
     const titleText = currentSurah.isRadio 
       ? (isEn ? currentSurah.en : currentSurah.ar)
       : (isEn ? `Surah ${currentSurah.en}` : `سورة ${currentSurah.ar}`);
     playerTitle.textContent = titleText;
     expandedTitle.textContent = titleText;
+    if (!currentSurah.isRadio) {
+      coverNum.textContent = localNum(currentSurah.num);
+      expandedNum.textContent = localNum(currentSurah.num);
+    }
     if (playerTrackInfo) {
       playerTrackInfo.textContent = currentSurah.isRadio
         ? (isEn ? 'Live Stream' : 'بث مباشر')
@@ -2892,7 +2979,11 @@ langToggle.addEventListener('click', () => {
     }
     updateMediaSession();
   }
-});
+}
+
+langToggle.addEventListener('click', () => applyLang(isEnglish() ? 'ar' : 'en'));
+// Finish what the early script started (labels, links, address) without saving a choice
+applyLang(window.__initialLang || (isEnglish() ? 'en' : 'ar'), false);
 
 // ============ SCROLL ANIMATIONS ============
 // Nav scroll state
@@ -2922,18 +3013,35 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
   // Set up the player UI for Surah 1 immediately
   playSurah(1);
   // Browsers block autoplay without user gesture — if play() was rejected,
-  // listen for the first interaction and resume playback automatically
-  function resumeOnInteraction() {
-    if (audio.paused && currentSurah && currentSurah.num === 1) {
-      audio.play().catch(() => {});
-    }
+  // listen for the first interaction and resume playback automatically.
+  // Not when the visitor is already in charge: if anything has played or paused
+  // (autoplay worked, or they used the player / radio), or the interaction is on a
+  // button or link, starting Al-Fatihah here would undo what they just did
+  // (e.g. the first tap on "pause" would start it again, or it would cut in after the radio).
+  function disarm() {
     document.removeEventListener('click', resumeOnInteraction);
     document.removeEventListener('touchstart', resumeOnInteraction);
     document.removeEventListener('keydown', resumeOnInteraction);
+    audio.removeEventListener('play', disarm);
+    audio.removeEventListener('pause', disarm);
+    const r = document.getElementById('radioAudio');
+    if (r) r.removeEventListener('play', disarm);
   }
-  document.addEventListener('click', resumeOnInteraction, { once: true });
-  document.addEventListener('touchstart', resumeOnInteraction, { once: true });
-  document.addEventListener('keydown', resumeOnInteraction, { once: true });
+  function resumeOnInteraction(e) {
+    const onControl = e && e.target && e.target.closest &&
+      e.target.closest('button, a, input, select, textarea, summary, label, [role="button"], .surah-card, .media-player, .player-expanded');
+    if (!onControl && audio.paused && currentSurah && !currentSurah.isRadio && currentSurah.num === 1) {
+      audio.play().catch(() => {});
+    }
+    disarm();
+  }
+  document.addEventListener('click', resumeOnInteraction);
+  document.addEventListener('touchstart', resumeOnInteraction);
+  document.addEventListener('keydown', resumeOnInteraction);
+  audio.addEventListener('play', disarm);
+  audio.addEventListener('pause', disarm);
+  const radioEl = document.getElementById('radioAudio');
+  if (radioEl) radioEl.addEventListener('play', disarm);
 })();
 
 // ============ LIVE RADIO PLAYER ============
@@ -3082,10 +3190,26 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
     }
   }
 
+  // The radio's own button (and the header radio button) switches it off: stop the stream
+  // and hand the player back to the surah. (The stream's 'pause' event can't do this: removing
+  // the stream drops that event before it arrives.)
   function pauseRadio() {
     stopRadioStream();
+    returnToSurah();
   }
   window.startRadio = playRadio;
+
+  // The player's volume and mute apply to the radio too
+  const syncRadioVolume = () => { radioAudio.volume = audio.volume; radioAudio.muted = audio.muted; };
+  audio.addEventListener('volumechange', syncRadioVolume);
+  syncRadioVolume();
+
+  // A stream that fails on its own (connection lost) says so instead of just "Paused"
+  radioAudio.addEventListener('error', () => {
+    if (currentSurah && currentSurah.isRadio && radioAudio.getAttribute('src') && !window.radioHls) {
+      setRadioStatus('انقطع البث — حاول مرة أخرى', 'Stream lost — try again');
+    }
+  });
 
   // Safety net — whatever starts the sound (buttons, keyboard, lock screen, headphones,
   // auto-play), a surah and the radio never overlap. `currentSurah` says which one the
@@ -3114,29 +3238,15 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
     if (currentSurah && currentSurah.isRadio) {
       showPauseIcon();
       setRadioStatus('يُبث الآن مباشرة', 'Now playing live');
-      
-      // Update global player UI
-      player.classList.remove('is-paused');
-      player.classList.add('is-playing');
-      playIcon.style.display = 'none';
-      pauseIcon.style.display = 'block';
-      playIconExp.style.display = 'none';
-      pauseIconExp.style.display = 'block';
+      setPlayerIcons(true); // global player UI
     }
   });
 
   radioAudio.addEventListener('pause', () => {
     if (currentSurah && currentSurah.isRadio) {
       showPlayIcon();
-      setRadioStatus('متوقف', 'Paused');
-      
-      // Update global player UI
-      player.classList.remove('is-playing');
-      player.classList.add('is-paused');
-      playIcon.style.display = 'block';
-      pauseIcon.style.display = 'none';
-      playIconExp.style.display = 'block';
-      pauseIconExp.style.display = 'none';
+      if (!radioAudio.error) setRadioStatus('متوقف', 'Paused'); // keep "stream lost" after an error
+      setPlayerIcons(false); // global player UI
     }
   });
   // (Al-Fatihah is already loaded on page open by autoPlayFatihah above —
@@ -3153,11 +3263,12 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
   function isDark(){var t=root.getAttribute('data-theme');return t?t==='dark':mq.matches;}
   function sync(){if(meta)meta.setAttribute('content',isDark()?'#121110':'#f7f4ee');
     if(btn){var en=document.body.classList.contains('lang-en');
-      btn.title=isDark()?(en?'Light mode':'الوضع النهاري'):(en?'Dark mode':'الوضع الليلي');}}
+      btn.title=isDark()?(en?'Light mode':'الوضع النهاري'):(en?'Dark mode':'الوضع الليلي');btn.setAttribute('aria-label',btn.title);}}
   if(btn)btn.addEventListener('click',function(){
     var next=isDark()?'light':'dark';root.setAttribute('data-theme',next);
     try{localStorage.setItem('theme',next);}catch(e){}sync();});
   if(mq.addEventListener)mq.addEventListener('change',sync);
+  new MutationObserver(sync).observe(document.body,{attributes:true,attributeFilter:['class']});
   sync();
 })();
 // Header radio button: plays/stops the live radio in place, and mirrors its state
@@ -3165,9 +3276,10 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
   var nb=document.getElementById('navRadio'),card=document.getElementById('radioPlayBtn'),sec=document.querySelector('.live-radio');
   if(!nb||!card||!sec)return;
   nb.addEventListener('click',function(){card.click();});
-  function upd(){var on=sec.classList.contains('radio-playing');nb.classList.toggle('on',on);
-    nb.setAttribute('aria-label',on?'إيقاف إذاعة القرآن الكريم':'تشغيل إذاعة القرآن الكريم');}
-  new MutationObserver(upd).observe(sec,{attributes:true,attributeFilter:['class']});upd();
+  function upd(){var on=sec.classList.contains('radio-playing'),en=document.body.classList.contains('lang-en');nb.classList.toggle('on',on);
+    nb.setAttribute('aria-label',on?(en?'Stop Quran radio':'إيقاف إذاعة القرآن الكريم'):(en?'Play Quran radio':'تشغيل إذاعة القرآن الكريم'));}
+  new MutationObserver(upd).observe(sec,{attributes:true,attributeFilter:['class']});
+  new MutationObserver(upd).observe(document.body,{attributes:true,attributeFilter:['class']});upd();
 })();
 // Full biography: open it when the address points inside it (e.g. #timeline)
 (function(){
