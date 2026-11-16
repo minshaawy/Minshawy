@@ -139,6 +139,7 @@ THEME_BTN = """<button class="icon-btn" id="themeToggle" aria-label="الوضع 
 
 def head(title, desc, url, ld):
     e = html.escape
+    share_url = url.replace(SITE, SITE + BASE, 1)  # the address actually being shared
     robots = '<meta name="robots" content="noindex, nofollow">' if TEST else ""
     return f"""<!DOCTYPE html>
 <html lang="ar" dir="rtl">
@@ -160,9 +161,14 @@ def head(title, desc, url, ld):
 <meta property="og:site_name" content="الشيخ محمد صديق المنشاوي · الصوت الباكي">
 <meta property="og:title" content="{e(title)}">
 <meta property="og:description" content="{e(desc)}">
-<meta property="og:url" content="{url}">
-<meta property="og:image" content="{SITE}/images/social-thumbnail.jpg">
+<meta property="og:url" content="{share_url}">
+<meta property="og:image" content="{SITE}/images/share-card.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="الشيخ محمد صديق المنشاوي · الصوت الباكي">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="{SITE}/images/share-card.jpg">
 <script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>
 {THEME_HEAD}
 <style>{STYLE}</style>
