@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build en/index.html, the English home page, from index.html.
+"""English home page (<base>/en/) from the built Arabic page. Used by build_midad.py.
 
 index.html already holds both languages (.lang-ar / .lang-en-text spans) and
 switches between them with JavaScript. This gives the English version its own
@@ -80,6 +80,7 @@ def build(src, base=""):
 
 
 def main():
+    """Rebuild en/index.html from the current index.html (build_midad.py normally does this)."""
     src = open(os.path.join(ROOT, "index.html"), encoding="utf-8").read()
     out = os.path.join(ROOT, "en")
     os.makedirs(out, exist_ok=True)

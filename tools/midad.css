@@ -403,3 +403,7 @@ section.block{padding:clamp(56px,10vh,112px) 0;border-top:1px solid var(--line)}
   .bio-more>summary{display:flex;width:100%}
   .tl-title{font-size:1.3rem;margin-top:40px}
 }
+
+/* Queue toggle in the player: small icon, finger-sized tap area */
+.player-queue-chevron{position:relative}
+.player-queue-chevron::after{content:"";position:absolute;inset:-12px}

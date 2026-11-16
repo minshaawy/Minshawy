@@ -1,19 +1,21 @@
 #!/usr/bin/env python3
-"""Build the Midad redesign as a working page from index.html.
+"""Build the Midad site page from tools/source.html (the original one-page site).
 
 Keeps the original head, media player markup and the whole script (so
 playback, radio, search, favourites, language switch keep working),
 and swaps in new markup for the sections plus tools/midad.css.
 
-    python3 tools/build_midad.py            # writes test/index.html
-    python3 tools/build_midad.py out.html   # custom output
+    python3 tools/build_midad.py index.html   # the real site: index.html + en/index.html
+    python3 tools/build_midad.py              # the test copy: test/index.html + test/en/index.html (noindex)
+
+Edit tools/source.html (content, surah list, player script) or tools/midad.css, then rebuild.
 """
 import os
 import re
 import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SRC = open(os.path.join(ROOT, "index.html"), encoding="utf-8").read()
+SRC = open(os.path.join(ROOT, "tools", "source.html"), encoding="utf-8").read()
 CSS = open(os.path.join(ROOT, "tools", "midad.css"), encoding="utf-8").read()
 LOGO = open(os.path.join(ROOT, "images", "logo-minshawi.svg"), encoding="utf-8").read()
 OUT = sys.argv[1] if len(sys.argv) > 1 else os.path.join(ROOT, "test", "index.html")
@@ -289,8 +291,7 @@ THEME_JS = """<script>
 """
 
 head = head.replace("</head>", "")
-head = re.sub(r"<title>[^<]*</title>", "<title>الشيخ محمد صديق المنشاوي · الصوت الباكي</title>", head, count=1)
-if "/test/" in OUT.replace(os.sep, "/") or OUT.endswith("test/index.html"):
+if BASE:
     head = head.replace('<meta name="robots" content="index, follow, max-image-preview:large">',
                         '<meta name="robots" content="noindex, nofollow">')
 head = head.replace('<meta name="theme-color" content="#2a1f12">',

@@ -10,8 +10,12 @@
 <meta name="keywords" content="محمد صديق المنشاوي, المنشاوي, المصحف المرتل, القرآن الكريم, تلاوات, الصوت الباكي, دولة التلاوة, قراء مصر, Minshawi, Quran recitation, Muhammad Siddiq Al-Minshawi">
 <meta name="author" content="محمد صديق المنشاوي">
 <meta name="robots" content="index, follow, max-image-preview:large">
-<meta name="theme-color" content="#2a1f12">
+<meta name="theme-color" content="#f7f4ee">
+<meta name="color-scheme" content="only light">
 <link rel="canonical" href="https://www.elminshawy.net/">
+<link rel="alternate" hreflang="ar" href="https://www.elminshawy.net/">
+<link rel="alternate" hreflang="en" href="https://www.elminshawy.net/en/">
+<link rel="alternate" hreflang="x-default" href="https://www.elminshawy.net/">
 
 <!-- App icon (Add to Home Screen — iPhone & Android) -->
 <link rel="manifest" href="/manifest.webmanifest">
@@ -31,16 +35,18 @@
 <meta property="og:locale:alternate" content="en_US">
 <meta property="og:title" content="الشيخ محمد صديق المنشاوي · الصوت الباكي">
 <meta property="og:description" content="موقع تكريمي للشيخ محمد صديق المنشاوي، أحد أعلام دولة التلاوة، يضم سيرته الذاتية ومكتبة كاملة للمصحفين المرتل والمجود بصوته.">
-<meta property="og:image" content="https://www.elminshawy.net/images/social-thumbnail.jpg">
+<meta property="og:image" content="https://www.elminshawy.net/images/og-minshawi.jpg">
+<meta property="og:image:secure_url" content="https://www.elminshawy.net/images/og-minshawi.jpg">
 <meta property="og:image:type" content="image/jpeg">
-<meta property="og:image:width" content="1024">
-<meta property="og:image:height" content="537">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="الشيخ محمد صديق المنشاوي · الصوت الباكي">
 <meta property="og:url" content="https://www.elminshawy.net/">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="الشيخ محمد صديق المنشاوي · الصوت الباكي">
 <meta name="twitter:description" content="موقع تكريمي للشيخ محمد صديق المنشاوي، أحد أعلام دولة التلاوة، يضم سيرته الذاتية ومكتبة كاملة للمصحفين المرتل والمجود بصوته.">
-<meta name="twitter:image" content="https://www.elminshawy.net/images/social-thumbnail.jpg">
+<meta name="twitter:image" content="https://www.elminshawy.net/images/og-minshawi.jpg">
 
 <!-- Structured Data (Schema.org JSON-LD) -->
 <script type="application/ld+json">
@@ -96,1043 +102,128 @@
 }
 </script>
 
+<script>
+(function(){try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+</script>
 <style>
-/* ============ THMANYAH TYPEFACE ============ */
 @font-face {
   font-family: 'Thmanyah Sans';
-  src: url('fonts/thmanyahsans-Light.woff2') format('woff2');
+  src: url('/fonts/thmanyahsans-Light.woff2') format('woff2');
   font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'Thmanyah Sans';
-  src: url('fonts/thmanyahsans-Regular.woff2') format('woff2');
+  src: url('/fonts/thmanyahsans-Regular.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'Thmanyah Sans';
-  src: url('fonts/thmanyahsans-Medium.woff2') format('woff2');
+  src: url('/fonts/thmanyahsans-Medium.woff2') format('woff2');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'Thmanyah Sans';
-  src: url('fonts/thmanyahsans-Bold.woff2') format('woff2');
+  src: url('/fonts/thmanyahsans-Bold.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'Thmanyah Sans';
-  src: url('fonts/thmanyahsans-Black.woff2') format('woff2');
+  src: url('/fonts/thmanyahsans-Black.woff2') format('woff2');
   font-weight: 900;
   font-style: normal;
   font-display: swap;
 }
-
 @font-face {
   font-family: 'Thmanyah Serif Text';
-  src: url('fonts/thmanyahseriftext-Light.woff2') format('woff2');
+  src: url('/fonts/thmanyahseriftext-Light.woff2') format('woff2');
   font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'Thmanyah Serif Text';
-  src: url('fonts/thmanyahseriftext-Regular.woff2') format('woff2');
+  src: url('/fonts/thmanyahseriftext-Regular.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'Thmanyah Serif Text';
-  src: url('fonts/thmanyahseriftext-Medium.woff2') format('woff2');
+  src: url('/fonts/thmanyahseriftext-Medium.woff2') format('woff2');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'Thmanyah Serif Text';
-  src: url('fonts/thmanyahseriftext-Bold.woff2') format('woff2');
+  src: url('/fonts/thmanyahseriftext-Bold.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'Thmanyah Serif Text';
-  src: url('fonts/thmanyahseriftext-Black.woff2') format('woff2');
+  src: url('/fonts/thmanyahseriftext-Black.woff2') format('woff2');
   font-weight: 900;
   font-style: normal;
   font-display: swap;
 }
-
 @font-face {
   font-family: 'Thmanyah Serif Display';
-  src: url('fonts/thmanyahserifdisplay-Light.woff2') format('woff2');
+  src: url('/fonts/thmanyahserifdisplay-Light.woff2') format('woff2');
   font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'Thmanyah Serif Display';
-  src: url('fonts/thmanyahserifdisplay-Regular.woff2') format('woff2');
+  src: url('/fonts/thmanyahserifdisplay-Regular.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'Thmanyah Serif Display';
-  src: url('fonts/thmanyahserifdisplay-Medium.woff2') format('woff2');
+  src: url('/fonts/thmanyahserifdisplay-Medium.woff2') format('woff2');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'Thmanyah Serif Display';
-  src: url('fonts/thmanyahserifdisplay-Bold.woff2') format('woff2');
+  src: url('/fonts/thmanyahserifdisplay-Bold.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'Thmanyah Serif Display';
-  src: url('fonts/thmanyahserifdisplay-Black.woff2') format('woff2');
+  src: url('/fonts/thmanyahserifdisplay-Black.woff2') format('woff2');
   font-weight: 900;
   font-style: normal;
   font-display: swap;
 }
-
-:root {
-  /* Earthen palette — inspired by old manuscripts & the Saidi land */
-  --paper: #f4ede0;
-  --paper-warm: #ede2cf;
-  --paper-deep: #e0d2b8;
-  --ink: #2a1f12;
-  --ink-soft: #4a3825;
-  --ochre: #b8763a;
-  --ochre-deep: #8b5524;
-  --olive: #5a6442;
-  --olive-deep: #3d4530;
-  --gold: #c69749;
-  --rust: #a0451f;
-  --shadow: rgba(42, 31, 18, 0.12);
-  --shadow-deep: rgba(42, 31, 18, 0.25);
-}
-
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
-html { scroll-behavior: smooth; }
-
-body {
-  font-family: 'Thmanyah Serif Text', 'Thmanyah Sans', serif;
-  background: var(--paper);
-  color: var(--ink);
-  line-height: 1.7;
-  overflow-x: hidden;
-  /* Subtle paper texture using SVG noise */
-  background-image:
-    radial-gradient(at 20% 10%, rgba(184, 118, 58, 0.05) 0, transparent 50%),
-    radial-gradient(at 80% 80%, rgba(90, 100, 66, 0.04) 0, transparent 50%);
-}
-
-/* Paper grain: tiny tiled PNG, no blend mode — the old full-screen SVG noise with
-   mix-blend-mode had to be re-composited on every scroll frame on phones */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 1;
-  background: url('images/grain-dark.png') repeat;
-  background-size: 96px 96px;
-}
-
-/* ============ NAVIGATION ============ */
-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
-  padding: 1.25rem 4rem;
-  background: transparent;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  transition: all 0.4s ease;
-}
-
-nav.scrolled {
-  background: rgba(244, 237, 224, 0.92);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(42, 31, 18, 0.08);
-  padding: 0.85rem 4rem;
-}
-
-.nav-mark {
-  font-family: 'Thmanyah Sans', sans-serif;
-  font-size: 0.95rem;
-  font-weight: 600;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--paper);
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  transition: color 0.4s ease;
-}
-
-nav.scrolled .nav-mark { color: var(--ink); }
-
-.nav-mark::before {
-  content: '۞';
-  color: var(--gold);
-  font-size: 1.4rem;
-}
-
-nav.scrolled .nav-mark::before { color: var(--ochre); }
-
-.nav-links {
-  display: flex;
-  gap: 2.5rem;
-  list-style: none;
-}
-
-.nav-links a {
-  font-family: 'Thmanyah Sans', sans-serif;
-  font-size: 0.75rem;
-  font-weight: 500;
-  color: rgba(244, 237, 224, 0.7);
-  text-decoration: none;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  position: relative;
-  padding-bottom: 4px;
-  transition: color 0.3s;
-}
-
-nav.scrolled .nav-links a { color: var(--ink-soft); }
-
-.nav-links a::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 0;
-  height: 1px;
-  background: var(--gold);
-  transition: width 0.3s ease;
-}
-
-nav.scrolled .nav-links a::after { background: var(--ochre); }
-
-.nav-links a:hover { color: var(--gold); }
-nav.scrolled .nav-links a:hover { color: var(--ochre-deep); }
-.nav-links a:hover::after { width: 100%; }
-
-.lang-toggle {
-  background: transparent;
-  border: 1px solid rgba(244, 237, 224, 0.4);
-  color: var(--paper);
-  padding: 0.45rem 1rem;
-  font-family: 'Thmanyah Sans', sans-serif;
-  font-size: 0.75rem;
-  letter-spacing: 0.15em;
-  cursor: pointer;
-  transition: all 0.3s;
-  border-radius: 2px;
-  font-weight: 500;
-}
-
-.lang-toggle:hover {
-  background: var(--gold);
-  color: #0a0604;
-  border-color: var(--gold);
-}
-
-nav.scrolled .lang-toggle {
-  border-color: var(--ink-soft);
-  color: var(--ink-soft);
-}
-
-nav.scrolled .lang-toggle:hover {
-  background: var(--ink);
-  color: var(--paper);
-}
-
-/* ============ CINEMATIC VINTAGE HERO ============ */
-.hero {
-  position: relative;
-  background: #0a0604;
-  color: var(--paper);
-  overflow: hidden;
-  padding: 5rem 0 0;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Layered backgrounds: gradient + vignette + film grain */
-.hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse at 70% 35%, rgba(198, 151, 73, 0.18) 0%, transparent 55%),
-    radial-gradient(ellipse at 30% 80%, rgba(160, 69, 31, 0.12) 0%, transparent 50%),
-    linear-gradient(180deg, #0a0604 0%, #1a0f08 50%, #0a0604 100%);
-  z-index: 0;
-}
-
-/* Static film grain overlay (no animation) */
-.hero::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: url('images/grain-light.png') repeat;
-  background-size: 96px 96px;
-  z-index: 1;
-  pointer-events: none;
-}
-
-/* Top film strip — perforated edge */
-.film-strip {
-  position: relative;
-  z-index: 3;
-  height: 24px;
-  background:
-    repeating-linear-gradient(90deg,
-      transparent 0,
-      transparent 14px,
-      rgba(244, 237, 224, 0.12) 14px,
-      rgba(244, 237, 224, 0.12) 22px
-    );
-  border-top: 1px solid rgba(198, 151, 73, 0.3);
-  border-bottom: 1px solid rgba(198, 151, 73, 0.3);
-  margin-bottom: 1rem;
-}
-
-.film-strip::before,
-.film-strip::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 6px;
-  background-image: radial-gradient(circle, #0a0604 4px, transparent 4.5px);
-  background-size: 22px 6px;
-  background-repeat: repeat-x;
-}
-.film-strip::before { top: 4px; }
-.film-strip::after { bottom: 4px; }
-
-/* Main hero stage — TWO COLUMN: portrait first, text second */
-.hero-stage {
-  position: relative;
-  z-index: 2;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  padding: 2rem 4rem 3rem;
-  align-items: center;
-  max-width: 1400px;
-  margin: 0 auto;
-  width: 100%;
-}
-
-/* === LEFT COLUMN: ALL TEXTUAL CONTENT === */
-.hero-left {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 1.75rem;
-  padding: 1rem 0;
-}
-
-/* Big name */
-.hero-name {
-  font-family: 'Thmanyah Serif Display', serif;
-  font-weight: 900;
-  font-size: clamp(2.5rem, 5vw, 4.5rem);
-  line-height: 1;
-  letter-spacing: -0.02em;
-  color: var(--paper);
-  margin: 0;
-  text-shadow:
-    0 2px 30px rgba(198, 151, 73, 0.15),
-    0 0 1px rgba(244, 237, 224, 0.5);
-  position: relative;
-}
-
-/* Tagline below name */
-.hero-tagline {
-  font-family: 'Thmanyah Serif Display', serif;
-  font-weight: 300;
-  font-style: italic;
-  font-size: clamp(1rem, 1.4vw, 1.25rem);
-  color: var(--gold);
-  letter-spacing: 0.05em;
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  line-height: 1.4;
-  margin-top: -0.5rem;
-}
-
-.hero-tagline::before {
-  content: '';
-  width: 40px;
-  height: 1px;
-  background: var(--gold);
-  flex-shrink: 0;
-}
-
-/* Quote block — uses logical properties for proper RTL/LTR support */
-.hero-quote-block {
-  position: relative;
-  padding: 1.25rem 1.5rem;
-  background: rgba(0, 0, 0, 0.3);
-  border-inline-start: 2px solid var(--gold);
-  font-family: 'Thmanyah Serif Text', serif;
-  font-style: italic;
-  font-size: 1rem;
-  color: rgba(244, 237, 224, 0.85);
-  line-height: 1.7;
-  max-width: 580px;
-}
-
-.hero-quote-block .attr {
-  display: block;
-  margin-top: 0.75rem;
-  font-style: normal;
-  font-size: 0.7rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--gold);
-  font-family: 'Thmanyah Sans', sans-serif;
-}
-
-/* Year stamps row */
-.hero-meta-row {
-  display: flex;
-  gap: 3rem;
-  align-items: flex-start;
-  flex-wrap: wrap;
-}
-
-.year-stamp-item {
-  position: relative;
-}
-
-.year-stamp {
-  font-family: 'Thmanyah Serif Display', serif;
-  font-weight: 700;
-  font-size: 3rem;
-  line-height: 0.9;
-  color: var(--gold);
-  letter-spacing: -0.03em;
-  position: relative;
-  display: block;
-}
-
-.year-stamp::after {
-  content: '';
-  position: absolute;
-  inset-inline-start: 0;
-  bottom: -6px;
-  width: 40px;
-  height: 1px;
-  background: var(--gold);
-}
-
-.year-stamp-label {
-  display: block;
-  font-family: 'Thmanyah Sans', sans-serif;
-  font-weight: 400;
-  font-size: 0.65rem;
-  color: rgba(244, 237, 224, 0.5);
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  margin-top: 1rem;
-  white-space: nowrap;
-}
-
-/* === PORTRAIT: properly sized and centered === */
-.hero-portrait {
-  position: relative;
-  width: 100%;
-  max-width: 420px;
-  aspect-ratio: 3 / 4;
-  /* In RTL: col 1 is on the right; justify-self: end pushes it further right */
-  /* In LTR: col 1 is on the left; justify-self: start pushes it further left */
-  justify-self: end;
-}
-
-body[dir="ltr"] .hero-portrait,
-body.lang-en .hero-portrait {
-  justify-self: start;
-}
-
-/* Spotlight glow behind portrait */
-.hero-portrait::before {
-  content: '';
-  position: absolute;
-  inset: -80px;
-  background: radial-gradient(ellipse at center,
-    rgba(198, 151, 73, 0.35) 0%,
-    rgba(198, 151, 73, 0.15) 30%,
-    transparent 60%);
-  z-index: -1;
-}
-
-/* Spotlight beam from above */
-.hero-portrait::after {
-  content: '';
-  position: absolute;
-  top: -100px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 0;
-  height: 0;
-  border-left: 200px solid transparent;
-  border-right: 200px solid transparent;
-  border-top: 600px solid rgba(244, 237, 224, 0.04);
-  filter: blur(30px);
-  z-index: -1;
-  pointer-events: none;
-}
-
-.portrait-card {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, #1a1208 0%, #0d0805 100%);
-  border: 1px solid rgba(198, 151, 73, 0.4);
-  overflow: hidden;
-  box-shadow:
-    0 40px 80px rgba(0, 0, 0, 0.7),
-    0 0 0 1px rgba(244, 237, 224, 0.05) inset,
-    0 60px 120px rgba(198, 151, 73, 0.15);
-}
-
-/* Inner ornamental frame */
-.portrait-card::before {
-  content: '';
-  position: absolute;
-  inset: 14px;
-  border: 1px solid rgba(198, 151, 73, 0.25);
-  pointer-events: none;
-  z-index: 4;
-}
-
-.portrait-card::after {
-  content: '';
-  position: absolute;
-  inset: 18px;
-  border: 1px dashed rgba(198, 151, 73, 0.15);
-  pointer-events: none;
-  z-index: 4;
-}
-
-.portrait-card picture {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
-.portrait-svg {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover;
-  object-position: center top;
-  /* Cinematic vintage filter — warm sepia tones */
-  filter: sepia(0.35) contrast(1.08) brightness(0.92) saturate(0.85);
-  transition: filter 0.6s ease;
-}
-
-/* On hover: soften the filter to reveal more detail */
-.portrait-card:hover .portrait-svg {
-  filter: sepia(0.15) contrast(1.05) brightness(1) saturate(0.95);
-}
-
-.portrait-corner {
-  position: absolute;
-  width: 32px;
-  height: 32px;
-  z-index: 5;
-  pointer-events: none;
-}
-.portrait-corner.tl { top: 24px; left: 24px; border-top: 2px solid var(--gold); border-left: 2px solid var(--gold); }
-.portrait-corner.tr { top: 24px; right: 24px; border-top: 2px solid var(--gold); border-right: 2px solid var(--gold); }
-.portrait-corner.bl { bottom: 24px; left: 24px; border-bottom: 2px solid var(--gold); border-left: 2px solid var(--gold); }
-.portrait-corner.br { bottom: 24px; right: 24px; border-bottom: 2px solid var(--gold); border-right: 2px solid var(--gold); }
-
-/* Marquee ticker at very bottom */
-.hero-ticker {
-  position: relative;
-  z-index: 2;
-  background: linear-gradient(90deg, var(--gold), var(--ochre));
-  color: #0a0604;
-  padding: 0.9rem 0;
-  overflow: hidden;
-  white-space: nowrap;
-  font-family: 'Thmanyah Serif Display', serif;
-  font-weight: 700;
-  font-size: 0.95rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-}
-
-.hero-ticker-track {
-  display: inline-flex;
-  gap: 3rem;
-  animation: ticker-scroll 600s linear infinite;
-  padding-left: 3rem;
-}
-
-.hero-ticker-item {
-  display: inline-flex;
-  align-items: center;
-  gap: 3rem;
-}
-
-.hero-ticker-item::after {
-  content: '✦';
-  color: rgba(10, 6, 4, 0.5);
-  font-size: 0.8rem;
-}
-
-@keyframes ticker-scroll {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-
-html[dir="rtl"] .hero-ticker-track,
-body:not(.lang-en) .hero-ticker-track {
-  animation-name: ticker-scroll-rtl;
-}
-
-@keyframes ticker-scroll-rtl {
-  from { transform: translateX(0); }
-  to { transform: translateX(50%); }
-}
-
-/* Lang-specific hide/show inside hero - inherit from main rules */
-
-/* ============ DIVIDER ============ */
-.ornament-divider {
-  text-align: center;
-  margin: 6rem 0;
-  position: relative;
-}
-
-.ornament-divider::before,
-.ornament-divider::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  width: 30%;
-  height: 1px;
-  background: linear-gradient(to right, transparent, var(--ochre), transparent);
-}
-.ornament-divider::before { right: 0; }
-.ornament-divider::after { left: 0; }
-
-.ornament-divider span {
-  font-family: 'Thmanyah Sans', sans-serif;
-  font-size: 1.8rem;
-  color: var(--ochre);
-  background: var(--paper);
-  padding: 0 1.5rem;
-  position: relative;
-}
-
-/* ============ BIOGRAPHY SECTION ============ */
-.biography {
-  padding: 6rem 4rem;
-  position: relative;
-  z-index: 2;
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-.section-label {
-  font-family: 'Thmanyah Sans', sans-serif;
-  font-style: italic;
-  font-size: 1rem;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--ochre-deep);
-  text-align: center;
-  margin-bottom: 1rem;
-}
-
-.section-title {
-  font-family: 'Thmanyah Serif Display', serif;
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  font-weight: 700;
-  text-align: center;
-  color: var(--ink);
-  margin-bottom: 1rem;
-  line-height: 1.1;
-}
-
-.section-title-en {
-  font-family: 'Thmanyah Sans', sans-serif;
-  font-style: italic;
-  font-size: 1.2rem;
-  color: var(--ink-soft);
-  text-align: center;
-  margin-bottom: 5rem;
-  letter-spacing: 0.05em;
-}
-
-.bio-grid {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 2rem;
-  margin-top: 4rem;
-}
-
-.bio-chapter {
-  position: relative;
-  padding: 2.5rem;
-  background: rgba(237, 226, 207, 0.4);
-  border: 1px solid rgba(42, 31, 18, 0.08);
-  transition: all 0.4s ease;
-}
-
-.bio-chapter:hover {
-  background: rgba(237, 226, 207, 0.7);
-  transform: translateY(-2px);
-  box-shadow: 0 20px 40px var(--shadow);
-}
-
-.bio-chapter.span-7 { grid-column: span 7; }
-.bio-chapter.span-5 { grid-column: span 5; }
-.bio-chapter.span-6 { grid-column: span 6; }
-.bio-chapter.span-12 { grid-column: span 12; }
-
-.chapter-num {
-  font-family: 'Thmanyah Sans', sans-serif;
-  font-style: italic;
-  font-size: 1rem;
-  color: var(--ochre-deep);
-  letter-spacing: 0.2em;
-  margin-bottom: 1rem;
-  display: block;
-}
-
-.chapter-title {
-  font-family: 'Thmanyah Serif Display', serif;
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--ink);
-  margin-bottom: 1.5rem;
-  line-height: 1.2;
-}
-
-.chapter-title-en {
-  display: block;
-  font-family: 'Thmanyah Sans', sans-serif;
-  font-style: italic;
-  font-size: 1rem;
-  font-weight: 400;
-  color: var(--ochre-deep);
-  margin-top: 0.4rem;
-  letter-spacing: 0.05em;
-}
-
-.chapter-body {
-  font-family: 'Thmanyah Serif Text', serif;
-  font-size: 1.15rem;
-  line-height: 1.9;
-  color: var(--ink-soft);
-}
-
-.chapter-body p { margin-bottom: 1rem; }
-
-.chapter-body strong {
-  color: var(--ochre-deep);
-  font-weight: 700;
-}
-
-/* Timeline */
-.timeline-grid {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
-  margin: 4rem 0;
-}
-
-.timeline-grid::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  inset-inline-start: 136px;
-  width: 2px;
-  background: rgba(42, 31, 18, 0.15);
-}
-
-.timeline-row {
-  display: grid;
-  grid-template-columns: 120px 1fr;
-  gap: 2rem;
-  position: relative;
-  align-items: start;
-}
-
-.timeline-row::before {
-  content: '';
-  position: absolute;
-  top: 0.6rem;
-  inset-inline-start: 130px;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: var(--ochre);
-  border: 2px solid var(--paper);
-  box-shadow: 0 0 0 4px rgba(184, 134, 11, 0.1);
-  z-index: 2;
-}
-
-.timeline-year {
-  font-family: 'Thmanyah Sans', sans-serif;
-  font-size: 1.8rem;
-  font-weight: 600;
-  color: var(--ochre-deep);
-  text-align: end;
-}
-
-.timeline-event {
-  font-family: 'Thmanyah Serif Text', serif;
-  font-size: 1.1rem;
-  color: var(--ink-soft);
-  line-height: 1.6;
-}
-
-/* ============ AUDIO LIBRARY ============ */
-.library {
-  padding: 6rem 4rem;
-  background: var(--paper-warm);
-  position: relative;
-  z-index: 2;
-}
-
-.library-inner {
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-.library::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 100%;
-  height: 1px;
-  background: linear-gradient(to right, transparent, var(--ochre), transparent);
-}
-
-.library-controls {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 3rem auto;
-  max-width: 1400px;
-  padding: 1.5rem 2rem;
-  background: var(--paper);
-  border: 1px solid rgba(42, 31, 18, 0.1);
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.search-box {
-  flex: 1;
-  min-width: 280px;
-  position: relative;
-}
-
-.search-box input {
-  width: 100%;
-  padding: 0.8rem 2.8rem 0.8rem 1rem;
-  font-family: 'Thmanyah Serif Display', serif;
-  font-size: 1rem;
-  background: transparent;
-  border: none;
-  border-bottom: 1px solid var(--ink-soft);
-  color: var(--ink);
-  outline: none;
-  transition: border-color 0.3s;
-}
-
-.search-box input:focus { border-color: var(--ochre); }
-
-.search-box::after {
-  content: '⌕';
-  position: absolute;
-  left: 0.5rem;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--ochre-deep);
-  font-size: 1.4rem;
-  pointer-events: none;
-}
-
-.lib-stats {
-  font-family: 'Thmanyah Sans', sans-serif;
-  font-style: italic;
-  color: var(--ink-soft);
-  font-size: 1rem;
-}
-
-.lib-stats strong {
-  color: var(--ochre-deep);
-  font-weight: 600;
-}
-
-.surahs-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1rem;
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-.surah-card {
-  display: grid;
-  grid-template-columns: 50px 1fr auto;
-  align-items: center;
-  gap: 1rem;
-  padding: 1.25rem 1.5rem;
-  background: var(--paper);
-  border: 1px solid rgba(42, 31, 18, 0.08);
-  cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.surah-card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, transparent 50%, rgba(184, 118, 58, 0.06) 100%);
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-
-.surah-card:hover {
-  border-color: var(--ochre);
-  transform: translateY(-2px);
-  box-shadow: 0 10px 30px var(--shadow);
-}
-
-.surah-card:hover::before { opacity: 1; }
-a.surah-info { color: inherit; text-decoration: none; }
-.footer-links { margin: 0 0 1rem; }
-.footer-links a { color: var(--gold); text-decoration: none; border-bottom: 1px solid currentColor; font-weight: 500; }
-
-.surah-card.playing {
-  background: var(--ink);
-  color: var(--paper);
-  border-color: var(--ochre);
-}
-
-.surah-card.playing .surah-num,
-.surah-card.playing .surah-name,
-.surah-card.playing .surah-name-en,
-.surah-card.playing .play-icon {
-  color: var(--paper);
-}
-
-.surah-num {
-  font-family: 'Thmanyah Sans', sans-serif;
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: var(--ochre-deep);
-  text-align: center;
-  font-style: italic;
-}
-
-.surah-info {
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-  position: relative;
-  z-index: 1;
-}
-
-.surah-name {
-  font-family: 'Thmanyah Serif Display', serif;
-  font-size: 1.3rem;
-  font-weight: 700;
-  color: var(--ink);
-  line-height: 1.2;
-}
-
-.surah-name-en {
-  font-family: 'Thmanyah Sans', sans-serif;
-  font-size: 0.85rem;
-  font-style: italic;
-  color: var(--ink-soft);
-  letter-spacing: 0.05em;
-}
-
-.play-icon {
-  width: 32px;
-  height: 32px;
-  border: 1px solid var(--ochre);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--ochre);
-  transition: all 0.3s;
-  position: relative;
-  z-index: 1;
-  flex-shrink: 0;
-}
-
-.play-icon svg { display: block; }
-
-.surah-card:hover .play-icon {
-  background: var(--ochre);
-  color: var(--paper);
-}
-
-.surah-card.playing .play-icon {
-  background: var(--ochre);
-  color: var(--paper);
-  animation: pulse 1.5s ease-in-out infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(198, 151, 73, 0.6); }
-  50% { box-shadow: 0 0 0 8px rgba(198, 151, 73, 0); }
-}
-
 /* ============ PRO MEDIA PLAYER (FIXED BOTTOM) ============ */
 .media-player {
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
-  background: linear-gradient(180deg, #1a1410 0%, #0d0906 100%);
-  color: var(--paper);
+  background: linear-gradient(180deg, var(--p-bg) 0%, var(--p-bg) 100%);
+  color: var(--p-fg);
   z-index: 90;
   box-shadow: 0 -20px 60px rgba(0, 0, 0, 0.6);
   transform: translateY(100%);
   transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-  border-top: 1px solid rgba(198, 151, 73, 0.25);
+  border-top: 1px solid rgba(var(--p-acc-rgb),0.25);
 }
 
 .media-player.active { transform: translateY(0); }
@@ -1143,8 +234,8 @@ a.surah-info { color: inherit; text-decoration: none; }
   bottom: 100%;
   left: 0;
   right: 0;
-  background: linear-gradient(180deg, #151009 0%, #1a140d 100%);
-  border-top: 1px solid rgba(198, 151, 73, 0.2);
+  background: linear-gradient(180deg, var(--p-bg) 0%, var(--p-bg) 100%);
+  border-top: 1px solid rgba(var(--p-acc-rgb),0.2);
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.45s cubic-bezier(0.16, 1, 0.3, 1);
@@ -1157,19 +248,19 @@ a.surah-info { color: inherit; text-decoration: none; }
 }
 .queue-panel::-webkit-scrollbar { width: 4px; }
 .queue-panel::-webkit-scrollbar-track { background: transparent; }
-.queue-panel::-webkit-scrollbar-thumb { background: rgba(198,151,73,0.3); border-radius: 2px; }
+.queue-panel::-webkit-scrollbar-thumb { background: rgba(var(--p-acc-rgb),0.3); border-radius: 2px; }
 .queue-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0.9rem 1.5rem 0.6rem;
-  border-bottom: 1px solid rgba(198,151,73,0.1);
+  border-bottom: 1px solid rgba(var(--p-acc-rgb),0.1);
   font-family: 'Thmanyah Sans', sans-serif;
   font-size: 0.85rem;
-  color: rgba(244,237,224,0.5);
+  color: rgba(var(--p-fg-rgb),0.5);
   position: sticky;
   top: 0;
-  background: #151009;
+  background: var(--p-bg);
   z-index: 1;
 }
 .queue-list {
@@ -1186,14 +277,14 @@ a.surah-info { color: inherit; text-decoration: none; }
   transition: background 0.2s;
   font-family: 'Thmanyah Sans', sans-serif;
 }
-.queue-item:hover { background: rgba(198,151,73,0.08); }
+.queue-item:hover { background: rgba(var(--p-acc-rgb),0.08); }
 .queue-item.active {
-  background: rgba(198,151,73,0.15);
-  border-inline-start: 2px solid #d4af37;
+  background: rgba(var(--p-acc-rgb),0.15);
+  border-inline-start: 2px solid var(--p-acc);
 }
 .queue-item-num {
   font-size: 0.75rem;
-  color: rgba(244,237,224,0.35);
+  color: rgba(var(--p-fg-rgb),0.35);
   min-width: 1.8rem;
   text-align: center;
   font-variant-numeric: tabular-nums;
@@ -1201,14 +292,14 @@ a.surah-info { color: inherit; text-decoration: none; }
 .queue-item-name {
   flex: 1;
   font-size: 0.95rem;
-  color: rgba(244,237,224,0.85);
+  color: rgba(var(--p-fg-rgb),0.85);
 }
-.queue-item.active .queue-item-name { color: #d4af37; }
+.queue-item.active .queue-item-name { color: var(--p-acc); }
 .queue-item-playing {
   display: none;
   width: 14px;
   height: 14px;
-  color: #d4af37;
+  color: var(--p-acc);
 }
 .queue-item.active .queue-item-playing { display: block; }
 
@@ -1220,7 +311,7 @@ a.surah-info { color: inherit; text-decoration: none; }
   left: 0;
   right: 0;
   height: 2px;
-  background: rgba(244, 237, 224, 0.06);
+  background: rgba(var(--p-fg-rgb),0.06);
   overflow: hidden;
   z-index: 3;
   pointer-events: none;
@@ -1231,9 +322,9 @@ a.surah-info { color: inherit; text-decoration: none; }
   top: 0;
   right: 0;
   height: 100%;
-  background: linear-gradient(90deg, var(--ochre), var(--gold));
+  background: linear-gradient(90deg, var(--p-acc), var(--p-acc));
   width: 0%;
-  box-shadow: 0 0 8px rgba(198, 151, 73, 0.5);
+  box-shadow: 0 0 8px rgba(var(--p-acc-rgb),0.5);
   transition: width 0.1s linear;
 }
 
@@ -1245,7 +336,7 @@ a.surah-info { color: inherit; text-decoration: none; }
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(198, 151, 73, 0.6), rgba(198, 151, 73, 0.95), rgba(198, 151, 73, 0.6), transparent);
+  background: linear-gradient(90deg, transparent, rgba(var(--p-acc-rgb),0.6), rgba(var(--p-acc-rgb),0.95), rgba(var(--p-acc-rgb),0.6), transparent);
   background-size: 200% 100%;
   z-index: 4;
   pointer-events: none;
@@ -1282,16 +373,16 @@ a.surah-info { color: inherit; text-decoration: none; }
 .player-cover {
   width: 52px;
   height: 52px;
-  background: linear-gradient(135deg, var(--ochre) 0%, var(--rust) 100%);
+  background: linear-gradient(135deg, var(--p-acc) 0%, var(--accent) 100%);
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: 'Thmanyah Sans', sans-serif;
   font-size: 1.3rem;
-  color: var(--paper);
+  color: var(--p-fg);
   flex-shrink: 0;
   position: relative;
-  border: 1px solid rgba(198, 151, 73, 0.4);
+  border: 1px solid rgba(var(--p-acc-rgb),0.4);
   border-radius: 6px;
   overflow: hidden;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
@@ -1307,7 +398,7 @@ a.surah-info { color: inherit; text-decoration: none; }
   position: absolute;
   font-size: 2rem;
   opacity: 0.22;
-  color: var(--paper);
+  color: var(--p-fg);
 }
 
 .player-cover .cover-num {
@@ -1332,15 +423,15 @@ a.surah-info { color: inherit; text-decoration: none; }
 }
 
 .player-cover:hover .cover-expand-hint { opacity: 1; }
-.cover-expand-hint svg { width: 18px; height: 18px; fill: var(--paper); }
+.cover-expand-hint svg { width: 18px; height: 18px; fill: var(--p-fg); }
 
 .media-player.is-playing .player-cover::after {
   content: '';
   position: absolute;
   inset: -1px;
   border: 1.5px solid transparent;
-  border-top-color: var(--gold);
-  border-right-color: rgba(198, 151, 73, 0.5);
+  border-top-color: var(--p-acc);
+  border-right-color: rgba(var(--p-acc-rgb),0.5);
   border-radius: 6px;
   animation: spin 3s linear infinite;
   pointer-events: none;
@@ -1360,7 +451,7 @@ a.surah-info { color: inherit; text-decoration: none; }
   font-family: 'Thmanyah Serif Display', serif;
   font-size: 1.05rem;
   font-weight: 700;
-  color: var(--paper);
+  color: var(--p-fg);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1377,7 +468,7 @@ a.surah-info { color: inherit; text-decoration: none; }
 .player-queue-chevron {
   background: transparent;
   border: none;
-  color: rgba(244, 237, 224, 0.45);
+  color: rgba(var(--p-fg-rgb),0.45);
   cursor: pointer;
   padding: 2px;
   display: flex;
@@ -1385,16 +476,16 @@ a.surah-info { color: inherit; text-decoration: none; }
   transition: color 0.2s, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   flex-shrink: 0;
 }
-.player-queue-chevron:hover { color: rgba(244, 237, 224, 0.85); }
+.player-queue-chevron:hover { color: rgba(var(--p-fg-rgb),0.85); }
 .player-queue-chevron.open {
-  color: #d4af37;
+  color: var(--p-acc);
   transform: rotate(180deg);
 }
 
 .player-subtitle {
   font-family: 'Thmanyah Sans', sans-serif;
   font-size: 0.72rem;
-  color: rgba(244, 237, 224, 0.5);
+  color: rgba(var(--p-fg-rgb),0.5);
   letter-spacing: 0.06em;
   white-space: nowrap;
   overflow: hidden;
@@ -1408,14 +499,14 @@ a.surah-info { color: inherit; text-decoration: none; }
   width: 3px;
   height: 3px;
   border-radius: 50%;
-  background: rgba(198, 151, 73, 0.6);
+  background: rgba(var(--p-acc-rgb),0.6);
   flex-shrink: 0;
 }
 
 .player-fav {
   background: transparent;
   border: none;
-  color: rgba(244, 237, 224, 0.4);
+  color: rgba(var(--p-fg-rgb),0.4);
   cursor: pointer;
   padding: 0.4rem;
   transition: all 0.3s;
@@ -1426,9 +517,9 @@ a.surah-info { color: inherit; text-decoration: none; }
 }
 
 .player-fav svg { width: 18px; height: 18px; fill: currentColor; transition: transform 0.3s; }
-.player-fav:hover { color: var(--gold); }
+.player-fav:hover { color: var(--p-acc); }
 .player-fav:hover svg { transform: scale(1.15); }
-.player-fav.active { color: var(--rust); }
+.player-fav.active { color: var(--accent); }
 .player-fav.active svg { animation: heart-pop 0.4s ease; }
 
 @keyframes heart-pop {
@@ -1456,7 +547,7 @@ a.surah-info { color: inherit; text-decoration: none; }
 .player-btn {
   background: transparent;
   border: none;
-  color: rgba(244, 237, 224, 0.65);
+  color: rgba(var(--p-fg-rgb),0.65);
   cursor: pointer;
   transition: all 0.2s ease;
   padding: 0.45rem;
@@ -1469,14 +560,14 @@ a.surah-info { color: inherit; text-decoration: none; }
 }
 
 .player-btn:hover {
-  color: var(--paper);
+  color: var(--p-fg);
   transform: scale(1.12);
 }
 
 .player-btn:active { transform: scale(0.95); }
 
 .player-btn.active {
-  color: var(--gold);
+  color: var(--p-acc);
 }
 
 .player-btn.active::after {
@@ -1487,9 +578,9 @@ a.surah-info { color: inherit; text-decoration: none; }
   transform: translateX(-50%);
   width: 4px;
   height: 4px;
-  background: var(--gold);
+  background: var(--p-acc);
   border-radius: 50%;
-  box-shadow: 0 0 6px rgba(198, 151, 73, 0.7);
+  box-shadow: 0 0 6px rgba(var(--p-acc-rgb),0.7);
 }
 
 /* Skip buttons (10s indicators) */
@@ -1510,16 +601,16 @@ a.surah-info { color: inherit; text-decoration: none; }
   height: 42px;
   border: none;
   border-radius: 50%;
-  background: var(--paper);
-  color: var(--ink);
-  box-shadow: 0 2px 14px rgba(198, 151, 73, 0.35);
+  background: var(--p-fg);
+  color: var(--p-bg);
+  box-shadow: 0 2px 14px rgba(var(--p-acc-rgb),0.35);
   transition: all 0.2s ease;
 }
 
 .player-btn.main:hover {
-  background: var(--gold);
+  background: var(--p-acc);
   transform: scale(1.08);
-  box-shadow: 0 4px 22px rgba(198, 151, 73, 0.55);
+  box-shadow: 0 4px 22px rgba(var(--p-acc-rgb),0.55);
 }
 
 .player-btn.main:active {
@@ -1547,7 +638,7 @@ a.surah-info { color: inherit; text-decoration: none; }
 .player-time {
   font-family: 'Thmanyah Sans', sans-serif;
   font-size: 0.72rem;
-  color: rgba(244, 237, 224, 0.55);
+  color: rgba(var(--p-fg-rgb),0.55);
   min-width: 42px;
   text-align: center;
   font-variant-numeric: tabular-nums;
@@ -1556,7 +647,7 @@ a.surah-info { color: inherit; text-decoration: none; }
   transition: color 0.2s;
 }
 
-.player-progress-row:hover .player-time { color: rgba(244, 237, 224, 0.85); }
+.player-progress-row:hover .player-time { color: rgba(var(--p-fg-rgb),0.85); }
 
 .progress-container {
   flex: 1;
@@ -1570,7 +661,7 @@ a.surah-info { color: inherit; text-decoration: none; }
 .progress-track {
   width: 100%;
   height: 4px;
-  background: rgba(244, 237, 224, 0.08);
+  background: rgba(var(--p-fg-rgb),0.08);
   position: relative;
   border-radius: 2px;
   transition: height 0.2s ease;
@@ -1585,7 +676,7 @@ a.surah-info { color: inherit; text-decoration: none; }
   top: 0;
   right: 0;
   height: 100%;
-  background: rgba(244, 237, 224, 0.13);
+  background: rgba(var(--p-fg-rgb),0.13);
   border-radius: 2px;
   width: 0%;
   transition: width 0.3s ease;
@@ -1596,10 +687,10 @@ a.surah-info { color: inherit; text-decoration: none; }
   top: 0;
   right: 0;
   height: 100%;
-  background: linear-gradient(90deg, var(--ochre) 0%, var(--gold) 100%);
+  background: linear-gradient(90deg, var(--p-acc) 0%, var(--p-acc) 100%);
   border-radius: 2px;
   width: 0%;
-  box-shadow: 0 0 8px rgba(198, 151, 73, 0.4);
+  box-shadow: 0 0 8px rgba(var(--p-acc-rgb),0.4);
 }
 
 /* Thumb is the leading-edge dot of the progress fill */
@@ -1608,12 +699,12 @@ a.surah-info { color: inherit; text-decoration: none; }
   top: 50%;
   width: 14px;
   height: 14px;
-  background: var(--paper);
+  background: var(--p-fg);
   border-radius: 50%;
   opacity: 0;
   transition: opacity 0.2s, transform 0.2s;
   pointer-events: none;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(198, 151, 73, 0.4);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(var(--p-acc-rgb),0.4);
   /* In RTL, the fill grows leftward, so the thumb sits at left edge */
   left: 0;
   transform: translate(-50%, -50%);
@@ -1635,14 +726,14 @@ body.lang-en .progress-thumb {
 .progress-tooltip {
   position: absolute;
   bottom: calc(100% + 8px);
-  background: rgba(26, 20, 16, 0.95);
-  color: var(--paper);
+  background: var(--p-bg);
+  color: var(--p-fg);
   padding: 4px 8px;
   border-radius: 3px;
   font-family: 'Thmanyah Sans', sans-serif;
   font-size: 0.7rem;
   font-variant-numeric: tabular-nums;
-  border: 1px solid rgba(198, 151, 73, 0.3);
+  border: 1px solid rgba(var(--p-acc-rgb),0.3);
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.15s;
@@ -1658,7 +749,7 @@ body.lang-en .progress-thumb {
   left: 50%;
   transform: translateX(-50%);
   border: 4px solid transparent;
-  border-top-color: rgba(198, 151, 73, 0.3);
+  border-top-color: rgba(var(--p-acc-rgb),0.3);
 }
 
 .progress-container:hover .progress-tooltip { opacity: 1; }
@@ -1673,7 +764,7 @@ body.lang-en .progress-thumb {
 .player-mini-btn {
   background: transparent;
   border: none;
-  color: rgba(244, 237, 224, 0.55);
+  color: rgba(var(--p-fg-rgb),0.55);
   cursor: pointer;
   padding: 0.45rem;
   transition: all 0.2s;
@@ -1688,11 +779,11 @@ body.lang-en .progress-thumb {
 }
 
 .player-mini-btn:hover {
-  color: var(--gold);
-  background: rgba(198, 151, 73, 0.08);
+  color: var(--p-acc);
+  background: rgba(var(--p-acc-rgb),0.08);
 }
 
-.player-mini-btn.active { color: var(--gold); }
+.player-mini-btn.active { color: var(--p-acc); }
 
 .player-mini-btn svg {
   width: 16px;
@@ -1708,8 +799,8 @@ body.lang-en .progress-thumb {
   bottom: calc(100% + 10px);
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(26, 20, 16, 0.95);
-  color: var(--paper);
+  background: var(--p-bg);
+  color: var(--p-fg);
   padding: 4px 8px;
   border-radius: 3px;
   font-family: 'Thmanyah Sans', sans-serif;
@@ -1718,7 +809,7 @@ body.lang-en .progress-thumb {
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.2s 0.3s, transform 0.2s 0.3s;
-  border: 1px solid rgba(198, 151, 73, 0.3);
+  border: 1px solid rgba(var(--p-acc-rgb),0.3);
   z-index: 6;
   letter-spacing: 0.05em;
 }
@@ -1758,7 +849,7 @@ body.lang-en .progress-thumb {
   right: 0;
   height: 4px;
   transform: translateY(-50%);
-  background: rgba(244, 237, 224, 0.1);
+  background: rgba(var(--p-fg-rgb),0.1);
   border-radius: 2px;
   pointer-events: none;
   transition: height 0.2s;
@@ -1774,7 +865,7 @@ body.lang-en .progress-thumb {
   left: 0;
   height: 100%;
   width: 80%;
-  background: var(--gold);
+  background: var(--p-acc);
   border-radius: 2px;
 }
 
@@ -1784,11 +875,11 @@ body.lang-en .progress-thumb {
   left: 80%;
   width: 12px;
   height: 12px;
-  background: var(--paper);
+  background: var(--p-fg);
   border-radius: 50%;
   transform: translate(-50%, -50%);
   pointer-events: none;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(198, 151, 73, 0.3);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(var(--p-acc-rgb),0.3);
   transition: transform 0.2s;
   z-index: 2;
 }
@@ -1836,7 +927,7 @@ body.lang-en .progress-thumb {
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  background: linear-gradient(90deg, transparent, var(--p-acc), transparent);
   background-size: 30% 100%;
   background-repeat: no-repeat;
   display: none;
@@ -1873,7 +964,7 @@ body.lang-en .progress-thumb {
 
 .visualizer-bar {
   width: 2px;
-  background: var(--paper);
+  background: var(--p-fg);
   border-radius: 1px;
   animation: vis-bounce 0.8s ease-in-out infinite;
 }
@@ -1898,7 +989,7 @@ body.lang-en .progress-thumb {
   display: none;
   position: fixed;
   inset: 0;
-  background: linear-gradient(180deg, #1a1410 0%, #0d0906 100%);
+  background: linear-gradient(180deg, var(--p-bg) 0%, var(--p-bg) 100%);
   z-index: 200;
   padding: 4rem 2rem 2rem;
   overflow-y: auto;
@@ -1911,8 +1002,8 @@ body.lang-en .progress-thumb {
   top: 1.5rem;
   right: 1.5rem;
   background: transparent;
-  border: 1px solid rgba(244, 237, 224, 0.2);
-  color: var(--paper);
+  border: 1px solid rgba(var(--p-fg-rgb),0.2);
+  color: var(--p-fg);
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -1925,8 +1016,8 @@ body.lang-en .progress-thumb {
 }
 
 .expanded-close:hover {
-  background: rgba(244, 237, 224, 0.1);
-  border-color: var(--gold);
+  background: rgba(var(--p-fg-rgb),0.1);
+  border-color: var(--p-acc);
 }
 
 .expanded-content {
@@ -1944,17 +1035,17 @@ body.lang-en .progress-thumb {
 .expanded-cover {
   width: min(360px, 65vw);
   height: min(360px, 65vw);
-  background: linear-gradient(135deg, var(--ochre) 0%, var(--rust) 100%);
+  background: linear-gradient(135deg, var(--p-acc) 0%, var(--accent) 100%);
   border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: 'Thmanyah Sans', sans-serif;
-  color: var(--paper);
+  color: var(--p-fg);
   position: relative;
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
   overflow: hidden;
-  border: 1px solid rgba(198, 151, 73, 0.4);
+  border: 1px solid rgba(var(--p-acc-rgb),0.4);
 }
 
 .expanded-cover::before {
@@ -1977,8 +1068,8 @@ body.lang-en .progress-thumb {
 }
 
 @keyframes subtle-pulse {
-  0%, 100% { box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), 0 0 0 0 rgba(198, 151, 73, 0); }
-  50% { box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), 0 0 60px 0 rgba(198, 151, 73, 0.2); }
+  0%, 100% { box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), 0 0 0 0 rgba(var(--p-acc-rgb),0); }
+  50% { box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), 0 0 60px 0 rgba(var(--p-acc-rgb),0.2); }
 }
 
 .expanded-info { text-align: center; }
@@ -1987,7 +1078,7 @@ body.lang-en .progress-thumb {
   font-family: 'Thmanyah Serif Display', serif;
   font-size: 2.5rem;
   font-weight: 700;
-  color: var(--paper);
+  color: var(--p-fg);
   margin-bottom: 0.5rem;
 }
 
@@ -1995,7 +1086,7 @@ body.lang-en .progress-thumb {
   font-family: 'Thmanyah Sans', sans-serif;
   font-style: italic;
   font-size: 1.1rem;
-  color: rgba(244, 237, 224, 0.6);
+  color: rgba(var(--p-fg-rgb),0.6);
   letter-spacing: 0.08em;
 }
 
@@ -2044,7 +1135,7 @@ body.lang-en .progress-thumb {
 
 .wave-bar {
   flex: 1;
-  background: linear-gradient(180deg, var(--gold), var(--ochre));
+  background: linear-gradient(180deg, var(--p-acc), var(--p-acc));
   border-radius: 2px;
   transition: height 0.1s ease, opacity 0.2s;
   opacity: 0.4;
@@ -2053,1818 +1144,582 @@ body.lang-en .progress-thumb {
 
 .wave-bar.active { opacity: 1; }
 
-/* ============ FOOTER ============ */
-footer {
-  background: var(--ink);
-  color: var(--paper);
-  padding: 5rem 4rem 8rem;
-  text-align: center;
-  position: relative;
-  z-index: 2;
+
+/* ============ MIDAD — paper & ink, with a dark theme ============ */
+:root{
+  --bg:#f7f4ee; --bg-2:#efebe2; --card:#fffdf9;
+  --fg:#111; --fg-2:#2b2925; --muted:#6a645a;
+  --line:rgba(17,17,17,.12); --line-2:rgba(17,17,17,.26);
+  --accent:#9b2a1a;
+  --btn:#111; --btn-fg:#f7f4ee;
+  --inv-bg:#111; --inv-fg:#f7f4ee; --inv-muted:#b9b2a5;
+  --shadow:0 30px 60px -30px rgba(17,17,17,.45);
+  /* media player */
+  --p-bg:#111; --p-fg:#f7f4ee; --p-fg-rgb:247,244,238; --p-acc:#f7f4ee; --p-acc-rgb:247,244,238;
+  --wrap:1200px; --gut:clamp(16px,5vw,64px);
+  color-scheme:only light;
 }
-
-footer::before {
-  content: '۞';
-  display: block;
-  font-size: 2rem;
-  color: var(--gold);
-  margin-bottom: 2rem;
+:root[data-theme="dark"]{
+  --bg:#121110; --bg-2:#181614; --card:#1c1a17;
+  --fg:#eee8dd; --fg-2:#d6cfc2; --muted:#a0988b;
+  --line:rgba(238,232,221,.12); --line-2:rgba(238,232,221,.26);
+  --accent:#d9644c;
+  --btn:#eee8dd; --btn-fg:#121110;
+  --inv-bg:#0b0a09; --inv-fg:#eee8dd; --inv-muted:#9a9285;
+  --shadow:0 30px 60px -30px rgba(0,0,0,.8);
+  --p-bg:#1c1a17; --p-fg:#eee8dd; --p-fg-rgb:238,232,221; --p-acc:#eee8dd; --p-acc-rgb:238,232,221;
+  color-scheme:dark;
 }
-
-.footer-quote {
-  font-family: 'Thmanyah Serif Text', serif;
-  font-size: 1.5rem;
-  font-style: italic;
-  max-width: 700px;
-  margin: 0 auto 2rem;
-  color: var(--paper);
-  line-height: 1.7;
-}
-
-.footer-meta {
-  font-family: 'Thmanyah Sans', sans-serif;
-  font-style: italic;
-  font-size: 0.95rem;
-  color: rgba(244, 237, 224, 0.6);
-  letter-spacing: 0.1em;
-  margin-top: 2rem;
-}
-
-.footer-divider {
-  width: 60px;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
-  margin: 2.5rem auto;
-  opacity: 0.5;
-}
-
-.footer-tagline {
-  font-family: 'Thmanyah Serif Display', serif;
-  font-size: 1.15rem;
-  font-weight: 500;
-  color: var(--gold);
-  max-width: 600px;
-  margin: 0 auto 0.5rem;
-  line-height: 1.8;
-  letter-spacing: 0.02em;
-}
-
-.footer-description {
-  font-family: 'Thmanyah Sans', sans-serif;
-  font-size: 0.9rem;
-  color: rgba(244, 237, 224, 0.55);
-  max-width: 600px;
-  margin: 0 auto;
-  line-height: 1.7;
-  letter-spacing: 0.05em;
-}
-
-.footer-disclaimer {
-  font-family: 'Thmanyah Sans', sans-serif;
-  font-size: 0.75rem;
-  color: rgba(244, 237, 224, 0.35);
-  max-width: 900px;
-  margin: 2rem auto 0;
-  line-height: 1.6;
-}
-
-.footer-credits {
-  font-family: 'Thmanyah Sans', sans-serif;
-  font-size: 0.85rem;
-  color: rgba(244, 237, 224, 0.4);
-  margin-top: 2rem;
-  letter-spacing: 0.1em;
-}
-
-/* ============ LIVE RADIO SECTION ============ */
-.live-radio {
-  position: relative;
-  z-index: 2;
-  background: linear-gradient(180deg, #0d0906 0%, #1a1410 50%, #0d0906 100%);
-  padding: 5rem 4rem;
-  text-align: center;
-  overflow: hidden;
-}
-
-.live-radio::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse at 50% 30%, rgba(198, 151, 73, 0.1) 0%, transparent 60%),
-    radial-gradient(ellipse at 50% 80%, rgba(160, 69, 31, 0.08) 0%, transparent 50%);
-  pointer-events: none;
-}
-
-.live-radio::after {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
-}
-
-.live-radio-inner {
-  position: relative;
-  max-width: 700px;
-  margin: 0 auto;
-}
-
-.live-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: rgba(160, 69, 31, 0.25);
-  border: 1px solid rgba(160, 69, 31, 0.4);
-  padding: 0.4rem 1.2rem;
-  border-radius: 30px;
-  margin-bottom: 2rem;
-  font-family: 'Thmanyah Sans', sans-serif;
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: #e8c170;
-}
-
-.live-dot {
-  width: 8px;
-  height: 8px;
-  background: #c0392b;
-  border-radius: 50%;
-  animation: live-pulse 1.5s ease-in-out infinite;
-  box-shadow: 0 0 6px rgba(192, 57, 43, 0.8);
-}
-
-.radio-playing .live-dot {
-  background: #27ae60;
-  box-shadow: 0 0 6px rgba(39, 174, 96, 0.8);
-  animation: live-pulse-green 1.5s ease-in-out infinite;
-}
-
-@keyframes live-pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(0.8); }
-}
-
-@keyframes live-pulse-green {
-  0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 6px rgba(39, 174, 96, 0.8); }
-  50% { opacity: 0.8; transform: scale(1.2); box-shadow: 0 0 14px rgba(39, 174, 96, 0.6); }
-}
-
-.live-radio-title {
-  font-family: 'Thmanyah Serif Display', serif;
-  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-  font-weight: 700;
-  color: var(--paper);
-  margin-bottom: 0.5rem;
-  line-height: 1.2;
-}
-
-.live-radio-subtitle {
-  font-family: 'Thmanyah Sans', sans-serif;
-  font-size: 0.9rem;
-  font-style: italic;
-  color: rgba(244, 237, 224, 0.5);
-  letter-spacing: 0.08em;
-  margin-bottom: 2.5rem;
-}
-
-/* --- Speaker-circle radio card --- */
-.radio-player-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  max-width: 520px;
-  margin: 0 auto;
-}
-
-/* Speaker: grille disc + pulsing rings while live */
-.radio-speaker {
-  position: relative;
-  width: 210px;
-  height: 210px;
-  margin-bottom: 1.75rem;
-}
-
-.radio-ring {
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  border: 1px solid var(--gold);
-  opacity: 0;
-  pointer-events: none;
-}
-
-.radio-playing .radio-ring { animation: radio-ring 2.7s ease-out infinite; }
-.radio-playing .radio-ring:nth-child(2) { animation-delay: 0.9s; }
-.radio-playing .radio-ring:nth-child(3) { animation-delay: 1.8s; }
-
-@keyframes radio-ring {
-  0%   { transform: scale(1);    opacity: 0.55; }
-  100% { transform: scale(1.55); opacity: 0; }
-}
-
-.radio-grille {
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  background: repeating-radial-gradient(circle, #2c2116 0 3px, #17110b 3px 8px);
-  border: 1px solid rgba(198, 151, 73, 0.35);
-  box-shadow:
-    inset 0 0 0 6px #1a130c,
-    inset 0 0 0 7px rgba(198, 151, 73, 0.25),
-    inset 0 10px 30px rgba(0, 0, 0, 0.6),
-    0 18px 40px rgba(0, 0, 0, 0.45);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: border-color 0.4s ease, box-shadow 0.4s ease;
-}
-
-.radio-playing .radio-grille {
-  border-color: rgba(198, 151, 73, 0.7);
-  box-shadow:
-    inset 0 0 0 6px #1a130c,
-    inset 0 0 0 7px rgba(198, 151, 73, 0.45),
-    inset 0 10px 30px rgba(0, 0, 0, 0.6),
-    0 18px 40px rgba(0, 0, 0, 0.45),
-    0 0 40px rgba(198, 151, 73, 0.15);
-}
-
-.radio-play-btn {
-  width: 92px;
-  height: 92px;
-  border-radius: 50%;
-  border: none;
-  background: var(--paper);
-  color: var(--ink);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5), 0 0 0 6px rgba(244, 237, 224, 0.06);
-  position: relative;
-  z-index: 1;
-}
-
-.radio-play-btn:hover {
-  background: var(--gold);
-  transform: scale(1.06);
-}
-
-.radio-play-btn:active { transform: scale(0.95); }
-
-/* No browser-blue ring on click; a gold ring only for keyboard users */
-.radio-play-btn:focus { outline: none; }
-.radio-play-btn:focus-visible {
-  outline: 2px solid var(--gold);
-  outline-offset: 5px;
-}
-
-.radio-play-btn svg {
-  width: 34px;
-  height: 34px;
-  fill: currentColor;
-}
-
-.radio-station-name {
-  font-family: 'Thmanyah Serif Display', serif;
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--paper);
-  margin-bottom: 0.35rem;
-}
-
-.radio-station-desc {
-  font-family: 'Thmanyah Sans', sans-serif;
-  font-size: 0.85rem;
-  color: rgba(244, 237, 224, 0.5);
-  margin-bottom: 1.1rem;
-}
-
-.radio-status-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.55rem;
-  padding: 0.4rem 1.1rem;
-  border-radius: 30px;
-  border: 1px solid rgba(198, 151, 73, 0.25);
-  background: rgba(244, 237, 224, 0.04);
-  transition: border-color 0.3s;
-}
-
-.radio-playing .radio-status-pill { border-color: rgba(39, 174, 96, 0.45); }
-
-/* idle: quiet gold dot; live: the shared green pulsing .live-dot style */
-.radio-status-pill .live-dot {
-  background: var(--gold);
-  box-shadow: none;
-  animation: none;
-  opacity: 0.6;
-}
-.radio-playing .radio-status-pill .live-dot {
-  background: #27ae60;
-  opacity: 1;
-  animation: live-pulse-green 1.5s ease-in-out infinite;
-}
-
-.radio-status {
-  font-family: 'Thmanyah Sans', sans-serif;
-  font-size: 0.85rem;
-  color: rgba(244, 237, 224, 0.6);
-  transition: color 0.3s;
-}
-
-.radio-playing .radio-status { color: #5fcf8a; }
-
-/* Small radio icon used on the mini/expanded player cover */
-.radio-cover-icon { width: 1em; height: 1em; fill: currentColor; vertical-align: middle; }
-
-@media (prefers-reduced-motion: reduce) {
-  .radio-playing .radio-ring,
-  .radio-playing .radio-status-pill .live-dot { animation: none; }
-}
-
-/* ============ ENGLISH MODE ============ */
-body.lang-en { direction: ltr; }
-body.lang-en .lang-ar { display: none; }
-body.lang-en .lang-en-text { display: inline; }
-
-/* Prevent letter-spacing from breaking Arabic cursive on WebKit/iOS */
-body:not(.lang-en) * {
-  letter-spacing: 0 !important;
-}
-
-body:not(.lang-en) .lang-en-text { display: none; }
-
-
-.recitation-toggle {
-  display: flex;
-  background: rgba(20, 26, 31, 0.6);
-  border-radius: 30px;
-  padding: 4px;
-  margin: 1.5rem auto 2rem;
-  width: fit-content;
-  border: 1px solid rgba(212, 175, 55, 0.2);
-}
-.recitation-btn {
-  background: transparent;
-  border: none;
-  color: rgba(244, 237, 224, 0.6);
-  font-family: 'Thmanyah Sans', sans-serif;
-  font-size: 1rem;
-  padding: 0.5rem 1.5rem;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-.recitation-btn.active {
-  background: #d4af37;
-  color: #0b0f13;
-  font-weight: 600;
-  box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
-}
-
-/* ============ RESPONSIVE ============ */
-@media (max-width: 968px) {
-  nav { 
-    padding: 1rem 1.5rem; 
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
-  }
-  nav.scrolled { padding: 0.8rem 1.5rem; }
-  
-  .nav-mark {
-    flex: 1 1 100%;
-    justify-content: center;
-  }
-  
-  .nav-links { 
-    display: flex; 
-    gap: 1.25rem;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-  
-  .lang-toggle {
-    position: absolute;
-    top: 1rem;
-    right: 1.5rem; /* Will be adjusted by RTL if needed, but absolute right is fine usually */
-  }
-
-  .hero { padding: 6rem 0 0; }
-
-  .hero-stage {
-    grid-template-columns: 1fr;
-    padding: 1rem 1.5rem 3rem;
-    gap: 2.5rem;
-    text-align: center;
-  }
-
-  .hero-left {
-    align-items: center;
-    gap: 1.25rem;
-  }
-
-  .hero-name { font-size: clamp(2rem, 10vw, 3.5rem); }
-
-  .hero-tagline {
-    font-size: 1rem;
-    justify-content: center;
-  }
-
-  .hero-tagline::before { width: 30px; }
-
-  .hero-quote-block {
-    margin: 0 auto;
-    text-align: start;
-    font-size: 0.95rem;
-  }
-
-  .hero-meta-row {
-    justify-content: center;
-    gap: 2rem;
-  }
-
-  .year-stamp { font-size: 2.2rem; }
-  .year-stamp::after { width: 30px; }
-
-  .hero-portrait {
-    width: min(320px, 75vw);
-    margin: 0 auto !important;
-    justify-self: center !important;
-  }
-
-  .hero-ticker {
-    font-size: 0.8rem;
-    padding: 0.75rem 0;
-  }
-
-  .timeline-grid::before {
-    inset-inline-start: 16px;
-  }
-  .timeline-row::before {
-    inset-inline-start: 10px;
-    top: 0.8rem;
-  }
-  .timeline-row {
-    grid-template-columns: 1fr;
-    padding-inline-start: 3rem;
-    gap: 0.5rem;
-  }
-  .timeline-year {
-    text-align: start;
-    font-size: 1.5rem;
-  }
-
-  .biography, .library { padding: 4rem 1.5rem; }
-
-  .bio-chapter.span-7,
-  .bio-chapter.span-5,
-  .bio-chapter.span-6,
-  .bio-chapter.span-12 { grid-column: span 12; }
-
-  .surahs-grid { grid-template-columns: 1fr; }
-
-  .player-compact {
-    grid-template-columns: 1fr auto;
-    gap: 0.75rem;
-    padding: 0.6rem 1rem;
-    min-height: auto;
-  }
-
-  .player-compact .player-extras {
-    grid-column: 2;
-    grid-row: 1;
-  }
-
-  .player-compact .player-controls-wrapper {
-    grid-column: 1 / -1;
-    grid-row: 2;
-  }
-
-  .player-extras .volume-control { display: none; }
-
-  .player-info { gap: 0.6rem; }
-  .player-cover { width: 44px; height: 44px; font-size: 1.1rem; }
-  .player-fav { display: none; }
-
-  .player-buttons { gap: 0.75rem; }
-
-  .expanded-title { font-size: 1.8rem; }
-  .expanded-cover { width: min(280px, 60vw); height: min(280px, 60vw); }
-  .expanded-cover .num { font-size: 3.5rem; }
-  .expanded-cover::before { font-size: 10rem; }
-  .expanded-controls { gap: 1.25rem; }
-  .expanded-extras { gap: 1rem; flex-wrap: wrap; }
-  .expanded-extras .volume-control { display: none; }
-
-  footer { padding: 4rem 1.5rem 12rem; }
-  .footer-tagline { font-size: 1rem; }
-  .footer-description { font-size: 0.8rem; }
-  .footer-quote { font-size: 1.25rem; }
-  .footer-disclaimer { font-size: 0.65rem; margin-top: 1.5rem; }
-
-  .live-radio { padding: 4rem 1.5rem; }
-  .radio-speaker { width: 176px; height: 176px; }
-  .radio-play-btn { width: 80px; height: 80px; }
-  .radio-play-btn svg { width: 30px; height: 30px; }
-  .radio-station-name { font-size: 1.3rem; }
-}
-
-/* ============ ANIMATIONS ============ */
-.fade-in {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.fade-in.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(40px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* Hero entrance animations */
-.hero-stage { animation: fadeInUp 1s ease-out 0.3s backwards; }
-.hero-portrait { animation: fadeInUp 1.2s ease-out 0.5s backwards; }
-.hero-left > * { animation: fadeInUp 0.9s ease-out backwards; }
-.hero-left > *:nth-child(1) { animation-delay: 0.4s; }
-.hero-left > *:nth-child(2) { animation-delay: 0.55s; }
-.hero-left > *:nth-child(3) { animation-delay: 0.7s; }
-.hero-left > *:nth-child(4) { animation-delay: 0.85s; }
-.hero-left > *:nth-child(5) { animation-delay: 1s; }
-
-/* Radio Mode hidden controls */
-.media-player.is-radio .player-fav,
-.media-player.is-radio #shuffleBtn,
-.media-player.is-radio #prevBtn,
-.media-player.is-radio #rewindBtn,
-.media-player.is-radio #forwardBtn,
-.media-player.is-radio #nextBtn,
-.media-player.is-radio #repeatBtn,
-.media-player.is-radio #downloadBtn,
-.media-player.is-radio .player-progress-row,
-.media-player.is-radio .player-mini-progress {
-  display: none !important;
-}
-
-.player-expanded.is-radio .expanded-controls > button:not(#playPauseBtnExp),
-.player-expanded.is-radio .expanded-progress,
-.player-expanded.is-radio #repeatBtnExp,
-.player-expanded.is-radio #shuffleBtnExp,
-.player-expanded.is-radio #downloadBtnExp,
-.player-expanded.is-radio #favBtnExp {
-  display: none !important;
-}
-
-@media (max-width: 968px) {
-  .media-player.is-radio .player-compact {
-    padding-bottom: 1.5rem;
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#121110; --bg-2:#181614; --card:#1c1a17;
+    --fg:#eee8dd; --fg-2:#d6cfc2; --muted:#a0988b;
+    --line:rgba(238,232,221,.12); --line-2:rgba(238,232,221,.26);
+    --accent:#d9644c;
+    --btn:#eee8dd; --btn-fg:#121110;
+    --inv-bg:#0b0a09; --inv-fg:#eee8dd; --inv-muted:#9a9285;
+    --shadow:0 30px 60px -30px rgba(0,0,0,.8);
+    --p-bg:#1c1a17; --p-fg:#eee8dd; --p-fg-rgb:238,232,221; --p-acc:#eee8dd; --p-acc-rgb:238,232,221;
+    color-scheme:dark;
   }
 }
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:'Thmanyah Sans',system-ui,sans-serif;background:var(--bg);color:var(--fg);line-height:1.8;-webkit-font-smoothing:antialiased;transition:background .3s,color .3s}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit}
+svg.logo{display:block;height:auto;fill:currentColor}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--gut)}
+.live-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--accent);margin-inline-end:7px;vertical-align:middle;animation:pulse 2s infinite}
+@keyframes pulse{50%{opacity:.35}}
+
+/* language switching */
+body.lang-en{direction:ltr}
+body.lang-en .lang-ar{display:none}
+body:not(.lang-en) .lang-en-text{display:none}
+body:not(.lang-en) *{letter-spacing:0!important}
+
+/* ---- header ---- */
+.site-header{position:sticky;top:0;z-index:60;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.site-header .wrap{display:flex;align-items:center;justify-content:space-between;height:68px;gap:24px}
+.brand .logo{width:auto;height:30px}
+.site-header nav{display:flex;gap:30px;font-size:.95rem;color:var(--muted)}
+.site-header nav a:hover{color:var(--fg)}
+.tools{display:flex;align-items:center;gap:8px}
+.icon-btn,.lang-toggle{height:32px;min-width:32px;display:inline-grid;place-items:center;border:1px solid var(--line-2);border-radius:2px;background:transparent;cursor:pointer;color:var(--fg-2);font-size:.8rem;padding:0 10px}
+.icon-btn{padding:0}
+.icon-btn:hover,.lang-toggle:hover{border-color:var(--fg);color:var(--fg)}
+.icon-btn svg{width:16px;height:16px;fill:currentColor}
+.icon-btn .sun{display:none}
+:root[data-theme="dark"] .icon-btn .sun{display:block}
+:root[data-theme="dark"] .icon-btn .moon{display:none}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]) .icon-btn .sun{display:block}
+  :root:not([data-theme="light"]) .icon-btn .moon{display:none}
+}
+
+/* ---- hero ---- */
+.hero{padding:clamp(40px,7vh,80px) 0 clamp(56px,9vh,96px)}
+.hero .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,96px);align-items:center}
+.kicker{display:flex;align-items:center;gap:12px;font-size:.9rem;color:var(--accent);margin-bottom:22px}
+.kicker::before{content:'';width:32px;height:1px;background:currentColor}
+.hero .logo{width:min(100%,320px)}
+.hero h1{font:700 clamp(1.4rem,2.4vw,1.75rem)/1.4 'Thmanyah Serif Display',serif;margin-top:24px;padding-top:16px;border-top:3px solid var(--fg);display:inline-block}
+.hero h1 small{display:block;font:400 .9rem 'Thmanyah Sans',sans-serif;color:var(--muted);letter-spacing:.04em;direction:ltr;text-align:right}
+body.lang-en .hero h1 small{text-align:left}
+.hero .verse{font:400 1.1rem 'Thmanyah Serif Text',serif;color:var(--fg-2);margin-top:20px}
+.ctas{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:13px 24px;border-radius:2px;font-weight:500;font-size:.95rem;transition:background .2s,color .2s,border-color .2s;cursor:pointer}
+.btn.primary{background:var(--btn);color:var(--btn-fg);border:1px solid var(--btn)}
+.btn.primary:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn.ghost{border:1px solid var(--fg)}
+.btn.ghost:hover{background:var(--fg);color:var(--bg)}
+.btn svg{width:14px;height:14px;fill:currentColor}
+.years{display:flex;gap:40px;margin-top:32px;padding-top:24px;border-top:1px solid var(--line);font-size:.85rem;color:var(--muted)}
+.years b{display:block;font:700 1.9rem/1.2 'Thmanyah Serif Display',serif;color:var(--fg)}
+.portrait{position:relative;width:100%;max-width:320px;justify-self:center}
+.portrait picture,.portrait img{display:block;width:100%;height:auto}
+.portrait img{aspect-ratio:765/1024;object-fit:cover;border-radius:2px;box-shadow:var(--shadow)}
+.portrait figcaption{margin-top:12px;font-size:.8rem;color:var(--muted);display:flex;justify-content:space-between}
+
+/* ---- sections ---- */
+section.block{padding:clamp(56px,10vh,112px) 0;border-top:1px solid var(--line)}
+.head{display:grid;grid-template-columns:auto 1fr;gap:6px 22px;align-items:end;margin-bottom:clamp(32px,5vh,56px)}
+.head .num{font:700 1rem 'Thmanyah Serif Display',serif;color:var(--accent);grid-row:span 2;align-self:start;padding-top:10px}
+.head h2{font:700 clamp(2rem,4.6vw,3.4rem)/1.15 'Thmanyah Serif Display',serif}
+.head p{color:var(--muted)}
+
+/* bio */
+.bio{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(28px,4vw,56px) clamp(32px,5vw,72px)}
+.chapter h3{font:700 1.45rem 'Thmanyah Serif Display',serif;margin-bottom:12px;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.chapter h3 .label{font:500 .8rem 'Thmanyah Sans',sans-serif;color:var(--accent)}
+.chapter p{font:400 1.08rem/2 'Thmanyah Serif Text',serif;color:var(--fg-2);margin-bottom:14px;text-align:justify}
+.chapter p strong{font-weight:400;color:var(--fg)}
+.pull{grid-column:1/-1;border-block:3px solid var(--fg);padding:28px 0;font:700 clamp(1.3rem,2.6vw,1.9rem)/1.6 'Thmanyah Serif Display',serif;text-align:center}
+.pull cite{display:block;font:400 .9rem 'Thmanyah Sans',sans-serif;color:var(--muted);font-style:normal;margin-top:8px}
+
+/* timeline */
+.timeline{list-style:none;border-top:1px solid var(--fg)}
+.timeline li{display:grid;grid-template-columns:140px 1fr;gap:24px;padding:20px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.timeline b{font:700 2rem/1 'Thmanyah Serif Display',serif}
+.timeline span{font:400 1.05rem 'Thmanyah Serif Text',serif;color:var(--fg-2)}
+.timeline li:hover b{color:var(--accent)}
+
+/* recitations */
+#library{background:var(--bg-2)}
+.lib-bar{display:flex;gap:12px;justify-content:space-between;align-items:center;flex-wrap:wrap;margin-bottom:22px}
+.recitation-toggle{display:inline-flex;border:1px solid var(--fg);border-radius:2px}
+.recitation-btn{font:500 .92rem 'Thmanyah Sans',sans-serif;border:0;background:transparent;padding:9px 22px;cursor:pointer;color:var(--fg)}
+.recitation-btn.active{background:var(--fg);color:var(--bg)}
+.search-box{flex:1;max-width:360px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--fg);padding:6px 2px}
+.search-box svg{width:16px;height:16px;fill:var(--muted);flex:none}
+.search-box input{flex:1;border:0;background:transparent;font:400 1rem 'Thmanyah Sans',sans-serif;color:var(--fg);outline:0;min-width:0}
+.search-box input::placeholder{color:var(--muted)}
+.lib-stats{font-size:.85rem;color:var(--muted)}
+.lib-stats strong{font-weight:500;color:var(--fg)}
+.surahs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.surah-card{display:flex;align-items:center;gap:14px;padding:16px 18px;background:var(--card);cursor:pointer;transition:background .15s}
+.surah-card:hover{background:var(--bg)}
+.surah-num{font:700 1.05rem 'Thmanyah Serif Display',serif;color:var(--muted);min-width:2.2ch}
+.surah-info{display:block;color:inherit;min-width:0}
+.surah-name{display:block;font:700 1.15rem/1.3 'Thmanyah Serif Display',serif}
+.surah-name-en{display:block;color:var(--muted);font-size:.78rem}
+.play-icon{margin-inline-start:auto;width:30px;height:30px;border-radius:50%;border:1px solid var(--line-2);display:grid;place-items:center;flex:none}
+.surah-card.playing{background:var(--fg);color:var(--bg)}
+.surah-card.playing .surah-num,.surah-card.playing .surah-name-en{color:color-mix(in srgb,var(--bg) 65%,var(--fg))}
+.surah-card.playing .play-icon{border-color:color-mix(in srgb,var(--bg) 30%,transparent)}
+.lib-more{margin-top:18px;font-size:.9rem;color:var(--muted)}
+.lib-more a{border-bottom:1px solid var(--line-2);color:var(--fg)}
+
+/* radio */
+.live-radio{background:var(--inv-bg);color:var(--inv-fg);padding:clamp(64px,11vh,120px) 0;text-align:center}
+.live-badge{display:inline-flex;align-items:center;font-size:.85rem;border:1px solid color-mix(in srgb,var(--inv-fg) 22%,transparent);padding:4px 14px;border-radius:2px;line-height:1.6}
+.live-radio-title{font:700 clamp(2rem,4.6vw,3.2rem)/1.25 'Thmanyah Serif Display',serif;margin-top:22px}
+.live-radio-subtitle{color:var(--inv-muted);margin-top:10px}
+.radio-speaker{width:160px;height:160px;border-radius:50%;border:1px solid color-mix(in srgb,var(--inv-fg) 22%,transparent);margin:96px auto 84px;display:grid;place-items:center;position:relative}
+.radio-ring{position:absolute;border-radius:50%;border:1px solid color-mix(in srgb,var(--inv-fg) 9%,transparent);pointer-events:none}
+.radio-ring:nth-child(1){inset:-22px}
+.radio-ring:nth-child(2){inset:-48px;border-color:color-mix(in srgb,var(--inv-fg) 5%,transparent)}
+.radio-ring:nth-child(3){inset:0;opacity:0}
+.live-radio.radio-playing .radio-ring{animation:ring 2.4s ease-out infinite}
+.live-radio.radio-playing .radio-ring:nth-child(2){animation-delay:.8s}
+.live-radio.radio-playing .radio-ring:nth-child(3){animation-delay:1.6s}
+@keyframes ring{0%{transform:scale(.9);opacity:.9}100%{transform:scale(1.35);opacity:0}}
+.radio-play-btn{width:84px;height:84px;border-radius:50%;border:0;background:var(--inv-fg);color:var(--inv-bg);display:grid;place-items:center;cursor:pointer;transition:transform .2s}
+.radio-play-btn:hover{transform:scale(1.05)}
+.radio-play-btn svg{width:30px;height:30px;fill:currentColor}
+.radio-status{display:block;color:var(--inv-muted);font-size:.9rem}
+.radio-station{color:var(--inv-muted);font-size:.85rem;margin-top:6px;opacity:.8}
+
+/* footer */
+.site-footer{padding:64px 0 140px;text-align:center;border-top:1px solid var(--line)}
+.site-footer .logo{width:150px;margin:0 auto}
+.site-footer .verse{font:400 1.2rem 'Thmanyah Serif Text',serif;margin-top:24px}
+.site-footer nav{display:flex;justify-content:center;flex-wrap:wrap;gap:12px 24px;margin-top:22px;font-size:.92rem}
+.site-footer nav a{border-bottom:1px solid var(--line-2)}
+.site-footer .fine{color:var(--muted);font-size:.8rem;max-width:620px;margin:26px auto 0}
+
+/* fade in */
+.fade-in{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
+.fade-in.visible{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.fade-in{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+
+/* ---- media player: Midad skin over the original player rules ---- */
+.media-player{background:var(--p-bg)!important;box-shadow:0 -10px 30px rgba(0,0,0,.25)!important;border-top:1px solid rgba(var(--p-fg-rgb),.12)!important}
+.media-player::before{display:none!important}
+.player-cover{border-radius:2px!important;background:rgba(var(--p-fg-rgb),.08)!important;border:1px solid rgba(var(--p-fg-rgb),.2)!important;box-shadow:none!important}
+.player-btn.main{background:var(--p-fg)!important;color:var(--p-bg)!important;box-shadow:none!important}
+.player-btn.main svg{fill:var(--p-bg)!important}
+.progress-fill,.player-mini-progress-fill{background:var(--p-fg)!important;box-shadow:none!important}
+.progress-thumb{background:var(--p-fg)!important;box-shadow:none!important}
+.queue-panel,.player-expanded{background:var(--p-bg)!important}
+.expanded-cover{border-radius:2px!important;background:rgba(var(--p-fg-rgb),.06)!important;border:1px solid rgba(var(--p-fg-rgb),.2)!important;box-shadow:none!important}
+.expanded-cover::before{opacity:.06!important}
+.media-player.is-radio .player-cover,.player-expanded.is-radio .expanded-cover{border-color:var(--accent)!important}
+.player-title,.expanded-title{font-family:'Thmanyah Serif Display',serif!important}
+
+@media (max-width:600px){
+  .site-header .wrap{flex-wrap:wrap;height:auto;padding-top:12px;gap:0}
+  .brand .logo{height:28px}
+  .site-header nav{order:3;width:100%;gap:22px;overflow-x:auto;white-space:nowrap;padding:10px 0 12px;margin-top:8px;border-top:1px solid var(--line);font-size:.9rem;scrollbar-width:none}
+  .site-header nav::-webkit-scrollbar{display:none}
+
+  .hero{padding:28px 0 48px}
+  .hero .wrap{grid-template-columns:1fr;text-align:center;gap:28px}
+  .hero .portrait{max-width:180px;margin:0 auto;order:-1}
+  .hero .portrait figcaption{display:none}
+  .hero .logo{width:min(62%,230px);margin:0 auto}
+  .kicker,.years{justify-content:center}
+  .hero h1{display:block}
+  .hero h1 small,body.lang-en .hero h1 small{text-align:center}
+  .ctas{flex-direction:column;align-items:stretch;max-width:320px;margin-inline:auto}
+  .years{gap:0}
+  .years span{flex:1}
+
+  section.block{padding:56px 0}
+  .head{display:block;margin-bottom:28px}
+  .head .num{display:inline-block;padding:0;margin-bottom:6px;font-size:.9rem}
+  .head h2{font-size:2rem}
+  .bio{grid-template-columns:1fr;gap:32px}
+  .chapter p{text-align:start;font-size:1.05rem;line-height:1.95}
+  .pull{padding:22px 0;font-size:1.25rem}
+  .timeline li{grid-template-columns:64px 1fr;gap:12px;padding:16px 0}
+  .timeline b{font-size:1.35rem}
+  .timeline span{font-size:1rem}
+
+  .lib-bar{flex-direction:column;align-items:stretch;gap:14px}
+  .recitation-toggle{display:flex}
+  .recitation-btn{flex:1}
+  .search-box{max-width:none}
+  .lib-stats{text-align:center}
+  .surahs-grid{grid-template-columns:repeat(2,1fr)}
+  .surah-card{padding:12px;gap:10px}
+  .play-icon{display:none}
+  .surah-name{font-size:1.05rem}
+
+  .live-radio{padding:64px 0}
+  .radio-speaker{width:132px;height:132px;margin:76px auto 66px}
+  .radio-play-btn{width:72px;height:72px}
+
+}
+
+/* tablets & unfolded foldables (iPhone Duo inside, Galaxy Fold inside): keep the wide layout */
+@media (min-width:601px) and (max-width:900px){
+  .site-header .wrap{gap:14px}
+  .site-header nav{gap:18px;font-size:.88rem}
+  .hero .wrap{gap:36px}
+  .hero .logo{width:min(100%,260px)}
+  .bio{grid-template-columns:1fr}
+  .timeline li{grid-template-columns:96px 1fr}
+}
+@media (max-width:600px){
+  /* original player's mobile layout */
+  .player-compact{grid-template-columns:1fr auto;gap:.75rem;padding:.6rem 1rem;min-height:auto}
+  .player-compact .player-extras{grid-column:2;grid-row:1}
+  .player-compact .player-controls-wrapper{grid-column:1/-1;grid-row:2}
+  .player-extras .volume-control{display:none}
+  .player-info{gap:.6rem}
+  .player-cover{width:44px;height:44px;font-size:1.1rem}
+  .player-fav{display:none}
+  .player-buttons{gap:.75rem}
+  .expanded-title{font-size:1.8rem}
+  .expanded-cover{width:min(280px,60vw);height:min(280px,60vw)}
+  .expanded-cover .num{font-size:3.5rem}
+  .expanded-cover::before{font-size:10rem}
+  .expanded-controls{gap:1.25rem}
+  .expanded-extras{gap:1rem;flex-wrap:wrap}
+  .expanded-extras .volume-control{display:none}
+}
+
+/* ---- very light motion ---- */
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes ink{from{opacity:0;clip-path:inset(0 0 0 100%)}to{opacity:1;clip-path:inset(0 0 0 0)}}
+.hero .kicker,.hero h1,.hero .verse,.hero .ctas,.hero .years{animation:rise .8s cubic-bezier(.2,.7,.2,1) both}
+.hero .logo{animation:ink 1.1s cubic-bezier(.6,0,.2,1) .15s both}
+.hero h1{animation-delay:.45s}
+.hero .verse{animation-delay:.55s}
+.hero .ctas{animation-delay:.65s}
+.hero .years{animation-delay:.75s}
+.hero .portrait{animation:rise 1s cubic-bezier(.2,.7,.2,1) .2s both}
+.surah-card{transition:background .15s,transform .15s}
+.surah-card:hover{transform:translateY(-1px)}
+.btn,.recitation-btn{transition:background .2s,color .2s,border-color .2s,transform .15s}
+.btn:active,.recitation-btn:active,.radio-play-btn:active{transform:scale(.97)}
+.site-header nav a{position:relative}
+.site-header nav a::after{content:'';position:absolute;inset-inline:0;bottom:-4px;height:1px;background:currentColor;transform:scaleX(0);transition:transform .25s}
+.site-header nav a:hover::after{transform:scaleX(1)}
+@media (prefers-reduced-motion:reduce){
+  .hero *,.hero .logo,.hero .portrait{animation:none!important}
+  .surah-card:hover{transform:none}
+}
+
+/* dark theme: keep the radio block distinct from the page */
+:root[data-theme="dark"] .live-radio{border-block:1px solid var(--line)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .live-radio{border-block:1px solid var(--line)}}
+
+/* ---- calm player: no spinning ring, bouncing bars or glow ---- */
+.media-player.is-playing .player-cover::after{display:none!important;animation:none!important}
+.player-cover::before{display:none!important}
+.visualizer{display:none!important}
+.media-player.is-playing .player-cover .cover-num{opacity:1!important}
+.player-cover .cover-num{text-shadow:none!important}
+.player-cover .cover-num svg{width:22px;height:22px;fill:currentColor}
+.player-cover:hover{transform:none!important}
+.media-player.is-radio .player-cover,.player-expanded.is-radio .expanded-cover{border-color:rgba(var(--p-fg-rgb),.2)!important}
+.media-player.is-playing .expanded-cover{animation:none!important}
+.media-player.is-radio .sub-type{display:none}
+
+/* ---- header radio button: looks tappable, plays in place ---- */
+.nav-radio{display:inline-flex;align-items:center;gap:7px;height:32px;padding:0 12px;border:1px solid var(--fg);border-radius:999px;background:transparent;color:var(--fg);font:500 .9rem 'Thmanyah Sans',sans-serif;cursor:pointer;white-space:nowrap;transition:background .2s,color .2s}
+.nav-radio svg{width:12px;height:12px;fill:currentColor;flex:none}
+.nav-radio .i-pause{display:none}
+.nav-radio .live-dot{margin:0;width:6px;height:6px;animation:none;opacity:.9}
+.nav-radio:hover{background:var(--fg);color:var(--bg)}
+.nav-radio.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.nav-radio.on .i-play{display:none}
+.nav-radio.on .i-pause{display:block}
+.nav-radio.on .live-dot{background:#fff;animation:pulse 1.6s infinite}
+.site-header nav{align-items:center}
+@media (max-width:900px){.nav-radio{height:30px;font-size:.85rem}.site-header nav{padding-inline-end:2px}}
+
+/* ---- very narrow screens (Galaxy Fold cover screen, large text / page zoom) ---- */
+@media (max-width:600px){
+  .surahs-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .surah-card{min-width:0}
+  .surah-info{min-width:0;overflow-wrap:anywhere}
+}
+@media (max-width:420px){
+  #rewindBtn,#forwardBtn{display:none!important}
+  .player-buttons{gap:.4rem!important}
+}
+@media (max-width:380px){
+  /* English labels are wider: keep the radio button inside the row */
+  .site-header nav{gap:14px;font-size:.82rem;justify-content:space-between}
+  .nav-radio{padding:0 9px;gap:5px;font-size:.78rem}
+}
+@media (max-width:300px){
+  /* ~280px Fold cover: the biography is one scroll away, keep the radio visible */
+  .site-header nav a[href="#bio"]{display:none}
+}
+@media (max-width:340px){
+  .nav-radio svg{display:none}
+  #shuffleBtn,#repeatBtn{display:none!important}
+  .surahs-grid{grid-template-columns:minmax(0,1fr)}
+  .site-header .wrap{gap:0}
+  .tools{gap:6px}
+  .hero .logo{width:min(70%,200px)}
+  .years b{font-size:1.5rem}
+  .timeline li{grid-template-columns:52px minmax(0,1fr)}
+  .player-compact{padding:.5rem .6rem!important}
+}
+
+/* player in one row on tablets / unfolded foldables (641–1000px) */
+@media (min-width:601px) and (max-width:1000px){
+  .player-compact{grid-template-columns:minmax(150px,1fr) minmax(300px,2fr) auto!important;gap:1rem!important;padding:.55rem 1rem!important;min-height:70px!important}
+  .player-extras .volume-control,.player-fav{display:none!important}
+  .player-buttons{gap:.5rem!important}
+  .expanded-cover{width:min(280px,40vh)!important;height:min(280px,40vh)!important}
+}
+
+/* short, wide screens (unfolded foldables in landscape, small laptops): fit the hero above the player */
+@media (min-width:601px) and (max-height:720px){
+  .hero{padding:24px 0 40px}
+  .hero .portrait{max-width:240px}
+  .hero .logo{width:min(100%,220px)}
+  .kicker{margin-bottom:12px}
+  .hero h1{margin-top:14px;padding-top:10px;font-size:1.35rem}
+  .hero .verse{margin-top:10px}
+  .ctas{margin-top:18px}
+  .years{margin-top:18px;padding-top:14px}
+  .years b{font-size:1.5rem}
+}
+
+/* ---- reordered home: recitations first, compact radio band, short bio ---- */
+.live-radio{padding:clamp(40px,7vh,64px) 0;text-align:start}
+.radio-band{display:flex;align-items:center;justify-content:space-between;gap:32px}
+.live-radio-title{font-size:clamp(1.7rem,3.4vw,2.4rem);margin-top:12px}
+.live-radio-subtitle{margin-top:4px}
+.radio-control{display:flex;align-items:center;gap:22px;flex:none}
+.radio-speaker{width:108px;height:108px;margin:28px}
+.radio-ring:nth-child(1){inset:-14px}
+.radio-ring:nth-child(2){inset:-28px}
+.radio-play-btn{width:68px;height:68px}
+.radio-play-btn svg{width:26px;height:26px}
+.radio-status{min-width:9ch}
+
+.bio-intro{font:400 clamp(1.1rem,1.6vw,1.3rem)/2 'Thmanyah Serif Text',serif;color:var(--fg-2);max-width:68ch}
+.bio-more{margin-top:26px}
+.bio-more>summary{list-style:none;display:inline-flex}
+.bio-more>summary::-webkit-details-marker{display:none}
+.bio-more>summary svg{width:18px;height:18px;transition:transform .25s}
+.bio-more .less{display:none}
+.bio-more[open]>summary .more{display:none}
+.bio-more[open]>summary .less{display:inline}
+.bio-more[open]>summary svg{transform:rotate(180deg)}
+.bio-more[open]>.bio{margin-top:40px}
+.tl-title{font:700 1.6rem 'Thmanyah Serif Display',serif;margin:56px 0 20px}
+
+@media (max-width:600px){
+  .radio-band{flex-direction:column;text-align:center;gap:6px}
+  .radio-control{flex-direction:column;gap:4px}
+  .radio-speaker{width:96px;height:96px;margin:30px auto 26px}
+  .radio-play-btn{width:62px;height:62px}
+  .live-radio{padding:44px 0}
+  .bio-intro{font-size:1.08rem}
+  .bio-more>summary{display:flex;width:100%}
+  .tl-title{font-size:1.3rem;margin-top:40px}
+}
+
+/* Queue toggle in the player: small icon, finger-sized tap area */
+.player-queue-chevron{position:relative}
+.player-queue-chevron::after{content:"";position:absolute;inset:-12px}
+
 </style>
 </head>
 <body>
+<script>
+// Pick the language before anything paints: ?lang= → /en/ path → saved choice.
+// (No guessing from the browser language, so search engines always see / in Arabic.)
+(function () {
+  var q = new URLSearchParams(location.search).get('lang'), l = null;
+  if (q === 'en' || q === 'ar') l = q;
+  else if (/(^|\/)en(\/|\/index\.html)?$/.test(location.pathname)) l = 'en';
+  else { try { l = localStorage.getItem('lang'); } catch (e) {} }
+  if (l !== 'en' && l !== 'ar') l = document.documentElement.lang === 'en' ? 'en' : 'ar';
+  window.__initialLang = l;
+  if (l === 'en') { document.body.classList.add('lang-en'); document.documentElement.lang = 'en'; document.documentElement.dir = 'ltr'; }
+  else { document.body.classList.remove('lang-en'); document.documentElement.lang = 'ar'; document.documentElement.dir = 'rtl'; }
+})();
+</script>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="logo" viewBox="284.13 249.48 255.50 163.61"><path transform="matrix(1,0,0,-1,386.16,295.94)" d="M0 0-10.94-3.79C-8.60 .084-6.17 3.36-3.54 6.87L14.54 13.37 22.96 16.48C26.27 17.81 29.12 19.45 32.36 21.38 27.61 12.30 24.49 9.28 15.18 5.57Z"/><path transform="matrix(1,0,0,-1,308.93,407.76)" d="M0 0-7.62 7.30-14.63 .01-22.8 8.03-15.43 15.86-7.88 8.52-.818 15.86 7.31 7.84Z"/><path transform="matrix(1,0,0,-1,398.67,277.99)" d="M0 0-4.25-2.63-8.56 16.44-.039 22.76Z"/><path transform="matrix(1,0,0,-1,435.80,261.75)" d="M0 0 8.46-8.10 .872-16.02-7.58-7.92Z"/><path transform="matrix(1,0,0,-1,444.89,271.32)" d="M0 0 8.48-8.00 .997-15.93-7.48-7.92Z"/><path transform="matrix(1,0,0,-1,428.30,271.33)" d="M0 0 8.41-7.97 .899-15.91-7.52-7.93Z"/><path transform="matrix(1,0,0,-1,432.98,340.74)" d="M0 0-8.09 7.95-.353 16.00 7.35 7.89Z"/><path transform="matrix(1,0,0,-1,491.20,347.55)" d="M0 0C.482 1.14 .488 2.59-.094 3.68-1.32 5.98-2.75 8.12-4.30 10.26L-12.64-.754C-9.53-3.05-1.59-3.79 0 0M10.3-2.86C8.81-11.58 2.28-20.72-7.24-20.13-14.60-19.67-17.91-13.72-17.40-6.57-22.89-12.39-31.96-22.41-40.88-18.94-45.38-17.2-45.90-12.27-46.21-8.06-47.13-12.27-47.85-16.53-46.80-20.92-44.83-29.12-38.92-35.61-30.97-38.71-17.35-44.00 3.09-41.72 10.90-27.82 13.28-23.59 13.95-18.97 13.53-14.10L11.17 60.43 26.12 72.79 25.82 47.30 25.32-8.59C25.23-19.46 22.51-29.87 16.69-39.01 12.23-46.01 6.08-51.30-1.56-54.63-8.88-57.81-16.81-59.30-24.83-58.75-39.77-57.71-52.99-46.95-53.25-31.08-53.42-21.08-49.04-10.32-45.76-.892-49.29-6.04-53.21-10.62-58.21-14.35-64.28-18.87-74.03-21.31-79.63-14.61-81.40-12.49-82.68-9.90-83.26-7.13-85.84 5.21-79.09 15.67-72.06 25.35-74.64 24.52-77.15 24.16-79.45 25.47-84.10 28.11-82.98 35.68-81.54 40.34-86.18 34.22-92.08 27.66-99.61 24.50-104.38 22.50-109.50 22.09-114.41 23.85-120.66 26.08-124.51 32.44-126.36 38.54-127.93 43.71-128.38 48.77-128.41 54.25L-128.62 89.28-119.42 96.08-119.35 54.82C-119.35 49.63-117.35 44.78-113.49 41.38-107.72 36.29-96.86 34.92-90.74 38.55-84.30 42.37-77.43 51.37-72.95 57.52L-69.23 57.26C-71.60 52.94-74.84 47.67-73.92 42.46-73.58 40.51-71.91 39.38-69.94 39.65-62.62 40.68-56.69 51.18-53.81 57.40L-51.66 57.34C-52.28 52.69-51.55 48.16-49.27 44.11-46.11 38.52-40.97 37.64-34.77 37.81-36.24 43.16-38.05 48.04-40.05 53.12L-30.87 64.08C-29.48 57.07-27.21 51.93-25.98 45.01-25.67 43.22-25.65 41.05-26.39 39.42-27.78 36.39-29.33 33.61-31.01 30.80-32.83 27.76-35.61 25.94-39.02 25.07-42.38 24.22-45.77 23.76-49.12 24.73-56.37 26.54-58.81 34.47-59.35 41.42L-66.66 29.70C-70.24 23.96-73.64 11.94-71.72 4.73-69.92-2.03-62.36-3.7-56.17-1.98-47.29 .481-41.85 8.39-39.11 16.82-36.93 18.38-34.57 19.76-31.98 21.06L-34.80 10.71C-35.65 7.58-36.33 .367-32.90-1.75-28.76-4.32-23.56-.183-20.62 2.95-15.28 8.65-11.00 14.93-6.89 21.73-5.24 21.84-3.66 21.77-1.95 21.59Z"/><path transform="matrix(1,0,0,-1,511.77,406.12)" d="M0 0C5.95 7.62 9.40 14.67 11.47 24.10 12.97 30.96 13.54 37.63 13.29 44.76L10.97 120.35 25.85 132.65 24.70 56.82C24.62 49.11 24.12 41.88 22.63 34.40 20.61 24.27 16.14 13.12 8.71 5.85 6.21 3.40 3.61 1.19 0 0"/><path transform="matrix(1,0,0,-1,491.94,313.14)" d="M0 0-1.81 3.77-4.41-.153C-2.82-.449-1.62-.421 0 0M-6.31-2.54C-9.85-7.02-16.26-9.65-21.30-6.66-24.43-4.80-25.53-1.09-25.36 2.38-20.39-.112-14.59-.543-9.25-.341-6.67 1.78-4.72 4.44-2.89 7.16-2.59 7.59-1.47 7.59-.875 7.41 .124 4.66 2.10 2.14 2.82-.685 3.40-2.96 1.30-5.60-.335-6.73-1.78-7.73-3.37-7.57-4.60-6.77-5.88-5.94-6.35-4.33-6.31-2.54"/><path transform="matrix(1,0,0,-1,296.40,373.78)" d="M0 0C-4.91 9.74-5.10 20.25-2.67 30.86-2.45 31.81 1.32 45.24 2.18 43.51 2.25 43.36 2.41 42.88 2.35 42.59 1.48 38.22 1.18 33.34 1.65 28.76 2.98 15.57 12.41 4.93 25.34 2.12 34.35 .172 43.54 .688 52.30 3.63 56.13 4.92 59.44 6.91 62.45 9.58 62.46 14.38 59.08 18.11 54.45 19.20 51.68 19.85 48.96 19.86 46.04 19.97L10.36 21.38C9.13 26.56 8.25 31.45 7.42 36.75L15.88 35.43C19.67 42.32 24.50 48.42 30.74 52.99 35.67 56.60 41.41 57.81 47.27 56.24L55.76 53.18 46.08 41.18C36.32 46.92 27.18 42.87 20.11 34.77 30.10 33.59 39.57 33.41 49.32 33.23 56.41 33.10 64.87 33.52 67.1 25.83 70.45 14.24 64.98 3.05 56.39-4.72 50.32-10.21 43.15-14.08 35.08-15.59 28.46-16.83 21.96-16.51 15.74-14.1 8.84-11.42 3.32-6.59 0 0"/><path transform="matrix(1,0,0,-1,393.04,360.08)" d="M0 0-13.29 21.10C-14.78 17.92-15.31 14.62-14.89 11.27-13.90 3.36-7.63-.364 0 0M-55.45-33.72C-40.53-33.10-10.82-26.84 1.07-17.32 5.37-13.88 3.84-7.25 1.56-2.86L-6.79-11.47C-11.06-12.41-15.67-12.31-19.61-10.07-26.57-6.11-28.45 3.03-24.06 9.65-21.56 13.60-18.69 16.92-15.66 20.45-11.97 24.75-8.39 28.80-4.27 32.84L7.94 13.47C9.64 10.77 11.13 8.20 12.60 5.39 13.77 1.51 13.71-2.41 12.53-6.36 10.45-13.34 7.22-19.74 2.84-25.59-3.24-33.72-10.71-40.56-19.62-45.38-27.24-49.51-35.6-51.00-44.12-49.57-56.31-47.51-67.66-41.84-77.92-34.67Z"/><path transform="matrix(1,0,0,-1,433.83,406.24)" d="M0 0C-.172 1.37-.031 2.77-.93 3.65-2.06 4.76-3.58 5.48-5.16 5.74-14.79 7.37-29.97 4.82-39.78 2.85L-49.71 .873C-49.98 .82-50.42 1.46-50.28 1.58-49.39 2.37-42.41 5.67-39.19 7.98-28.29 15.80-24.91 28.63-24.94 41.61-18.08 39.63-11.37 34.50-13.91 26.59-15.80 20.71-21.30 16.18-26.38 12.93-20.45 15.59-14.91 18.37-8.82 20.41-5.96 21.37-2.94 21.76-.098 20.75 7.30 18.11 5.00 4.65 0 0"/><path transform="matrix(1,0,0,-1,364.81,346.02)" d="M0 0C1.49 2.69 2.74 5.30 3.64 8.17 5.10 12.79-2.12 15.55-6.21 15.03-5.98 17.40-5.55 19.58-4.68 21.62-3.24 24.98 .295 26.29 3.65 24.85 6.42 23.67 8.10 20.78 8.01 17.62 7.85 11.87 3.79 4.39 1.21-.593Z"/></symbol></svg>
 
-<!-- ============ NAVIGATION ============ -->
-<nav>
-  <div class="nav-mark">
-    <span class="lang-ar">محمد صديق المنشاوي</span>
-    <span class="lang-en-text">Muhammad Siddiq Al-Minshawi</span>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="أعلى الصفحة" data-aria-en="Back to top"><svg class="logo" viewBox="0 0 255.50 163.61" role="img" aria-label="الشيخ محمد صديق المنشاوي"><use href="#logo"/></svg></a>
+    <nav>
+      <a href="#library"><span class="lang-ar">التلاوات</span><span class="lang-en-text">Recitations</span></a>
+      <a href="#bio"><span class="lang-ar">السيرة</span><span class="lang-en-text">Biography</span></a>
+      <button class="nav-radio" id="navRadio" type="button">
+        <svg class="i-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg><svg class="i-pause" viewBox="0 0 24 24"><path d="M6 5h4v14H6zm8 0h4v14h-4z"/></svg>
+        <span class="lang-ar">إذاعة القرآن الكريم</span><span class="lang-en-text">Quran Radio</span><span class="live-dot"></span>
+      </button>
+    </nav>
+    <div class="tools">
+      <button class="icon-btn" id="themeToggle" aria-label="الوضع الليلي / Dark mode" title="الوضع الليلي">
+        <svg class="moon" viewBox="0 0 24 24"><path d="M12.3 2a10 10 0 1 0 9.7 12.6A8 8 0 0 1 12.3 2z"/></svg>
+        <svg class="sun" viewBox="0 0 24 24"><path d="M12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0-5 1 3h-2zm0 20-1-3h2zM2 12l3-1v2zm20 0-3 1v-2zM4.9 4.9l2.8 1.4-1.4 1.4zm14.2 14.2-2.8-1.4 1.4-1.4zM4.9 19.1l1.4-2.8 1.4 1.4zM19.1 4.9l-1.4 2.8-1.4-1.4z"/></svg>
+      </button>
+      <button class="lang-toggle" id="langToggle">EN</button>
+    </div>
   </div>
-  <ul class="nav-links">
-    <li><a href="#bio"><span class="lang-ar">السيرة</span><span class="lang-en-text">Biography</span></a></li>
-    <li><a href="#timeline"><span class="lang-ar">المسيرة</span><span class="lang-en-text">Timeline</span></a></li>
-    <li><a href="#library"><span class="lang-ar">التلاوات</span><span class="lang-en-text">Recitations</span></a></li>
-    <li><a href="#radio" style="display: inline-flex; align-items: center; gap: 0.4rem;"><span class="live-dot"></span> <span class="lang-ar">البث المباشر</span><span class="lang-en-text">Live Radio</span></a></li>
-  </ul>
-  <button class="lang-toggle" id="langToggle">EN</button>
-</nav>
+</header>
 
-<!-- ============ CINEMATIC VINTAGE HERO ============ -->
+<main id="top">
 <section class="hero">
-  <div class="film-strip"></div>
-
-  <!-- Main stage: TWO COLUMNS — image first (col 1), text second (col 2) -->
-  <div class="hero-stage">
-
-    <!-- COLUMN 1: PORTRAIT (right in RTL, left in LTR) -->
-    <div class="hero-portrait">
-      <div class="portrait-card">
-        <span class="portrait-corner tl"></span>
-        <span class="portrait-corner tr"></span>
-        <span class="portrait-corner bl"></span>
-        <span class="portrait-corner br"></span>
-
-        <picture>
-          <source srcset="images/sheikh-minshawi.avif" type="image/avif">
-          <source srcset="images/sheikh-minshawi.webp" type="image/webp">
-          <img class="portrait-svg" src="images/sheikh-minshawi.jpg" alt="الشيخ محمد صديق المنشاوي - Sheikh Muhammad Siddiq Al-Minshawi" width="765" height="1024" loading="eager" fetchpriority="high">
-        </picture>
+  <div class="wrap">
+    <div>
+      <p class="kicker"><span class="lang-ar">الصوت الباكي</span><span class="lang-en-text">The Weeping Voice</span></p>
+      <svg class="logo" viewBox="0 0 255.50 163.61" role="img" aria-label="الشيخ محمد صديق المنشاوي"><use href="#logo"/></svg>
+      <h1><span class="lang-ar">الشيخ محمد صديق المنشاوي</span><span class="lang-en-text">Sheikh Muhammad Siddiq Al-Minshawi</span><small class="lang-ar">Sheikh Muhammad Siddiq Al-Minshawi</small><small class="lang-en-text">الشيخ محمد صديق المنشاوي</small></h1>
+      <p class="verse"><span class="lang-ar">﴿وَرَتِّلِ الْقُرْآنَ تَرْتِيلًا﴾ — المزمل ٤</span><span class="lang-en-text">“And recite the Quran with measured recitation.” — 73:4</span></p>
+      <div class="ctas">
+        <a class="btn primary" href="#library"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg><span class="lang-ar">استمع إلى المصحف</span><span class="lang-en-text">Listen to the Mushaf</span></a>
+        <a class="btn ghost" href="#radio"><span class="live-dot"></span><span class="lang-ar">إذاعة القرآن الكريم</span><span class="lang-en-text">Quran Radio</span></a>
+      </div>
+      <div class="years">
+        <span><b><span class="lang-ar">١٩٢٠</span><span class="lang-en-text">1920</span></b><span class="lang-ar">المولد · سوهاج</span><span class="lang-en-text">Born · Sohag</span></span>
+        <span><b><span class="lang-ar">١٩٦٩</span><span class="lang-en-text">1969</span></b><span class="lang-ar">الوفاة · القاهرة</span><span class="lang-en-text">Died · Cairo</span></span>
       </div>
     </div>
-
-    <!-- COLUMN 2: ALL TEXT CONTENT (left in RTL, right in LTR) -->
-    <div class="hero-left">
-
-      <!-- Big name -->
-      <h1 class="hero-name">
-        <span class="lang-ar">محمد صديق المنشاوي</span>
-        <span class="lang-en-text">Muhammad Siddiq Al-Minshawi</span>
-      </h1>
-
-      <!-- Tagline -->
-      <div class="hero-tagline">
-        <span class="lang-ar">الصوت الباكي · من أعلام دولة التلاوة</span>
-        <span class="lang-en-text">The Weeping Voice · A Master of Quranic Recitation</span>
-      </div>
-
-      <!-- Quote -->
-      <blockquote class="hero-quote-block">
-        <span class="lang-ar">﴿وَرَتِّلِ الْقُرْآنَ تَرْتِيلًا﴾</span>
-        <span class="lang-en-text">"And recite the Quran with measured recitation."</span>
-        <span class="attr">
-          <span class="lang-ar">— سورة المزمل، الآية ٤</span>
-          <span class="lang-en-text">— Surah Al-Muzzammil, 73:4</span>
-        </span>
-      </blockquote>
-
-      <!-- Years -->
-      <div class="hero-meta-row">
-        <div class="year-stamp-item">
-          <span class="year-stamp">
-            <span class="lang-ar">١٩٢٠</span>
-            <span class="lang-en-text">1920</span>
-          </span>
-          <span class="year-stamp-label">
-            <span class="lang-ar">المولد · سوهاج</span>
-            <span class="lang-en-text">Born · Sohag</span>
-          </span>
-        </div>
-
-        <div class="year-stamp-item">
-          <span class="year-stamp">
-            <span class="lang-ar">١٩٦٩</span>
-            <span class="lang-en-text">1969</span>
-          </span>
-          <span class="year-stamp-label">
-            <span class="lang-ar">الوفاة · القاهرة</span>
-            <span class="lang-en-text">Died · Cairo</span>
-          </span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Marquee ticker -->
-  <div class="hero-ticker">
-    <div class="hero-ticker-track">
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـرحـمـنـ</span>
-        <span class="lang-en-text">Ar Rahmaan</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـرحـيـمـ</span>
-        <span class="lang-en-text">Ar Raheem</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـمـلـكـ</span>
-        <span class="lang-en-text">Al Malik</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـقـدوسـ</span>
-        <span class="lang-en-text">Al Quddus</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـسـلـامـ</span>
-        <span class="lang-en-text">As Salaam</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـمـؤمـنـ</span>
-        <span class="lang-en-text">Al Mu'min</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـمـهـيـمـنـ</span>
-        <span class="lang-en-text">Al Muhaymin</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـعـزيـز</span>
-        <span class="lang-en-text">Al Azeez</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـجـبـار</span>
-        <span class="lang-en-text">Al Jabbaar</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـمـتـكـبـر</span>
-        <span class="lang-en-text">Al Mutakabbir</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـخـالـقـ</span>
-        <span class="lang-en-text">Al Khaaliq</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـبـارئ</span>
-        <span class="lang-en-text">Al Baari</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـمـصـور</span>
-        <span class="lang-en-text">Al Musawwir</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـغـفـار</span>
-        <span class="lang-en-text">Al Ghaffaar</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـقـهـار</span>
-        <span class="lang-en-text">Al Qahhaar</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـوهـابـ</span>
-        <span class="lang-en-text">Al Wahhaab</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـرزاقـ</span>
-        <span class="lang-en-text">Ar Razzaaq</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـفـتـاحـ</span>
-        <span class="lang-en-text">Al Fattaah</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـعـلـيـمـ</span>
-        <span class="lang-en-text">Al 'Aleem</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـقـابـضـ</span>
-        <span class="lang-en-text">Al Qaabid</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـبـاسـطـ</span>
-        <span class="lang-en-text">Al Baasit</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـخـافـضـ</span>
-        <span class="lang-en-text">Al Khaafid</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـرافـعـ</span>
-        <span class="lang-en-text">Ar Raafi'</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـمـعـز</span>
-        <span class="lang-en-text">Al Mu'iz</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـمـذلـ</span>
-        <span class="lang-en-text">Al Mudhil</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـسـمـيـعـ</span>
-        <span class="lang-en-text">As Samee'</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـبـصـيـر</span>
-        <span class="lang-en-text">Al Baseer</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـحـكـمـ</span>
-        <span class="lang-en-text">Al Hakam</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـعـدلـ</span>
-        <span class="lang-en-text">Al 'Adl</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـلـطـيـفـ</span>
-        <span class="lang-en-text">Al Lateef</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـخـبـيـر</span>
-        <span class="lang-en-text">Al Khabeer</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـحـلـيـمـ</span>
-        <span class="lang-en-text">Al Haleem</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـعـظـيـمـ</span>
-        <span class="lang-en-text">Al 'Azeem</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـغـفـور</span>
-        <span class="lang-en-text">Al Ghafoor</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـشـكـور</span>
-        <span class="lang-en-text">Ash Shakoor</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـعـلـيـ</span>
-        <span class="lang-en-text">Al 'Aliyy</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـكـبـيـر</span>
-        <span class="lang-en-text">Al Kabeer</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـحـفـيـظـ</span>
-        <span class="lang-en-text">Al Hafeez</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـمـقـيـتـ</span>
-        <span class="lang-en-text">Al Muqeet</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـحـسـيـبـ</span>
-        <span class="lang-en-text">Al Haseeb</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـجـلـيـلـ</span>
-        <span class="lang-en-text">Al Jaleel</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـكـريـمـ</span>
-        <span class="lang-en-text">Al Kareem</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـرقـيـبـ</span>
-        <span class="lang-en-text">Ar Raqeeb</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـمـجـيـبـ</span>
-        <span class="lang-en-text">Al Mujeeb </span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـواسـعـ</span>
-        <span class="lang-en-text">Al Waasi'</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـحـكـيـمـ</span>
-        <span class="lang-en-text">Al Hakeem</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـودود</span>
-        <span class="lang-en-text">Al Wadood</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـمـجـيـد</span>
-        <span class="lang-en-text">Al Majeed</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـبـاعـثـ</span>
-        <span class="lang-en-text">Al Baa'ith</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـشـهـيـد</span>
-        <span class="lang-en-text">Ash Shaheed</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـحـقـ</span>
-        <span class="lang-en-text">Al Haqq</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـوكـيـلـ</span>
-        <span class="lang-en-text">Al Wakeel</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـقـويـ</span>
-        <span class="lang-en-text">Al Qawiyy</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـمـتـيـنـ</span>
-        <span class="lang-en-text">Al Mateen</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـولـيـ</span>
-        <span class="lang-en-text">Al Waliyy</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـحـمـيـد</span>
-        <span class="lang-en-text">Al Hameed</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـمـحـصـيـ</span>
-        <span class="lang-en-text">Al Muhsi</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـمـبـدئ</span>
-        <span class="lang-en-text">Al Mubdi</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـمـعـيـد</span>
-        <span class="lang-en-text">Al Mu'eed</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـمـحـيـيـ</span>
-        <span class="lang-en-text">Al Muhyi</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـمـمـيـتـ</span>
-        <span class="lang-en-text">Al Mumeet</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـحـيـ</span>
-        <span class="lang-en-text">Al Hayy</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـقـيـومـ</span>
-        <span class="lang-en-text">Al Qayyoom</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـواجـد</span>
-        <span class="lang-en-text">Al Waajid</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـمـاجـد</span>
-        <span class="lang-en-text">Al Maajid</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـواحـد</span>
-        <span class="lang-en-text">Al Waahid</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـأحـد</span>
-        <span class="lang-en-text">Al Ahad</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـصـمـد</span>
-        <span class="lang-en-text">As Samad</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـقـادر</span>
-        <span class="lang-en-text">Al Qaadir</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـمـقـتـدر</span>
-        <span class="lang-en-text">Al Muqtadir</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـمـقـدمـ</span>
-        <span class="lang-en-text">Al Muqaddim</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـمـؤخـر</span>
-        <span class="lang-en-text">Al Mu’akhir</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـأولـ</span>
-        <span class="lang-en-text">Al Awwal</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـآخـر</span>
-        <span class="lang-en-text">Al Aakhir</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـظـاهـر</span>
-        <span class="lang-en-text">Az Zaahir</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـبـاطـنـ</span>
-        <span class="lang-en-text">Al Baatin</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـوالـيـ</span>
-        <span class="lang-en-text">Al Waali</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـمـتـعـالـيـ</span>
-        <span class="lang-en-text">Al Muta’ali</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـبـر</span>
-        <span class="lang-en-text">Al Barr</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـتـوابـ</span>
-        <span class="lang-en-text">At Tawwaab</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـمـنـتـقـمـ</span>
-        <span class="lang-en-text">Al Muntaqim</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـعـفـو</span>
-        <span class="lang-en-text">Al Afuww</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـرؤوفـ</span>
-        <span class="lang-en-text">Ar Ra’oof</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">مـالـكـ الـمـلـكـ</span>
-        <span class="lang-en-text">Maalik Ul Mulk</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">ذو الـجـلـالـ والـإكـرامـ</span>
-        <span class="lang-en-text">Dhu Al Jalaali Wa Al Ikraam</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـمـقـسـطـ</span>
-        <span class="lang-en-text">Al Muqsit</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـجـامـعـ</span>
-        <span class="lang-en-text">Al Jaami'</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـغـنـيـ</span>
-        <span class="lang-en-text">Al Ghaniyy</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـمـغـنـيـ</span>
-        <span class="lang-en-text">Al Mughni</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـمـانـعـ</span>
-        <span class="lang-en-text">Al Maani'</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـضـار</span>
-        <span class="lang-en-text">Ad Daarr</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـنـافـعـ</span>
-        <span class="lang-en-text">An Naafi’</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـنـور</span>
-        <span class="lang-en-text">An Noor</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـهـاديـ</span>
-        <span class="lang-en-text">Al Haadi</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـبـديـعـ</span>
-        <span class="lang-en-text">Al Badi'</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـبـاقـيـ</span>
-        <span class="lang-en-text">Al Baaqi</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـوارثـ</span>
-        <span class="lang-en-text">Al Waarith</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـرشـيـد</span>
-        <span class="lang-en-text">Ar Rasheed</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـصـبـور</span>
-        <span class="lang-en-text">As Saboor</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـرحـمـنـ</span>
-        <span class="lang-en-text">Ar Rahmaan</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـرحـيـمـ</span>
-        <span class="lang-en-text">Ar Raheem</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـمـلـكـ</span>
-        <span class="lang-en-text">Al Malik</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـقـدوسـ</span>
-        <span class="lang-en-text">Al Quddus</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـسـلـامـ</span>
-        <span class="lang-en-text">As Salaam</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـمـؤمـنـ</span>
-        <span class="lang-en-text">Al Mu'min</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـمـهـيـمـنـ</span>
-        <span class="lang-en-text">Al Muhaymin</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـعـزيـز</span>
-        <span class="lang-en-text">Al Azeez</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـجـبـار</span>
-        <span class="lang-en-text">Al Jabbaar</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـمـتـكـبـر</span>
-        <span class="lang-en-text">Al Mutakabbir</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـخـالـقـ</span>
-        <span class="lang-en-text">Al Khaaliq</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـبـارئ</span>
-        <span class="lang-en-text">Al Baari</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـمـصـور</span>
-        <span class="lang-en-text">Al Musawwir</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـغـفـار</span>
-        <span class="lang-en-text">Al Ghaffaar</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـقـهـار</span>
-        <span class="lang-en-text">Al Qahhaar</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـوهـابـ</span>
-        <span class="lang-en-text">Al Wahhaab</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـرزاقـ</span>
-        <span class="lang-en-text">Ar Razzaaq</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـفـتـاحـ</span>
-        <span class="lang-en-text">Al Fattaah</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـعـلـيـمـ</span>
-        <span class="lang-en-text">Al 'Aleem</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـقـابـضـ</span>
-        <span class="lang-en-text">Al Qaabid</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـبـاسـطـ</span>
-        <span class="lang-en-text">Al Baasit</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـخـافـضـ</span>
-        <span class="lang-en-text">Al Khaafid</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـرافـعـ</span>
-        <span class="lang-en-text">Ar Raafi'</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـمـعـز</span>
-        <span class="lang-en-text">Al Mu'iz</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـمـذلـ</span>
-        <span class="lang-en-text">Al Mudhil</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـسـمـيـعـ</span>
-        <span class="lang-en-text">As Samee'</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـبـصـيـر</span>
-        <span class="lang-en-text">Al Baseer</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـحـكـمـ</span>
-        <span class="lang-en-text">Al Hakam</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـعـدلـ</span>
-        <span class="lang-en-text">Al 'Adl</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـلـطـيـفـ</span>
-        <span class="lang-en-text">Al Lateef</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـخـبـيـر</span>
-        <span class="lang-en-text">Al Khabeer</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـحـلـيـمـ</span>
-        <span class="lang-en-text">Al Haleem</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـعـظـيـمـ</span>
-        <span class="lang-en-text">Al 'Azeem</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـغـفـور</span>
-        <span class="lang-en-text">Al Ghafoor</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـشـكـور</span>
-        <span class="lang-en-text">Ash Shakoor</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـعـلـيـ</span>
-        <span class="lang-en-text">Al 'Aliyy</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـكـبـيـر</span>
-        <span class="lang-en-text">Al Kabeer</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـحـفـيـظـ</span>
-        <span class="lang-en-text">Al Hafeez</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـمـقـيـتـ</span>
-        <span class="lang-en-text">Al Muqeet</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـحـسـيـبـ</span>
-        <span class="lang-en-text">Al Haseeb</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـجـلـيـلـ</span>
-        <span class="lang-en-text">Al Jaleel</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـكـريـمـ</span>
-        <span class="lang-en-text">Al Kareem</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـرقـيـبـ</span>
-        <span class="lang-en-text">Ar Raqeeb</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـمـجـيـبـ</span>
-        <span class="lang-en-text">Al Mujeeb </span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـواسـعـ</span>
-        <span class="lang-en-text">Al Waasi'</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـحـكـيـمـ</span>
-        <span class="lang-en-text">Al Hakeem</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـودود</span>
-        <span class="lang-en-text">Al Wadood</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـمـجـيـد</span>
-        <span class="lang-en-text">Al Majeed</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـبـاعـثـ</span>
-        <span class="lang-en-text">Al Baa'ith</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـشـهـيـد</span>
-        <span class="lang-en-text">Ash Shaheed</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـحـقـ</span>
-        <span class="lang-en-text">Al Haqq</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـوكـيـلـ</span>
-        <span class="lang-en-text">Al Wakeel</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـقـويـ</span>
-        <span class="lang-en-text">Al Qawiyy</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـمـتـيـنـ</span>
-        <span class="lang-en-text">Al Mateen</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـولـيـ</span>
-        <span class="lang-en-text">Al Waliyy</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـحـمـيـد</span>
-        <span class="lang-en-text">Al Hameed</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـمـحـصـيـ</span>
-        <span class="lang-en-text">Al Muhsi</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـمـبـدئ</span>
-        <span class="lang-en-text">Al Mubdi</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـمـعـيـد</span>
-        <span class="lang-en-text">Al Mu'eed</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـمـحـيـيـ</span>
-        <span class="lang-en-text">Al Muhyi</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـمـمـيـتـ</span>
-        <span class="lang-en-text">Al Mumeet</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـحـيـ</span>
-        <span class="lang-en-text">Al Hayy</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـقـيـومـ</span>
-        <span class="lang-en-text">Al Qayyoom</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـواجـد</span>
-        <span class="lang-en-text">Al Waajid</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـمـاجـد</span>
-        <span class="lang-en-text">Al Maajid</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـواحـد</span>
-        <span class="lang-en-text">Al Waahid</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـأحـد</span>
-        <span class="lang-en-text">Al Ahad</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـصـمـد</span>
-        <span class="lang-en-text">As Samad</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـقـادر</span>
-        <span class="lang-en-text">Al Qaadir</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـمـقـتـدر</span>
-        <span class="lang-en-text">Al Muqtadir</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـمـقـدمـ</span>
-        <span class="lang-en-text">Al Muqaddim</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـمـؤخـر</span>
-        <span class="lang-en-text">Al Mu’akhir</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـأولـ</span>
-        <span class="lang-en-text">Al Awwal</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـآخـر</span>
-        <span class="lang-en-text">Al Aakhir</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـظـاهـر</span>
-        <span class="lang-en-text">Az Zaahir</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـبـاطـنـ</span>
-        <span class="lang-en-text">Al Baatin</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـوالـيـ</span>
-        <span class="lang-en-text">Al Waali</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـمـتـعـالـيـ</span>
-        <span class="lang-en-text">Al Muta’ali</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـبـر</span>
-        <span class="lang-en-text">Al Barr</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـتـوابـ</span>
-        <span class="lang-en-text">At Tawwaab</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـمـنـتـقـمـ</span>
-        <span class="lang-en-text">Al Muntaqim</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـعـفـو</span>
-        <span class="lang-en-text">Al Afuww</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـرؤوفـ</span>
-        <span class="lang-en-text">Ar Ra’oof</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">مـالـكـ الـمـلـكـ</span>
-        <span class="lang-en-text">Maalik Ul Mulk</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">ذو الـجـلـالـ والـإكـرامـ</span>
-        <span class="lang-en-text">Dhu Al Jalaali Wa Al Ikraam</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـمـقـسـطـ</span>
-        <span class="lang-en-text">Al Muqsit</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـجـامـعـ</span>
-        <span class="lang-en-text">Al Jaami'</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـغـنـيـ</span>
-        <span class="lang-en-text">Al Ghaniyy</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـمـغـنـيـ</span>
-        <span class="lang-en-text">Al Mughni</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـمـانـعـ</span>
-        <span class="lang-en-text">Al Maani'</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـضـار</span>
-        <span class="lang-en-text">Ad Daarr</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـنـافـعـ</span>
-        <span class="lang-en-text">An Naafi’</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـنـور</span>
-        <span class="lang-en-text">An Noor</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـهـاديـ</span>
-        <span class="lang-en-text">Al Haadi</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـبـديـعـ</span>
-        <span class="lang-en-text">Al Badi'</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـبـاقـيـ</span>
-        <span class="lang-en-text">Al Baaqi</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـوارثـ</span>
-        <span class="lang-en-text">Al Waarith</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـرشـيـد</span>
-        <span class="lang-en-text">Ar Rasheed</span>
-      </div>
-      <div class="hero-ticker-item">
-        <span class="lang-ar">الـصـبـور</span>
-        <span class="lang-en-text">As Saboor</span>
-      </div>
-    </div>
+    <figure class="portrait">
+      <picture>
+        <source srcset="/images/sheikh-minshawi.avif" type="image/avif">
+        <source srcset="/images/sheikh-minshawi.webp" type="image/webp">
+        <img src="/images/sheikh-minshawi.jpg" alt="الشيخ محمد صديق المنشاوي - Sheikh Muhammad Siddiq Al-Minshawi" width="765" height="1024" fetchpriority="high">
+      </picture>
+      <figcaption><span class="lang-ar">الشيخ محمد صديق المنشاوي</span><span class="lang-en-text">Sheikh Muhammad Siddiq Al-Minshawi</span><span><span class="lang-ar">١٩٢٠ — ١٩٦٩</span><span class="lang-en-text">1920 — 1969</span></span></figcaption>
+    </figure>
   </div>
 </section>
 
-<!-- ============ BIOGRAPHY ============ -->
-<section class="biography" id="bio">
-  <div class="ornament-divider"><span>۞</span></div>
-  <p class="section-label">
-    <span class="lang-ar">السيرة الذاتية</span>
-    <span class="lang-en-text">Life & Legacy</span>
-  </p>
-  <h2 class="section-title">
-    <span class="lang-ar">حياة وُهبت للقرآن</span>
-    <span class="lang-en-text">A Life Devoted to the Quran</span>
-  </h2>
-  <p class="section-title-en">
-    <span class="lang-ar">A Life Devoted to the Quran</span>
-    <span class="lang-en-text">حياة وُهبت للقرآن</span>
-  </p>
-
-  <div class="bio-grid">
-
-    <!-- Chapter 1: Origins -->
-    <div class="bio-chapter span-7 fade-in">
-      <span class="chapter-num">
-        <span class="lang-ar">— الفصل الأول —</span>
-        <span class="lang-en-text">— Chapter One —</span>
-      </span>
-      <h3 class="chapter-title">
-        <span class="lang-ar">النشأة في بيت القرآن</span>
-        <span class="lang-en-text">A House Built on the Quran</span>
-        <span class="chapter-title-en lang-ar">A House Built on the Quran</span>
-        <span class="chapter-title-en lang-en-text">النشأة في بيت القرآن</span>
-      </h3>
-      <div class="chapter-body">
-        <p class="lang-ar">
-          هو محمد بن صديق بن سيد بن ثابت المنشاوي، وُلد في المنشأة بمحافظة سوهاج في مصر عام ١٣٣٨ هجرية / ٢٠ يناير ١٩٢٠ ميلادية، ونشأ في أسرة توارثت تلاوة القرآن جيلًا بعد جيل؛ إذ إنّ أباه الشيخ صديق المنشاوي كان من كبار قرّاء الصعيد، وعمّه الشيخ أحمد السيد المنشاوي قارئ أيضًا، وكذلك أخواه أحمد ومحمود. أتمّ حفظ القرآن الكريم في الثامنة من عمره (وقيل في الحادية عشرة).
-        </p>
-        <p class="lang-ar">
-          تتلمذ في الحفظ على يد والده الشيخ صديق المنشاوي، وسافر صغيرًا مع عمّه إلى القاهرة سنة ١٩٢٧ فحفظ فيها ربع القرآن، ثم عاد إلى المنشأة فأتمّ الحفظ على يد الشيخ محمد النمكي، وأحكم التجويد على يد الشيخ محمد أبو العلا، وأخذ كذلك عن الشيخ رشوان أبو مسلم.
-        </p>
-<p class="lang-en-text">
-          <strong>Muhammad ibn Siddiq ibn Sayyid ibn Thabit al-Minshawi</strong> was born on <strong>20 January 1920</strong> in al-Minsha'ah, Sohag governorate, Upper Egypt, into a long lineage of Quranic reciters that stretched back generations.
-        </p>
-        <p class="lang-en-text">
-          His father, Sheikh <strong>Siddiq al-Minshawi</strong>, was one of the leading reciters of Upper Egypt, and his uncle Sheikh Ahmad al-Sayyid al-Minshawi and his brothers Ahmad and Mahmoud were reciters too. Muhammad learned from his father and completed memorizing the entire Quran at age <strong>eight</strong> (some sources say eleven).
-        </p>
-        <p class="lang-en-text">
-          In <strong>1927</strong> he went to Cairo with his uncle, memorizing a quarter of the Quran there, then returned home to complete his memorization under Sheikh Muhammad al-Namki and master tajweed under Sheikh Muhammad Abu al-Ula. He also studied with Sheikh Rashwan Abu Muslim.
-        </p>
+<section class="block library" id="library">
+  <div class="wrap">
+    <div class="head"><span class="num"><span class="lang-ar">٠١</span><span class="lang-en-text">01</span></span><h2><span class="lang-ar">المصحف الشريف كاملًا</span><span class="lang-en-text">The Complete Mushaf</span></h2><p><span class="lang-ar">التلاوات · ١١٤ سورة برواية حفص عن عاصم</span><span class="lang-en-text">Recitations · 114 surahs, Hafs from 'Asim</span></p></div>
+    <div class="lib-bar">
+      <div class="recitation-toggle">
+        <button class="recitation-btn active" id="btnMurattal"><span class="lang-ar">المرتل</span><span class="lang-en-text">Murattal</span></button>
+        <button class="recitation-btn" id="btnMujawwad"><span class="lang-ar">المجوّد</span><span class="lang-en-text">Mujawwad</span></button>
       </div>
-    </div>
-
-    <!-- Chapter 2: The Voice -->
-    <div class="bio-chapter span-5 fade-in">
-      <span class="chapter-num">
-        <span class="lang-ar">— الفصل الثاني —</span>
-        <span class="lang-en-text">— Chapter Two —</span>
-      </span>
-      <h3 class="chapter-title">
-        <span class="lang-ar">الصوت الباكي</span>
-        <span class="lang-en-text">The Weeping Voice</span>
-        <span class="chapter-title-en lang-ar">The Weeping Voice</span>
-        <span class="chapter-title-en lang-en-text">الصوت الباكي</span>
-      </h3>
-      <div class="chapter-body">
-        <p class="lang-ar">
-          لُقِّب الشيخ بـ«الصوت الباكي» لعذوبة صوته وجماله، وقوة الأداء وجلاله، إضافة إلى إتقانه تعدد مقامات القراءة، وانفعاله العميق بالمعاني والألفاظ القرآنية.
-        </p>
-        <p class="lang-ar">
-          ويُروى عن الشيخ محمد متولي الشعراوي رحمه الله قوله: «إنّ المنشاوي والحصري والبهتيمي وعبد الباسط والبنا يركبون مركبًا ويبحرون في بحر القرآن، ولن يتوقف هذا المركب إلى أن يرث الله الأرض ومن عليها».
-        </p>
-<p class="lang-en-text">
-          The Sheikh was distinguished by a reverent voice with a deep undertone of sorrow, earning him the title <strong>"The Weeping Voice."</strong> His recitation was not mere vocal performance but a spiritual journey that drew listeners into the depths of meaning.
-        </p>
-        <p class="lang-en-text">
-          He was a master of all maqamat (musical modes) of recitation, profoundly engaged with the verses he recited — until his voice became, for many, synonymous with serenity itself.
-        </p>
-      </div>
-    </div>
-
-    <!-- Chapter 3: Career -->
-    <div class="bio-chapter span-6 fade-in">
-      <span class="chapter-num">
-        <span class="lang-ar">— الفصل الثالث —</span>
-        <span class="lang-en-text">— Chapter Three —</span>
-      </span>
-      <h3 class="chapter-title">
-        <span class="lang-ar">من سوهاج إلى العالم</span>
-        <span class="lang-en-text">From Sohag to the World</span>
-        <span class="chapter-title-en lang-ar">From Sohag to the World</span>
-        <span class="chapter-title-en lang-en-text">من سوهاج إلى العالم</span>
-      </h3>
-      <div class="chapter-body">
-        <p class="lang-ar">
-          رفض الشيخ في بداية حياته التسجيل للإذاعة المصرية ورفض اعتماده فيها قارئًا، فاضطرت الإذاعة أن تذهب إليه بنفسها، فسجّلت له في إحدى ليالي رمضان بمدينة إسنا ما تيسّر من القرآن الكريم، واعتُمد قارئًا في الإذاعة على إثر ذلك سنة ١٩٥٣ (وقيل ١٩٥٤) بعد طول رفض وممانعة. ومن المروي أنه تقدّم مع أبيه لاختبار الإذاعة، ولمّا كانت قواعدها لا تسمح باعتمادهما معًا انسحب الأب ليُفسح الطريق لابنه.
-        </p>
-        <p class="lang-ar">
-          سجّل الشيخ القرآن الكريم كاملًا في ختمة مرتّلة سنة ١٩٦٥ على ٨٢ شريطًا، ثم طلب في العام التالي إعادة تسجيل ٣٢ شريطًا منها على نفقته، وسجّل كذلك ختمة مجوّدة بالإذاعة المصرية، وله قراءة مشتركة برواية الدوري مع القارئين كامل البهتيمي وفؤاد العروسي. وله أيضًا العديد من التسجيلات في المسجد الأقصى والكويت وسوريا وليبيا، ولُقِّب أيام الوحدة بين مصر وسوريا بـ«مقرئ الجمهورية العربية المتحدة»، وقرأ في الجامع الأموي بدمشق، ومُنح وسام الاستحقاق السوري من الدرجة الثانية، ووسامًا من إندونيسيا. وتلا القرآن في المساجد الرئيسية في العالم الإسلامي، كالمسجد الحرام في مكة المكرمة، والمسجد النبوي في المدينة المنورة، والمسجد الأقصى في القدس.
-        </p>
-<p class="lang-en-text">
-          His journey began as a young man traveling with his father and uncle to religious gatherings. His first solo recitation in <strong>1952</strong> in Sohag governorate brought him sudden fame across the region.
-        </p>
-        <p class="lang-en-text">
-          He initially refused to record for Egyptian Radio, so the radio came to him, recording him during a Ramadan night in Esna. He was officially accredited in <strong>1953</strong> (some sources say 1954). During the union of Egypt and Syria he carried the title <strong>"Reciter of the United Arab Republic,"</strong> and recited at the Umayyad Mosque in Damascus.
-        </p>
-        <p class="lang-en-text">
-          He traveled to Saudi Arabia, Syria, Jordan, Kuwait, Iraq, Libya, Sudan, Indonesia and beyond, and recited at the Al-Aqsa Mosque. He was awarded Syria's Order of Merit (second class), a decoration from Indonesia, and honors from leaders across the Islamic world.
-        </p>
-      </div>
-    </div>
-
-    <!-- Chapter 4: Legacy -->
-    <div class="bio-chapter span-6 fade-in">
-      <span class="chapter-num">
-        <span class="lang-ar">— الفصل الرابع —</span>
-        <span class="lang-en-text">— Chapter Four —</span>
-      </span>
-      <h3 class="chapter-title">
-        <span class="lang-ar">الرحيل والإرث</span>
-        <span class="lang-en-text">Departure & Legacy</span>
-        <span class="chapter-title-en lang-ar">Departure & Legacy</span>
-        <span class="chapter-title-en lang-en-text">الرحيل والإرث</span>
-      </h3>
-      <div class="chapter-body">
-        <p class="lang-ar">
-          تزوّج الشيخ مرتين، وتوفيت زوجته الثانية في الحج قبل وفاته بعام، وأنجب نحو خمسة عشر ابنًا وابنة على خلاف في العدد. أُصيب بمرض دوالي المريء عام ١٩٦٦، وتوفي يوم الجمعة ٢٠ يونيو عام ١٩٦٩، ودُفن في بلدته المنشأة، تاركًا وراءه كنزًا من التلاوات القرآنية تتعلّم منه الأجيال حتى يومنا هذا.
-        </p>
-<p class="lang-en-text">
-          In <strong>1966</strong> the Sheikh was diagnosed with esophageal varices. Despite his deteriorating health, he continued reciting the Quran until his final moments, passing away on Friday, <strong>June 20, 1969</strong>, at just 49 years of age.
-        </p>
-        <p class="lang-en-text">
-          He left behind a vast legacy of recordings, both murattal and mujawwad. His complete murattal mushaf, recorded in <strong>1965</strong> on 82 tapes, is considered among the greatest in the history of Quranic recitation. He was buried in his hometown, al-Minsha'ah. His style became a model emulated by reciters across generations.
-        </p>
-        <p class="lang-en-text">
-          May God have mercy upon him.
-        </p>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ============ TIMELINE ============ -->
-<section class="biography" id="timeline" style="padding-top: 0;">
-  <div class="ornament-divider"><span>۞</span></div>
-  <p class="section-label">
-    <span class="lang-ar">المسيرة</span>
-    <span class="lang-en-text">Timeline</span>
-  </p>
-  <h2 class="section-title">
-    <span class="lang-ar">رحلة في تسع وأربعين سنة</span>
-    <span class="lang-en-text">A Journey in 49 Years</span>
-  </h2>
-  <p class="section-title-en">
-    <span class="lang-ar">A Journey in Forty-Nine Years</span>
-    <span class="lang-en-text">رحلة في تسعٍ وأربعين سنة</span>
-  </p>
-
-  <div class="timeline-grid" style="max-width: 900px; margin: 4rem auto;">
-    <div class="timeline-row fade-in">
-      <span class="timeline-year"><span class="lang-ar">١٩٢٠</span><span class="lang-en-text">1920</span></span>
-      <span class="timeline-event">
-        <span class="lang-ar">وُلد بقرية المنشأة في محافظة سوهاج، في أسرة قرآنية عريقة.</span>
-        <span class="lang-en-text">Born in al-Minsha'ah village, Sohag, into a family of generations of Quranic reciters.</span>
-      </span>
-    </div>
-    <div class="timeline-row fade-in">
-      <span class="timeline-year"><span class="lang-ar">١٩٢٧</span><span class="lang-en-text">1927</span></span>
-      <span class="timeline-event">
-        <span class="lang-ar">سافر مع عمّه إلى القاهرة فحفظ فيها ربع القرآن، ثم عاد إلى المنشأة ليُتمّ الحفظ.</span>
-        <span class="lang-en-text">Travelled to Cairo with his uncle, memorized a quarter of the Quran there, then returned home to finish.</span>
-      </span>
-    </div>
-    <div class="timeline-row fade-in">
-      <span class="timeline-year"><span class="lang-ar">١٩٢٨</span><span class="lang-en-text">1928</span></span>
-      <span class="timeline-event">
-        <span class="lang-ar">أتمّ حفظ القرآن الكريم كاملاً وهو في الثامنة من عمره (وقيل في الحادية عشرة).</span>
-        <span class="lang-en-text">Completed memorization of the entire Quran at age eight (some say eleven).</span>
-      </span>
-    </div>
-    <div class="timeline-row fade-in">
-      <span class="timeline-year"><span class="lang-ar">١٩٥٢</span><span class="lang-en-text">1952</span></span>
-      <span class="timeline-event">
-        <span class="lang-ar">انطلق صوته منفرداً لأول مرة في ليلة قرآنية بمحافظة سوهاج.</span>
-        <span class="lang-en-text">First solo recitation in a Quranic night in Sohag governorate.</span>
-      </span>
-    </div>
-    <div class="timeline-row fade-in">
-      <span class="timeline-year"><span class="lang-ar">١٩٥٣</span><span class="lang-en-text">1953</span></span>
-      <span class="timeline-event">
-        <span class="lang-ar">اعتُمد قارئاً رسمياً في الإذاعة المصرية بعد أن سجّلت له في إسنا، إثر رفضٍ طويل (وقيل ١٩٥٤).</span>
-        <span class="lang-en-text">Accredited at Egyptian Radio after it came to record him in Esna (some say 1954).</span>
-      </span>
-    </div>
-    <div class="timeline-row fade-in">
-      <span class="timeline-year"><span class="lang-ar">١٩٥٩</span><span class="lang-en-text">1959</span></span>
-      <span class="timeline-event">
-        <span class="lang-ar">قرأ في الجامع الأموي بدمشق أيام الوحدة، ولُقّب بمقرئ الجمهورية العربية المتحدة.</span>
-        <span class="lang-en-text">Recited at the Umayyad Mosque in Damascus during the Egypt–Syria union, as Reciter of the United Arab Republic.</span>
-      </span>
-    </div>
-    <div class="timeline-row fade-in">
-      <span class="timeline-year"><span class="lang-ar">١٩٦٥</span><span class="lang-en-text">1965</span></span>
-      <span class="timeline-event">
-        <span class="lang-ar">سجّل المصحف المرتّل كاملاً على ٨٢ شريطاً، وأعاد تسجيل ٣٢ منها على نفقته في العام التالي.</span>
-        <span class="lang-en-text">Recorded the complete murattal mushaf on 82 tapes, re-recording 32 of them at his own expense the next year.</span>
-      </span>
-    </div>
-    <div class="timeline-row fade-in">
-      <span class="timeline-year"><span class="lang-ar">١٩٦٦</span><span class="lang-en-text">1966</span></span>
-      <span class="timeline-event">
-        <span class="lang-ar">أُصيب بمرض دوالي المريء، لكنه واصل التلاوة رغم المرض.</span>
-        <span class="lang-en-text">Diagnosed with esophageal varices; continued reciting despite illness.</span>
-      </span>
-    </div>
-    <div class="timeline-row fade-in">
-      <span class="timeline-year"><span class="lang-ar">١٩٦٩</span><span class="lang-en-text">1969</span></span>
-      <span class="timeline-event">
-        <span class="lang-ar">توفي يوم الجمعة ٢٠ يونيو وعمره ٤٩ عاماً، ودُفن في بلدته المنشأة، تاركاً مصحفين مرتلاً ومجوداً وتلاوات كثيرة.</span>
-        <span class="lang-en-text">Passed away on Friday, June 20, at age 49, and was buried in al-Minsha'ah — leaving complete murattal and mujawwad mushafs and many recitations.</span>
-      </span>
-    </div>
-  </div>
-</section>
-
-<!-- ============ AUDIO LIBRARY ============ -->
-<section class="library" id="library">
-  <div class="library-inner">
-    <div class="ornament-divider"><span>۞</span></div>
-    <p class="section-label">
-      <span class="lang-ar">التلاوات</span>
-      <span class="lang-en-text">Recitations</span>
-    </p>
-    <h2 class="section-title">
-      <span class="lang-ar">المصحف الشريف كاملاً</span>
-      <span class="lang-en-text">The Complete Mushaf</span>
-    </h2>
-    <p class="section-title-en">
-      <span class="lang-ar">١١٤ سورة بصوت الشيخ — برواية حفص عن عاصم</span>
-      <span class="lang-en-text">114 Surahs — Hafs from 'Asim Narration</span>
-    </p>
-
-    <!-- Recitation Type Toggle -->
-    <div class="recitation-toggle">
-      <button class="recitation-btn active" id="btnMurattal">
-        <span class="lang-ar">المرتل</span>
-        <span class="lang-en-text">Murattal</span>
-      </button>
-      <button class="recitation-btn" id="btnMujawwad">
-        <span class="lang-ar">المجود</span>
-        <span class="lang-en-text">Mujawwad</span>
-      </button>
-    </div>
-
-    <div class="library-controls">
-      <div class="search-box">
-        <input type="text" id="searchInput" placeholder="ابحث عن سورة..."></input>
-      </div>
+      <label class="search-box"><svg viewBox="0 0 24 24"><path d="M10 2a8 8 0 0 1 6.32 12.9l5.39 5.4-1.41 1.4-5.4-5.39A8 8 0 1 1 10 2zm0 2a6 6 0 1 0 0 12 6 6 0 0 0 0-12z"/></svg><input type="text" id="searchInput" placeholder="ابحث عن سورة..."></label>
       <div class="lib-stats">
         <span class="lang-ar">يُعرض <strong id="visibleCount">١١٤</strong> من <strong>١١٤</strong> سورة</span>
         <span class="lang-en-text">Showing <strong id="visibleCountEn">114</strong> of <strong>114</strong> surahs</span>
       </div>
     </div>
-
-    <div class="surahs-grid" id="surahsGrid">
-      <!-- Generated by JS -->
-    </div>
+    <div class="surahs-grid" id="surahsGrid"></div>
+    <p class="lib-more"><span class="lang-ar">لكل سورة صفحة خاصة بها — <a href="/surah/">فهرس السور</a></span><span class="lang-en-text">Every surah has its own page — <a href="/en/surah/">All surahs</a></span></p>
   </div>
 </section>
 
-<!-- ============ LIVE RADIO ============ -->
 <section class="live-radio" id="radio">
-  <div class="live-radio-inner">
-    <div class="live-badge">
-      <span class="live-dot"></span>
-      <span class="lang-ar">بث مباشر</span>
-      <span class="lang-en-text">LIVE</span>
+  <div class="wrap radio-band">
+    <div class="radio-text">
+      <span class="live-badge"><span class="live-dot"></span><span class="lang-ar">بث مباشر</span><span class="lang-en-text">Live</span></span>
+      <h2 class="live-radio-title"><span class="lang-ar">إذاعة القرآن الكريم</span><span class="lang-en-text">Holy Quran Radio</span></h2>
+      <p class="live-radio-subtitle"><span class="lang-ar">من القاهرة · على مدار الساعة</span><span class="lang-en-text">From Cairo · around the clock</span></p>
     </div>
-    <h2 class="live-radio-title">
-      <span class="lang-ar">إذاعة القرآن الكريم</span>
-      <span class="lang-en-text">Holy Quran Radio</span>
-    </h2>
-    <p class="live-radio-subtitle">
-      <span class="lang-ar">من القاهرة · بث مباشر</span>
-      <span class="lang-en-text">From Cairo · Live Broadcast</span>
-    </p>
-    <div class="radio-player-card" id="radioPlayerCard">
+    <div class="radio-control">
       <div class="radio-speaker">
-        <span class="radio-ring"></span>
-        <span class="radio-ring"></span>
-        <span class="radio-ring"></span>
-        <div class="radio-grille">
-          <button class="radio-play-btn" id="radioPlayBtn" aria-label="Play/Pause Radio">
-            <svg viewbox="0 0 24 24" id="radioPlayIcon"><path d="M8 5v14l11-7z"></path></svg>
-          </button>
-        </div>
+        <span class="radio-ring"></span><span class="radio-ring"></span><span class="radio-ring"></span>
+        <button class="radio-play-btn" id="radioPlayBtn" aria-label="تشغيل/إيقاف الإذاعة" data-aria-en="Play/Pause radio">
+          <svg viewBox="0 0 24 24" id="radioPlayIcon"><path d="M8 5v14l11-7z"></path></svg>
+        </button>
       </div>
-      <div class="radio-station-name">
-        <span class="lang-ar">إذاعة القرآن الكريم من القاهرة</span>
-        <span class="lang-en-text">Quran Radio — Cairo</span>
-      </div>
-      <div class="radio-station-desc">
-        <span class="lang-ar">الهيئة الوطنية للإعلام · FM ٩٨٫٢</span>
-        <span class="lang-en-text">National Media Authority · FM 98.2</span>
-      </div>
-      <div class="radio-status-pill">
-        <span class="live-dot"></span>
-        <span class="radio-status" id="radioStatus">
-          <span class="lang-ar">اضغط للاستماع</span>
-          <span class="lang-en-text">Tap to listen</span>
-        </span>
-      </div>
+      <span class="radio-status" id="radioStatus"><span class="lang-ar">اضغط للاستماع</span><span class="lang-en-text">Tap to listen</span></span>
     </div>
   </div>
   <audio id="radioAudio" preload="none"></audio>
 </section>
 
-<!-- ============ FOOTER ============ -->
-<footer>
-  <p class="footer-quote">
-    <span class="lang-ar">«وَرَتِّلِ الْقُرْآنَ تَرْتِيلًا»</span>
-    <span class="lang-en-text">"And recite the Quran with measured recitation."</span>
-  </p>
-  <p class="footer-meta">
-    <span class="lang-ar">سورة المزمل · الآية ٤</span>
-    <span class="lang-en-text">Surah Al-Muzzammil · Verse 4</span>
-  </p>
-  <div class="footer-divider"></div>
-  <p class="footer-tagline">
-    <span class="lang-ar">استمع، تدبر، وشارك الأجر</span>
-    <span class="lang-en-text">Listen, reflect, and share the reward</span>
-  </p>
-  <p class="footer-links">
-    <a href="/surah/"><span class="lang-ar">فهرس السور</span><span class="lang-en-text">All Surahs</span></a>
-  </p>
-  <p class="footer-description">
-    <span class="lang-ar">تلاوات الشيخ محمد صديق المنشاوي بجودة عالية</span>
-    <span class="lang-en-text">High-quality recitations by Sheikh Muhammad Siddiq Al-Minshawi</span>
-  </p>
-  <p class="footer-disclaimer">
-    <span class="lang-ar">تلاوات القرآن الكريم بصوت الشيخ محمد صديق المنشاوي محفوظة الحقوق لمالكيها الأصليين. هذا الموقع غير تجاري ويهدف لنشر القرآن الكريم.</span>
-    <span class="lang-en-text">Quran recitations by Sheikh Muhammad Siddiq Al-Minshawi are copyrighted to their original owners. This is a non-commercial website aimed at spreading the Holy Quran.</span>
-  </p>
+<section class="block" id="bio">
+  <div class="wrap">
+    <div class="head"><span class="num"><span class="lang-ar">٠٢</span><span class="lang-en-text">02</span></span><h2><span class="lang-ar">حياة وُهبت للقرآن</span><span class="lang-en-text">A Life Devoted to the Quran</span></h2><p><span class="lang-ar">السيرة الذاتية</span><span class="lang-en-text">Life &amp; Legacy</span></p></div>
+    <p class="bio-intro"><span class="lang-ar">وُلد الشيخ محمد صديق المنشاوي عام ١٩٢٠ في المنشأة بمحافظة سوهاج، في أسرة توارثت تلاوة القرآن الكريم، وأتمّ حفظه صغيرًا. اعتُمد قارئًا بالإذاعة المصرية سنة ١٩٥٣، ولُقِّب بـ«الصوت الباكي» لخشوع تلاوته، وسجّل المصحف كاملًا مرتّلًا ومجوّدًا، وطاف بتلاوته بلاد العالم الإسلامي حتى رحيله عام ١٩٦٩.</span><span class="lang-en-text">Born in 1920 in al-Minsha'ah, Sohag, into a family of Quran reciters, Sheikh Muhammad Siddiq al-Minshawi memorized the Quran as a child, joined Egyptian Radio in 1953 and became known as “the Weeping Voice.” He recorded the complete Quran, murattal and mujawwad, and recited across the Muslim world until his death in 1969.</span></p>
+    <details class="bio-more" id="bioMore">
+      <summary class="btn ghost"><span class="more"><span class="lang-ar">اقرأ السيرة كاملة</span><span class="lang-en-text">Read the full biography</span></span><span class="less"><span class="lang-ar">إخفاء السيرة</span><span class="lang-en-text">Hide the biography</span></span><svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg></summary>
+      <div class="bio">
+      <article class="chapter fade-in">
+        <h3><span class="label"><span class="lang-ar">الفصل الأول</span><span class="lang-en-text">Chapter One</span></span><span class="lang-ar">النشأة في بيت القرآن</span><span class="lang-en-text">A House Built on the Quran</span></h3>
+        <p class="lang-ar">هو محمد بن صديق بن سيد بن ثابت المنشاوي، وُلد في المنشأة بمحافظة سوهاج في مصر عام ١٣٣٨ هجرية / ٢٠ يناير ١٩٢٠ ميلادية، ونشأ في أسرة توارثت تلاوة القرآن جيلًا بعد جيل؛ إذ إنّ أباه الشيخ صديق المنشاوي كان من كبار قرّاء الصعيد، وعمّه الشيخ أحمد السيد المنشاوي قارئ أيضًا، وكذلك أخواه أحمد ومحمود. أتمّ حفظ القرآن الكريم في الثامنة من عمره (وقيل في الحادية عشرة).</p><p class="lang-ar">تتلمذ في الحفظ على يد والده الشيخ صديق المنشاوي، وسافر صغيرًا مع عمّه إلى القاهرة سنة ١٩٢٧ فحفظ فيها ربع القرآن، ثم عاد إلى المنشأة فأتمّ الحفظ على يد الشيخ محمد النمكي، وأحكم التجويد على يد الشيخ محمد أبو العلا، وأخذ كذلك عن الشيخ رشوان أبو مسلم.</p><p class="lang-en-text"><strong>Muhammad ibn Siddiq ibn Sayyid ibn Thabit al-Minshawi</strong> was born on <strong>20 January 1920</strong> in al-Minsha'ah, Sohag governorate, Upper Egypt, into a long lineage of Quranic reciters that stretched back generations.</p><p class="lang-en-text">His father, Sheikh <strong>Siddiq al-Minshawi</strong>, was one of the leading reciters of Upper Egypt, and his uncle Sheikh Ahmad al-Sayyid al-Minshawi and his brothers Ahmad and Mahmoud were reciters too. Muhammad learned from his father and completed memorizing the entire Quran at age <strong>eight</strong> (some sources say eleven).</p><p class="lang-en-text">In <strong>1927</strong> he went to Cairo with his uncle, memorizing a quarter of the Quran there, then returned home to complete his memorization under Sheikh Muhammad al-Namki and master tajweed under Sheikh Muhammad Abu al-Ula. He also studied with Sheikh Rashwan Abu Muslim.</p>
+      </article>
+      <article class="chapter fade-in">
+        <h3><span class="label"><span class="lang-ar">الفصل الثاني</span><span class="lang-en-text">Chapter Two</span></span><span class="lang-ar">الصوت الباكي</span><span class="lang-en-text">The Weeping Voice</span></h3>
+        <p class="lang-ar">لُقِّب الشيخ بـ«الصوت الباكي» لعذوبة صوته وجماله، وقوة الأداء وجلاله، إضافة إلى إتقانه تعدد مقامات القراءة، وانفعاله العميق بالمعاني والألفاظ القرآنية.</p><p class="lang-en-text">The Sheikh was distinguished by a reverent voice with a deep undertone of sorrow, earning him the title <strong>"The Weeping Voice."</strong> His recitation was not mere vocal performance but a spiritual journey that drew listeners into the depths of meaning.</p><p class="lang-en-text">He was a master of all maqamat (musical modes) of recitation, profoundly engaged with the verses he recited — until his voice became, for many, synonymous with serenity itself.</p>
+      </article>
+      <blockquote class="pull fade-in">
+        <span class="lang-ar">«إنّ المنشاوي والحصري والبهتيمي وعبد الباسط والبنا يركبون مركبًا ويبحرون في بحر القرآن، ولن يتوقف هذا المركب إلى أن يرث الله الأرض ومن عليها»</span>
+        <span class="lang-en-text">“Al-Minshawi, al-Husary, al-Bahtimi, Abdul Basit and al-Banna ride one ship sailing the sea of the Quran, and it will not stop until God inherits the earth.”</span>
+        <cite><span class="lang-ar">— يُروى عن الشيخ محمد متولي الشعراوي</span><span class="lang-en-text">— attributed to Sheikh Muhammad Metwally al-Sha'rawi</span></cite>
+      </blockquote>
+      <article class="chapter fade-in">
+        <h3><span class="label"><span class="lang-ar">الفصل الثالث</span><span class="lang-en-text">Chapter Three</span></span><span class="lang-ar">من سوهاج إلى العالم</span><span class="lang-en-text">From Sohag to the World</span></h3>
+        <p class="lang-ar">رفض الشيخ في بداية حياته التسجيل للإذاعة المصرية ورفض اعتماده فيها قارئًا، فاضطرت الإذاعة أن تذهب إليه بنفسها، فسجّلت له في إحدى ليالي رمضان بمدينة إسنا ما تيسّر من القرآن الكريم، واعتُمد قارئًا في الإذاعة على إثر ذلك سنة ١٩٥٣ (وقيل ١٩٥٤) بعد طول رفض وممانعة. ومن المروي أنه تقدّم مع أبيه لاختبار الإذاعة، ولمّا كانت قواعدها لا تسمح باعتمادهما معًا انسحب الأب ليُفسح الطريق لابنه.</p><p class="lang-ar">سجّل الشيخ القرآن الكريم كاملًا في ختمة مرتّلة سنة ١٩٦٥ على ٨٢ شريطًا، ثم طلب في العام التالي إعادة تسجيل ٣٢ شريطًا منها على نفقته، وسجّل كذلك ختمة مجوّدة بالإذاعة المصرية، وله قراءة مشتركة برواية الدوري مع القارئين كامل البهتيمي وفؤاد العروسي. وله أيضًا العديد من التسجيلات في المسجد الأقصى والكويت وسوريا وليبيا، ولُقِّب أيام الوحدة بين مصر وسوريا بـ«مقرئ الجمهورية العربية المتحدة»، وقرأ في الجامع الأموي بدمشق، ومُنح وسام الاستحقاق السوري من الدرجة الثانية، ووسامًا من إندونيسيا. وتلا القرآن في المساجد الرئيسية في العالم الإسلامي، كالمسجد الحرام في مكة المكرمة، والمسجد النبوي في المدينة المنورة، والمسجد الأقصى في القدس.</p><p class="lang-en-text">His journey began as a young man traveling with his father and uncle to religious gatherings. His first solo recitation in <strong>1952</strong> in Sohag governorate brought him sudden fame across the region.</p><p class="lang-en-text">He initially refused to record for Egyptian Radio, so the radio came to him, recording him during a Ramadan night in Esna. He was officially accredited in <strong>1953</strong> (some sources say 1954). During the union of Egypt and Syria he carried the title <strong>"Reciter of the United Arab Republic,"</strong> and recited at the Umayyad Mosque in Damascus.</p><p class="lang-en-text">He traveled to Saudi Arabia, Syria, Jordan, Kuwait, Iraq, Libya, Sudan, Indonesia and beyond, and recited at the Al-Aqsa Mosque. He was awarded Syria's Order of Merit (second class), a decoration from Indonesia, and honors from leaders across the Islamic world.</p>
+      </article>
+      <article class="chapter fade-in">
+        <h3><span class="label"><span class="lang-ar">الفصل الرابع</span><span class="lang-en-text">Chapter Four</span></span><span class="lang-ar">الرحيل والإرث</span><span class="lang-en-text">Departure & Legacy</span></h3>
+        <p class="lang-ar">تزوّج الشيخ مرتين، وتوفيت زوجته الثانية في الحج قبل وفاته بعام، وأنجب نحو خمسة عشر ابنًا وابنة على خلاف في العدد. أُصيب بمرض دوالي المريء عام ١٩٦٦، وتوفي يوم الجمعة ٢٠ يونيو عام ١٩٦٩، ودُفن في بلدته المنشأة، تاركًا وراءه كنزًا من التلاوات القرآنية تتعلّم منه الأجيال حتى يومنا هذا.</p><p class="lang-en-text">In <strong>1966</strong> the Sheikh was diagnosed with esophageal varices. Despite his deteriorating health, he continued reciting the Quran until his final moments, passing away on Friday, <strong>June 20, 1969</strong>, at just 49 years of age.</p><p class="lang-en-text">He left behind a vast legacy of recordings, both murattal and mujawwad. His complete murattal mushaf, recorded in <strong>1965</strong> on 82 tapes, is considered among the greatest in the history of Quranic recitation. He was buried in his hometown, al-Minsha'ah. His style became a model emulated by reciters across generations.</p><p class="lang-en-text">May God have mercy upon him.</p>
+      </article>
+      </div>
+      <h3 class="tl-title"><span class="lang-ar">المسيرة · رحلة في تسعٍ وأربعين سنة</span><span class="lang-en-text">Timeline · a journey in 49 years</span></h3>
+      <ol class="timeline" id="timeline">
+      <li class="fade-in"><b><span class="lang-ar">١٩٢٠</span><span class="lang-en-text">1920</span></b><span><span class="lang-ar">وُلد بقرية المنشأة في محافظة سوهاج، في أسرة قرآنية عريقة.</span><span class="lang-en-text">Born in al-Minsha'ah village, Sohag, into a family of generations of Quranic reciters.</span></span></li>
+      <li class="fade-in"><b><span class="lang-ar">١٩٢٧</span><span class="lang-en-text">1927</span></b><span><span class="lang-ar">سافر مع عمّه إلى القاهرة فحفظ فيها ربع القرآن، ثم عاد إلى المنشأة ليُتمّ الحفظ.</span><span class="lang-en-text">Travelled to Cairo with his uncle, memorized a quarter of the Quran there, then returned home to finish.</span></span></li>
+      <li class="fade-in"><b><span class="lang-ar">١٩٢٨</span><span class="lang-en-text">1928</span></b><span><span class="lang-ar">أتمّ حفظ القرآن الكريم كاملاً وهو في الثامنة من عمره (وقيل في الحادية عشرة).</span><span class="lang-en-text">Completed memorization of the entire Quran at age eight (some say eleven).</span></span></li>
+      <li class="fade-in"><b><span class="lang-ar">١٩٥٢</span><span class="lang-en-text">1952</span></b><span><span class="lang-ar">انطلق صوته منفرداً لأول مرة في ليلة قرآنية بمحافظة سوهاج.</span><span class="lang-en-text">First solo recitation in a Quranic night in Sohag governorate.</span></span></li>
+      <li class="fade-in"><b><span class="lang-ar">١٩٥٣</span><span class="lang-en-text">1953</span></b><span><span class="lang-ar">اعتُمد قارئاً رسمياً في الإذاعة المصرية بعد أن سجّلت له في إسنا، إثر رفضٍ طويل (وقيل ١٩٥٤).</span><span class="lang-en-text">Accredited at Egyptian Radio after it came to record him in Esna (some say 1954).</span></span></li>
+      <li class="fade-in"><b><span class="lang-ar">١٩٥٩</span><span class="lang-en-text">1959</span></b><span><span class="lang-ar">قرأ في الجامع الأموي بدمشق أيام الوحدة، ولُقّب بمقرئ الجمهورية العربية المتحدة.</span><span class="lang-en-text">Recited at the Umayyad Mosque in Damascus during the Egypt–Syria union, as Reciter of the United Arab Republic.</span></span></li>
+      <li class="fade-in"><b><span class="lang-ar">١٩٦٥</span><span class="lang-en-text">1965</span></b><span><span class="lang-ar">سجّل المصحف المرتّل كاملاً على ٨٢ شريطاً، وأعاد تسجيل ٣٢ منها على نفقته في العام التالي.</span><span class="lang-en-text">Recorded the complete murattal mushaf on 82 tapes, re-recording 32 of them at his own expense the next year.</span></span></li>
+      <li class="fade-in"><b><span class="lang-ar">١٩٦٦</span><span class="lang-en-text">1966</span></b><span><span class="lang-ar">أُصيب بمرض دوالي المريء، لكنه واصل التلاوة رغم المرض.</span><span class="lang-en-text">Diagnosed with esophageal varices; continued reciting despite illness.</span></span></li>
+      <li class="fade-in"><b><span class="lang-ar">١٩٦٩</span><span class="lang-en-text">1969</span></b><span><span class="lang-ar">توفي يوم الجمعة ٢٠ يونيو وعمره ٤٩ عاماً، ودُفن في بلدته المنشأة، تاركاً مصحفين مرتلاً ومجوداً وتلاوات كثيرة.</span><span class="lang-en-text">Passed away on Friday, June 20, at age 49, and was buried in al-Minsha'ah — leaving complete murattal and mujawwad mushafs and many recitations.</span></span></li>
+      </ol>
+    </details>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <svg class="logo" viewBox="0 0 255.50 163.61" role="img" aria-label="الشيخ محمد صديق المنشاوي"><use href="#logo"/></svg>
+    <p class="verse"><span class="lang-ar">﴿وَرَتِّلِ الْقُرْآنَ تَرْتِيلًا﴾</span><span class="lang-en-text">“And recite the Quran with measured recitation.”</span></p>
+    <nav>
+      <a href="#library"><span class="lang-ar">التلاوات</span><span class="lang-en-text">Recitations</span></a>
+      <a href="#bio"><span class="lang-ar">السيرة</span><span class="lang-en-text">Biography</span></a>
+      <a href="/surah/" data-href-ar="/surah/" data-href-en="/en/surah/"><span class="lang-ar">فهرس السور</span><span class="lang-en-text">All Surahs</span></a>
+      <a href="#radio"><span class="lang-ar">إذاعة القرآن الكريم</span><span class="lang-en-text">Quran Radio</span></a>
+    </nav>
+    <p class="fine"><span class="lang-ar">تلاوات القرآن الكريم بصوت الشيخ محمد صديق المنشاوي محفوظة الحقوق لمالكيها الأصليين. هذا الموقع غير تجاري ويهدف لنشر القرآن الكريم.</span><span class="lang-en-text">Quran recitations by Sheikh Muhammad Siddiq Al-Minshawi are copyrighted to their original owners. This is a non-commercial website aimed at spreading the Holy Quran.</span></p>
+  </div>
 </footer>
 
 <!-- ============ PRO MEDIA PLAYER ============ -->
@@ -3879,7 +1734,7 @@ body:not(.lang-en) .lang-en-text { display: none; }
   <div class="player-compact">
     <!-- Left: Track Info -->
     <div class="player-info">
-      <div class="player-cover" id="playerCover" title="افتح في وضع كامل">
+      <div class="player-cover" id="playerCover" title="افتح في وضع كامل" data-title-en="Open full view">
         <span class="cover-num" id="coverNum">۞</span>
         <div class="visualizer">
           <span class="visualizer-bar"></span>
@@ -3895,21 +1750,21 @@ body:not(.lang-en) .lang-en-text { display: none; }
       <div class="player-text">
         <div class="player-title-row">
           <div class="player-title" id="playerTitle">—</div>
-          <button class="player-queue-chevron" id="queueBtn" data-tooltip="قائمة السور" aria-label="Queue">
+          <button class="player-queue-chevron" id="queueBtn" data-tooltip="قائمة السور" data-tooltip-en="Surah list">
             <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg>
           </button>
         </div>
         <div class="player-subtitle">
           <span class="lang-ar">الشيخ المنشاوي</span>
           <span class="lang-en-text">Sheikh Al-Minshawi</span>
-          <span class="dot"></span>
-          <span class="lang-ar">مرتل</span>
-          <span class="lang-en-text">Murattal</span>
+          <span class="dot sub-type"></span>
+          <span class="lang-ar sub-type" id="subTypeAr">مرتل</span>
+          <span class="lang-en-text sub-type" id="subTypeEn">Murattal</span>
           <span class="dot"></span>
           <span id="playerTrackInfo">— / 114</span>
         </div>
       </div>
-      <button class="player-fav" id="favBtn" data-tooltip="مفضلة (F)">
+      <button class="player-fav" id="favBtn" data-tooltip="مفضلة (F)" data-tooltip-en="Favorite (F)">
         <svg viewbox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path></svg>
       </button>
     </div>
@@ -3917,26 +1772,26 @@ body:not(.lang-en) .lang-en-text { display: none; }
     <!-- Center: Controls + Progress -->
     <div class="player-controls-wrapper">
       <div class="player-buttons">
-        <button class="player-btn" id="shuffleBtn" data-tooltip="عشوائي · S">
+        <button class="player-btn" id="shuffleBtn" data-tooltip="عشوائي · S" data-tooltip-en="Shuffle · S">
           <svg viewbox="0 0 24 24"><path d="M10.59 9.17L5.41 4 4 5.41l5.17 5.17 1.42-1.41zM14.5 4l2.04 2.04L4 18.59 5.41 20 17.96 7.46 20 9.5V4h-5.5zm.33 9.41l-1.41 1.41 3.13 3.13L14.5 20H20v-5.5l-2.04 2.04-3.13-3.13z"></path></svg>
         </button>
-        <button class="player-btn" id="prevBtn" data-tooltip="السابقة">
+        <button class="player-btn" id="prevBtn" data-tooltip="السابقة" data-tooltip-en="Previous">
           <svg viewbox="0 0 24 24"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"></path></svg>
         </button>
-        <button class="player-btn" id="rewindBtn" data-tooltip="ارجع 10 ثوان">
+        <button class="player-btn" id="rewindBtn" data-tooltip="ارجع ١٠ ثوانٍ" data-tooltip-en="Back 10 seconds">
           <svg viewbox="0 0 24 24"><path d="M12.5 3C7.81 3 4 6.81 4 11.5h2C6 7.91 8.91 5 12.5 5S19 7.91 19 11.5 16.09 18 12.5 18c-1.79 0-3.41-.74-4.59-1.91L9.83 14.5H4v5.83L6.59 17.74C8.13 19.13 10.21 20 12.5 20c4.69 0 8.5-3.81 8.5-8.5S17.19 3 12.5 3zm-1.4 12.7v-3.55l-1.1.4v-.85l2-.7h.1v4.7h-1z"></path></svg>
         </button>
-        <button class="player-btn main" id="playPauseBtn" data-tooltip="تشغيل · Space">
+        <button class="player-btn main" id="playPauseBtn" data-tooltip="تشغيل/إيقاف · Space" data-tooltip-en="Play/Pause · Space">
           <svg id="playIcon" viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
           <svg id="pauseIcon" viewbox="0 0 24 24" style="display:none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"></path></svg>
         </button>
-        <button class="player-btn" id="forwardBtn" data-tooltip="تقدم 10 ثوان">
+        <button class="player-btn" id="forwardBtn" data-tooltip="تقدّم ١٠ ثوانٍ" data-tooltip-en="Forward 10 seconds">
           <svg viewbox="0 0 24 24"><path d="M11.5 3c4.69 0 8.5 3.81 8.5 8.5S16.19 20 11.5 20c-2.29 0-4.37-.87-5.91-2.26L4 19.33V13.5h5.83l-1.92 1.59C9.09 16.26 10.71 17 12.5 17c3.59 0 6.5-2.91 6.5-6.5S15.59 5 12.5 5 6 7.91 6 11.5H4C4 6.81 7.81 3 12.5 3zm-1.4 8.2v3.55h-1v-3.05l-.9.31v-.81l1.8-.7h.1z"></path></svg>
         </button>
-        <button class="player-btn" id="nextBtn" data-tooltip="التالية">
+        <button class="player-btn" id="nextBtn" data-tooltip="التالية" data-tooltip-en="Next">
           <svg viewbox="0 0 24 24"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"></path></svg>
         </button>
-        <button class="player-btn" id="repeatBtn" data-tooltip="تكرار · R">
+        <button class="player-btn" id="repeatBtn" data-tooltip="تكرار · R" data-tooltip-en="Repeat · R">
           <svg viewbox="0 0 24 24"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"></path></svg>
         </button>
       </div>
@@ -3957,11 +1812,11 @@ body:not(.lang-en) .lang-en-text { display: none; }
 
     <!-- Right: Volume + Extras -->
     <div class="player-extras">
-      <button class="player-mini-btn" id="downloadBtn" data-tooltip="تحميل السورة">
+      <button class="player-mini-btn" id="downloadBtn" data-tooltip="تحميل السورة" data-tooltip-en="Download surah">
         <svg viewbox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"></path></svg>
       </button>
       <div class="volume-control">
-        <button class="player-mini-btn" id="muteBtn" data-tooltip="كتم · M">
+        <button class="player-mini-btn" id="muteBtn" data-tooltip="كتم · M" data-tooltip-en="Mute · M">
           <svg id="volIconHigh" viewbox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"></path></svg>
           <svg id="volIconMute" viewbox="0 0 24 24" style="display:none;"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"></path></svg>
         </button>
@@ -3970,10 +1825,10 @@ body:not(.lang-en) .lang-en-text { display: none; }
             <div class="volume-wrapper-fill" id="volumeFill"></div>
           </div>
           <div class="volume-wrapper-thumb" id="volumeThumb"></div>
-          <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="80" aria-label="Volume">
+          <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="80" aria-label="مستوى الصوت" data-aria-en="Volume">
         </div>
       </div>
-      <button class="player-mini-btn" id="expandBtn" data-tooltip="عرض كامل">
+      <button class="player-mini-btn" id="expandBtn" data-tooltip="عرض كامل" data-tooltip-en="Full view">
         <svg viewbox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"></path></svg>
       </button>
     </div>
@@ -3993,7 +1848,7 @@ body:not(.lang-en) .lang-en-text { display: none; }
 
 <!-- Expanded Player View -->
 <div class="player-expanded" id="playerExpanded">
-  <button class="expanded-close" id="expandedClose">✕</button>
+  <button class="expanded-close" id="expandedClose" aria-label="إغلاق" data-aria-en="Close">✕</button>
   <div class="expanded-content">
     <div class="expanded-cover">
       <span class="num" id="expandedNum">١</span>
@@ -4024,20 +1879,20 @@ body:not(.lang-en) .lang-en-text { display: none; }
     </div>
 
     <div class="expanded-controls">
-      <button class="player-btn" id="shuffleBtnExp" title="عشوائي">
+      <button class="player-btn" id="shuffleBtnExp" title="عشوائي" data-title-en="Shuffle">
         <svg viewbox="0 0 24 24"><path d="M10.59 9.17L5.41 4 4 5.41l5.17 5.17 1.42-1.41zM14.5 4l2.04 2.04L4 18.59 5.41 20 17.96 7.46 20 9.5V4h-5.5zm.33 9.41l-1.41 1.41 3.13 3.13L14.5 20H20v-5.5l-2.04 2.04-3.13-3.13z"></path></svg>
       </button>
-      <button class="player-btn" id="prevBtnExp" title="السابقة">
+      <button class="player-btn" id="prevBtnExp" title="السابقة" data-title-en="Previous">
         <svg viewbox="0 0 24 24"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"></path></svg>
       </button>
-      <button class="player-btn main" id="playPauseBtnExp" title="تشغيل/إيقاف">
+      <button class="player-btn main" id="playPauseBtnExp" title="تشغيل/إيقاف" data-title-en="Play/Pause">
         <svg id="playIconExp" viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
         <svg id="pauseIconExp" viewbox="0 0 24 24" style="display:none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"></path></svg>
       </button>
-      <button class="player-btn" id="nextBtnExp" title="التالية">
+      <button class="player-btn" id="nextBtnExp" title="التالية" data-title-en="Next">
         <svg viewbox="0 0 24 24"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"></path></svg>
       </button>
-      <button class="player-btn" id="repeatBtnExp" title="تكرار">
+      <button class="player-btn" id="repeatBtnExp" title="تكرار" data-title-en="Repeat">
         <svg viewbox="0 0 24 24"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"></path></svg>
       </button>
     </div>
@@ -4050,6 +1905,7 @@ body:not(.lang-en) .lang-en-text { display: none; }
     </div>
   </div>
 </div>
+
 
 <script>
 // ============ SURAH DATA ============
@@ -4289,6 +2145,9 @@ function arabicNum(n) {
   const arDigits = ['٠','١','٢','٣','٤','٥','٦','٧','٨','٩'];
   return String(n).split('').map(d => arDigits[d] || d).join('');
 }
+const isEnglish = () => document.body.classList.contains('lang-en');
+// Arabic-Indic digits in Arabic, Western digits in English
+const localNum = n => isEnglish() ? String(n) : arabicNum(n);
 
 // ============ RENDER LIBRARY ============
 const grid = document.getElementById('surahsGrid');
@@ -4354,8 +2213,8 @@ function renderSurahs(filter = '') {
     card.className = 'surah-card';
     card.dataset.num = s.num;
     card.innerHTML = `
-      <div class="surah-num">${arabicNum(s.num)}</div>
-      <a class="surah-info" href="/surah/${surahSlug(s)}/">
+      <div class="surah-num">${localNum(s.num)}</div>
+      <a class="surah-info" href="${isEnglish() ? '/en' : ''}/surah/${surahSlug(s)}/">
         <span class="surah-name">${s.ar}</span>
         <span class="surah-name-en">${s.en}</span>
       </a>
@@ -4448,6 +2307,7 @@ const expandedWaveform = document.getElementById('expandedWaveform');
 
 // State
 let currentSurah = null;
+let lastSurah = null; // the last surah loaded, kept while the radio plays so the player can go back to it
 let isShuffleOn = false;
 let repeatMode = 0; // 0 = off, 1 = repeat all, 2 = repeat one
 let isMuted = false;
@@ -4563,26 +2423,29 @@ function syncSurahCards() {
   });
 }
 
-function playSurah(num) {
-  const surah = surahs.find(s => s.num === num);
-  if (!surah) return; // validate first, so a bad number never kills the radio for nothing
+// Main player play/pause icons (shared by the surahs and the radio)
+function setPlayerIcons(playing) {
+  player.classList.toggle('is-playing', playing);
+  player.classList.toggle('is-paused', !playing);
+  playIcon.style.display = playing ? 'none' : 'block';
+  pauseIcon.style.display = playing ? 'block' : 'none';
+  playIconExp.style.display = playing ? 'none' : 'block';
+  pauseIconExp.style.display = playing ? 'block' : 'none';
+}
 
-  // Only one thing plays at a time: a surah stops the live radio (stream + its UI)
-  if (window.stopRadio) window.stopRadio();
-
+// Put a surah in the player (title, number, buttons) without loading or playing it
+function showSurahInPlayer(surah) {
   player.classList.remove('is-radio');
   if (playerExpanded) playerExpanded.classList.remove('is-radio');
 
-  currentSurah = surah;
-  audio.src = AUDIO_BASE + pad(num) + '.mp3';
-  audio.load(); // force reload to clear any previous error state
-
+  currentSurah = lastSurah = surah;
+  const num = surah.num;
   const isArabic = !document.body.classList.contains('lang-en');
   const titleText = isArabic ? `سورة ${surah.ar}` : `Surah ${surah.en}`;
   playerTitle.textContent = titleText;
   expandedTitle.textContent = titleText;
-  coverNum.textContent = arabicNum(num);
-  expandedNum.textContent = arabicNum(num);
+  coverNum.textContent = localNum(num);
+  expandedNum.textContent = localNum(num);
 
   // Update track info "X / 114"
   if (playerTrackInfo) {
@@ -4599,10 +2462,31 @@ function playSurah(num) {
 
   // Highlight active card
   syncSurahCards();
+  if (typeof updateQueueActive === 'function') updateQueueActive();
+}
+
+// The radio was switched off from its own button: the player goes back to the last
+// surah (paused where it was), so its play button, the keyboard and the lock screen
+// resume the Quran instead of turning the radio back on.
+function returnToSurah() {
+  if (lastSurah) showSurahInPlayer(lastSurah);
+  setPlayerIcons(false);
+  if (typeof setMediaPlaybackState === 'function') setMediaPlaybackState();
+}
+
+function playSurah(num) {
+  const surah = surahs.find(s => s.num === num);
+  if (!surah) return; // validate first, so a bad number never kills the radio for nothing
+
+  // Only one thing plays at a time: a surah stops the live radio (stream + its UI)
+  if (window.stopRadio) window.stopRadio();
+
+  showSurahInPlayer(surah);
+  audio.src = AUDIO_BASE + pad(num) + '.mp3';
+  audio.load(); // force reload to clear any previous error state
 
   player.classList.add('active');
   player.classList.add('is-loading');
-  if (typeof updateQueueActive === 'function') updateQueueActive();
 
   // Initialize visualizer on first play (must be after user gesture)
   setupAudioVisualizer();
@@ -4613,6 +2497,7 @@ function playSurah(num) {
   audio.play().catch(err => {
     console.warn('Playback error:', err);
     player.classList.remove('is-loading');
+    if (audio.paused && currentSurah === surah) setPlayerIcons(false);
   });
 }
 
@@ -4667,25 +2552,16 @@ function playNext() {
 audio.addEventListener('canplay', () => player.classList.remove('is-loading'));
 audio.addEventListener('loadeddata', () => player.classList.remove('is-loading'));
 audio.addEventListener('waiting', () => player.classList.add('is-loading'));
+// While the radio is in the player, its own events drive the play/pause icons:
+// a late event from the surah being stopped must not flip them.
 audio.addEventListener('playing', () => {
   player.classList.remove('is-loading');
-  player.classList.add('is-playing');
-  player.classList.remove('is-paused');
-  // Update icons
-  playIcon.style.display = 'none';
-  pauseIcon.style.display = 'block';
-  playIconExp.style.display = 'none';
-  pauseIconExp.style.display = 'block';
+  if (!(currentSurah && currentSurah.isRadio)) setPlayerIcons(true);
   syncSurahCards();
 });
 
 audio.addEventListener('pause', () => {
-  player.classList.remove('is-playing');
-  player.classList.add('is-paused');
-  playIcon.style.display = 'block';
-  pauseIcon.style.display = 'none';
-  playIconExp.style.display = 'block';
-  pauseIconExp.style.display = 'none';
+  if (!(currentSurah && currentSurah.isRadio)) setPlayerIcons(false);
   syncSurahCards();
 });
 
@@ -4904,6 +2780,8 @@ document.addEventListener('keydown', (e) => {
 
   switch (e.code) {
     case 'Space':
+      // On a focused button Space presses that button; toggling here as well would undo it
+      if (e.target.closest && e.target.closest('button, summary, [role="button"]')) break;
       e.preventDefault();
       togglePlayPause();
       break;
@@ -5039,27 +2917,65 @@ if (HAS_MEDIA_SESSION) {
   if (radioEl) ['play', 'pause', 'playing'].forEach(ev => radioEl.addEventListener(ev, setMediaPlaybackState));
 }
 
-// ============ LANGUAGE TOGGLE ============
+// ============ LANGUAGE ============
 const langToggle = document.getElementById('langToggle');
-langToggle.addEventListener('click', () => {
-  const isEn = document.body.classList.toggle('lang-en');
+const PAGE_TITLES = {
+  ar: 'الشيخ محمد صديق المنشاوي | المصحف المرتل والمجود كاملاً · الصوت الباكي',
+  en: 'Sheikh Muhammad Siddiq Al-Minshawi | Complete Murattal & Mujawwad Quran · The Weeping Voice'
+};
+
+// Swap an attribute between its Arabic original and the data-*-en version
+function swapAttr(sel, enKey, arKey, attr, isEn) {
+  document.querySelectorAll(sel).forEach(el => {
+    if (el.dataset[arKey] === undefined) el.dataset[arKey] = el.getAttribute(attr) || '';
+    el.setAttribute(attr, isEn ? el.dataset[enKey] : el.dataset[arKey]);
+  });
+}
+
+function applyLang(lang, save = true) {
+  const isEn = lang === 'en';
+  document.body.classList.toggle('lang-en', isEn);
   document.documentElement.dir = isEn ? 'ltr' : 'rtl';
   document.documentElement.lang = isEn ? 'en' : 'ar';
   langToggle.textContent = isEn ? 'عربي' : 'EN';
-  document.title = isEn
-    ? 'Sheikh Muhammad Siddiq Al-Minshawi · The Weeping Voice'
-    : 'الشيخ محمد صديق المنشاوي · الصوت الباكي';
+  langToggle.setAttribute('lang', isEn ? 'ar' : 'en');
+  langToggle.setAttribute('aria-label', isEn ? 'التبديل إلى العربية' : 'Switch to English');
+  document.title = PAGE_TITLES[isEn ? 'en' : 'ar'];
+  if (save) { try { localStorage.setItem('lang', isEn ? 'en' : 'ar'); } catch (e) {} }
 
-  // Update placeholder
-  document.getElementById('searchInput').placeholder = isEn ? 'Search surah...' : 'ابحث عن سورة...';
+  // Keep the address on the matching page (/ or /en/) so reloads and shares keep the language
+  // (this script only runs on the home pages: / and /en/, or /test/ and /test/en/)
+  const home = location.pathname.match(/^(.*?\/)(en\/)?(index\.html)?$/);
+  if (home) history.replaceState(history.state, '', home[1] + (isEn ? 'en/' : '') + location.hash);
 
-  // Update player titles if playing
+  // Tooltips, titles, labels and links that have an English version
+  swapAttr('[data-tooltip-en]', 'tooltipEn', 'tooltipAr', 'data-tooltip', isEn);
+  swapAttr('[data-title-en]', 'titleEn', 'titleAr', 'title', isEn);
+  swapAttr('[data-aria-en]', 'ariaEn', 'ariaAr', 'aria-label', isEn);
+  swapAttr('[data-href-en]', 'hrefEn', 'hrefAr', 'href', isEn);
+  // Icon-only buttons: their tooltip is also their accessible name
+  document.querySelectorAll('[data-tooltip]:not([data-aria-en])').forEach(el => el.setAttribute('aria-label', el.dataset.tooltip));
+
+  const search = document.getElementById('searchInput');
+  search.placeholder = isEn ? 'Search surah...' : 'ابحث عن سورة...';
+  search.setAttribute('aria-label', isEn ? 'Search surah' : 'ابحث عن سورة');
+
+  // Surah cards carry links and numbers in the page language
+  renderSurahs(search.value.trim());
+  syncSurahCards();
+  if (queueOpen) buildQueue();
+
+  // Player titles if something is loaded
   if (currentSurah) {
     const titleText = currentSurah.isRadio 
       ? (isEn ? currentSurah.en : currentSurah.ar)
       : (isEn ? `Surah ${currentSurah.en}` : `سورة ${currentSurah.ar}`);
     playerTitle.textContent = titleText;
     expandedTitle.textContent = titleText;
+    if (!currentSurah.isRadio) {
+      coverNum.textContent = localNum(currentSurah.num);
+      expandedNum.textContent = localNum(currentSurah.num);
+    }
     if (playerTrackInfo) {
       playerTrackInfo.textContent = currentSurah.isRadio
         ? (isEn ? 'Live Stream' : 'بث مباشر')
@@ -5067,7 +2983,11 @@ langToggle.addEventListener('click', () => {
     }
     updateMediaSession();
   }
-});
+}
+
+langToggle.addEventListener('click', () => applyLang(isEnglish() ? 'ar' : 'en'));
+// Finish what the early script started (labels, links, address) without saving a choice
+applyLang(window.__initialLang || (isEnglish() ? 'en' : 'ar'), false);
 
 // ============ SCROLL ANIMATIONS ============
 // Nav scroll state
@@ -5097,18 +3017,35 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
   // Set up the player UI for Surah 1 immediately
   playSurah(1);
   // Browsers block autoplay without user gesture — if play() was rejected,
-  // listen for the first interaction and resume playback automatically
-  function resumeOnInteraction() {
-    if (audio.paused && currentSurah && currentSurah.num === 1) {
-      audio.play().catch(() => {});
-    }
+  // listen for the first interaction and resume playback automatically.
+  // Not when the visitor is already in charge: if anything has played or paused
+  // (autoplay worked, or they used the player / radio), or the interaction is on a
+  // button or link, starting Al-Fatihah here would undo what they just did
+  // (e.g. the first tap on "pause" would start it again, or it would cut in after the radio).
+  function disarm() {
     document.removeEventListener('click', resumeOnInteraction);
     document.removeEventListener('touchstart', resumeOnInteraction);
     document.removeEventListener('keydown', resumeOnInteraction);
+    audio.removeEventListener('play', disarm);
+    audio.removeEventListener('pause', disarm);
+    const r = document.getElementById('radioAudio');
+    if (r) r.removeEventListener('play', disarm);
   }
-  document.addEventListener('click', resumeOnInteraction, { once: true });
-  document.addEventListener('touchstart', resumeOnInteraction, { once: true });
-  document.addEventListener('keydown', resumeOnInteraction, { once: true });
+  function resumeOnInteraction(e) {
+    const onControl = e && e.target && e.target.closest &&
+      e.target.closest('button, a, input, select, textarea, summary, label, [role="button"], .surah-card, .media-player, .player-expanded');
+    if (!onControl && audio.paused && currentSurah && !currentSurah.isRadio && currentSurah.num === 1) {
+      audio.play().catch(() => {});
+    }
+    disarm();
+  }
+  document.addEventListener('click', resumeOnInteraction);
+  document.addEventListener('touchstart', resumeOnInteraction);
+  document.addEventListener('keydown', resumeOnInteraction);
+  audio.addEventListener('play', disarm);
+  audio.addEventListener('pause', disarm);
+  const radioEl = document.getElementById('radioAudio');
+  if (radioEl) radioEl.addEventListener('play', disarm);
 })();
 
 // ============ LIVE RADIO PLAYER ============
@@ -5257,10 +3194,26 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
     }
   }
 
+  // The radio's own button (and the header radio button) switches it off: stop the stream
+  // and hand the player back to the surah. (The stream's 'pause' event can't do this: removing
+  // the stream drops that event before it arrives.)
   function pauseRadio() {
     stopRadioStream();
+    returnToSurah();
   }
   window.startRadio = playRadio;
+
+  // The player's volume and mute apply to the radio too
+  const syncRadioVolume = () => { radioAudio.volume = audio.volume; radioAudio.muted = audio.muted; };
+  audio.addEventListener('volumechange', syncRadioVolume);
+  syncRadioVolume();
+
+  // A stream that fails on its own (connection lost) says so instead of just "Paused"
+  radioAudio.addEventListener('error', () => {
+    if (currentSurah && currentSurah.isRadio && radioAudio.getAttribute('src') && !window.radioHls) {
+      setRadioStatus('انقطع البث — حاول مرة أخرى', 'Stream lost — try again');
+    }
+  });
 
   // Safety net — whatever starts the sound (buttons, keyboard, lock screen, headphones,
   // auto-play), a surah and the radio never overlap. `currentSurah` says which one the
@@ -5289,29 +3242,15 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
     if (currentSurah && currentSurah.isRadio) {
       showPauseIcon();
       setRadioStatus('يُبث الآن مباشرة', 'Now playing live');
-      
-      // Update global player UI
-      player.classList.remove('is-paused');
-      player.classList.add('is-playing');
-      playIcon.style.display = 'none';
-      pauseIcon.style.display = 'block';
-      playIconExp.style.display = 'none';
-      pauseIconExp.style.display = 'block';
+      setPlayerIcons(true); // global player UI
     }
   });
 
   radioAudio.addEventListener('pause', () => {
     if (currentSurah && currentSurah.isRadio) {
       showPlayIcon();
-      setRadioStatus('متوقف', 'Paused');
-      
-      // Update global player UI
-      player.classList.remove('is-playing');
-      player.classList.add('is-paused');
-      playIcon.style.display = 'block';
-      pauseIcon.style.display = 'none';
-      playIconExp.style.display = 'block';
-      pauseIconExp.style.display = 'none';
+      if (!radioAudio.error) setRadioStatus('متوقف', 'Paused'); // keep "stream lost" after an error
+      setPlayerIcons(false); // global player UI
     }
   });
   // (Al-Fatihah is already loaded on page open by autoPlayFatihah above —
@@ -5319,5 +3258,47 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 })();
 </script>
 
+<script>
+// ============ THEME (light / dark) ============
+(function(){
+  var root=document.documentElement, btn=document.getElementById('themeToggle');
+  var meta=document.querySelector('meta[name="theme-color"]');
+  var mq=window.matchMedia('(prefers-color-scheme: dark)');
+  function isDark(){var t=root.getAttribute('data-theme');return t?t==='dark':mq.matches;}
+  function sync(){if(meta)meta.setAttribute('content',isDark()?'#121110':'#f7f4ee');
+    if(btn){var en=document.body.classList.contains('lang-en');
+      btn.title=isDark()?(en?'Light mode':'الوضع النهاري'):(en?'Dark mode':'الوضع الليلي');btn.setAttribute('aria-label',btn.title);}}
+  if(btn)btn.addEventListener('click',function(){
+    var next=isDark()?'light':'dark';root.setAttribute('data-theme',next);
+    try{localStorage.setItem('theme',next);}catch(e){}sync();});
+  if(mq.addEventListener)mq.addEventListener('change',sync);
+  new MutationObserver(sync).observe(document.body,{attributes:true,attributeFilter:['class']});
+  sync();
+})();
+// Header radio button: plays/stops the live radio in place, and mirrors its state
+(function(){
+  var nb=document.getElementById('navRadio'),card=document.getElementById('radioPlayBtn'),sec=document.querySelector('.live-radio');
+  if(!nb||!card||!sec)return;
+  nb.addEventListener('click',function(){card.click();});
+  function upd(){var on=sec.classList.contains('radio-playing'),en=document.body.classList.contains('lang-en');nb.classList.toggle('on',on);
+    nb.setAttribute('aria-label',on?(en?'Stop Quran radio':'إيقاف إذاعة القرآن الكريم'):(en?'Play Quran radio':'تشغيل إذاعة القرآن الكريم'));}
+  new MutationObserver(upd).observe(sec,{attributes:true,attributeFilter:['class']});
+  new MutationObserver(upd).observe(document.body,{attributes:true,attributeFilter:['class']});upd();
+})();
+// Full biography: open it when the address points inside it (e.g. #timeline)
+(function(){
+  var d=document.getElementById('bioMore');if(!d)return;
+  function chk(){if(location.hash==='#timeline'){d.open=true;var t=document.getElementById('timeline');if(t)setTimeout(function(){t.scrollIntoView();},50);}}
+  window.addEventListener('hashchange',chk);chk();
+  d.addEventListener('toggle',function(){if(!d.open){var b=document.getElementById('bio');if(b&&b.getBoundingClientRect().top<0)b.scrollIntoView();}});
+})();
+// Player subtitle follows murattal / mujawwad
+(function(){
+  var mj=document.getElementById('btnMujawwad'),ar=document.getElementById('subTypeAr'),en=document.getElementById('subTypeEn');
+  if(!mj||!ar)return;
+  function upd(){var on=mj.classList.contains('active');ar.textContent=on?'مجوّد':'مرتل';en.textContent=on?'Mujawwad':'Murattal';}
+  new MutationObserver(upd).observe(mj,{attributes:true,attributeFilter:['class']});upd();
+})();
+</script>
 </body>
 </html>

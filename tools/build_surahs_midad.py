@@ -2,7 +2,7 @@
 """Surah pages in the Midad design (paper & ink, light/dark).
 
     python3 tools/build_surahs_midad.py --base /test   # test/surah/…, noindex
-    python3 tools/build_surahs_midad.py                # surah/… (when promoted)
+    python3 tools/build_surahs_midad.py                # surah/…, en/surah/…, 404.html, sitemap.xml
 
 Builds Arabic (<base>/surah/…) and English (<base>/en/surah/…) pages.
 Shares the data (names, verse counts, Makki/Madani) with build_surahs.py.
@@ -15,7 +15,7 @@ import re
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from build_surahs import AUDIO, ROOT, SITE, ar_num, ayat_word, load_surahs  # noqa: E402
+from build_surahs import AUDIO, ROOT, SITE, ar_num, ayat_word, load_surahs, sitemap  # noqa: E402
 
 ap = argparse.ArgumentParser()
 ap.add_argument("--base", default="", help="URL prefix of the site copy, e.g. /test")
@@ -89,6 +89,9 @@ h1{font:700 clamp(2.2rem,9vw,4rem)/1.1 'Thmanyah Serif Display',serif;overflow-w
 .about{font:400 1.08rem/2 'Thmanyah Serif Text',serif;color:var(--fg-2);margin:30px 0 22px}
 .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 22px;border-radius:2px;font-weight:500;font-size:.95rem;background:var(--btn);color:var(--btn-fg);transition:background .2s}
 .btn:hover{background:var(--accent);color:#fff}
+.nf{text-align:center;padding-top:24px;padding-bottom:40px}.nf .sub{margin-inline:auto}.nf .kicker{justify-content:center}
+.nf-links{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:12px 22px;margin-top:28px}
+.nf-en{margin-top:36px;opacity:.75;font-size:.95rem}
 .btn svg{width:13px;height:13px;fill:currentColor}
 .pager{display:grid;grid-template-columns:1fr 1fr;margin-top:40px;border-top:1px solid var(--fg)}
 .pager a{padding:16px 0;font:700 1.15rem 'Thmanyah Serif Display',serif}
@@ -407,6 +410,30 @@ def write(path, text):
         f.write(text)
 
 
+def page_404():
+    title = "الصفحة غير موجودة · الشيخ محمد صديق المنشاوي"
+    page = head("ar", title, "", f"{SITE}/", {"@context": "https://schema.org", "@type": "WebPage", "name": title},
+                f"{BASE}/en/", f"{SITE}/", f"{SITE}/en/")
+    # Not a real page: no canonical / alternates / description, and keep it out of search results.
+    page = re.sub(r'<meta name="description"[^>]*>\n|<link rel="(canonical|alternate)"[^>]*>\n', "", page)
+    page = page.replace("<title>", '<meta name="robots" content="noindex">\n<title>', 1) if not TEST else page
+    return page + f"""<main>
+  <div class="wrap nf">
+    <p class="kicker">٤٠٤</p>
+    <h1>الصفحة غير موجودة</h1>
+    <p class="sub">ربما تغيّر الرابط أو كُتب خطأ. تقدر تكمّل من هنا:</p>
+    <p class="nf-links">
+      <a class="btn" href="{BASE}/">الصفحة الرئيسية</a>
+      <a href="{BASE}/#library">المصحف كاملًا</a>
+      <a href="{BASE}/surah/">فهرس السور</a>
+      <a href="{BASE}/#radio">إذاعة القرآن الكريم</a>
+    </p>
+    <p class="nf-en" lang="en" dir="ltr">Page not found. Try the <a href="{BASE}/en/">home page</a> or <a href="{BASE}/en/surah/">all surahs</a>.</p>
+  </div>
+</main>
+""" + footer("ar")
+
+
 def main():
     surahs = load_surahs()
     for i, s in enumerate(surahs):
@@ -416,6 +443,10 @@ def main():
     write(os.path.join(OUT_DIR, "index.html"), index_page(surahs))
     write(os.path.join(OUT_DIR_EN, "index.html"), index_page_en(surahs))
     print("wrote", OUT_DIR, "and", OUT_DIR_EN, "(230 pages)")
+    if not TEST:
+        write(os.path.join(ROOT, "404.html"), page_404())
+        write(os.path.join(ROOT, "sitemap.xml"), sitemap(surahs))
+        print("wrote 404.html and sitemap.xml")
 
 
 if __name__ == "__main__":
