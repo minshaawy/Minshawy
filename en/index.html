@@ -3099,7 +3099,7 @@ function applyLang(lang, save = true) {
   if (save) { try { localStorage.setItem('lang', isEn ? 'en' : 'ar'); } catch (e) {} }
 
   // Keep the address on the matching page (/ or /en/) so reloads and shares keep the language
-  // (this script only runs on the home pages: / and /en/, or /test/ and /test/en/)
+  // (this script only runs on the home pages: / and /en/)
   const home = location.pathname.match(/^(.*?\/)(en\/)?(index\.html)?$/);
   if (home) history.replaceState(history.state, '', home[1] + (isEn ? 'en/' : '') + location.hash);
 

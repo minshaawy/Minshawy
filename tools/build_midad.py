@@ -5,22 +5,18 @@ Keeps the original head, media player markup and the whole script (so
 playback, radio, search, favourites, language switch keep working),
 and swaps in new markup for the sections plus tools/midad.css.
 
-    python3 tools/build_midad.py index.html   # the real site: index.html + en/index.html
-    python3 tools/build_midad.py              # the test copy: test/index.html + test/en/index.html (noindex)
+    python3 tools/build_midad.py   # index.html + en/index.html
 
 Edit tools/source.html (content, surah list, player script) or tools/midad.css, then rebuild.
 """
 import os
 import re
-import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC = open(os.path.join(ROOT, "tools", "source.html"), encoding="utf-8").read()
 CSS = open(os.path.join(ROOT, "tools", "midad.css"), encoding="utf-8").read()
 LOGO = open(os.path.join(ROOT, "images", "logo-minshawi.svg"), encoding="utf-8").read()
-OUT = sys.argv[1] if len(sys.argv) > 1 else os.path.join(ROOT, "test", "index.html")
-# Links stay inside the copy being built: /test/… for the test site, /… for the real one.
-BASE = "/test" if OUT.replace(os.sep, "/").endswith("test/index.html") else ""
+OUT = os.path.join(ROOT, "index.html")
 
 
 def between(s, a, b, inclusive_a=True):
@@ -49,9 +45,6 @@ player_css = player_css.replace("url('images/", "url('/images/").replace('url("i
 
 player_html = between(SRC, "<!-- ============ PRO MEDIA PLAYER ============ -->", "\n<script>\n")
 script = SRC[SRC.rindex("\n<script>\n"):SRC.rindex("</body>")]
-CARD_HREF = "href=\"${isEnglish() ? '/en' : ''}/surah/${surahSlug(s)}/\""
-assert CARD_HREF in script
-script = script.replace(CARD_HREF, 'href="' + BASE + CARD_HREF[6:])
 # Language picked before paint (?lang= → /en/ → saved choice), same as index.html
 EARLY_LANG = "<script>" + between(SRC, "<body>\n<script>", "</script>\n", inclusive_a=False) + "</script>"
 assert "__initialLang" in EARLY_LANG
@@ -182,7 +175,7 @@ body = f'''<body>
       </div>
     </div>
     <div class="surahs-grid" id="surahsGrid"></div>
-    <p class="lib-more">{ar_en(f'لكل سورة صفحة خاصة بها — <a href="{BASE}/surah/">فهرس السور</a>', f'Every surah has its own page — <a href="{BASE}/en/surah/">All surahs</a>')}</p>
+    <p class="lib-more">{ar_en(f'لكل سورة صفحة خاصة بها — <a href="/surah/">فهرس السور</a>', f'Every surah has its own page — <a href="/en/surah/">All surahs</a>')}</p>
   </div>
 </section>
 
@@ -239,7 +232,7 @@ body = f'''<body>
     <nav>
       <a href="#library">{ar_en("التلاوات", "Recitations")}</a>
       <a href="#bio">{ar_en("السيرة", "Biography")}</a>
-      <a href="{BASE}/surah/" data-href-ar="{BASE}/surah/" data-href-en="{BASE}/en/surah/">{ar_en("فهرس السور", "All Surahs")}</a>
+      <a href="/surah/" data-href-ar="/surah/" data-href-en="/en/surah/">{ar_en("فهرس السور", "All Surahs")}</a>
       <a href="#radio">{ar_en("إذاعة القرآن الكريم", "Quran Radio")}</a>
     </nav>
     <p class="fine">{ar_en("تلاوات القرآن الكريم بصوت الشيخ محمد صديق المنشاوي محفوظة الحقوق لمالكيها الأصليين. هذا الموقع غير تجاري ويهدف لنشر القرآن الكريم.", "Quran recitations by Sheikh Muhammad Siddiq Al-Minshawi are copyrighted to their original owners. This is a non-commercial website aimed at spreading the Holy Quran.")}</p>
@@ -302,9 +295,6 @@ THEME_JS = """<script>
 """
 
 head = head.replace("</head>", "")
-if BASE:
-    head = head.replace('<meta name="robots" content="index, follow, max-image-preview:large">',
-                        '<meta name="robots" content="noindex, nofollow">')
 head = head.replace('<meta name="theme-color" content="#2a1f12">',
                     '<meta name="theme-color" content="#f7f4ee">\n<meta name="color-scheme" content="only light">')
 # Link previews (WhatsApp, X, Facebook…): Midad share card, 1200×630.
@@ -313,22 +303,19 @@ head = (head.replace("images/social-thumbnail.jpg", "images/og-minshawi.jpg")
                      '<meta property="og:image:secure_url" content="https://www.elminshawy.net/images/og-minshawi.jpg">\n<meta property="og:image:type" content="image/jpeg">')
             .replace('<meta property="og:image:width" content="1024">', '<meta property="og:image:width" content="1200">')
             .replace('<meta property="og:image:height" content="537">',
-                     '<meta property="og:image:height" content="630">\n<meta property="og:image:alt" content="الشيخ محمد صديق المنشاوي · الصوت الباكي">')
-            .replace('<meta property="og:url" content="https://www.elminshawy.net/">',
-                     f'<meta property="og:url" content="https://www.elminshawy.net{BASE}/">'))
+                     '<meta property="og:image:height" content="630">\n<meta property="og:image:alt" content="الشيخ محمد صديق المنشاوي · الصوت الباكي">'))
 assert "og-minshawi.jpg" in head and 'content="1200"' in head
 
 page = (head + THEME_HEAD + "<style>\n" + fonts_css + "\n" + player_css + "\n" + CSS + "\n</style>\n</head>\n"
         + body + script + THEME_JS + "</body>\n</html>\n")
 
-os.makedirs(os.path.dirname(OUT), exist_ok=True)
 open(OUT, "w", encoding="utf-8").write(page)
 print("wrote", OUT, len(page.encode()), "bytes")
 
-# English home of this copy: <base>/en/
-if OUT.replace(os.sep, "/").endswith("/index.html") and os.path.basename(os.path.dirname(OUT)) != "en":
-    import build_en_home  # noqa: E402
-    out_en = os.path.join(os.path.dirname(OUT), "en", "index.html")
-    os.makedirs(os.path.dirname(out_en), exist_ok=True)
-    open(out_en, "w", encoding="utf-8").write(build_en_home.build(page, base=BASE))
-    print("wrote", out_en)
+# English home: /en/
+import build_en_home  # noqa: E402
+
+out_en = os.path.join(ROOT, "en", "index.html")
+os.makedirs(os.path.dirname(out_en), exist_ok=True)
+open(out_en, "w", encoding="utf-8").write(build_en_home.build(page))
+print("wrote", out_en)

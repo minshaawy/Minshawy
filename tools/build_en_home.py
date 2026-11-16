@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""English home page (<base>/en/) from the built Arabic page. Used by build_midad.py.
+"""English home page (/en/) from the built Arabic page. Used by build_midad.py.
 
 index.html already holds both languages (.lang-ar / .lang-en-text spans) and
 switches between them with JavaScript. This gives the English version its own
@@ -39,7 +39,7 @@ def attr_value(src, prefix):
 
 
 def build(src, base=""):
-    """base: "" for the real site, "/test" for the test copy (canonical still points at the real page)."""
+    """base: URL prefix if the site is ever built under a sub-path; "" for the real site."""
     s = swap(src, '<html lang="ar" dir="rtl">', '<html lang="en" dir="ltr">')
     s = swap(s, '<body>\n', '<body class="lang-en">\n')
 

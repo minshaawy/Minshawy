@@ -1,13 +1,11 @@
 #!/usr/bin/env python3
 """Surah pages in the Midad design (paper & ink, light/dark).
 
-    python3 tools/build_surahs_midad.py --base /test   # test/surah/…, noindex
-    python3 tools/build_surahs_midad.py                # surah/…, en/surah/…, 404.html, sitemap.xml
+    python3 tools/build_surahs_midad.py   # surah/…, en/surah/…, 404.html, sitemap.xml
 
-Builds Arabic (<base>/surah/…) and English (<base>/en/surah/…) pages.
+Builds Arabic (/surah/…) and English (/en/surah/…) pages.
 Shares the data (names, verse counts, Makki/Madani) with build_surahs.py.
 """
-import argparse
 import html
 import json
 import os
@@ -17,14 +15,8 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from build_surahs import AUDIO, ROOT, SITE, ar_num, ayat_word, load_surahs, sitemap  # noqa: E402
 
-ap = argparse.ArgumentParser()
-ap.add_argument("--base", default="", help="URL prefix of the site copy, e.g. /test")
-args = ap.parse_args()
-BASE = args.base.rstrip("/")
-TEST = bool(BASE)
-SITE_DIR = os.path.join(ROOT, BASE.strip("/")) if BASE else ROOT
-OUT_DIR = os.path.join(SITE_DIR, "surah")            # Arabic: <base>/surah/…
-OUT_DIR_EN = os.path.join(SITE_DIR, "en", "surah")   # English: <base>/en/surah/…
+OUT_DIR = os.path.join(ROOT, "surah")            # Arabic: /surah/…
+OUT_DIR_EN = os.path.join(ROOT, "en", "surah")   # English: /en/surah/…
 
 LOGO = open(os.path.join(ROOT, "images", "logo-minshawi.svg"), encoding="utf-8").read()
 VB = re.search(r'viewBox="([^"]+)"', LOGO).group(1)
@@ -152,13 +144,13 @@ THEME_ICONS = """<svg class="moon" viewBox="0 0 24 24"><path d="M12.3 2a10 10 0 
 
 # Interface text per language. Page addresses: Arabic under <base>/, English under <base>/en/.
 T = {
-    "ar": {"dir": "rtl", "locale": "ar_EG", "home": f"{BASE}/", "index": f"{BASE}/surah/",
+    "ar": {"dir": "rtl", "locale": "ar_EG", "home": f"/", "index": f"/surah/",
            "site": "الشيخ محمد صديق المنشاوي · الصوت الباكي", "logo": "الشيخ محمد صديق المنشاوي",
            "home_label": "الصفحة الرئيسية", "crumb_home": "الرئيسية", "crumbs": "مسار التصفح",
            "bio": "السيرة", "bio_long": "سيرة الشيخ", "all": "فهرس السور", "radio": "إذاعة القرآن الكريم",
            "dark": "الوضع الليلي", "other": "English", "other_lang": "en",
            "footer": "موقع غير تجاري لنشر تلاوات الشيخ محمد صديق المنشاوي · حقوق التلاوات محفوظة لمالكيها الأصليين."},
-    "en": {"dir": "ltr", "locale": "en_US", "home": f"{BASE}/en/", "index": f"{BASE}/en/surah/",
+    "en": {"dir": "ltr", "locale": "en_US", "home": f"/en/", "index": f"/en/surah/",
            "site": "Sheikh Muhammad Siddiq Al-Minshawi · The Weeping Voice", "logo": "Sheikh Muhammad Siddiq Al-Minshawi",
            "home_label": "Home", "crumb_home": "Home", "crumbs": "Breadcrumb",
            "bio": "Biography", "bio_long": "Biography", "all": "All surahs", "radio": "Quran Radio",
@@ -170,8 +162,6 @@ T = {
 def head(lang, title, desc, url, ld, other_path, ar_url, en_url):
     """other_path: the same page in the other language, inside this site copy."""
     t, e = T[lang], html.escape
-    share_url = url.replace(SITE, SITE + BASE, 1)  # the address actually being shared
-    robots = '<meta name="robots" content="noindex, nofollow">' if TEST else ""
     return f"""<!DOCTYPE html>
 <html lang="{lang}" dir="{t['dir']}">
 <head>
@@ -180,7 +170,6 @@ def head(lang, title, desc, url, ld, other_path, ar_url, en_url):
 <meta http-equiv="Content-Security-Policy" content="{CSP}">
 <title>{e(title)}</title>
 <meta name="description" content="{e(desc)}">
-{robots}
 <link rel="canonical" href="{url}">
 <link rel="alternate" hreflang="ar" href="{ar_url}">
 <link rel="alternate" hreflang="en" href="{en_url}">
@@ -196,7 +185,7 @@ def head(lang, title, desc, url, ld, other_path, ar_url, en_url):
 <meta property="og:site_name" content="{e(t['site'])}">
 <meta property="og:title" content="{e(title)}">
 <meta property="og:description" content="{e(desc)}">
-<meta property="og:url" content="{share_url}">
+<meta property="og:url" content="{url}">
 <meta property="og:image" content="{SITE}/images/og-minshawi.jpg">
 <meta property="og:image:secure_url" content="{SITE}/images/og-minshawi.jpg">
 <meta property="og:image:type" content="image/jpeg">
@@ -269,11 +258,11 @@ def surah_page(s, prev, nxt):
          "encodingFormat": "audio/mpeg", "inLanguage": "ar", "byArtist": {"@id": SITE + "/#person"}}]}
 
     def nav(o, cls, label):
-        return f'<a class="{cls}" href="{BASE}/surah/{o["slug"]}/"><small>{label}</small>سورة {o["ar"]}</a>' if o else ""
+        return f'<a class="{cls}" href="/surah/{o["slug"]}/"><small>{label}</small>سورة {o["ar"]}</a>' if o else ""
 
-    return head("ar", title, desc, url, ld, f"{BASE}/en/surah/{slug}/", url, en_url) + f"""<main>
+    return head("ar", title, desc, url, ld, f"/en/surah/{slug}/", url, en_url) + f"""<main>
   <div class="wrap">
-    <nav class="crumbs" aria-label="مسار التصفح"><a href="{BASE}/">الرئيسية</a> › <a href="{BASE}/surah/">فهرس السور</a> › سورة {ar}</nav>
+    <nav class="crumbs" aria-label="مسار التصفح"><a href="/">الرئيسية</a> › <a href="/surah/">فهرس السور</a> › سورة {ar}</nav>
     <p class="kicker">بصوت الشيخ محمد صديق المنشاوي</p>
     <h1>سورة {ar}</h1>
     <p class="sub">المصحف المرتل والمجوّد · برواية حفص عن عاصم<span lang="en" dir="ltr">Surah {html.escape(en)} · Muhammad Siddiq Al-Minshawi</span></p>
@@ -294,7 +283,7 @@ def surah_page(s, prev, nxt):
 
     <p class="about">سورة {ar} هي السورة رقم {ar_num(n)} في ترتيب المصحف الشريف، وهي سورة {kind} عدد آياتها {ayat}.
     تستمع هنا إليها كاملةً بصوت الشيخ محمد صديق المنشاوي، «الصوت الباكي»، مرتلةً ومجوّدة برواية حفص عن عاصم.</p>
-    <a class="btn" href="{BASE}/#library"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>استمع إلى المصحف كاملًا</a>
+    <a class="btn" href="/#library"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>استمع إلى المصحف كاملًا</a>
 
     <nav class="pager" aria-label="السور المجاورة">{nav(prev, "prev", "السورة السابقة")}{nav(nxt, "next", "السورة التالية")}</nav>
   </div>
@@ -323,11 +312,11 @@ def surah_page_en(s, prev, nxt):
          "encodingFormat": "audio/mpeg", "inLanguage": "ar", "byArtist": {"@id": SITE + "/#person"}}]}
 
     def nav(o, cls, label):
-        return f'<a class="{cls}" href="{BASE}/en/surah/{o["slug"]}/"><small>{label}</small>Surah {e(o["en"])}</a>' if o else ""
+        return f'<a class="{cls}" href="/en/surah/{o["slug"]}/"><small>{label}</small>Surah {e(o["en"])}</a>' if o else ""
 
-    return head("en", title, desc, url, ld, f"{BASE}/surah/{slug}/", ar_url, url) + f"""<main>
+    return head("en", title, desc, url, ld, f"/surah/{slug}/", ar_url, url) + f"""<main>
   <div class="wrap">
-    <nav class="crumbs" aria-label="Breadcrumb"><a href="{BASE}/en/">Home</a> › <a href="{BASE}/en/surah/">All surahs</a> › Surah {e(en)}</nav>
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/en/">Home</a> › <a href="/en/surah/">All surahs</a> › Surah {e(en)}</nav>
     <p class="kicker">Recited by Sheikh Muhammad Siddiq Al-Minshawi</p>
     <h1>Surah {e(en)}</h1>
     <p class="sub">Murattal &amp; mujawwad · Hafs from 'Asim<span lang="ar" dir="rtl">سورة {ar} · الشيخ محمد صديق المنشاوي</span></p>
@@ -348,7 +337,7 @@ def surah_page_en(s, prev, nxt):
 
     <p class="about">Surah {e(en)} (<span lang="ar" dir="rtl">سورة {ar}</span>) is surah {n} of the Holy Quran, a {kind} surah of {s['ayat']} verses.
     Listen to it here in full, recited by Sheikh Muhammad Siddiq Al-Minshawi, “the Weeping Voice”, in both the murattal and mujawwad styles, Hafs from 'Asim.</p>
-    <a class="btn" href="{BASE}/en/#library"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>Listen to the complete Quran</a>
+    <a class="btn" href="/en/#library"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>Listen to the complete Quran</a>
 
     <nav class="pager" aria-label="Neighbouring surahs">{nav(prev, "prev", "Previous surah")}{nav(nxt, "next", "Next surah")}</nav>
   </div>
@@ -364,11 +353,11 @@ def index_page(surahs):
     ld = {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
         {"@type": "ListItem", "position": 1, "name": "الرئيسية", "item": SITE + "/"},
         {"@type": "ListItem", "position": 2, "name": "فهرس السور", "item": url}]}
-    items = "\n".join(f'      <li><a href="{BASE}/surah/{s["slug"]}/"><b>{ar_num(s["num"])}</b><span>{s["ar"]}</span></a></li>'
+    items = "\n".join(f'      <li><a href="/surah/{s["slug"]}/"><b>{ar_num(s["num"])}</b><span>{s["ar"]}</span></a></li>'
                       for s in surahs)
-    return head("ar", title, desc, url, ld, f"{BASE}/en/surah/", url, f"{SITE}/en/surah/") + f"""<main>
+    return head("ar", title, desc, url, ld, f"/en/surah/", url, f"{SITE}/en/surah/") + f"""<main>
   <div class="wrap">
-    <nav class="crumbs" aria-label="مسار التصفح"><a href="{BASE}/">الرئيسية</a> › فهرس السور</nav>
+    <nav class="crumbs" aria-label="مسار التصفح"><a href="/">الرئيسية</a> › فهرس السور</nav>
     <p class="kicker">١١٤ سورة · مرتل ومجوّد</p>
     <h1>فهرس السور</h1>
     <p class="sub">القرآن الكريم كاملًا بصوت الشيخ محمد صديق المنشاوي<span lang="en" dir="ltr">All 114 surahs · Muhammad Siddiq Al-Minshawi</span></p>
@@ -388,11 +377,11 @@ def index_page_en(surahs):
     ld = {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
         {"@type": "ListItem", "position": 1, "name": "Home", "item": SITE + "/en/"},
         {"@type": "ListItem", "position": 2, "name": "All surahs", "item": url}]}
-    items = "\n".join(f'      <li><a href="{BASE}/en/surah/{s["slug"]}/"><b>{s["num"]}</b><span>{html.escape(s["en"])}</span></a></li>'
+    items = "\n".join(f'      <li><a href="/en/surah/{s["slug"]}/"><b>{s["num"]}</b><span>{html.escape(s["en"])}</span></a></li>'
                       for s in surahs)
-    return head("en", title, desc, url, ld, f"{BASE}/surah/", f"{SITE}/surah/", url) + f"""<main>
+    return head("en", title, desc, url, ld, f"/surah/", f"{SITE}/surah/", url) + f"""<main>
   <div class="wrap">
-    <nav class="crumbs" aria-label="Breadcrumb"><a href="{BASE}/en/">Home</a> › All surahs</nav>
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/en/">Home</a> › All surahs</nav>
     <p class="kicker">114 surahs · murattal &amp; mujawwad</p>
     <h1>All surahs</h1>
     <p class="sub">The complete Quran recited by Sheikh Muhammad Siddiq Al-Minshawi<span lang="ar" dir="rtl">فهرس السور · الشيخ محمد صديق المنشاوي</span></p>
@@ -413,22 +402,25 @@ def write(path, text):
 def page_404():
     title = "الصفحة غير موجودة · الشيخ محمد صديق المنشاوي"
     page = head("ar", title, "", f"{SITE}/", {"@context": "https://schema.org", "@type": "WebPage", "name": title},
-                f"{BASE}/en/", f"{SITE}/", f"{SITE}/en/")
+                f"/en/", f"{SITE}/", f"{SITE}/en/")
     # Not a real page: no canonical / alternates / description, and keep it out of search results.
     page = re.sub(r'<meta name="description"[^>]*>\n|<link rel="(canonical|alternate)"[^>]*>\n', "", page)
-    page = page.replace("<title>", '<meta name="robots" content="noindex">\n<title>', 1) if not TEST else page
+    page = page.replace("<title>", '<meta name="robots" content="noindex">\n<title>', 1)
+    # The old /test/ preview copy is gone: send its links to the same page on the main site.
+    page = page.replace("<title>", "<script>if(/^\\/test(\\/|$)/.test(location.pathname))"
+                        "location.replace((location.pathname.slice(5)||'/')+location.search+location.hash)</script>\n<title>", 1)
     return page + f"""<main>
   <div class="wrap nf">
     <p class="kicker">٤٠٤</p>
     <h1>الصفحة غير موجودة</h1>
     <p class="sub">ربما تغيّر الرابط أو كُتب خطأ. تقدر تكمّل من هنا:</p>
     <p class="nf-links">
-      <a class="btn" href="{BASE}/">الصفحة الرئيسية</a>
-      <a href="{BASE}/#library">المصحف كاملًا</a>
-      <a href="{BASE}/surah/">فهرس السور</a>
-      <a href="{BASE}/#radio">إذاعة القرآن الكريم</a>
+      <a class="btn" href="/">الصفحة الرئيسية</a>
+      <a href="/#library">المصحف كاملًا</a>
+      <a href="/surah/">فهرس السور</a>
+      <a href="/#radio">إذاعة القرآن الكريم</a>
     </p>
-    <p class="nf-en" lang="en" dir="ltr">Page not found. Try the <a href="{BASE}/en/">home page</a> or <a href="{BASE}/en/surah/">all surahs</a>.</p>
+    <p class="nf-en" lang="en" dir="ltr">Page not found. Try the <a href="/en/">home page</a> or <a href="/en/surah/">all surahs</a>.</p>
   </div>
 </main>
 """ + footer("ar")
@@ -443,10 +435,9 @@ def main():
     write(os.path.join(OUT_DIR, "index.html"), index_page(surahs))
     write(os.path.join(OUT_DIR_EN, "index.html"), index_page_en(surahs))
     print("wrote", OUT_DIR, "and", OUT_DIR_EN, "(230 pages)")
-    if not TEST:
-        write(os.path.join(ROOT, "404.html"), page_404())
-        write(os.path.join(ROOT, "sitemap.xml"), sitemap(surahs))
-        print("wrote 404.html and sitemap.xml")
+    write(os.path.join(ROOT, "404.html"), page_404())
+    write(os.path.join(ROOT, "sitemap.xml"), sitemap(surahs))
+    print("wrote 404.html and sitemap.xml")
 
 
 if __name__ == "__main__":
