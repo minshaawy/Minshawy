@@ -186,6 +186,15 @@ body = f'''<body>
   </div>
 </section>
 
+<section class="block jadid" id="jadid">
+  <div class="wrap">
+    <div class="head"><span class="num">{ar_en("٠٢", "02")}</span><h2>{ar_en("المصحف المرتل الجديد", "The New Murattal")}</h2><p>{ar_en("تسجيلات ١٩٦٦ · ١١ تلاوة", "The 1966 re-recordings · 11 recitations")}</p></div>
+    <p class="jadid-intro">{ar_en("بعد أن سجّل الشيخ مصحفه المرتل، عاد سنة ١٩٦٦ فأعاد بنفسه تسجيل اثنين وثلاثين شريطًا منه على نفقته طلبًا لأداءٍ أكمل، وأُجيزت التسجيلات سنة ١٩٦٧ ثم بقيت في أرشيف الإذاعة عقودًا. هذه الفقرات التي وصلت إلينا منها.", "After recording his murattal mushaf, the Sheikh returned in 1966 and re-recorded thirty-two of its tapes at his own expense, seeking a finer performance. The recordings were approved in 1967, then stayed in the radio archive for decades. These are the passages that have reached us.")}</p>
+    <div class="surahs-grid jadid-grid" id="jadidGrid"></div>
+    <p class="lib-more">{ar_en('المصدر: نسخة هيثم الحويني، عن <a href="https://www.alminshawi.com/" target="_blank" rel="noopener">موقع الشيخ المنشاوي</a>', 'Source: the Haitham al-Huwayni copy, via <a href="https://www.alminshawi.com/" target="_blank" rel="noopener">alminshawi.com</a>')}</p>
+  </div>
+</section>
+
 <section class="live-radio" id="radio">
   <div class="wrap radio-band">
     <div class="radio-text">
@@ -208,7 +217,7 @@ body = f'''<body>
 
 <section class="block" id="bio">
   <div class="wrap">
-    <div class="head"><span class="num">{ar_en("٠٢", "02")}</span><h2>{ar_en("حياة وُهبت للقرآن", "A Life Devoted to the Quran")}</h2><p>{ar_en("السيرة الذاتية", "Life &amp; Legacy")}</p></div>
+    <div class="head"><span class="num">{ar_en("٠٣", "03")}</span><h2>{ar_en("حياة وُهبت للقرآن", "A Life Devoted to the Quran")}</h2><p>{ar_en("السيرة الذاتية", "Life &amp; Legacy")}</p></div>
     <p class="bio-intro">{ar_en("وُلد الشيخ محمد صديق المنشاوي عام ١٩٢٠ في المنشأة بمحافظة سوهاج، في أسرة توارثت تلاوة القرآن الكريم، وأتمّ حفظه صغيرًا. اعتُمد قارئًا بالإذاعة المصرية سنة ١٩٥٣، ولُقِّب بـ«الصوت الباكي» لخشوع تلاوته، وسجّل المصحف كاملًا مرتّلًا ومجوّدًا، وطاف بتلاوته بلاد العالم الإسلامي حتى رحيله عام ١٩٦٩.", "Born in 1920 in al-Minsha'ah, Sohag, into a family of Quran reciters, Sheikh Muhammad Siddiq al-Minshawi memorized the Quran as a child, joined Egyptian Radio in 1953 and became known as “the Weeping Voice.” He recorded the complete Quran, murattal and mujawwad, and recited across the Muslim world until his death in 1969.")}</p>
     <details class="bio-more" id="bioMore">
       <summary class="btn ghost"><span class="more">{ar_en("اقرأ السيرة كاملة", "Read the full biography")}</span><span class="less">{ar_en("إخفاء السيرة", "Hide the biography")}</span><svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg></summary>
@@ -280,11 +289,14 @@ THEME_JS = """<script>
   window.addEventListener('hashchange',chk);chk();
   d.addEventListener('toggle',function(){if(!d.open){var b=document.getElementById('bio');if(b&&b.getBoundingClientRect().top<0)b.scrollIntoView();}});
 })();
-// Player subtitle follows murattal / mujawwad
+// Player subtitle follows murattal / mujawwad, or says so for a new-murattal track
 (function(){
   var mj=document.getElementById('btnMujawwad'),ar=document.getElementById('subTypeAr'),en=document.getElementById('subTypeEn');
   if(!mj||!ar)return;
-  function upd(){var on=mj.classList.contains('active');ar.textContent=on?'مجوّد':'مرتل';en.textContent=on?'Mujawwad':'Murattal';}
+  function upd(){
+    if(typeof currentSurah!=='undefined'&&isJadid(currentSurah)){ar.textContent='المرتل الجديد';en.textContent='New Murattal';return;}
+    var on=mj.classList.contains('active');ar.textContent=on?'مجوّد':'مرتل';en.textContent=on?'Mujawwad':'Murattal';}
+  window.syncSubType=upd;
   new MutationObserver(upd).observe(mj,{attributes:true,attributeFilter:['class']});upd();
 })();
 </script>

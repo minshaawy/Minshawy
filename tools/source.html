@@ -4021,8 +4021,8 @@ body:not(.lang-en) .lang-en-text { display: none; }
   <!-- Queue Panel -->
   <div class="queue-panel" id="queuePanel">
     <div class="queue-header">
-      <span class="lang-ar">قائمة السور (114)</span>
-      <span class="lang-en-text">Surah Queue (114)</span>
+      <span class="lang-ar">قائمة السور (<span class="queue-count">114</span>)</span>
+      <span class="lang-en-text">Surah Queue (<span class="queue-count">114</span>)</span>
     </div>
     <ul class="queue-list" id="queueList"></ul>
   </div>
@@ -4233,7 +4233,8 @@ function setRecitationType(type) {
   }
   
   // If playing, restart the current surah with the new audio type
-  if (currentSurah && !currentSurah.isRadio && !audio.paused) {
+  // (a track from the new murattal has its own recording, so it keeps playing)
+  if (currentSurah && !currentSurah.isRadio && !isJadid(currentSurah) && !audio.paused) {
     playSurah(currentSurah.num);
   } else if (typeof updateMediaSession === 'function') {
     updateMediaSession();
@@ -4242,6 +4243,91 @@ function setRecitationType(type) {
 
 if (btnMurattal) btnMurattal.addEventListener('click', () => setRecitationType('murattal'));
 if (btnMujawwad) btnMujawwad.addEventListener('click', () => setRecitationType('mujawwad'));
+
+// ============ NEW MURATTAL (the 1966 re-recordings) ============
+// Its own list of 11 recordings, hosted with the site (64 kbps mono, under /audio/jadid/).
+// A track in the player looks like a surah ({ num, ar, en }) plus `jadid`, its index here.
+const JADID_BASE = '/audio/jadid/';
+const jadidTracks = [
+  { surah: 1,  file: '001-al-fatihah', ar: 'سورة الفاتحة', en: 'Surah Al-Fatihah', dur: '0:51' },
+  { surah: 2,  file: '002-al-baqarah', ar: 'سورة البقرة', en: 'Surah Al-Baqarah', dur: '2:50:07' },
+  { surah: 3,  file: '003-ali-imran', ar: 'سورة آل عمران', en: "Surah Al 'Imran", dur: '1:29:54' },
+  { surah: 4,  file: '004-an-nisa', ar: 'سورة النساء', en: 'Surah An-Nisa', dur: '1:25:21' },
+  { surah: 5,  file: '005-al-maidah', ar: 'سورة المائدة', en: "Surah Al-Ma'idah", dur: '1:09:53' },
+  { surah: 6,  file: '006-al-anam-001-058', ar: 'سورة الأنعام ١–٥٨', en: "Surah Al-An'am 1–58", dur: '23:18' },
+  { surah: 18, file: '018-al-kahf-032-110', ar: 'سورة الكهف ٣٢–١١٠', en: 'Surah Al-Kahf 32–110', dur: '23:46' },
+  { surah: 41, file: '041-fussilat', ar: 'سورة فصلت', en: 'Surah Fussilat', dur: '17:49' },
+  { surah: 53, file: '053-an-najm-031-062', ar: 'النجم ٣١–٦٢ والقمر والرحمن', en: 'An-Najm 31–62, Al-Qamar & Ar-Rahman', dur: '23:44' },
+  { surah: 60, file: '060-al-mumtahanah-006-013_068-001-047', ar: 'من الممتحنة ٦–١٣ إلى القلم ١–٤٧', en: 'Al-Mumtahanah 6–13 to Al-Qalam 1–47', dur: '51:43' },
+  { surah: 65, file: '065-at-talaq-004-012_068-001-047', ar: 'من الطلاق ٤–١٢ إلى القلم ١–٤٧', en: 'At-Talaq 4–12 to Al-Qalam 1–47', dur: '23:34' }
+];
+function isJadid(t) { return !!t && t.jadid != null; }
+// Title shown for anything in the player
+function trackTitle(t, isEn) {
+  if (t.isRadio) return isEn ? t.en : t.ar;
+  if (isJadid(t)) return isEn ? jadidTracks[t.jadid].en : jadidTracks[t.jadid].ar;
+  return isEn ? `Surah ${t.en}` : `سورة ${t.ar}`;
+}
+// "3 / 114" for the complete mushaf, "3 / 11" for the new murattal
+function trackPosition(t, isEn) {
+  if (isJadid(t)) return isEn ? `${t.jadid + 1} / ${jadidTracks.length}` : `${arabicNum(t.jadid + 1)} / ${arabicNum(jadidTracks.length)}`;
+  return isEn ? `${t.num} / 114` : `${arabicNum(t.num)} / ١١٤`;
+}
+// Which row of a list (queue, cards) is the track in the player
+function trackKey(t) { return !t || t.isRadio ? '' : isJadid(t) ? 'j' + t.jadid : 'n' + t.num; }
+
+function playJadid(i) {
+  const t = jadidTracks[i];
+  if (!t) return;
+  if (window.stopRadio) window.stopRadio();
+  const s = surahs.find(x => x.num === t.surah);
+  showSurahInPlayer({ num: t.surah, ar: s.ar, en: s.en, jadid: i });
+  audio.src = JADID_BASE + t.file + '.mp3';
+  audio.load();
+  player.classList.add('active');
+  player.classList.add('is-loading');
+  setupAudioVisualizer();
+  if (audioContext && audioContext.state === 'suspended') audioContext.resume();
+  const cur = currentSurah;
+  audio.play().catch(err => {
+    console.warn('Playback error:', err);
+    player.classList.remove('is-loading');
+    if (audio.paused && currentSurah === cur) setPlayerIcons(false);
+  });
+}
+// Reload whatever is in the player (after an error, or a track not loaded yet)
+function replayCurrent() {
+  if (isJadid(currentSurah)) playJadid(currentSurah.jadid);
+  else playSurah(currentSurah.num);
+}
+
+const jadidGrid = document.getElementById('jadidGrid');
+function renderJadid() {
+  if (!jadidGrid) return;
+  const isEn = isEnglish();
+  const short = x => x.replace(/^(سورة|Surah) /, ''); // the cards list names, like the library
+  jadidGrid.innerHTML = '';
+  jadidTracks.forEach((t, i) => {
+    const card = document.createElement('button');
+    card.type = 'button';
+    card.className = 'surah-card jadid-card';
+    card.dataset.key = 'j' + i;
+    card.innerHTML = `
+      <div class="surah-num">${localNum(t.surah)}</div>
+      <div class="surah-info">
+        <span class="surah-name">${short(isEn ? t.en : t.ar)}</span>
+        <span class="surah-name-en" dir="${isEn ? 'rtl' : 'ltr'}">${short(isEn ? t.ar : t.en)}</span>
+      </div>
+      <span class="jadid-dur" dir="ltr">${isEn ? t.dur : t.dur.replace(/\d/g, d => '٠١٢٣٤٥٦٧٨٩'[d])}</span>
+      <div class="play-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
+    `;
+    card.addEventListener('click', () => {
+      if (currentSurah && currentSurah.jadid === i) togglePlayPause();
+      else playJadid(i);
+    });
+    jadidGrid.appendChild(card);
+  });
+}
 
 // ============ QUEUE PANEL ============
 const queueBtn   = document.getElementById('queueBtn');
@@ -4253,10 +4339,29 @@ function buildQueue() {
   if (!queueList) return;
   queueList.innerHTML = '';
   const isArabic = !document.body.classList.contains('lang-en');
+  const n = isJadid(currentSurah) ? jadidTracks.length : surahs.length;
+  document.querySelectorAll('.queue-count').forEach(el => { el.textContent = n; });
+  // While a new-murattal track plays, the queue lists that collection instead
+  if (isJadid(currentSurah)) {
+    jadidTracks.forEach((t, i) => {
+      const li = document.createElement('li');
+      li.className = 'queue-item' + (currentSurah.jadid === i ? ' active' : '');
+      li.dataset.key = 'j' + i;
+      li.innerHTML = `
+      <span class="queue-item-num">${isArabic ? arabicNum(t.surah) : t.surah}</span>
+      <span class="queue-item-name">${isArabic ? t.ar : t.en}</span>
+      <svg class="queue-item-playing" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/>
+      </svg>`;
+      li.addEventListener('click', () => { playJadid(i); updateQueueActive(); });
+      queueList.appendChild(li);
+    });
+    return;
+  }
   surahs.forEach(s => {
     const li = document.createElement('li');
     li.className = 'queue-item' + (currentSurah && currentSurah.num === s.num ? ' active' : '');
-    li.dataset.num = s.num;
+    li.dataset.key = 'n' + s.num;
     li.innerHTML = `
       <span class="queue-item-num">${isArabic ? arabicNum(s.num) : s.num}</span>
       <span class="queue-item-name">${isArabic ? 'سورة ' + s.ar : 'Surah ' + s.en}</span>
@@ -4274,7 +4379,7 @@ function buildQueue() {
 function updateQueueActive() {
   if (!queueList) return;
   queueList.querySelectorAll('.queue-item').forEach(li => {
-    const isActive = currentSurah && Number(li.dataset.num) === currentSurah.num;
+    const isActive = !!currentSurah && li.dataset.key === trackKey(currentSurah);
     li.classList.toggle('active', isActive);
     if (isActive) {
       li.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
@@ -4420,6 +4525,7 @@ function renderSurahs(filter = '') {
 }
 
 renderSurahs();
+renderJadid();
 
 // Search
 document.getElementById('searchInput').addEventListener('input', (e) => {
@@ -4593,10 +4699,12 @@ function animateWaveform() {
 const CARD_PLAY_SVG  = '<svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>';
 const CARD_PAUSE_SVG = '<svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
 function syncSurahCards() {
-  const curNum = currentSurah && !currentSurah.isRadio ? currentSurah.num : null;
-  const isPlaying = curNum !== null && !audio.paused;
+  // Library cards match by surah number, new-murattal cards by their own key
+  const curNum = currentSurah && !currentSurah.isRadio && !isJadid(currentSurah) ? currentSurah.num : null;
+  const curKey = trackKey(currentSurah);
+  const isPlaying = !!curKey && !audio.paused;
   document.querySelectorAll('.surah-card').forEach(c => {
-    const isCurrent = Number(c.dataset.num) === curNum;
+    const isCurrent = c.dataset.key ? c.dataset.key === curKey : Number(c.dataset.num) === curNum;
     c.classList.toggle('playing', isCurrent);
     const icon = c.querySelector('.play-icon');
     const html = isCurrent && isPlaying ? CARD_PAUSE_SVG : CARD_PLAY_SVG;
@@ -4619,24 +4727,24 @@ function showSurahInPlayer(surah) {
   player.classList.remove('is-radio');
   if (playerExpanded) playerExpanded.classList.remove('is-radio');
 
+  const listChanged = isJadid(currentSurah) !== isJadid(surah);
   currentSurah = lastSurah = surah;
   const num = surah.num;
   const isArabic = !document.body.classList.contains('lang-en');
-  const titleText = isArabic ? `سورة ${surah.ar}` : `Surah ${surah.en}`;
+  const titleText = trackTitle(surah, !isArabic);
   playerTitle.textContent = titleText;
   expandedTitle.textContent = titleText;
   coverNum.textContent = localNum(num);
   expandedNum.textContent = localNum(num);
 
-  // Update track info "X / 114"
-  if (playerTrackInfo) {
-    playerTrackInfo.textContent = isArabic
-      ? `${arabicNum(num)} / ١١٤`
-      : `${num} / 114`;
-  }
+  // Update track info "X / 114" (or "X / 11" in the new murattal)
+  if (playerTrackInfo) playerTrackInfo.textContent = trackPosition(surah, !isArabic);
 
-  // Update fav button state
-  favBtn.classList.toggle('active', favorites.has(num));
+  // Favourites are surahs of the complete mushaf, so the heart is off for the new murattal
+  favBtn.classList.toggle('active', !isJadid(surah) && favorites.has(num));
+  favBtn.disabled = isJadid(surah);
+  if (typeof syncSubType === 'function') syncSubType();
+  if (listChanged && queueOpen) buildQueue();
 
   // Lock-screen title / artwork / buttons
   updateMediaSession();
@@ -4701,10 +4809,10 @@ function togglePlayPause() {
   if (audio.paused) {
     // If the audio is in an error state or not loaded yet, do a full reload
     if (audio.error || audio.readyState === 0) {
-      playSurah(currentSurah.num);
+      replayCurrent();
     } else {
       if (audioContext && audioContext.state === 'suspended') audioContext.resume();
-      audio.play().catch(() => playSurah(currentSurah.num));
+      audio.play().catch(() => replayCurrent());
     }
   } else {
     audio.pause();
@@ -4713,6 +4821,11 @@ function togglePlayPause() {
 
 function playPrev() {
   if (!currentSurah || currentSurah.isRadio) return; // no "previous" on the live radio
+  if (isJadid(currentSurah)) {
+    if (isShuffleOn) playJadid(Math.floor(Math.random() * jadidTracks.length));
+    else if (currentSurah.jadid > 0) playJadid(currentSurah.jadid - 1);
+    return;
+  }
   if (isShuffleOn) {
     playSurah(Math.floor(Math.random() * 114) + 1);
   } else if (currentSurah.num > 1) {
@@ -4722,6 +4835,11 @@ function playPrev() {
 
 function playNext() {
   if (!currentSurah || currentSurah.isRadio) return; // no "next" on the live radio
+  if (isJadid(currentSurah)) {
+    if (isShuffleOn) playJadid(Math.floor(Math.random() * jadidTracks.length));
+    else if (currentSurah.jadid < jadidTracks.length - 1) playJadid(currentSurah.jadid + 1);
+    return;
+  }
   if (isShuffleOn) {
     playSurah(Math.floor(Math.random() * 114) + 1);
   } else if (currentSurah.num < 114) {
@@ -4775,6 +4893,10 @@ audio.addEventListener('ended', () => {
     // Repeat one
     audio.currentTime = 0;
     audio.play().catch(() => {});
+  } else if (isJadid(currentSurah)) {
+    // New murattal: go on through its own 11 tracks (back to the first on repeat-all)
+    if (isShuffleOn || currentSurah.jadid < jadidTracks.length - 1) playNext();
+    else if (repeatMode === 1) playJadid(0);
   } else if (repeatMode === 1 && currentSurah && currentSurah.num === 114) {
     // Repeat all - go back to first
     playSurah(1);
@@ -4836,7 +4958,7 @@ repeatBtnExp.addEventListener('click', cycleRepeat);
 
 // Favorite
 favBtn.addEventListener('click', () => {
-  if (!currentSurah || currentSurah.isRadio) return;
+  if (!currentSurah || currentSurah.isRadio || isJadid(currentSurah)) return;
   if (favorites.has(currentSurah.num)) {
     favorites.delete(currentSurah.num);
     favBtn.classList.remove('active');
@@ -4849,11 +4971,12 @@ favBtn.addEventListener('click', () => {
 
 // Download
 downloadBtn.addEventListener('click', () => {
-  if (!currentSurah) return;
-  const url = AUDIO_BASE + pad(currentSurah.num) + '.mp3';
+  if (!currentSurah || currentSurah.isRadio) return;
+  const jt = isJadid(currentSurah) ? jadidTracks[currentSurah.jadid] : null;
+  const url = jt ? JADID_BASE + jt.file + '.mp3' : AUDIO_BASE + pad(currentSurah.num) + '.mp3';
   const a = document.createElement('a');
   a.href = url;
-  a.download = `${pad(currentSurah.num)}-${currentSurah.en}-Minshawi.mp3`;
+  a.download = jt ? `${jt.file}-Minshawi-new-murattal.mp3` : `${pad(currentSurah.num)}-${currentSurah.en}-Minshawi.mp3`;
   a.target = '_blank';
   a.rel = 'noopener noreferrer';
   document.body.appendChild(a);
@@ -5045,13 +5168,14 @@ function updateMediaSession() {
   if (!HAS_MEDIA_SESSION || !currentSurah || typeof MediaMetadata === 'undefined') return;
   const isEn = document.body.classList.contains('lang-en');
   const isRadio = !!currentSurah.isRadio;
-  const typeAr = currentRecitationType === 'mujawwad' ? 'المصحف المجود' : 'المصحف المرتل';
-  const typeEn = currentRecitationType === 'mujawwad' ? 'Mujawwad' : 'Murattal';
+  const jadid = isJadid(currentSurah);
+  const typeAr = jadid ? 'المصحف المرتل الجديد' : currentRecitationType === 'mujawwad' ? 'المصحف المجود' : 'المصحف المرتل';
+  const typeEn = jadid ? 'The New Murattal' : currentRecitationType === 'mujawwad' ? 'Mujawwad' : 'Murattal';
 
   navigator.mediaSession.metadata = new MediaMetadata({
     title: isRadio
       ? (isEn ? 'Holy Quran Radio' : 'إذاعة القرآن الكريم')
-      : (isEn ? `Surah ${currentSurah.en}` : `سورة ${currentSurah.ar}`),
+      : trackTitle(currentSurah, isEn),
     artist: isRadio
       ? (isEn ? 'Live from Cairo' : 'بث مباشر من القاهرة')
       : (isEn ? 'Sheikh Muhammad Siddiq Al-Minshawi' : 'الشيخ محمد صديق المنشاوي'),
@@ -5143,14 +5267,13 @@ function applyLang(lang, save = true) {
 
   // Surah cards carry links and numbers in the page language
   renderSurahs(search.value.trim());
+  renderJadid();
   syncSurahCards();
   if (queueOpen) buildQueue();
 
   // Player titles if something is loaded
   if (currentSurah) {
-    const titleText = currentSurah.isRadio 
-      ? (isEn ? currentSurah.en : currentSurah.ar)
-      : (isEn ? `Surah ${currentSurah.en}` : `سورة ${currentSurah.ar}`);
+    const titleText = trackTitle(currentSurah, isEn);
     playerTitle.textContent = titleText;
     expandedTitle.textContent = titleText;
     if (!currentSurah.isRadio) {
@@ -5160,7 +5283,7 @@ function applyLang(lang, save = true) {
     if (playerTrackInfo) {
       playerTrackInfo.textContent = currentSurah.isRadio
         ? (isEn ? 'Live Stream' : 'بث مباشر')
-        : (isEn ? `${currentSurah.num} / 114` : `${arabicNum(currentSurah.num)} / ١١٤`);
+        : trackPosition(currentSurah, isEn);
     }
     updateMediaSession();
   }
@@ -5215,7 +5338,7 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
   function resumeOnInteraction(e) {
     const onControl = e && e.target && e.target.closest &&
       e.target.closest('button, a, input, select, textarea, summary, label, [role="button"], .surah-card, .media-player, .player-expanded');
-    if (!onControl && audio.paused && currentSurah && !currentSurah.isRadio && currentSurah.num === 1) {
+    if (!onControl && audio.paused && currentSurah && !currentSurah.isRadio && !isJadid(currentSurah) && currentSurah.num === 1) {
       audio.play().catch(() => {});
     }
     disarm();
