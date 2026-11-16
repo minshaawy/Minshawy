@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>تجربة التصميم · المنشاوي</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<style>
+@font-face{font-family:'TS';src:url('/fonts/thmanyahsans-Regular.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'TS';src:url('/fonts/thmanyahsans-Medium.woff2') format('woff2');font-weight:500;font-display:swap}
+@font-face{font-family:'TT';src:url('/fonts/thmanyahseriftext-Regular.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'TD';src:url('/fonts/thmanyahserifdisplay-Bold.woff2') format('woff2');font-weight:700;font-display:swap}
+
+:root{
+  --paper:#f7f4ee; --paper-2:#efebe2; --white:#fffdf9;
+  --ink:#111; --ink-2:#2b2925; --muted:#6a645a;
+  --line:rgba(17,17,17,.12); --line-2:rgba(17,17,17,.24);
+  --red:#9b2a1a;
+  --wrap:1200px; --gut:clamp(16px,5vw,64px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'TS',system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.8;padding-bottom:76px;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+svg.logo{display:block;height:auto;fill:currentColor}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--gut)}
+
+/* ---- header ---- */
+header{position:sticky;top:0;z-index:20;background:rgba(247,244,238,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:68px;gap:24px}
+header .logo{width:auto;height:30px}
+header nav{display:flex;gap:30px;font-size:.95rem;color:var(--muted)}
+header nav a:hover{color:var(--ink)}
+.live-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--red);margin-inline-end:6px;vertical-align:middle;animation:pulse 2s infinite}
+@keyframes pulse{50%{opacity:.35}}
+.lang{border:1px solid var(--line-2);border-radius:2px;padding:3px 12px;font-size:.8rem;color:var(--ink-2)}
+
+/* ---- hero ---- */
+.hero{padding:clamp(40px,7vh,80px) 0 clamp(56px,9vh,96px)}
+.hero .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,96px);align-items:center}
+.kicker{display:flex;align-items:center;gap:12px;font-size:.9rem;color:var(--red);margin-bottom:22px}
+.kicker::before{content:'';width:32px;height:1px;background:currentColor}
+.hero .logo{width:min(100%,320px)}
+.hero h1{font:700 clamp(1.4rem,2.4vw,1.75rem) 'TD';margin-top:24px;padding-top:16px;border-top:3px solid var(--ink);display:inline-block;line-height:1.4}
+.hero h1 small{display:block;font:400 .9rem 'TS';color:var(--muted);letter-spacing:.04em;direction:ltr;text-align:right}
+.hero .verse{font:400 1.1rem 'TT';color:var(--ink-2);margin-top:20px}
+.ctas{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:13px 24px;border-radius:2px;font-weight:500;font-size:.95rem;transition:background .2s,color .2s}
+.btn.primary{background:var(--ink);color:var(--paper)}
+.btn.primary:hover{background:var(--red)}
+.btn.ghost{border:1px solid var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:var(--paper)}
+.btn svg{width:14px;height:14px;fill:currentColor}
+.years{display:flex;gap:40px;margin-top:32px;padding-top:24px;border-top:1px solid var(--line);font-size:.85rem;color:var(--muted)}
+.years b{display:block;font:700 1.9rem 'TD';color:var(--ink);line-height:1.2}
+.portrait{position:relative;width:100%;max-width:320px;justify-self:center}
+.portrait img{display:block;width:100%;height:auto;aspect-ratio:765/1024;object-fit:cover;border-radius:2px;box-shadow:0 30px 60px -30px rgba(17,17,17,.45)}
+.portrait figcaption{margin-top:12px;font-size:.8rem;color:var(--muted);display:flex;justify-content:space-between}
+
+/* ---- section heads ---- */
+section.block{padding:clamp(56px,10vh,112px) 0;border-top:1px solid var(--line)}
+.head{display:grid;grid-template-columns:auto 1fr;gap:6px 22px;align-items:end;margin-bottom:clamp(32px,5vh,56px)}
+.head .num{font:700 1rem 'TD';color:var(--red);grid-row:span 2;align-self:start;padding-top:10px}
+.head h2{font:700 clamp(2rem,4.6vw,3.4rem) 'TD';line-height:1.15}
+.head p{color:var(--muted);font-size:1rem}
+
+/* ---- bio ---- */
+.bio{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(28px,4vw,56px) clamp(32px,5vw,72px)}
+.chapter h3{font:700 1.45rem 'TD';margin-bottom:12px;display:flex;align-items:baseline;gap:12px}
+.chapter h3 span{font:500 .8rem 'TS';color:var(--red)}
+.chapter p{font:400 1.08rem/2 'TT';color:var(--ink-2);margin-bottom:14px;text-align:justify}
+.pull{grid-column:1/-1;border-block:3px solid var(--ink);padding:28px 0;font:700 clamp(1.3rem,2.6vw,1.9rem)/1.6 'TD';text-align:center}
+.pull cite{display:block;font:400 .9rem 'TS';color:var(--muted);font-style:normal;margin-top:8px}
+
+/* ---- timeline ---- */
+.timeline{list-style:none;border-top:1px solid var(--ink)}
+.timeline li{display:grid;grid-template-columns:140px 1fr;gap:24px;padding:20px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.timeline b{font:700 2rem 'TD';line-height:1}
+.timeline span{font:400 1.05rem 'TT';color:var(--ink-2)}
+.timeline li:hover b{color:var(--red)}
+
+/* ---- recitations ---- */
+#recitations{background:var(--paper-2)}
+.lib-bar{display:flex;gap:12px;justify-content:space-between;align-items:center;flex-wrap:wrap;margin-bottom:22px}
+.toggle{display:inline-flex;border:1px solid var(--ink);border-radius:2px}
+.toggle button{font:500 .92rem 'TS';border:0;background:transparent;padding:9px 22px;cursor:pointer;color:var(--ink)}
+.toggle button.on{background:var(--ink);color:var(--paper)}
+.search{flex:1;max-width:360px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--ink);padding:6px 2px}
+.search input{flex:1;border:0;background:transparent;font:400 1rem 'TS';color:var(--ink);outline:0}
+.count{font-size:.85rem;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.card{display:flex;align-items:center;gap:14px;padding:16px 18px;background:var(--white);cursor:pointer;transition:background .15s}
+.card:hover{background:var(--paper)}
+.card .n{font:700 1.05rem 'TD';color:var(--muted);min-width:2.2ch}
+.card b{display:block;font:700 1.15rem 'TD';line-height:1.3}
+.card small{color:var(--muted);font-size:.78rem}
+.card .p{margin-inline-start:auto;width:30px;height:30px;border-radius:50%;border:1px solid var(--line-2);display:grid;place-items:center;flex:none}
+.card .p svg{width:11px;height:11px;fill:currentColor}
+.card.playing{background:var(--ink);color:var(--paper)}
+.card.playing .n,.card.playing small{color:#b9b2a5}
+.card.playing .p{border-color:#fff4}
+
+/* ---- radio ---- */
+.radio{background:var(--ink);color:var(--paper);padding:clamp(64px,11vh,120px) 0;text-align:center}
+.radio .tag{display:inline-flex;align-items:center;font-size:.85rem;border:1px solid #fff3;padding:4px 14px;border-radius:2px;line-height:1.6}
+.radio h2{font:700 clamp(2rem,4.6vw,3.2rem) 'TD';margin-top:22px;line-height:1.25}
+.radio p{color:#b9b2a5;margin-top:10px}
+.speaker{width:160px;height:160px;border-radius:50%;border:1px solid #fff3;margin:96px auto 84px;display:grid;place-items:center;position:relative}
+.speaker::before,.speaker::after{content:'';position:absolute;inset:-22px;border-radius:50%;border:1px solid #ffffff17;pointer-events:none}
+.speaker::after{inset:-48px;border-color:#ffffff0d}
+.speaker button{width:84px;height:84px;border-radius:50%;border:0;background:var(--paper);color:var(--ink);display:grid;place-items:center;cursor:pointer}
+.speaker button svg{width:30px;height:30px;fill:currentColor;margin-left:4px}
+.radio small{display:block;color:#b9b2a5;font-size:.9rem}
+
+/* ---- footer ---- */
+footer{padding:64px 0 40px;text-align:center;border-top:1px solid var(--line)}
+footer .logo{width:150px;margin:0 auto}
+footer .verse{font:400 1.2rem 'TT';margin-top:24px}
+footer nav{display:flex;justify-content:center;gap:24px;margin-top:22px;font-size:.92rem}
+footer nav a{border-bottom:1px solid var(--line-2)}
+footer p.fine{color:var(--muted);font-size:.8rem;max-width:620px;margin:26px auto 0}
+
+/* ---- player ---- */
+.player{position:fixed;bottom:0;left:0;right:0;z-index:30;height:72px;background:var(--ink);color:var(--paper)}
+.player .wrap{height:100%;display:flex;align-items:center;gap:18px}
+.player .cov{width:44px;height:44px;border:1px solid #fff3;display:grid;place-items:center;font:700 1.1rem 'TD';flex:none}
+.player .t{min-width:0}
+.player .t b{display:block;font:700 1.02rem 'TD';white-space:nowrap}
+.player .t small{color:#b9b2a5;font-size:.78rem}
+.player .ctl{display:flex;align-items:center;gap:16px;margin-inline-start:auto}
+.player .ctl svg{width:18px;height:18px;fill:currentColor;opacity:.8}
+.player .pp{width:42px;height:42px;border-radius:50%;background:var(--paper);color:var(--ink);display:grid;place-items:center}
+.player .pp svg{opacity:1}
+.player .bar{flex:1;max-width:520px;display:flex;align-items:center;gap:10px;font-size:.75rem;color:#b9b2a5;direction:ltr}
+.player .bar i{flex:1;height:3px;background:#fff2;position:relative}
+.player .bar i::after{content:'';position:absolute;inset:0 auto 0 0;width:34%;background:var(--paper)}
+
+@media (max-width:900px){
+  /* header: logo + EN on top, section links as a scrollable second row */
+  header .wrap{flex-wrap:wrap;height:auto;padding-top:12px;padding-bottom:0;gap:0}
+  header .logo{height:28px}
+  header nav{display:flex;order:3;width:100%;gap:22px;overflow-x:auto;white-space:nowrap;padding:10px 0 12px;margin-top:8px;border-top:1px solid var(--line);font-size:.9rem;scrollbar-width:none}
+  header nav::-webkit-scrollbar{display:none}
+
+  .hero{padding:28px 0 48px}
+  .hero .wrap{grid-template-columns:1fr;text-align:center;gap:28px}
+  .hero .portrait{max-width:180px;margin:0 auto;order:-1}
+  .hero .portrait figcaption{display:none}
+  .hero .logo{width:min(62%,230px);margin:0 auto}
+  .kicker,.years{justify-content:center}
+  .hero h1{display:block}
+  .hero h1 small{text-align:center}
+  .ctas{flex-direction:column;align-items:stretch;max-width:320px;margin-inline:auto}
+  .btn{justify-content:center}
+  .years{gap:0}
+  .years span{flex:1}
+
+  section.block{padding:56px 0}
+  .head{display:block;margin-bottom:28px}
+  .head .num{display:inline-block;padding:0;margin-bottom:6px;font-size:.9rem}
+  .head .num::after{content:' —'}
+  .head h2{font-size:2rem}
+
+  .bio{grid-template-columns:1fr;gap:32px}
+  .chapter p{text-align:start;font-size:1.05rem;line-height:1.95}
+  .pull{padding:22px 0;font-size:1.25rem}
+
+  .timeline li{grid-template-columns:64px 1fr;gap:12px;padding:16px 0}
+  .timeline b{font-size:1.35rem}
+  .timeline span{font-size:1rem}
+
+  .lib-bar{flex-direction:column;align-items:stretch;gap:14px}
+  .toggle{display:flex}
+  .toggle button{flex:1}
+  .search{max-width:none}
+  .count{text-align:center}
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .card{padding:12px;gap:10px}
+  .card .p{display:none}
+  .card b{font-size:1.05rem}
+
+  .radio{padding:64px 0}
+  .speaker{width:132px;height:132px;margin:76px auto 66px}
+  .speaker button{width:72px;height:72px}
+
+  footer nav{flex-wrap:wrap;gap:12px 20px}
+  .player .bar{display:none}
+  .player .ctl .x{display:none}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a href="#top" aria-label="أعلى الصفحة"><svg class="logo" role="img" aria-label="المنشاوي" xmlns="http://www.w3.org/2000/svg" viewBox="284.13 249.48 255.50 163.61" fill="currentColor"><path transform="matrix(1,0,0,-1,386.16,295.94)" d="M0 0-10.94-3.79C-8.60 .084-6.17 3.36-3.54 6.87L14.54 13.37 22.96 16.48C26.27 17.81 29.12 19.45 32.36 21.38 27.61 12.30 24.49 9.28 15.18 5.57Z"/><path transform="matrix(1,0,0,-1,308.93,407.76)" d="M0 0-7.62 7.30-14.63 .01-22.8 8.03-15.43 15.86-7.88 8.52-.818 15.86 7.31 7.84Z"/><path transform="matrix(1,0,0,-1,398.67,277.99)" d="M0 0-4.25-2.63-8.56 16.44-.039 22.76Z"/><path transform="matrix(1,0,0,-1,435.80,261.75)" d="M0 0 8.46-8.10 .872-16.02-7.58-7.92Z"/><path transform="matrix(1,0,0,-1,444.89,271.32)" d="M0 0 8.48-8.00 .997-15.93-7.48-7.92Z"/><path transform="matrix(1,0,0,-1,428.30,271.33)" d="M0 0 8.41-7.97 .899-15.91-7.52-7.93Z"/><path transform="matrix(1,0,0,-1,432.98,340.74)" d="M0 0-8.09 7.95-.353 16.00 7.35 7.89Z"/><path transform="matrix(1,0,0,-1,491.20,347.55)" d="M0 0C.482 1.14 .488 2.59-.094 3.68-1.32 5.98-2.75 8.12-4.30 10.26L-12.64-.754C-9.53-3.05-1.59-3.79 0 0M10.3-2.86C8.81-11.58 2.28-20.72-7.24-20.13-14.60-19.67-17.91-13.72-17.40-6.57-22.89-12.39-31.96-22.41-40.88-18.94-45.38-17.2-45.90-12.27-46.21-8.06-47.13-12.27-47.85-16.53-46.80-20.92-44.83-29.12-38.92-35.61-30.97-38.71-17.35-44.00 3.09-41.72 10.90-27.82 13.28-23.59 13.95-18.97 13.53-14.10L11.17 60.43 26.12 72.79 25.82 47.30 25.32-8.59C25.23-19.46 22.51-29.87 16.69-39.01 12.23-46.01 6.08-51.30-1.56-54.63-8.88-57.81-16.81-59.30-24.83-58.75-39.77-57.71-52.99-46.95-53.25-31.08-53.42-21.08-49.04-10.32-45.76-.892-49.29-6.04-53.21-10.62-58.21-14.35-64.28-18.87-74.03-21.31-79.63-14.61-81.40-12.49-82.68-9.90-83.26-7.13-85.84 5.21-79.09 15.67-72.06 25.35-74.64 24.52-77.15 24.16-79.45 25.47-84.10 28.11-82.98 35.68-81.54 40.34-86.18 34.22-92.08 27.66-99.61 24.50-104.38 22.50-109.50 22.09-114.41 23.85-120.66 26.08-124.51 32.44-126.36 38.54-127.93 43.71-128.38 48.77-128.41 54.25L-128.62 89.28-119.42 96.08-119.35 54.82C-119.35 49.63-117.35 44.78-113.49 41.38-107.72 36.29-96.86 34.92-90.74 38.55-84.30 42.37-77.43 51.37-72.95 57.52L-69.23 57.26C-71.60 52.94-74.84 47.67-73.92 42.46-73.58 40.51-71.91 39.38-69.94 39.65-62.62 40.68-56.69 51.18-53.81 57.40L-51.66 57.34C-52.28 52.69-51.55 48.16-49.27 44.11-46.11 38.52-40.97 37.64-34.77 37.81-36.24 43.16-38.05 48.04-40.05 53.12L-30.87 64.08C-29.48 57.07-27.21 51.93-25.98 45.01-25.67 43.22-25.65 41.05-26.39 39.42-27.78 36.39-29.33 33.61-31.01 30.80-32.83 27.76-35.61 25.94-39.02 25.07-42.38 24.22-45.77 23.76-49.12 24.73-56.37 26.54-58.81 34.47-59.35 41.42L-66.66 29.70C-70.24 23.96-73.64 11.94-71.72 4.73-69.92-2.03-62.36-3.7-56.17-1.98-47.29 .481-41.85 8.39-39.11 16.82-36.93 18.38-34.57 19.76-31.98 21.06L-34.80 10.71C-35.65 7.58-36.33 .367-32.90-1.75-28.76-4.32-23.56-.183-20.62 2.95-15.28 8.65-11.00 14.93-6.89 21.73-5.24 21.84-3.66 21.77-1.95 21.59Z"/><path transform="matrix(1,0,0,-1,511.77,406.12)" d="M0 0C5.95 7.62 9.40 14.67 11.47 24.10 12.97 30.96 13.54 37.63 13.29 44.76L10.97 120.35 25.85 132.65 24.70 56.82C24.62 49.11 24.12 41.88 22.63 34.40 20.61 24.27 16.14 13.12 8.71 5.85 6.21 3.40 3.61 1.19 0 0"/><path transform="matrix(1,0,0,-1,491.94,313.14)" d="M0 0-1.81 3.77-4.41-.153C-2.82-.449-1.62-.421 0 0M-6.31-2.54C-9.85-7.02-16.26-9.65-21.30-6.66-24.43-4.80-25.53-1.09-25.36 2.38-20.39-.112-14.59-.543-9.25-.341-6.67 1.78-4.72 4.44-2.89 7.16-2.59 7.59-1.47 7.59-.875 7.41 .124 4.66 2.10 2.14 2.82-.685 3.40-2.96 1.30-5.60-.335-6.73-1.78-7.73-3.37-7.57-4.60-6.77-5.88-5.94-6.35-4.33-6.31-2.54"/><path transform="matrix(1,0,0,-1,296.40,373.78)" d="M0 0C-4.91 9.74-5.10 20.25-2.67 30.86-2.45 31.81 1.32 45.24 2.18 43.51 2.25 43.36 2.41 42.88 2.35 42.59 1.48 38.22 1.18 33.34 1.65 28.76 2.98 15.57 12.41 4.93 25.34 2.12 34.35 .172 43.54 .688 52.30 3.63 56.13 4.92 59.44 6.91 62.45 9.58 62.46 14.38 59.08 18.11 54.45 19.20 51.68 19.85 48.96 19.86 46.04 19.97L10.36 21.38C9.13 26.56 8.25 31.45 7.42 36.75L15.88 35.43C19.67 42.32 24.50 48.42 30.74 52.99 35.67 56.60 41.41 57.81 47.27 56.24L55.76 53.18 46.08 41.18C36.32 46.92 27.18 42.87 20.11 34.77 30.10 33.59 39.57 33.41 49.32 33.23 56.41 33.10 64.87 33.52 67.1 25.83 70.45 14.24 64.98 3.05 56.39-4.72 50.32-10.21 43.15-14.08 35.08-15.59 28.46-16.83 21.96-16.51 15.74-14.1 8.84-11.42 3.32-6.59 0 0"/><path transform="matrix(1,0,0,-1,393.04,360.08)" d="M0 0-13.29 21.10C-14.78 17.92-15.31 14.62-14.89 11.27-13.90 3.36-7.63-.364 0 0M-55.45-33.72C-40.53-33.10-10.82-26.84 1.07-17.32 5.37-13.88 3.84-7.25 1.56-2.86L-6.79-11.47C-11.06-12.41-15.67-12.31-19.61-10.07-26.57-6.11-28.45 3.03-24.06 9.65-21.56 13.60-18.69 16.92-15.66 20.45-11.97 24.75-8.39 28.80-4.27 32.84L7.94 13.47C9.64 10.77 11.13 8.20 12.60 5.39 13.77 1.51 13.71-2.41 12.53-6.36 10.45-13.34 7.22-19.74 2.84-25.59-3.24-33.72-10.71-40.56-19.62-45.38-27.24-49.51-35.6-51.00-44.12-49.57-56.31-47.51-67.66-41.84-77.92-34.67Z"/><path transform="matrix(1,0,0,-1,433.83,406.24)" d="M0 0C-.172 1.37-.031 2.77-.93 3.65-2.06 4.76-3.58 5.48-5.16 5.74-14.79 7.37-29.97 4.82-39.78 2.85L-49.71 .873C-49.98 .82-50.42 1.46-50.28 1.58-49.39 2.37-42.41 5.67-39.19 7.98-28.29 15.80-24.91 28.63-24.94 41.61-18.08 39.63-11.37 34.50-13.91 26.59-15.80 20.71-21.30 16.18-26.38 12.93-20.45 15.59-14.91 18.37-8.82 20.41-5.96 21.37-2.94 21.76-.098 20.75 7.30 18.11 5.00 4.65 0 0"/><path transform="matrix(1,0,0,-1,364.81,346.02)" d="M0 0C1.49 2.69 2.74 5.30 3.64 8.17 5.10 12.79-2.12 15.55-6.21 15.03-5.98 17.40-5.55 19.58-4.68 21.62-3.24 24.98 .295 26.29 3.65 24.85 6.42 23.67 8.10 20.78 8.01 17.62 7.85 11.87 3.79 4.39 1.21-.593Z"/></svg></a>
+    <nav>
+      <a href="#bio">السيرة</a><a href="#timeline">المسيرة</a><a href="#recitations">التلاوات</a>
+      <a href="#radio"><span class="live-dot"></span>إذاعة القرآن الكريم</a>
+    </nav>
+    <span class="lang">EN</span>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <p class="kicker">الصوت الباكي</p>
+      <svg class="logo" role="img" aria-label="المنشاوي" xmlns="http://www.w3.org/2000/svg" viewBox="284.13 249.48 255.50 163.61" fill="currentColor"><path transform="matrix(1,0,0,-1,386.16,295.94)" d="M0 0-10.94-3.79C-8.60 .084-6.17 3.36-3.54 6.87L14.54 13.37 22.96 16.48C26.27 17.81 29.12 19.45 32.36 21.38 27.61 12.30 24.49 9.28 15.18 5.57Z"/><path transform="matrix(1,0,0,-1,308.93,407.76)" d="M0 0-7.62 7.30-14.63 .01-22.8 8.03-15.43 15.86-7.88 8.52-.818 15.86 7.31 7.84Z"/><path transform="matrix(1,0,0,-1,398.67,277.99)" d="M0 0-4.25-2.63-8.56 16.44-.039 22.76Z"/><path transform="matrix(1,0,0,-1,435.80,261.75)" d="M0 0 8.46-8.10 .872-16.02-7.58-7.92Z"/><path transform="matrix(1,0,0,-1,444.89,271.32)" d="M0 0 8.48-8.00 .997-15.93-7.48-7.92Z"/><path transform="matrix(1,0,0,-1,428.30,271.33)" d="M0 0 8.41-7.97 .899-15.91-7.52-7.93Z"/><path transform="matrix(1,0,0,-1,432.98,340.74)" d="M0 0-8.09 7.95-.353 16.00 7.35 7.89Z"/><path transform="matrix(1,0,0,-1,491.20,347.55)" d="M0 0C.482 1.14 .488 2.59-.094 3.68-1.32 5.98-2.75 8.12-4.30 10.26L-12.64-.754C-9.53-3.05-1.59-3.79 0 0M10.3-2.86C8.81-11.58 2.28-20.72-7.24-20.13-14.60-19.67-17.91-13.72-17.40-6.57-22.89-12.39-31.96-22.41-40.88-18.94-45.38-17.2-45.90-12.27-46.21-8.06-47.13-12.27-47.85-16.53-46.80-20.92-44.83-29.12-38.92-35.61-30.97-38.71-17.35-44.00 3.09-41.72 10.90-27.82 13.28-23.59 13.95-18.97 13.53-14.10L11.17 60.43 26.12 72.79 25.82 47.30 25.32-8.59C25.23-19.46 22.51-29.87 16.69-39.01 12.23-46.01 6.08-51.30-1.56-54.63-8.88-57.81-16.81-59.30-24.83-58.75-39.77-57.71-52.99-46.95-53.25-31.08-53.42-21.08-49.04-10.32-45.76-.892-49.29-6.04-53.21-10.62-58.21-14.35-64.28-18.87-74.03-21.31-79.63-14.61-81.40-12.49-82.68-9.90-83.26-7.13-85.84 5.21-79.09 15.67-72.06 25.35-74.64 24.52-77.15 24.16-79.45 25.47-84.10 28.11-82.98 35.68-81.54 40.34-86.18 34.22-92.08 27.66-99.61 24.50-104.38 22.50-109.50 22.09-114.41 23.85-120.66 26.08-124.51 32.44-126.36 38.54-127.93 43.71-128.38 48.77-128.41 54.25L-128.62 89.28-119.42 96.08-119.35 54.82C-119.35 49.63-117.35 44.78-113.49 41.38-107.72 36.29-96.86 34.92-90.74 38.55-84.30 42.37-77.43 51.37-72.95 57.52L-69.23 57.26C-71.60 52.94-74.84 47.67-73.92 42.46-73.58 40.51-71.91 39.38-69.94 39.65-62.62 40.68-56.69 51.18-53.81 57.40L-51.66 57.34C-52.28 52.69-51.55 48.16-49.27 44.11-46.11 38.52-40.97 37.64-34.77 37.81-36.24 43.16-38.05 48.04-40.05 53.12L-30.87 64.08C-29.48 57.07-27.21 51.93-25.98 45.01-25.67 43.22-25.65 41.05-26.39 39.42-27.78 36.39-29.33 33.61-31.01 30.80-32.83 27.76-35.61 25.94-39.02 25.07-42.38 24.22-45.77 23.76-49.12 24.73-56.37 26.54-58.81 34.47-59.35 41.42L-66.66 29.70C-70.24 23.96-73.64 11.94-71.72 4.73-69.92-2.03-62.36-3.7-56.17-1.98-47.29 .481-41.85 8.39-39.11 16.82-36.93 18.38-34.57 19.76-31.98 21.06L-34.80 10.71C-35.65 7.58-36.33 .367-32.90-1.75-28.76-4.32-23.56-.183-20.62 2.95-15.28 8.65-11.00 14.93-6.89 21.73-5.24 21.84-3.66 21.77-1.95 21.59Z"/><path transform="matrix(1,0,0,-1,511.77,406.12)" d="M0 0C5.95 7.62 9.40 14.67 11.47 24.10 12.97 30.96 13.54 37.63 13.29 44.76L10.97 120.35 25.85 132.65 24.70 56.82C24.62 49.11 24.12 41.88 22.63 34.40 20.61 24.27 16.14 13.12 8.71 5.85 6.21 3.40 3.61 1.19 0 0"/><path transform="matrix(1,0,0,-1,491.94,313.14)" d="M0 0-1.81 3.77-4.41-.153C-2.82-.449-1.62-.421 0 0M-6.31-2.54C-9.85-7.02-16.26-9.65-21.30-6.66-24.43-4.80-25.53-1.09-25.36 2.38-20.39-.112-14.59-.543-9.25-.341-6.67 1.78-4.72 4.44-2.89 7.16-2.59 7.59-1.47 7.59-.875 7.41 .124 4.66 2.10 2.14 2.82-.685 3.40-2.96 1.30-5.60-.335-6.73-1.78-7.73-3.37-7.57-4.60-6.77-5.88-5.94-6.35-4.33-6.31-2.54"/><path transform="matrix(1,0,0,-1,296.40,373.78)" d="M0 0C-4.91 9.74-5.10 20.25-2.67 30.86-2.45 31.81 1.32 45.24 2.18 43.51 2.25 43.36 2.41 42.88 2.35 42.59 1.48 38.22 1.18 33.34 1.65 28.76 2.98 15.57 12.41 4.93 25.34 2.12 34.35 .172 43.54 .688 52.30 3.63 56.13 4.92 59.44 6.91 62.45 9.58 62.46 14.38 59.08 18.11 54.45 19.20 51.68 19.85 48.96 19.86 46.04 19.97L10.36 21.38C9.13 26.56 8.25 31.45 7.42 36.75L15.88 35.43C19.67 42.32 24.50 48.42 30.74 52.99 35.67 56.60 41.41 57.81 47.27 56.24L55.76 53.18 46.08 41.18C36.32 46.92 27.18 42.87 20.11 34.77 30.10 33.59 39.57 33.41 49.32 33.23 56.41 33.10 64.87 33.52 67.1 25.83 70.45 14.24 64.98 3.05 56.39-4.72 50.32-10.21 43.15-14.08 35.08-15.59 28.46-16.83 21.96-16.51 15.74-14.1 8.84-11.42 3.32-6.59 0 0"/><path transform="matrix(1,0,0,-1,393.04,360.08)" d="M0 0-13.29 21.10C-14.78 17.92-15.31 14.62-14.89 11.27-13.90 3.36-7.63-.364 0 0M-55.45-33.72C-40.53-33.10-10.82-26.84 1.07-17.32 5.37-13.88 3.84-7.25 1.56-2.86L-6.79-11.47C-11.06-12.41-15.67-12.31-19.61-10.07-26.57-6.11-28.45 3.03-24.06 9.65-21.56 13.60-18.69 16.92-15.66 20.45-11.97 24.75-8.39 28.80-4.27 32.84L7.94 13.47C9.64 10.77 11.13 8.20 12.60 5.39 13.77 1.51 13.71-2.41 12.53-6.36 10.45-13.34 7.22-19.74 2.84-25.59-3.24-33.72-10.71-40.56-19.62-45.38-27.24-49.51-35.6-51.00-44.12-49.57-56.31-47.51-67.66-41.84-77.92-34.67Z"/><path transform="matrix(1,0,0,-1,433.83,406.24)" d="M0 0C-.172 1.37-.031 2.77-.93 3.65-2.06 4.76-3.58 5.48-5.16 5.74-14.79 7.37-29.97 4.82-39.78 2.85L-49.71 .873C-49.98 .82-50.42 1.46-50.28 1.58-49.39 2.37-42.41 5.67-39.19 7.98-28.29 15.80-24.91 28.63-24.94 41.61-18.08 39.63-11.37 34.50-13.91 26.59-15.80 20.71-21.30 16.18-26.38 12.93-20.45 15.59-14.91 18.37-8.82 20.41-5.96 21.37-2.94 21.76-.098 20.75 7.30 18.11 5.00 4.65 0 0"/><path transform="matrix(1,0,0,-1,364.81,346.02)" d="M0 0C1.49 2.69 2.74 5.30 3.64 8.17 5.10 12.79-2.12 15.55-6.21 15.03-5.98 17.40-5.55 19.58-4.68 21.62-3.24 24.98 .295 26.29 3.65 24.85 6.42 23.67 8.10 20.78 8.01 17.62 7.85 11.87 3.79 4.39 1.21-.593Z"/></svg>
+      <h1>الشيخ محمد صديق المنشاوي<small>Sheikh Muhammad Siddiq Al-Minshawi</small></h1>
+      <p class="verse">﴿وَرَتِّلِ الْقُرْآنَ تَرْتِيلًا﴾ — المزمل ٤</p>
+      <div class="ctas">
+        <a class="btn primary" href="#recitations"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>استمع إلى المصحف</a>
+        <a class="btn ghost" href="#radio"><span class="live-dot"></span>إذاعة القرآن الكريم</a>
+      </div>
+      <div class="years"><span><b>١٩٢٠</b>المولد · سوهاج</span><span><b>١٩٦٩</b>الوفاة · القاهرة</span></div>
+    </div>
+    <figure class="portrait">
+      <picture>
+        <source srcset="/images/sheikh-minshawi.avif" type="image/avif">
+        <source srcset="/images/sheikh-minshawi.webp" type="image/webp">
+        <img src="/images/sheikh-minshawi.jpg" alt="الشيخ محمد صديق المنشاوي" width="765" height="1024">
+      </picture>
+      <figcaption><span>الشيخ محمد صديق المنشاوي</span><span>١٩٢٠ — ١٩٦٩</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="block" id="bio">
+  <div class="wrap">
+    <div class="head"><span class="num">٠١</span><h2>حياة وُهبت للقرآن</h2><p>السيرة الذاتية</p></div>
+    <div class="bio">
+      <article class="chapter"><h3><span>الفصل الأول</span>النشأة في بيت القرآن</h3><p>هو محمد بن صديق بن سيد بن ثابت المنشاوي، وُلد في المنشأة بمحافظة سوهاج في مصر عام ١٣٣٨ هجرية / ٢٠ يناير ١٩٢٠ ميلادية، ونشأ في أسرة توارثت تلاوة القرآن جيلًا بعد جيل؛ إذ إنّ أباه الشيخ صديق المنشاوي كان من كبار قرّاء الصعيد، وعمّه الشيخ أحمد السيد المنشاوي قارئ أيضًا، وكذلك أخواه أحمد ومحمود. أتمّ حفظ القرآن الكريم في الثامنة من عمره (وقيل في الحادية عشرة).</p><p>تتلمذ في الحفظ على يد والده الشيخ صديق المنشاوي، وسافر صغيرًا مع عمّه إلى القاهرة سنة ١٩٢٧ فحفظ فيها ربع القرآن، ثم عاد إلى المنشأة فأتمّ الحفظ على يد الشيخ محمد النمكي، وأحكم التجويد على يد الشيخ محمد أبو العلا، وأخذ كذلك عن الشيخ رشوان أبو مسلم.</p></article>
+      <article class="chapter"><h3><span>الفصل الثاني</span>الصوت الباكي</h3><p>لُقِّب الشيخ بـ«الصوت الباكي» لعذوبة صوته وجماله، وقوة الأداء وجلاله، إضافة إلى إتقانه تعدد مقامات القراءة، وانفعاله العميق بالمعاني والألفاظ القرآنية.</p></article>
+      <blockquote class="pull">«إنّ المنشاوي والحصري والبهتيمي وعبد الباسط والبنا يركبون مركبًا ويبحرون في بحر القرآن، ولن يتوقف هذا المركب إلى أن يرث الله الأرض ومن عليها»<cite>— يُروى عن الشيخ محمد متولي الشعراوي</cite></blockquote>
+      <article class="chapter"><h3><span>الفصل الثالث</span>من سوهاج إلى العالم</h3><p>رفض الشيخ في بداية حياته التسجيل للإذاعة المصرية ورفض اعتماده فيها قارئًا، فاضطرت الإذاعة أن تذهب إليه بنفسها، فسجّلت له في إحدى ليالي رمضان بمدينة إسنا ما تيسّر من القرآن الكريم، واعتُمد قارئًا في الإذاعة على إثر ذلك سنة ١٩٥٣ (وقيل ١٩٥٤) بعد طول رفض وممانعة. ومن المروي أنه تقدّم مع أبيه لاختبار الإذاعة، ولمّا كانت قواعدها لا تسمح باعتمادهما معًا انسحب الأب ليُفسح الطريق لابنه.</p><p>سجّل الشيخ القرآن الكريم كاملًا في ختمة مرتّلة سنة ١٩٦٥ على ٨٢ شريطًا، ثم طلب في العام التالي إعادة تسجيل ٣٢ شريطًا منها على نفقته، وسجّل كذلك ختمة مجوّدة بالإذاعة المصرية، وله قراءة مشتركة برواية الدوري مع القارئين كامل البهتيمي وفؤاد العروسي. وله أيضًا العديد من التسجيلات في المسجد الأقصى والكويت وسوريا وليبيا، ولُقِّب أيام الوحدة بين مصر وسوريا بـ«مقرئ الجمهورية العربية المتحدة»، وقرأ في الجامع الأموي بدمشق، ومُنح وسام الاستحقاق السوري من الدرجة الثانية، ووسامًا من إندونيسيا. وتلا القرآن في المساجد الرئيسية في العالم الإسلامي، كالمسجد الحرام في مكة المكرمة، والمسجد النبوي في المدينة المنورة، والمسجد الأقصى في القدس.</p></article>
+      <article class="chapter"><h3><span>الفصل الرابع</span>الرحيل والإرث</h3><p>تزوّج الشيخ مرتين، وتوفيت زوجته الثانية في الحج قبل وفاته بعام، وأنجب نحو خمسة عشر ابنًا وابنة على خلاف في العدد. أُصيب بمرض دوالي المريء عام ١٩٦٦، وتوفي يوم الجمعة ٢٠ يونيو عام ١٩٦٩، ودُفن في بلدته المنشأة، تاركًا وراءه كنزًا من التلاوات القرآنية تتعلّم منه الأجيال حتى يومنا هذا.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="timeline">
+  <div class="wrap">
+    <div class="head"><span class="num">٠٢</span><h2>رحلة في تسعٍ وأربعين سنة</h2><p>المسيرة</p></div>
+    <ol class="timeline">
+      <li><b>١٩٢٠</b><span>وُلد بقرية المنشأة في محافظة سوهاج، في أسرة قرآنية عريقة.</span></li>
+      <li><b>١٩٢٧</b><span>سافر مع عمّه إلى القاهرة فحفظ فيها ربع القرآن، ثم عاد إلى المنشأة ليُتمّ الحفظ.</span></li>
+      <li><b>١٩٢٨</b><span>أتمّ حفظ القرآن الكريم كاملاً وهو في الثامنة من عمره (وقيل في الحادية عشرة).</span></li>
+      <li><b>١٩٥٢</b><span>انطلق صوته منفرداً لأول مرة في ليلة قرآنية بمحافظة سوهاج.</span></li>
+      <li><b>١٩٥٣</b><span>اعتُمد قارئاً رسمياً في الإذاعة المصرية بعد أن سجّلت له في إسنا، إثر رفضٍ طويل (وقيل ١٩٥٤).</span></li>
+      <li><b>١٩٥٩</b><span>قرأ في الجامع الأموي بدمشق أيام الوحدة، ولُقّب بمقرئ الجمهورية العربية المتحدة.</span></li>
+      <li><b>١٩٦٥</b><span>سجّل المصحف المرتّل كاملاً على ٨٢ شريطاً، وأعاد تسجيل ٣٢ منها على نفقته في العام التالي.</span></li>
+      <li><b>١٩٦٦</b><span>أُصيب بمرض دوالي المريء، لكنه واصل التلاوة رغم المرض.</span></li>
+      <li><b>١٩٦٩</b><span>توفي يوم الجمعة ٢٠ يونيو وعمره ٤٩ عاماً، ودُفن في بلدته المنشأة، تاركاً مصحفين مرتلاً ومجوداً وتلاوات كثيرة.</span></li>
+    </ol>
+  </div>
+</section>
+
+<section class="block" id="recitations">
+  <div class="wrap">
+    <div class="head"><span class="num">٠٣</span><h2>المصحف الشريف كاملًا</h2><p>التلاوات · ١١٤ سورة برواية حفص عن عاصم</p></div>
+    <div class="lib-bar">
+      <div class="toggle"><button class="on">المرتل</button><button>المجوّد</button></div>
+      <label class="search"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M10 2a8 8 0 0 1 6.32 12.9l5.39 5.4-1.41 1.4-5.4-5.39A8 8 0 1 1 10 2zm0 2a6 6 0 1 0 0 12 6 6 0 0 0 0-12z"/></svg><input placeholder="ابحث عن سورة…"></label>
+      <span class="count">يُعرض ١١٤ من ١١٤ سورة</span>
+    </div>
+    <div class="grid">
+      <div class="card playing"><span class="n">١</span><span><b>الفاتحة</b><small>Al-Fatihah</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٢</span><span><b>البقرة</b><small>Al-Baqarah</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٣</span><span><b>آل عمران</b><small>Al-'Imran</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٤</span><span><b>النساء</b><small>An-Nisa'</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٥</span><span><b>المائدة</b><small>Al-Ma'idah</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٦</span><span><b>الأنعام</b><small>Al-An'am</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٧</span><span><b>الأعراف</b><small>Al-A'raf</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٨</span><span><b>الأنفال</b><small>Al-Anfal</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٩</span><span><b>التوبة</b><small>At-Tawbah</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">١٠</span><span><b>يونس</b><small>Yunus</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">١١</span><span><b>هود</b><small>Hud</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">١٢</span><span><b>يوسف</b><small>Yusuf</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">١٣</span><span><b>الرعد</b><small>Ar-Ra'd</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">١٤</span><span><b>إبراهيم</b><small>Ibrahim</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">١٥</span><span><b>الحجر</b><small>Al-Hijr</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">١٦</span><span><b>النحل</b><small>An-Nahl</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">١٧</span><span><b>الإسراء</b><small>Al-Isra'</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">١٨</span><span><b>الكهف</b><small>Al-Kahf</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">١٩</span><span><b>مريم</b><small>Maryam</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٢٠</span><span><b>طه</b><small>Ta-Ha</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٢١</span><span><b>الأنبياء</b><small>Al-Anbiya'</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٢٢</span><span><b>الحج</b><small>Al-Hajj</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٢٣</span><span><b>المؤمنون</b><small>Al-Mu'minun</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٢٤</span><span><b>النور</b><small>An-Nur</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٢٥</span><span><b>الفرقان</b><small>Al-Furqan</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٢٦</span><span><b>الشعراء</b><small>Ash-Shu'ara'</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٢٧</span><span><b>النمل</b><small>An-Naml</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٢٨</span><span><b>القصص</b><small>Al-Qasas</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٢٩</span><span><b>العنكبوت</b><small>Al-'Ankabut</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٣٠</span><span><b>الروم</b><small>Ar-Rum</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٣١</span><span><b>لقمان</b><small>Luqman</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٣٢</span><span><b>السجدة</b><small>As-Sajdah</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٣٣</span><span><b>الأحزاب</b><small>Al-Ahzab</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٣٤</span><span><b>سبأ</b><small>Saba'</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٣٥</span><span><b>فاطر</b><small>Fatir</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٣٦</span><span><b>يس</b><small>Ya-Sin</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٣٧</span><span><b>الصافات</b><small>As-Saffat</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٣٨</span><span><b>ص</b><small>Sad</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٣٩</span><span><b>الزمر</b><small>Az-Zumar</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٤٠</span><span><b>غافر</b><small>Ghafir</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٤١</span><span><b>فصلت</b><small>Fussilat</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٤٢</span><span><b>الشورى</b><small>Ash-Shura</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٤٣</span><span><b>الزخرف</b><small>Az-Zukhruf</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٤٤</span><span><b>الدخان</b><small>Ad-Dukhan</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٤٥</span><span><b>الجاثية</b><small>Al-Jathiyah</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٤٦</span><span><b>الأحقاف</b><small>Al-Ahqaf</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٤٧</span><span><b>محمد</b><small>Muhammad</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٤٨</span><span><b>الفتح</b><small>Al-Fath</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٤٩</span><span><b>الحجرات</b><small>Al-Hujurat</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٥٠</span><span><b>ق</b><small>Qaf</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٥١</span><span><b>الذاريات</b><small>Adh-Dhariyat</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٥٢</span><span><b>الطور</b><small>At-Tur</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٥٣</span><span><b>النجم</b><small>An-Najm</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٥٤</span><span><b>القمر</b><small>Al-Qamar</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٥٥</span><span><b>الرحمن</b><small>Ar-Rahman</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٥٦</span><span><b>الواقعة</b><small>Al-Waqi'ah</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٥٧</span><span><b>الحديد</b><small>Al-Hadid</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٥٨</span><span><b>المجادلة</b><small>Al-Mujadilah</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٥٩</span><span><b>الحشر</b><small>Al-Hashr</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٦٠</span><span><b>الممتحنة</b><small>Al-Mumtahanah</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٦١</span><span><b>الصف</b><small>As-Saff</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٦٢</span><span><b>الجمعة</b><small>Al-Jumu'ah</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٦٣</span><span><b>المنافقون</b><small>Al-Munafiqun</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٦٤</span><span><b>التغابن</b><small>At-Taghabun</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٦٥</span><span><b>الطلاق</b><small>At-Talaq</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٦٦</span><span><b>التحريم</b><small>At-Tahrim</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٦٧</span><span><b>الملك</b><small>Al-Mulk</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٦٨</span><span><b>القلم</b><small>Al-Qalam</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٦٩</span><span><b>الحاقة</b><small>Al-Haqqah</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٧٠</span><span><b>المعارج</b><small>Al-Ma'arij</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٧١</span><span><b>نوح</b><small>Nuh</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٧٢</span><span><b>الجن</b><small>Al-Jinn</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٧٣</span><span><b>المزمل</b><small>Al-Muzzammil</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٧٤</span><span><b>المدثر</b><small>Al-Muddaththir</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٧٥</span><span><b>القيامة</b><small>Al-Qiyamah</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٧٦</span><span><b>الإنسان</b><small>Al-Insan</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٧٧</span><span><b>المرسلات</b><small>Al-Mursalat</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٧٨</span><span><b>النبأ</b><small>An-Naba'</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٧٩</span><span><b>النازعات</b><small>An-Nazi'at</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٨٠</span><span><b>عبس</b><small>'Abasa</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٨١</span><span><b>التكوير</b><small>At-Takwir</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٨٢</span><span><b>الانفطار</b><small>Al-Infitar</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٨٣</span><span><b>المطففين</b><small>Al-Mutaffifin</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٨٤</span><span><b>الانشقاق</b><small>Al-Inshiqaq</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٨٥</span><span><b>البروج</b><small>Al-Buruj</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٨٦</span><span><b>الطارق</b><small>At-Tariq</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٨٧</span><span><b>الأعلى</b><small>Al-A'la</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٨٨</span><span><b>الغاشية</b><small>Al-Ghashiyah</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٨٩</span><span><b>الفجر</b><small>Al-Fajr</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٩٠</span><span><b>البلد</b><small>Al-Balad</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٩١</span><span><b>الشمس</b><small>Ash-Shams</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٩٢</span><span><b>الليل</b><small>Al-Layl</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٩٣</span><span><b>الضحى</b><small>Ad-Duha</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٩٤</span><span><b>الشرح</b><small>Ash-Sharh</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٩٥</span><span><b>التين</b><small>At-Tin</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٩٦</span><span><b>العلق</b><small>Al-'Alaq</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٩٧</span><span><b>القدر</b><small>Al-Qadr</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٩٨</span><span><b>البينة</b><small>Al-Bayyinah</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">٩٩</span><span><b>الزلزلة</b><small>Az-Zalzalah</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">١٠٠</span><span><b>العاديات</b><small>Al-'Adiyat</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">١٠١</span><span><b>القارعة</b><small>Al-Qari'ah</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">١٠٢</span><span><b>التكاثر</b><small>At-Takathur</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">١٠٣</span><span><b>العصر</b><small>Al-'Asr</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">١٠٤</span><span><b>الهمزة</b><small>Al-Humazah</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">١٠٥</span><span><b>الفيل</b><small>Al-Fil</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">١٠٦</span><span><b>قريش</b><small>Quraysh</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">١٠٧</span><span><b>الماعون</b><small>Al-Ma'un</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">١٠٨</span><span><b>الكوثر</b><small>Al-Kawthar</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">١٠٩</span><span><b>الكافرون</b><small>Al-Kafirun</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">١١٠</span><span><b>النصر</b><small>An-Nasr</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">١١١</span><span><b>المسد</b><small>Al-Masad</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">١١٢</span><span><b>الإخلاص</b><small>Al-Ikhlas</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">١١٣</span><span><b>الفلق</b><small>Al-Falaq</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="card"><span class="n">١١٤</span><span><b>الناس</b><small>An-Nas</small></span><span class="p"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+    </div>
+  </div>
+</section>
+
+<section class="radio" id="radio">
+  <div class="wrap">
+    <span class="tag"><span class="live-dot"></span>بث مباشر</span>
+    <h2>إذاعة القرآن الكريم</h2>
+    <p>من القاهرة · على مدار الساعة</p>
+    <div class="speaker"><button aria-label="تشغيل"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button></div>
+    <small>اضغط للاستماع</small>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <svg class="logo" role="img" aria-label="المنشاوي" xmlns="http://www.w3.org/2000/svg" viewBox="284.13 249.48 255.50 163.61" fill="currentColor"><path transform="matrix(1,0,0,-1,386.16,295.94)" d="M0 0-10.94-3.79C-8.60 .084-6.17 3.36-3.54 6.87L14.54 13.37 22.96 16.48C26.27 17.81 29.12 19.45 32.36 21.38 27.61 12.30 24.49 9.28 15.18 5.57Z"/><path transform="matrix(1,0,0,-1,308.93,407.76)" d="M0 0-7.62 7.30-14.63 .01-22.8 8.03-15.43 15.86-7.88 8.52-.818 15.86 7.31 7.84Z"/><path transform="matrix(1,0,0,-1,398.67,277.99)" d="M0 0-4.25-2.63-8.56 16.44-.039 22.76Z"/><path transform="matrix(1,0,0,-1,435.80,261.75)" d="M0 0 8.46-8.10 .872-16.02-7.58-7.92Z"/><path transform="matrix(1,0,0,-1,444.89,271.32)" d="M0 0 8.48-8.00 .997-15.93-7.48-7.92Z"/><path transform="matrix(1,0,0,-1,428.30,271.33)" d="M0 0 8.41-7.97 .899-15.91-7.52-7.93Z"/><path transform="matrix(1,0,0,-1,432.98,340.74)" d="M0 0-8.09 7.95-.353 16.00 7.35 7.89Z"/><path transform="matrix(1,0,0,-1,491.20,347.55)" d="M0 0C.482 1.14 .488 2.59-.094 3.68-1.32 5.98-2.75 8.12-4.30 10.26L-12.64-.754C-9.53-3.05-1.59-3.79 0 0M10.3-2.86C8.81-11.58 2.28-20.72-7.24-20.13-14.60-19.67-17.91-13.72-17.40-6.57-22.89-12.39-31.96-22.41-40.88-18.94-45.38-17.2-45.90-12.27-46.21-8.06-47.13-12.27-47.85-16.53-46.80-20.92-44.83-29.12-38.92-35.61-30.97-38.71-17.35-44.00 3.09-41.72 10.90-27.82 13.28-23.59 13.95-18.97 13.53-14.10L11.17 60.43 26.12 72.79 25.82 47.30 25.32-8.59C25.23-19.46 22.51-29.87 16.69-39.01 12.23-46.01 6.08-51.30-1.56-54.63-8.88-57.81-16.81-59.30-24.83-58.75-39.77-57.71-52.99-46.95-53.25-31.08-53.42-21.08-49.04-10.32-45.76-.892-49.29-6.04-53.21-10.62-58.21-14.35-64.28-18.87-74.03-21.31-79.63-14.61-81.40-12.49-82.68-9.90-83.26-7.13-85.84 5.21-79.09 15.67-72.06 25.35-74.64 24.52-77.15 24.16-79.45 25.47-84.10 28.11-82.98 35.68-81.54 40.34-86.18 34.22-92.08 27.66-99.61 24.50-104.38 22.50-109.50 22.09-114.41 23.85-120.66 26.08-124.51 32.44-126.36 38.54-127.93 43.71-128.38 48.77-128.41 54.25L-128.62 89.28-119.42 96.08-119.35 54.82C-119.35 49.63-117.35 44.78-113.49 41.38-107.72 36.29-96.86 34.92-90.74 38.55-84.30 42.37-77.43 51.37-72.95 57.52L-69.23 57.26C-71.60 52.94-74.84 47.67-73.92 42.46-73.58 40.51-71.91 39.38-69.94 39.65-62.62 40.68-56.69 51.18-53.81 57.40L-51.66 57.34C-52.28 52.69-51.55 48.16-49.27 44.11-46.11 38.52-40.97 37.64-34.77 37.81-36.24 43.16-38.05 48.04-40.05 53.12L-30.87 64.08C-29.48 57.07-27.21 51.93-25.98 45.01-25.67 43.22-25.65 41.05-26.39 39.42-27.78 36.39-29.33 33.61-31.01 30.80-32.83 27.76-35.61 25.94-39.02 25.07-42.38 24.22-45.77 23.76-49.12 24.73-56.37 26.54-58.81 34.47-59.35 41.42L-66.66 29.70C-70.24 23.96-73.64 11.94-71.72 4.73-69.92-2.03-62.36-3.7-56.17-1.98-47.29 .481-41.85 8.39-39.11 16.82-36.93 18.38-34.57 19.76-31.98 21.06L-34.80 10.71C-35.65 7.58-36.33 .367-32.90-1.75-28.76-4.32-23.56-.183-20.62 2.95-15.28 8.65-11.00 14.93-6.89 21.73-5.24 21.84-3.66 21.77-1.95 21.59Z"/><path transform="matrix(1,0,0,-1,511.77,406.12)" d="M0 0C5.95 7.62 9.40 14.67 11.47 24.10 12.97 30.96 13.54 37.63 13.29 44.76L10.97 120.35 25.85 132.65 24.70 56.82C24.62 49.11 24.12 41.88 22.63 34.40 20.61 24.27 16.14 13.12 8.71 5.85 6.21 3.40 3.61 1.19 0 0"/><path transform="matrix(1,0,0,-1,491.94,313.14)" d="M0 0-1.81 3.77-4.41-.153C-2.82-.449-1.62-.421 0 0M-6.31-2.54C-9.85-7.02-16.26-9.65-21.30-6.66-24.43-4.80-25.53-1.09-25.36 2.38-20.39-.112-14.59-.543-9.25-.341-6.67 1.78-4.72 4.44-2.89 7.16-2.59 7.59-1.47 7.59-.875 7.41 .124 4.66 2.10 2.14 2.82-.685 3.40-2.96 1.30-5.60-.335-6.73-1.78-7.73-3.37-7.57-4.60-6.77-5.88-5.94-6.35-4.33-6.31-2.54"/><path transform="matrix(1,0,0,-1,296.40,373.78)" d="M0 0C-4.91 9.74-5.10 20.25-2.67 30.86-2.45 31.81 1.32 45.24 2.18 43.51 2.25 43.36 2.41 42.88 2.35 42.59 1.48 38.22 1.18 33.34 1.65 28.76 2.98 15.57 12.41 4.93 25.34 2.12 34.35 .172 43.54 .688 52.30 3.63 56.13 4.92 59.44 6.91 62.45 9.58 62.46 14.38 59.08 18.11 54.45 19.20 51.68 19.85 48.96 19.86 46.04 19.97L10.36 21.38C9.13 26.56 8.25 31.45 7.42 36.75L15.88 35.43C19.67 42.32 24.50 48.42 30.74 52.99 35.67 56.60 41.41 57.81 47.27 56.24L55.76 53.18 46.08 41.18C36.32 46.92 27.18 42.87 20.11 34.77 30.10 33.59 39.57 33.41 49.32 33.23 56.41 33.10 64.87 33.52 67.1 25.83 70.45 14.24 64.98 3.05 56.39-4.72 50.32-10.21 43.15-14.08 35.08-15.59 28.46-16.83 21.96-16.51 15.74-14.1 8.84-11.42 3.32-6.59 0 0"/><path transform="matrix(1,0,0,-1,393.04,360.08)" d="M0 0-13.29 21.10C-14.78 17.92-15.31 14.62-14.89 11.27-13.90 3.36-7.63-.364 0 0M-55.45-33.72C-40.53-33.10-10.82-26.84 1.07-17.32 5.37-13.88 3.84-7.25 1.56-2.86L-6.79-11.47C-11.06-12.41-15.67-12.31-19.61-10.07-26.57-6.11-28.45 3.03-24.06 9.65-21.56 13.60-18.69 16.92-15.66 20.45-11.97 24.75-8.39 28.80-4.27 32.84L7.94 13.47C9.64 10.77 11.13 8.20 12.60 5.39 13.77 1.51 13.71-2.41 12.53-6.36 10.45-13.34 7.22-19.74 2.84-25.59-3.24-33.72-10.71-40.56-19.62-45.38-27.24-49.51-35.6-51.00-44.12-49.57-56.31-47.51-67.66-41.84-77.92-34.67Z"/><path transform="matrix(1,0,0,-1,433.83,406.24)" d="M0 0C-.172 1.37-.031 2.77-.93 3.65-2.06 4.76-3.58 5.48-5.16 5.74-14.79 7.37-29.97 4.82-39.78 2.85L-49.71 .873C-49.98 .82-50.42 1.46-50.28 1.58-49.39 2.37-42.41 5.67-39.19 7.98-28.29 15.80-24.91 28.63-24.94 41.61-18.08 39.63-11.37 34.50-13.91 26.59-15.80 20.71-21.30 16.18-26.38 12.93-20.45 15.59-14.91 18.37-8.82 20.41-5.96 21.37-2.94 21.76-.098 20.75 7.30 18.11 5.00 4.65 0 0"/><path transform="matrix(1,0,0,-1,364.81,346.02)" d="M0 0C1.49 2.69 2.74 5.30 3.64 8.17 5.10 12.79-2.12 15.55-6.21 15.03-5.98 17.40-5.55 19.58-4.68 21.62-3.24 24.98 .295 26.29 3.65 24.85 6.42 23.67 8.10 20.78 8.01 17.62 7.85 11.87 3.79 4.39 1.21-.593Z"/></svg>
+    <p class="verse">﴿وَرَتِّلِ الْقُرْآنَ تَرْتِيلًا﴾</p>
+    <nav><a href="#bio">السيرة</a><a href="#recitations">التلاوات</a><a href="/surah/">فهرس السور</a><a href="#radio">إذاعة القرآن الكريم</a></nav>
+    <p class="fine">تلاوات القرآن الكريم بصوت الشيخ محمد صديق المنشاوي محفوظة الحقوق لمالكيها الأصليين. هذا الموقع غير تجاري ويهدف لنشر القرآن الكريم.</p>
+  </div>
+</footer>
+
+<div class="player">
+  <div class="wrap">
+    <span class="cov">١</span>
+    <div class="t"><b>سورة الفاتحة</b><small>المصحف المرتل</small></div>
+    <div class="bar">0:21 <i></i> 0:58</div>
+    <div class="ctl">
+      <svg class="x" viewBox="0 0 24 24"><path d="M6 6h2v12H6zm3.5 6 8.5 6V6z"/></svg>
+      <span class="pp"><svg viewBox="0 0 24 24"><path d="M6 5h4v14H6zm8 0h4v14h-4z"/></svg></span>
+      <svg class="x" viewBox="0 0 24 24"><path d="M16 6h2v12h-2zM6 18l8.5-6L6 6z"/></svg>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

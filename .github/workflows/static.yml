@@ -38,7 +38,7 @@ jobs:
         # start scripts) don't become public pages that search engines index.
         run: |
           mkdir _site
-          cp -r index.html manifest.webmanifest robots.txt sitemap.xml favicon.ico fonts images surah _site/
+          cp -r index.html manifest.webmanifest robots.txt sitemap.xml favicon.ico fonts images surah test _site/
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
