@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.elminshawy.net; media-src 'self' blob: https://server10.mp3quran.net https://n05.radiojar.com https://*.webvideocore.net; connect-src 'self' https://server10.mp3quran.net https://n05.radiojar.com https://*.webvideocore.net; font-src 'self' data:;">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.elminshawy.net; media-src 'self' blob: https://cdn.mp3quran.net https://server10.mp3quran.net https://n05.radiojar.com https://*.webvideocore.net; connect-src 'self' https://cdn.mp3quran.net https://server10.mp3quran.net https://n05.radiojar.com https://*.webvideocore.net; font-src 'self' data:; worker-src 'self' blob:;">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>الشيخ محمد صديق المنشاوي · الصوت الباكي</title>
 <meta name="description" content="موقع تكريمي للشيخ محمد صديق المنشاوي، رائد دولة التلاوة، يضم سيرته الذاتية ومكتبة كاملة للمصحف المرتل بصوته.">
@@ -4130,10 +4130,10 @@ const surahs = [
 ];
 
 // Audio source — High-quality MP3 files from Mp3Quran.net CDN
-
+// (server10.mp3quran.net now redirects here; r1 = Murattal, r2 = Mujawwad)
 const AUDIO_BASES = {
-  murattal: 'https://server10.mp3quran.net/minsh/',
-  mujawwad: 'https://server10.mp3quran.net/minsh/Almusshaf-Al-Mojawwad/'
+  murattal: 'https://cdn.mp3quran.net/audio/muhammad-minshawi/r1/',
+  mujawwad: 'https://cdn.mp3quran.net/audio/muhammad-minshawi/r2/'
 };
 let currentRecitationType = 'murattal';
 let AUDIO_BASE = AUDIO_BASES.murattal;
@@ -4252,13 +4252,54 @@ const grid = document.getElementById('surahsGrid');
 const visibleCount = document.getElementById('visibleCount');
 const visibleCountEn = document.getElementById('visibleCountEn');
 
+// ---- Search helpers ----
+// Arabic: drop diacritics/tatweel, unify alef/hamza/yaa/taa-marbuta forms, drop "سورة".
+// English: lowercase, drop hyphens/apostrophes/spaces. Digits: Arabic-Indic → Latin.
+function normalizeAr(str) {
+  return str
+    .replace(/[ً-ْٰـ]/g, '')
+    .replace(/[أإآٱ]/g, 'ا')
+    .replace(/ى/g, 'ي')
+    .replace(/ؤ/g, 'و')
+    .replace(/ئ/g, 'ي')
+    .replace(/ة/g, 'ه')
+    .replace(/^\s*سوره\s+/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+function normalizeEn(str) {
+  return str.toLowerCase().replace(/[\s'’`\-]/g, '');
+}
+function toLatinDigits(str) {
+  return str.replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d));
+}
+// Common alternative names people search for
+const SURAH_ALIASES = {
+  1: ['الحمد', 'ام الكتاب'], 9: ['براءه'], 17: ['بني اسرائيل'], 20: ['طاها'],
+  36: ['ياسين', 'yaseen', 'yasin'], 38: ['صاد'], 40: ['المؤمن'], 41: ['حم السجده'],
+  47: ['القتال'], 50: ['قاف'], 67: ['تبارك'], 76: ['الدهر'], 78: ['عم'],
+  111: ['تبت', 'اللهب'], 112: ['التوحيد']
+};
+function surahMatches(s, filter) {
+  const q = toLatinDigits(filter.trim());
+  if (!q) return true;
+  if (/^\d+$/.test(q)) return String(s.num).includes(q);
+  const qa = normalizeAr(q);
+  const qe = normalizeEn(q);
+  const names = [s.ar, ...(SURAH_ALIASES[s.num] || [])];
+  if (names.some(n => {
+    const na = normalizeAr(n);
+    // also match without the leading "ال" (e.g. "كهف" → "الكهف")
+    return na.includes(qa) || na.replace(/^ال/, '').startsWith(qa.replace(/^ال/, ''));
+  })) return true;
+  if (!qe) return false;
+  const enNames = [s.en, ...(SURAH_ALIASES[s.num] || [])].map(normalizeEn);
+  return enNames.some(n => n.includes(qe) || n.replace(/^(adh|ash|al|an|ar|as|at|ad|az)/, '').startsWith(qe));
+}
+
 function renderSurahs(filter = '') {
   grid.innerHTML = '';
-  const filtered = surahs.filter(s => {
-    if (!filter) return true;
-    const f = filter.toLowerCase();
-    return s.ar.includes(filter) || s.en.toLowerCase().includes(f) || String(s.num).includes(filter);
-  });
+  const filtered = surahs.filter(s => surahMatches(s, filter));
 
   filtered.forEach(s => {
     const card = document.createElement('div');
@@ -4272,7 +4313,11 @@ function renderSurahs(filter = '') {
       </div>
       <div class="play-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
     `;
-    card.addEventListener('click', () => playSurah(s.num));
+    card.addEventListener('click', () => {
+      // Clicking the card of the surah already loaded toggles play/pause instead of restarting it
+      if (currentSurah && !currentSurah.isRadio && currentSurah.num === s.num) togglePlayPause();
+      else playSurah(s.num);
+    });
     grid.appendChild(card);
   });
 
@@ -4285,6 +4330,7 @@ renderSurahs();
 // Search
 document.getElementById('searchInput').addEventListener('input', (e) => {
   renderSurahs(e.target.value.trim());
+  syncSurahCards(); // keep the playing card highlighted after filtering
 });
 
 // ============ PRO MEDIA PLAYER ============
@@ -4352,7 +4398,15 @@ let isShuffleOn = false;
 let repeatMode = 0; // 0 = off, 1 = repeat all, 2 = repeat one
 let isMuted = false;
 let prevVolume = 0.8;
+const FAV_KEY = 'minshawi-favorites';
 let favorites = new Set();
+try {
+  const saved = JSON.parse(localStorage.getItem(FAV_KEY) || '[]');
+  if (Array.isArray(saved)) favorites = new Set(saved.filter(n => Number.isInteger(n) && n >= 1 && n <= 114));
+} catch (e) { /* storage unavailable — favorites stay in memory only */ }
+function saveFavorites() {
+  try { localStorage.setItem(FAV_KEY, JSON.stringify([...favorites])); } catch (e) {}
+}
 let audioContext = null;
 let analyser = null;
 let dataArray = null;
@@ -4417,6 +4471,21 @@ function animateWaveform() {
   animationFrameId = requestAnimationFrame(animateWaveform);
 }
 
+// Highlight the current surah's card; show a pause icon only while it is actually playing
+const CARD_PLAY_SVG  = '<svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>';
+const CARD_PAUSE_SVG = '<svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
+function syncSurahCards() {
+  const curNum = currentSurah && !currentSurah.isRadio ? currentSurah.num : null;
+  const isPlaying = curNum !== null && !audio.paused;
+  document.querySelectorAll('.surah-card').forEach(c => {
+    const isCurrent = Number(c.dataset.num) === curNum;
+    c.classList.toggle('playing', isCurrent);
+    const icon = c.querySelector('.play-icon');
+    const html = isCurrent && isPlaying ? CARD_PAUSE_SVG : CARD_PLAY_SVG;
+    if (icon && icon.innerHTML !== html) icon.innerHTML = html;
+  });
+}
+
 function playSurah(num) {
   if (window.radioHls) {
     window.radioHls.destroy();
@@ -4451,14 +4520,7 @@ function playSurah(num) {
   favBtn.classList.toggle('active', favorites.has(num));
 
   // Highlight active card
-  document.querySelectorAll('.surah-card').forEach(c => {
-    const isCurrent = Number(c.dataset.num) === num;
-    c.classList.toggle('playing', isCurrent);
-    const icon = c.querySelector('.play-icon');
-    icon.innerHTML = isCurrent
-      ? '<svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>'
-      : '<svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>';
-  });
+  syncSurahCards();
 
   player.classList.add('active');
   player.classList.add('is-loading');
@@ -4531,6 +4593,7 @@ audio.addEventListener('playing', () => {
   pauseIcon.style.display = 'block';
   playIconExp.style.display = 'none';
   pauseIconExp.style.display = 'block';
+  syncSurahCards();
 });
 
 audio.addEventListener('pause', () => {
@@ -4540,6 +4603,7 @@ audio.addEventListener('pause', () => {
   pauseIcon.style.display = 'none';
   playIconExp.style.display = 'block';
   pauseIconExp.style.display = 'none';
+  syncSurahCards();
 });
 
 audio.addEventListener('timeupdate', () => {
@@ -4632,7 +4696,7 @@ repeatBtnExp.addEventListener('click', cycleRepeat);
 
 // Favorite
 favBtn.addEventListener('click', () => {
-  if (!currentSurah) return;
+  if (!currentSurah || currentSurah.isRadio) return;
   if (favorites.has(currentSurah.num)) {
     favorites.delete(currentSurah.num);
     favBtn.classList.remove('active');
@@ -4640,6 +4704,7 @@ favBtn.addEventListener('click', () => {
     favorites.add(currentSurah.num);
     favBtn.classList.add('active');
   }
+  saveFavorites();
 });
 
 // Download
@@ -4820,6 +4885,9 @@ langToggle.addEventListener('click', () => {
   document.documentElement.dir = isEn ? 'ltr' : 'rtl';
   document.documentElement.lang = isEn ? 'en' : 'ar';
   langToggle.textContent = isEn ? 'عربي' : 'EN';
+  document.title = isEn
+    ? 'Sheikh Muhammad Siddiq Al-Minshawi · The Weeping Voice'
+    : 'الشيخ محمد صديق المنشاوي · الصوت الباكي';
 
   // Update placeholder
   document.getElementById('searchInput').placeholder = isEn ? 'Search surah...' : 'ابحث عن سورة...';
@@ -4848,6 +4916,9 @@ const updateNav = () => {
 };
 updateNav();
 window.addEventListener('scroll', updateNav, { passive: true });
+// Re-check after the browser restores the scroll position (reload / back button)
+window.addEventListener('load', updateNav);
+window.addEventListener('pageshow', updateNav);
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -4936,6 +5007,7 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
       playerTrackInfo.textContent = isArabic ? 'بث مباشر' : 'Live Stream';
     }
     favBtn.classList.remove('active');
+    syncSurahCards();
 
     setRadioStatus('جاري الاتصال...', 'Connecting...');
 
@@ -5020,14 +5092,8 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
       pauseIconExp.style.display = 'none';
     }
   });
-  
-  // Auto-load Surah Al-Fatihah on page open
-  // Uses setTimeout to ensure all UI is rendered first.
-  // Note: browsers may require a user gesture to auto-play audio.
-  // The player will be loaded and ready; it will play if the browser allows it.
-  setTimeout(() => {
-    playSurah(1);
-  }, 800);
+  // (Al-Fatihah is already loaded on page open by autoPlayFatihah above —
+  //  a second delayed load here used to override a surah the visitor had just picked.)
 })();
 </script>
 
