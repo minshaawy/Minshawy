@@ -357,3 +357,39 @@ section.block{padding:clamp(56px,10vh,112px) 0;border-top:1px solid var(--line)}
   .years{margin-top:18px;padding-top:14px}
   .years b{font-size:1.5rem}
 }
+
+/* ---- reordered home: recitations first, compact radio band, short bio ---- */
+.live-radio{padding:clamp(40px,7vh,64px) 0;text-align:start}
+.radio-band{display:flex;align-items:center;justify-content:space-between;gap:32px}
+.live-radio-title{font-size:clamp(1.7rem,3.4vw,2.4rem);margin-top:12px}
+.live-radio-subtitle{margin-top:4px}
+.radio-control{display:flex;align-items:center;gap:22px;flex:none}
+.radio-speaker{width:108px;height:108px;margin:28px}
+.radio-ring:nth-child(1){inset:-14px}
+.radio-ring:nth-child(2){inset:-28px}
+.radio-play-btn{width:68px;height:68px}
+.radio-play-btn svg{width:26px;height:26px}
+.radio-status{min-width:9ch}
+
+.bio-intro{font:400 clamp(1.1rem,1.6vw,1.3rem)/2 'Thmanyah Serif Text',serif;color:var(--fg-2);max-width:68ch}
+.bio-more{margin-top:26px}
+.bio-more>summary{list-style:none;display:inline-flex}
+.bio-more>summary::-webkit-details-marker{display:none}
+.bio-more>summary svg{width:18px;height:18px;transition:transform .25s}
+.bio-more .less{display:none}
+.bio-more[open]>summary .more{display:none}
+.bio-more[open]>summary .less{display:inline}
+.bio-more[open]>summary svg{transform:rotate(180deg)}
+.bio-more[open]>.bio{margin-top:40px}
+.tl-title{font:700 1.6rem 'Thmanyah Serif Display',serif;margin:56px 0 20px}
+
+@media (max-width:600px){
+  .radio-band{flex-direction:column;text-align:center;gap:6px}
+  .radio-control{flex-direction:column;gap:4px}
+  .radio-speaker{width:96px;height:96px;margin:30px auto 26px}
+  .radio-play-btn{width:62px;height:62px}
+  .live-radio{padding:44px 0}
+  .bio-intro{font-size:1.08rem}
+  .bio-more>summary{display:flex;width:100%}
+  .tl-title{font-size:1.3rem;margin-top:40px}
+}

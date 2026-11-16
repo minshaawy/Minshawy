@@ -1502,6 +1502,42 @@ section.block{padding:clamp(56px,10vh,112px) 0;border-top:1px solid var(--line)}
   .years b{font-size:1.5rem}
 }
 
+/* ---- reordered home: recitations first, compact radio band, short bio ---- */
+.live-radio{padding:clamp(40px,7vh,64px) 0;text-align:start}
+.radio-band{display:flex;align-items:center;justify-content:space-between;gap:32px}
+.live-radio-title{font-size:clamp(1.7rem,3.4vw,2.4rem);margin-top:12px}
+.live-radio-subtitle{margin-top:4px}
+.radio-control{display:flex;align-items:center;gap:22px;flex:none}
+.radio-speaker{width:108px;height:108px;margin:28px}
+.radio-ring:nth-child(1){inset:-14px}
+.radio-ring:nth-child(2){inset:-28px}
+.radio-play-btn{width:68px;height:68px}
+.radio-play-btn svg{width:26px;height:26px}
+.radio-status{min-width:9ch}
+
+.bio-intro{font:400 clamp(1.1rem,1.6vw,1.3rem)/2 'Thmanyah Serif Text',serif;color:var(--fg-2);max-width:68ch}
+.bio-more{margin-top:26px}
+.bio-more>summary{list-style:none;display:inline-flex}
+.bio-more>summary::-webkit-details-marker{display:none}
+.bio-more>summary svg{width:18px;height:18px;transition:transform .25s}
+.bio-more .less{display:none}
+.bio-more[open]>summary .more{display:none}
+.bio-more[open]>summary .less{display:inline}
+.bio-more[open]>summary svg{transform:rotate(180deg)}
+.bio-more[open]>.bio{margin-top:40px}
+.tl-title{font:700 1.6rem 'Thmanyah Serif Display',serif;margin:56px 0 20px}
+
+@media (max-width:600px){
+  .radio-band{flex-direction:column;text-align:center;gap:6px}
+  .radio-control{flex-direction:column;gap:4px}
+  .radio-speaker{width:96px;height:96px;margin:30px auto 26px}
+  .radio-play-btn{width:62px;height:62px}
+  .live-radio{padding:44px 0}
+  .bio-intro{font-size:1.08rem}
+  .bio-more>summary{display:flex;width:100%}
+  .tl-title{font-size:1.3rem;margin-top:40px}
+}
+
 </style>
 </head>
 <body>
@@ -1511,9 +1547,8 @@ section.block{padding:clamp(56px,10vh,112px) 0;border-top:1px solid var(--line)}
   <div class="wrap">
     <a class="brand" href="#top" aria-label="أعلى الصفحة"><svg class="logo" viewBox="0 0 255.50 163.61" role="img" aria-label="الشيخ محمد صديق المنشاوي"><use href="#logo"/></svg></a>
     <nav>
-      <a href="#bio"><span class="lang-ar">السيرة</span><span class="lang-en-text">Biography</span></a>
-      <a href="#timeline"><span class="lang-ar">المسيرة</span><span class="lang-en-text">Timeline</span></a>
       <a href="#library"><span class="lang-ar">التلاوات</span><span class="lang-en-text">Recitations</span></a>
+      <a href="#bio"><span class="lang-ar">السيرة</span><span class="lang-en-text">Biography</span></a>
       <button class="nav-radio" id="navRadio" type="button" aria-label="تشغيل إذاعة القرآن الكريم">
         <svg class="i-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg><svg class="i-pause" viewBox="0 0 24 24"><path d="M6 5h4v14H6zm8 0h4v14h-4z"/></svg>
         <span class="lang-ar">إذاعة القرآن الكريم</span><span class="lang-en-text">Quran Radio</span><span class="live-dot"></span>
@@ -1557,10 +1592,52 @@ section.block{padding:clamp(56px,10vh,112px) 0;border-top:1px solid var(--line)}
   </div>
 </section>
 
+<section class="block library" id="library">
+  <div class="wrap">
+    <div class="head"><span class="num"><span class="lang-ar">٠١</span><span class="lang-en-text">01</span></span><h2><span class="lang-ar">المصحف الشريف كاملًا</span><span class="lang-en-text">The Complete Mushaf</span></h2><p><span class="lang-ar">التلاوات · ١١٤ سورة برواية حفص عن عاصم</span><span class="lang-en-text">Recitations · 114 surahs, Hafs from 'Asim</span></p></div>
+    <div class="lib-bar">
+      <div class="recitation-toggle">
+        <button class="recitation-btn active" id="btnMurattal"><span class="lang-ar">المرتل</span><span class="lang-en-text">Murattal</span></button>
+        <button class="recitation-btn" id="btnMujawwad"><span class="lang-ar">المجوّد</span><span class="lang-en-text">Mujawwad</span></button>
+      </div>
+      <label class="search-box"><svg viewBox="0 0 24 24"><path d="M10 2a8 8 0 0 1 6.32 12.9l5.39 5.4-1.41 1.4-5.4-5.39A8 8 0 1 1 10 2zm0 2a6 6 0 1 0 0 12 6 6 0 0 0 0-12z"/></svg><input type="text" id="searchInput" placeholder="ابحث عن سورة..."></label>
+      <div class="lib-stats">
+        <span class="lang-ar">يُعرض <strong id="visibleCount">١١٤</strong> من <strong>١١٤</strong> سورة</span>
+        <span class="lang-en-text">Showing <strong id="visibleCountEn">114</strong> of <strong>114</strong> surahs</span>
+      </div>
+    </div>
+    <div class="surahs-grid" id="surahsGrid"></div>
+    <p class="lib-more"><span class="lang-ar">لكل سورة صفحة خاصة بها — <a href="/test/surah/">فهرس السور</a></span><span class="lang-en-text">Every surah has its own page — <a href="/test/surah/">All surahs</a></span></p>
+  </div>
+</section>
+
+<section class="live-radio" id="radio">
+  <div class="wrap radio-band">
+    <div class="radio-text">
+      <span class="live-badge"><span class="live-dot"></span><span class="lang-ar">بث مباشر</span><span class="lang-en-text">Live</span></span>
+      <h2 class="live-radio-title"><span class="lang-ar">إذاعة القرآن الكريم</span><span class="lang-en-text">Holy Quran Radio</span></h2>
+      <p class="live-radio-subtitle"><span class="lang-ar">من القاهرة · على مدار الساعة</span><span class="lang-en-text">From Cairo · around the clock</span></p>
+    </div>
+    <div class="radio-control">
+      <div class="radio-speaker">
+        <span class="radio-ring"></span><span class="radio-ring"></span><span class="radio-ring"></span>
+        <button class="radio-play-btn" id="radioPlayBtn" aria-label="Play/Pause Radio">
+          <svg viewBox="0 0 24 24" id="radioPlayIcon"><path d="M8 5v14l11-7z"></path></svg>
+        </button>
+      </div>
+      <span class="radio-status" id="radioStatus"><span class="lang-ar">اضغط للاستماع</span><span class="lang-en-text">Tap to listen</span></span>
+    </div>
+  </div>
+  <audio id="radioAudio" preload="none"></audio>
+</section>
+
 <section class="block" id="bio">
   <div class="wrap">
-    <div class="head"><span class="num"><span class="lang-ar">٠١</span><span class="lang-en-text">01</span></span><h2><span class="lang-ar">حياة وُهبت للقرآن</span><span class="lang-en-text">A Life Devoted to the Quran</span></h2><p><span class="lang-ar">السيرة الذاتية</span><span class="lang-en-text">Life &amp; Legacy</span></p></div>
-    <div class="bio">
+    <div class="head"><span class="num"><span class="lang-ar">٠٢</span><span class="lang-en-text">02</span></span><h2><span class="lang-ar">حياة وُهبت للقرآن</span><span class="lang-en-text">A Life Devoted to the Quran</span></h2><p><span class="lang-ar">السيرة الذاتية</span><span class="lang-en-text">Life &amp; Legacy</span></p></div>
+    <p class="bio-intro"><span class="lang-ar">وُلد الشيخ محمد صديق المنشاوي عام ١٩٢٠ في المنشأة بمحافظة سوهاج، في أسرة توارثت تلاوة القرآن الكريم، وأتمّ حفظه صغيرًا. اعتُمد قارئًا بالإذاعة المصرية سنة ١٩٥٣، ولُقِّب بـ«الصوت الباكي» لخشوع تلاوته، وسجّل المصحف كاملًا مرتّلًا ومجوّدًا، وطاف بتلاوته بلاد العالم الإسلامي حتى رحيله عام ١٩٦٩.</span><span class="lang-en-text">Born in 1920 in al-Minsha'ah, Sohag, into a family of Quran reciters, Sheikh Muhammad Siddiq al-Minshawi memorized the Quran as a child, joined Egyptian Radio in 1953 and became known as “the Weeping Voice.” He recorded the complete Quran, murattal and mujawwad, and recited across the Muslim world until his death in 1969.</span></p>
+    <details class="bio-more" id="bioMore">
+      <summary class="btn ghost"><span class="more"><span class="lang-ar">اقرأ السيرة كاملة</span><span class="lang-en-text">Read the full biography</span></span><span class="less"><span class="lang-ar">إخفاء السيرة</span><span class="lang-en-text">Hide the biography</span></span><svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg></summary>
+      <div class="bio">
       <article class="chapter fade-in">
         <h3><span class="label"><span class="lang-ar">الفصل الأول</span><span class="lang-en-text">Chapter One</span></span><span class="lang-ar">النشأة في بيت القرآن</span><span class="lang-en-text">A House Built on the Quran</span></h3>
         <p class="lang-ar">هو محمد بن صديق بن سيد بن ثابت المنشاوي، وُلد في المنشأة بمحافظة سوهاج في مصر عام ١٣٣٨ هجرية / ٢٠ يناير ١٩٢٠ ميلادية، ونشأ في أسرة توارثت تلاوة القرآن جيلًا بعد جيل؛ إذ إنّ أباه الشيخ صديق المنشاوي كان من كبار قرّاء الصعيد، وعمّه الشيخ أحمد السيد المنشاوي قارئ أيضًا، وكذلك أخواه أحمد ومحمود. أتمّ حفظ القرآن الكريم في الثامنة من عمره (وقيل في الحادية عشرة).</p><p class="lang-ar">تتلمذ في الحفظ على يد والده الشيخ صديق المنشاوي، وسافر صغيرًا مع عمّه إلى القاهرة سنة ١٩٢٧ فحفظ فيها ربع القرآن، ثم عاد إلى المنشأة فأتمّ الحفظ على يد الشيخ محمد النمكي، وأحكم التجويد على يد الشيخ محمد أبو العلا، وأخذ كذلك عن الشيخ رشوان أبو مسلم.</p><p class="lang-en-text"><strong>Muhammad ibn Siddiq ibn Sayyid ibn Thabit al-Minshawi</strong> was born on <strong>20 January 1920</strong> in al-Minsha'ah, Sohag governorate, Upper Egypt, into a long lineage of Quranic reciters that stretched back generations.</p><p class="lang-en-text">His father, Sheikh <strong>Siddiq al-Minshawi</strong>, was one of the leading reciters of Upper Egypt, and his uncle Sheikh Ahmad al-Sayyid al-Minshawi and his brothers Ahmad and Mahmoud were reciters too. Muhammad learned from his father and completed memorizing the entire Quran at age <strong>eight</strong> (some sources say eleven).</p><p class="lang-en-text">In <strong>1927</strong> he went to Cairo with his uncle, memorizing a quarter of the Quran there, then returned home to complete his memorization under Sheikh Muhammad al-Namki and master tajweed under Sheikh Muhammad Abu al-Ula. He also studied with Sheikh Rashwan Abu Muslim.</p>
@@ -1582,14 +1659,9 @@ section.block{padding:clamp(56px,10vh,112px) 0;border-top:1px solid var(--line)}
         <h3><span class="label"><span class="lang-ar">الفصل الرابع</span><span class="lang-en-text">Chapter Four</span></span><span class="lang-ar">الرحيل والإرث</span><span class="lang-en-text">Departure & Legacy</span></h3>
         <p class="lang-ar">تزوّج الشيخ مرتين، وتوفيت زوجته الثانية في الحج قبل وفاته بعام، وأنجب نحو خمسة عشر ابنًا وابنة على خلاف في العدد. أُصيب بمرض دوالي المريء عام ١٩٦٦، وتوفي يوم الجمعة ٢٠ يونيو عام ١٩٦٩، ودُفن في بلدته المنشأة، تاركًا وراءه كنزًا من التلاوات القرآنية تتعلّم منه الأجيال حتى يومنا هذا.</p><p class="lang-en-text">In <strong>1966</strong> the Sheikh was diagnosed with esophageal varices. Despite his deteriorating health, he continued reciting the Quran until his final moments, passing away on Friday, <strong>June 20, 1969</strong>, at just 49 years of age.</p><p class="lang-en-text">He left behind a vast legacy of recordings, both murattal and mujawwad. His complete murattal mushaf, recorded in <strong>1965</strong> on 82 tapes, is considered among the greatest in the history of Quranic recitation. He was buried in his hometown, al-Minsha'ah. His style became a model emulated by reciters across generations.</p><p class="lang-en-text">May God have mercy upon him.</p>
       </article>
-    </div>
-  </div>
-</section>
-
-<section class="block" id="timeline">
-  <div class="wrap">
-    <div class="head"><span class="num"><span class="lang-ar">٠٢</span><span class="lang-en-text">02</span></span><h2><span class="lang-ar">رحلة في تسعٍ وأربعين سنة</span><span class="lang-en-text">A Journey in 49 Years</span></h2><p><span class="lang-ar">المسيرة</span><span class="lang-en-text">Timeline</span></p></div>
-    <ol class="timeline">
+      </div>
+      <h3 class="tl-title"><span class="lang-ar">المسيرة · رحلة في تسعٍ وأربعين سنة</span><span class="lang-en-text">Timeline · a journey in 49 years</span></h3>
+      <ol class="timeline" id="timeline">
       <li class="fade-in"><b><span class="lang-ar">١٩٢٠</span><span class="lang-en-text">1920</span></b><span><span class="lang-ar">وُلد بقرية المنشأة في محافظة سوهاج، في أسرة قرآنية عريقة.</span><span class="lang-en-text">Born in al-Minsha'ah village, Sohag, into a family of generations of Quranic reciters.</span></span></li>
       <li class="fade-in"><b><span class="lang-ar">١٩٢٧</span><span class="lang-en-text">1927</span></b><span><span class="lang-ar">سافر مع عمّه إلى القاهرة فحفظ فيها ربع القرآن، ثم عاد إلى المنشأة ليُتمّ الحفظ.</span><span class="lang-en-text">Travelled to Cairo with his uncle, memorized a quarter of the Quran there, then returned home to finish.</span></span></li>
       <li class="fade-in"><b><span class="lang-ar">١٩٢٨</span><span class="lang-en-text">1928</span></b><span><span class="lang-ar">أتمّ حفظ القرآن الكريم كاملاً وهو في الثامنة من عمره (وقيل في الحادية عشرة).</span><span class="lang-en-text">Completed memorization of the entire Quran at age eight (some say eleven).</span></span></li>
@@ -1599,44 +1671,9 @@ section.block{padding:clamp(56px,10vh,112px) 0;border-top:1px solid var(--line)}
       <li class="fade-in"><b><span class="lang-ar">١٩٦٥</span><span class="lang-en-text">1965</span></b><span><span class="lang-ar">سجّل المصحف المرتّل كاملاً على ٨٢ شريطاً، وأعاد تسجيل ٣٢ منها على نفقته في العام التالي.</span><span class="lang-en-text">Recorded the complete murattal mushaf on 82 tapes, re-recording 32 of them at his own expense the next year.</span></span></li>
       <li class="fade-in"><b><span class="lang-ar">١٩٦٦</span><span class="lang-en-text">1966</span></b><span><span class="lang-ar">أُصيب بمرض دوالي المريء، لكنه واصل التلاوة رغم المرض.</span><span class="lang-en-text">Diagnosed with esophageal varices; continued reciting despite illness.</span></span></li>
       <li class="fade-in"><b><span class="lang-ar">١٩٦٩</span><span class="lang-en-text">1969</span></b><span><span class="lang-ar">توفي يوم الجمعة ٢٠ يونيو وعمره ٤٩ عاماً، ودُفن في بلدته المنشأة، تاركاً مصحفين مرتلاً ومجوداً وتلاوات كثيرة.</span><span class="lang-en-text">Passed away on Friday, June 20, at age 49, and was buried in al-Minsha'ah — leaving complete murattal and mujawwad mushafs and many recitations.</span></span></li>
-    </ol>
+      </ol>
+    </details>
   </div>
-</section>
-
-<section class="block library" id="library">
-  <div class="wrap">
-    <div class="head"><span class="num"><span class="lang-ar">٠٣</span><span class="lang-en-text">03</span></span><h2><span class="lang-ar">المصحف الشريف كاملًا</span><span class="lang-en-text">The Complete Mushaf</span></h2><p><span class="lang-ar">التلاوات · ١١٤ سورة برواية حفص عن عاصم</span><span class="lang-en-text">Recitations · 114 surahs, Hafs from 'Asim</span></p></div>
-    <div class="lib-bar">
-      <div class="recitation-toggle">
-        <button class="recitation-btn active" id="btnMurattal"><span class="lang-ar">المرتل</span><span class="lang-en-text">Murattal</span></button>
-        <button class="recitation-btn" id="btnMujawwad"><span class="lang-ar">المجوّد</span><span class="lang-en-text">Mujawwad</span></button>
-      </div>
-      <label class="search-box"><svg viewBox="0 0 24 24"><path d="M10 2a8 8 0 0 1 6.32 12.9l5.39 5.4-1.41 1.4-5.4-5.39A8 8 0 1 1 10 2zm0 2a6 6 0 1 0 0 12 6 6 0 0 0 0-12z"/></svg><input type="text" id="searchInput" placeholder="ابحث عن سورة..."></label>
-      <div class="lib-stats">
-        <span class="lang-ar">يُعرض <strong id="visibleCount">١١٤</strong> من <strong>١١٤</strong> سورة</span>
-        <span class="lang-en-text">Showing <strong id="visibleCountEn">114</strong> of <strong>114</strong> surahs</span>
-      </div>
-    </div>
-    <div class="surahs-grid" id="surahsGrid"></div>
-    <p class="lib-more"><span class="lang-ar">لكل سورة صفحة خاصة بها — <a href="/test/surah/">فهرس السور</a></span><span class="lang-en-text">Every surah has its own page — <a href="/test/surah/">All surahs</a></span></p>
-  </div>
-</section>
-
-<section class="live-radio" id="radio">
-  <div class="wrap">
-    <span class="live-badge"><span class="live-dot"></span><span class="lang-ar">بث مباشر</span><span class="lang-en-text">Live</span></span>
-    <h2 class="live-radio-title"><span class="lang-ar">إذاعة القرآن الكريم</span><span class="lang-en-text">Holy Quran Radio</span></h2>
-    <p class="live-radio-subtitle"><span class="lang-ar">من القاهرة · على مدار الساعة</span><span class="lang-en-text">From Cairo · around the clock</span></p>
-    <div class="radio-speaker">
-      <span class="radio-ring"></span><span class="radio-ring"></span><span class="radio-ring"></span>
-      <button class="radio-play-btn" id="radioPlayBtn" aria-label="Play/Pause Radio">
-        <svg viewBox="0 0 24 24" id="radioPlayIcon"><path d="M8 5v14l11-7z"></path></svg>
-      </button>
-    </div>
-    <span class="radio-status" id="radioStatus"><span class="lang-ar">اضغط للاستماع</span><span class="lang-en-text">Tap to listen</span></span>
-    <p class="radio-station"><span class="lang-ar">الهيئة الوطنية للإعلام · FM ٩٨٫٢</span><span class="lang-en-text">National Media Authority · FM 98.2</span></p>
-  </div>
-  <audio id="radioAudio" preload="none"></audio>
 </section>
 </main>
 
@@ -1645,8 +1682,8 @@ section.block{padding:clamp(56px,10vh,112px) 0;border-top:1px solid var(--line)}
     <svg class="logo" viewBox="0 0 255.50 163.61" role="img" aria-label="الشيخ محمد صديق المنشاوي"><use href="#logo"/></svg>
     <p class="verse"><span class="lang-ar">﴿وَرَتِّلِ الْقُرْآنَ تَرْتِيلًا﴾</span><span class="lang-en-text">“And recite the Quran with measured recitation.”</span></p>
     <nav>
-      <a href="#bio"><span class="lang-ar">السيرة</span><span class="lang-en-text">Biography</span></a>
       <a href="#library"><span class="lang-ar">التلاوات</span><span class="lang-en-text">Recitations</span></a>
+      <a href="#bio"><span class="lang-ar">السيرة</span><span class="lang-en-text">Biography</span></a>
       <a href="/test/surah/"><span class="lang-ar">فهرس السور</span><span class="lang-en-text">All Surahs</span></a>
       <a href="#radio"><span class="lang-ar">إذاعة القرآن الكريم</span><span class="lang-en-text">Quran Radio</span></a>
     </nav>
@@ -3131,6 +3168,13 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
   function upd(){var on=sec.classList.contains('radio-playing');nb.classList.toggle('on',on);
     nb.setAttribute('aria-label',on?'إيقاف إذاعة القرآن الكريم':'تشغيل إذاعة القرآن الكريم');}
   new MutationObserver(upd).observe(sec,{attributes:true,attributeFilter:['class']});upd();
+})();
+// Full biography: open it when the address points inside it (e.g. #timeline)
+(function(){
+  var d=document.getElementById('bioMore');if(!d)return;
+  function chk(){if(location.hash==='#timeline'){d.open=true;var t=document.getElementById('timeline');if(t)setTimeout(function(){t.scrollIntoView();},50);}}
+  window.addEventListener('hashchange',chk);chk();
+  d.addEventListener('toggle',function(){if(!d.open){var b=document.getElementById('bio');if(b&&b.getBoundingClientRect().top<0)b.scrollIntoView();}});
 })();
 // Player subtitle follows murattal / mujawwad
 (function(){

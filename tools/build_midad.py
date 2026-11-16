@@ -115,9 +115,8 @@ body = f'''<body>
   <div class="wrap">
     <a class="brand" href="#top" aria-label="أعلى الصفحة">{logo()}</a>
     <nav>
-      <a href="#bio">{ar_en("السيرة", "Biography")}</a>
-      <a href="#timeline">{ar_en("المسيرة", "Timeline")}</a>
       <a href="#library">{ar_en("التلاوات", "Recitations")}</a>
+      <a href="#bio">{ar_en("السيرة", "Biography")}</a>
       <button class="nav-radio" id="navRadio" type="button" aria-label="تشغيل إذاعة القرآن الكريم">
         <svg class="i-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg><svg class="i-pause" viewBox="0 0 24 24"><path d="M6 5h4v14H6zm8 0h4v14h-4z"/></svg>
         {ar_en("إذاعة القرآن الكريم", "Quran Radio")}<span class="live-dot"></span>
@@ -161,27 +160,9 @@ body = f'''<body>
   </div>
 </section>
 
-<section class="block" id="bio">
-  <div class="wrap">
-    <div class="head"><span class="num">{ar_en("٠١", "01")}</span><h2>{ar_en("حياة وُهبت للقرآن", "A Life Devoted to the Quran")}</h2><p>{ar_en("السيرة الذاتية", "Life &amp; Legacy")}</p></div>
-    <div class="bio">
-{chr(10).join(chapters)}
-    </div>
-  </div>
-</section>
-
-<section class="block" id="timeline">
-  <div class="wrap">
-    <div class="head"><span class="num">{ar_en("٠٢", "02")}</span><h2>{ar_en("رحلة في تسعٍ وأربعين سنة", "A Journey in 49 Years")}</h2><p>{ar_en("المسيرة", "Timeline")}</p></div>
-    <ol class="timeline">
-{timeline}
-    </ol>
-  </div>
-</section>
-
 <section class="block library" id="library">
   <div class="wrap">
-    <div class="head"><span class="num">{ar_en("٠٣", "03")}</span><h2>{ar_en("المصحف الشريف كاملًا", "The Complete Mushaf")}</h2><p>{ar_en("التلاوات · ١١٤ سورة برواية حفص عن عاصم", "Recitations · 114 surahs, Hafs from 'Asim")}</p></div>
+    <div class="head"><span class="num">{ar_en("٠١", "01")}</span><h2>{ar_en("المصحف الشريف كاملًا", "The Complete Mushaf")}</h2><p>{ar_en("التلاوات · ١١٤ سورة برواية حفص عن عاصم", "Recitations · 114 surahs, Hafs from 'Asim")}</p></div>
     <div class="lib-bar">
       <div class="recitation-toggle">
         <button class="recitation-btn active" id="btnMurattal">{ar_en("المرتل", "Murattal")}</button>
@@ -199,20 +180,40 @@ body = f'''<body>
 </section>
 
 <section class="live-radio" id="radio">
-  <div class="wrap">
-    <span class="live-badge"><span class="live-dot"></span>{ar_en("بث مباشر", "Live")}</span>
-    <h2 class="live-radio-title">{ar_en("إذاعة القرآن الكريم", "Holy Quran Radio")}</h2>
-    <p class="live-radio-subtitle">{ar_en("من القاهرة · على مدار الساعة", "From Cairo · around the clock")}</p>
-    <div class="radio-speaker">
-      <span class="radio-ring"></span><span class="radio-ring"></span><span class="radio-ring"></span>
-      <button class="radio-play-btn" id="radioPlayBtn" aria-label="Play/Pause Radio">
-        <svg viewBox="0 0 24 24" id="radioPlayIcon"><path d="M8 5v14l11-7z"></path></svg>
-      </button>
+  <div class="wrap radio-band">
+    <div class="radio-text">
+      <span class="live-badge"><span class="live-dot"></span>{ar_en("بث مباشر", "Live")}</span>
+      <h2 class="live-radio-title">{ar_en("إذاعة القرآن الكريم", "Holy Quran Radio")}</h2>
+      <p class="live-radio-subtitle">{ar_en("من القاهرة · على مدار الساعة", "From Cairo · around the clock")}</p>
     </div>
-    <span class="radio-status" id="radioStatus">{ar_en("اضغط للاستماع", "Tap to listen")}</span>
-    <p class="radio-station">{ar_en("الهيئة الوطنية للإعلام · FM ٩٨٫٢", "National Media Authority · FM 98.2")}</p>
+    <div class="radio-control">
+      <div class="radio-speaker">
+        <span class="radio-ring"></span><span class="radio-ring"></span><span class="radio-ring"></span>
+        <button class="radio-play-btn" id="radioPlayBtn" aria-label="Play/Pause Radio">
+          <svg viewBox="0 0 24 24" id="radioPlayIcon"><path d="M8 5v14l11-7z"></path></svg>
+        </button>
+      </div>
+      <span class="radio-status" id="radioStatus">{ar_en("اضغط للاستماع", "Tap to listen")}</span>
+    </div>
   </div>
   <audio id="radioAudio" preload="none"></audio>
+</section>
+
+<section class="block" id="bio">
+  <div class="wrap">
+    <div class="head"><span class="num">{ar_en("٠٢", "02")}</span><h2>{ar_en("حياة وُهبت للقرآن", "A Life Devoted to the Quran")}</h2><p>{ar_en("السيرة الذاتية", "Life &amp; Legacy")}</p></div>
+    <p class="bio-intro">{ar_en("وُلد الشيخ محمد صديق المنشاوي عام ١٩٢٠ في المنشأة بمحافظة سوهاج، في أسرة توارثت تلاوة القرآن الكريم، وأتمّ حفظه صغيرًا. اعتُمد قارئًا بالإذاعة المصرية سنة ١٩٥٣، ولُقِّب بـ«الصوت الباكي» لخشوع تلاوته، وسجّل المصحف كاملًا مرتّلًا ومجوّدًا، وطاف بتلاوته بلاد العالم الإسلامي حتى رحيله عام ١٩٦٩.", "Born in 1920 in al-Minsha'ah, Sohag, into a family of Quran reciters, Sheikh Muhammad Siddiq al-Minshawi memorized the Quran as a child, joined Egyptian Radio in 1953 and became known as “the Weeping Voice.” He recorded the complete Quran, murattal and mujawwad, and recited across the Muslim world until his death in 1969.")}</p>
+    <details class="bio-more" id="bioMore">
+      <summary class="btn ghost"><span class="more">{ar_en("اقرأ السيرة كاملة", "Read the full biography")}</span><span class="less">{ar_en("إخفاء السيرة", "Hide the biography")}</span><svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg></summary>
+      <div class="bio">
+{chr(10).join(chapters)}
+      </div>
+      <h3 class="tl-title">{ar_en("المسيرة · رحلة في تسعٍ وأربعين سنة", "Timeline · a journey in 49 years")}</h3>
+      <ol class="timeline" id="timeline">
+{timeline}
+      </ol>
+    </details>
+  </div>
 </section>
 </main>
 
@@ -221,8 +222,8 @@ body = f'''<body>
     {logo()}
     <p class="verse">{ar_en("﴿وَرَتِّلِ الْقُرْآنَ تَرْتِيلًا﴾", "“And recite the Quran with measured recitation.”")}</p>
     <nav>
-      <a href="#bio">{ar_en("السيرة", "Biography")}</a>
       <a href="#library">{ar_en("التلاوات", "Recitations")}</a>
+      <a href="#bio">{ar_en("السيرة", "Biography")}</a>
       <a href="{BASE}/surah/">{ar_en("فهرس السور", "All Surahs")}</a>
       <a href="#radio">{ar_en("إذاعة القرآن الكريم", "Quran Radio")}</a>
     </nav>
@@ -262,6 +263,13 @@ THEME_JS = """<script>
   function upd(){var on=sec.classList.contains('radio-playing');nb.classList.toggle('on',on);
     nb.setAttribute('aria-label',on?'إيقاف إذاعة القرآن الكريم':'تشغيل إذاعة القرآن الكريم');}
   new MutationObserver(upd).observe(sec,{attributes:true,attributeFilter:['class']});upd();
+})();
+// Full biography: open it when the address points inside it (e.g. #timeline)
+(function(){
+  var d=document.getElementById('bioMore');if(!d)return;
+  function chk(){if(location.hash==='#timeline'){d.open=true;var t=document.getElementById('timeline');if(t)setTimeout(function(){t.scrollIntoView();},50);}}
+  window.addEventListener('hashchange',chk);chk();
+  d.addEventListener('toggle',function(){if(!d.open){var b=document.getElementById('bio');if(b&&b.getBoundingClientRect().top<0)b.scrollIntoView();}});
 })();
 // Player subtitle follows murattal / mujawwad
 (function(){
