@@ -1037,6 +1037,9 @@ body:not(.lang-en) .hero-ticker-track {
 }
 
 .surah-card:hover::before { opacity: 1; }
+a.surah-info { color: inherit; text-decoration: none; }
+.footer-links { margin: 0 0 1rem; }
+.footer-links a { color: var(--gold); text-decoration: none; border-bottom: 1px solid currentColor; font-weight: 500; }
 
 .surah-card.playing {
   background: var(--ink);
@@ -2642,7 +2645,7 @@ body:not(.lang-en) .lang-en-text { display: none; }
   <ul class="nav-links">
     <li><a href="#bio"><span class="lang-ar">السيرة</span><span class="lang-en-text">Biography</span></a></li>
     <li><a href="#timeline"><span class="lang-ar">المسيرة</span><span class="lang-en-text">Timeline</span></a></li>
-    <li><a href="#library"><span class="lang-ar">المكتبة</span><span class="lang-en-text">Library</span></a></li>
+    <li><a href="#library"><span class="lang-ar">التلاوات</span><span class="lang-en-text">Recitations</span></a></li>
     <li><a href="#radio" style="display: inline-flex; align-items: center; gap: 0.4rem;"><span class="live-dot"></span> <span class="lang-ar">البث المباشر</span><span class="lang-en-text">Live Radio</span></a></li>
   </ul>
   <button class="lang-toggle" id="langToggle">EN</button>
@@ -3749,8 +3752,8 @@ body:not(.lang-en) .lang-en-text { display: none; }
   <div class="library-inner">
     <div class="ornament-divider"><span>۞</span></div>
     <p class="section-label">
-      <span class="lang-ar">المكتبة الصوتية</span>
-      <span class="lang-en-text">Audio Library</span>
+      <span class="lang-ar">التلاوات</span>
+      <span class="lang-en-text">Recitations</span>
     </p>
     <h2 class="section-title">
       <span class="lang-ar">المصحف الشريف كاملاً</span>
@@ -3850,6 +3853,9 @@ body:not(.lang-en) .lang-en-text { display: none; }
   <p class="footer-tagline">
     <span class="lang-ar">استمع، تدبر، وشارك الأجر</span>
     <span class="lang-en-text">Listen, reflect, and share the reward</span>
+  </p>
+  <p class="footer-links">
+    <a href="/surah/"><span class="lang-ar">فهرس السور</span><span class="lang-en-text">All Surahs</span></a>
   </p>
   <p class="footer-description">
     <span class="lang-ar">تلاوات الشيخ محمد صديق المنشاوي بجودة عالية</span>
@@ -4334,6 +4340,11 @@ function surahMatches(s, filter) {
   return enNames.some(n => n.includes(qe) || n.replace(/^(adh|ash|al|an|ar|as|at|ad|az)/, '').startsWith(qe));
 }
 
+// Same slug rule as tools/build_surahs.py (surah/<slug>/ pages)
+function surahSlug(s) {
+  return s.en.toLowerCase().replace(/['’]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+}
+
 function renderSurahs(filter = '') {
   grid.innerHTML = '';
   const filtered = surahs.filter(s => surahMatches(s, filter));
@@ -4344,13 +4355,19 @@ function renderSurahs(filter = '') {
     card.dataset.num = s.num;
     card.innerHTML = `
       <div class="surah-num">${arabicNum(s.num)}</div>
-      <div class="surah-info">
+      <a class="surah-info" href="/surah/${surahSlug(s)}/">
         <span class="surah-name">${s.ar}</span>
         <span class="surah-name-en">${s.en}</span>
-      </div>
+      </a>
       <div class="play-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
     `;
-    card.addEventListener('click', () => {
+    card.addEventListener('click', (e) => {
+      // The name links to the surah's own page (for search engines and
+      // cmd/ctrl/middle-click); a plain click keeps playing it here.
+      if (e.target.closest('a')) {
+        if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+        e.preventDefault();
+      }
       // Clicking the card of the surah already loaded toggles play/pause instead of restarting it
       if (currentSurah && !currentSurah.isRadio && currentSurah.num === s.num) togglePlayPause();
       else playSurah(s.num);
