@@ -191,7 +191,6 @@ body = f'''<body>
     <div class="head"><span class="num">{ar_en("٠٢", "02")}</span><h2>{ar_en("المصحف المرتل الجديد", "The New Murattal")}</h2><p>{ar_en("تسجيلات ١٩٦٦ · ١١ تلاوة", "The 1966 re-recordings · 11 recitations")}</p></div>
     <p class="jadid-intro">{ar_en("بعد أن سجّل الشيخ مصحفه المرتل، عاد سنة ١٩٦٦ فأعاد بنفسه تسجيل اثنين وثلاثين شريطًا منه على نفقته طلبًا لأداءٍ أكمل، وأُجيزت التسجيلات سنة ١٩٦٧ ثم بقيت في أرشيف الإذاعة عقودًا. هذه الفقرات التي وصلت إلينا منها.", "After recording his murattal mushaf, the Sheikh returned in 1966 and re-recorded thirty-two of its tapes at his own expense, seeking a finer performance. The recordings were approved in 1967, then stayed in the radio archive for decades. These are the passages that have reached us.")}</p>
     <div class="surahs-grid jadid-grid" id="jadidGrid"></div>
-    <p class="lib-more">{ar_en('المصدر: نسخة هيثم الحويني، عن <a href="https://www.alminshawi.com/" target="_blank" rel="noopener">موقع الشيخ المنشاوي</a>', 'Source: the Haitham al-Huwayni copy, via <a href="https://www.alminshawi.com/" target="_blank" rel="noopener">alminshawi.com</a>')}</p>
   </div>
 </section>
 
