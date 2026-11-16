@@ -1336,7 +1336,7 @@ section.block{padding:clamp(56px,10vh,112px) 0;border-top:1px solid var(--line)}
 .media-player.is-radio .player-cover,.player-expanded.is-radio .expanded-cover{border-color:var(--accent)!important}
 .player-title,.expanded-title{font-family:'Thmanyah Serif Display',serif!important}
 
-@media (max-width:900px){
+@media (max-width:600px){
   .site-header .wrap{flex-wrap:wrap;height:auto;padding-top:12px;gap:0}
   .brand .logo{height:28px}
   .site-header nav{order:3;width:100%;gap:22px;overflow-x:auto;white-space:nowrap;padding:10px 0 12px;margin-top:8px;border-top:1px solid var(--line);font-size:.9rem;scrollbar-width:none}
@@ -1379,6 +1379,18 @@ section.block{padding:clamp(56px,10vh,112px) 0;border-top:1px solid var(--line)}
   .radio-speaker{width:132px;height:132px;margin:76px auto 66px}
   .radio-play-btn{width:72px;height:72px}
 
+}
+
+/* tablets & unfolded foldables (iPhone Duo inside, Galaxy Fold inside): keep the wide layout */
+@media (min-width:601px) and (max-width:900px){
+  .site-header .wrap{gap:14px}
+  .site-header nav{gap:18px;font-size:.88rem}
+  .hero .wrap{gap:36px}
+  .hero .logo{width:min(100%,260px)}
+  .bio{grid-template-columns:1fr}
+  .timeline li{grid-template-columns:96px 1fr}
+}
+@media (max-width:600px){
   /* original player's mobile layout */
   .player-compact{grid-template-columns:1fr auto;gap:.75rem;padding:.6rem 1rem;min-height:auto}
   .player-compact .player-extras{grid-column:2;grid-row:1}
@@ -1449,7 +1461,7 @@ section.block{padding:clamp(56px,10vh,112px) 0;border-top:1px solid var(--line)}
 @media (max-width:900px){.nav-radio{height:30px;font-size:.85rem}.site-header nav{padding-inline-end:2px}}
 
 /* ---- very narrow screens (Galaxy Fold cover screen, large text / page zoom) ---- */
-@media (max-width:900px){
+@media (max-width:600px){
   .surahs-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .surah-card{min-width:0}
   .surah-info{min-width:0;overflow-wrap:anywhere}
@@ -1467,6 +1479,27 @@ section.block{padding:clamp(56px,10vh,112px) 0;border-top:1px solid var(--line)}
   .years b{font-size:1.5rem}
   .timeline li{grid-template-columns:52px minmax(0,1fr)}
   .player-compact{padding:.5rem .6rem!important}
+}
+
+/* player in one row on tablets / unfolded foldables (641–1000px) */
+@media (min-width:601px) and (max-width:1000px){
+  .player-compact{grid-template-columns:minmax(150px,1fr) minmax(300px,2fr) auto!important;gap:1rem!important;padding:.55rem 1rem!important;min-height:70px!important}
+  .player-extras .volume-control,.player-fav{display:none!important}
+  .player-buttons{gap:.5rem!important}
+  .expanded-cover{width:min(280px,40vh)!important;height:min(280px,40vh)!important}
+}
+
+/* short, wide screens (unfolded foldables in landscape, small laptops): fit the hero above the player */
+@media (min-width:601px) and (max-height:720px){
+  .hero{padding:24px 0 40px}
+  .hero .portrait{max-width:240px}
+  .hero .logo{width:min(100%,220px)}
+  .kicker{margin-bottom:12px}
+  .hero h1{margin-top:14px;padding-top:10px;font-size:1.35rem}
+  .hero .verse{margin-top:10px}
+  .ctas{margin-top:18px}
+  .years{margin-top:18px;padding-top:14px}
+  .years b{font-size:1.5rem}
 }
 
 </style>
