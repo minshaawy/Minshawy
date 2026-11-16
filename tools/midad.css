@@ -1,0 +1,280 @@
+/* ============ MIDAD — paper & ink, with a dark theme ============ */
+:root{
+  --bg:#f7f4ee; --bg-2:#efebe2; --card:#fffdf9;
+  --fg:#111; --fg-2:#2b2925; --muted:#6a645a;
+  --line:rgba(17,17,17,.12); --line-2:rgba(17,17,17,.26);
+  --accent:#9b2a1a;
+  --btn:#111; --btn-fg:#f7f4ee;
+  --inv-bg:#111; --inv-fg:#f7f4ee; --inv-muted:#b9b2a5;
+  --shadow:0 30px 60px -30px rgba(17,17,17,.45);
+  /* media player */
+  --p-bg:#111; --p-fg:#f7f4ee; --p-fg-rgb:247,244,238; --p-acc:#f7f4ee; --p-acc-rgb:247,244,238;
+  --wrap:1200px; --gut:clamp(16px,5vw,64px);
+  color-scheme:light;
+}
+:root[data-theme="dark"]{
+  --bg:#121110; --bg-2:#181614; --card:#1c1a17;
+  --fg:#eee8dd; --fg-2:#d6cfc2; --muted:#a0988b;
+  --line:rgba(238,232,221,.12); --line-2:rgba(238,232,221,.26);
+  --accent:#d9644c;
+  --btn:#eee8dd; --btn-fg:#121110;
+  --inv-bg:#0b0a09; --inv-fg:#eee8dd; --inv-muted:#9a9285;
+  --shadow:0 30px 60px -30px rgba(0,0,0,.8);
+  --p-bg:#1c1a17; --p-fg:#eee8dd; --p-fg-rgb:238,232,221; --p-acc:#eee8dd; --p-acc-rgb:238,232,221;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#121110; --bg-2:#181614; --card:#1c1a17;
+    --fg:#eee8dd; --fg-2:#d6cfc2; --muted:#a0988b;
+    --line:rgba(238,232,221,.12); --line-2:rgba(238,232,221,.26);
+    --accent:#d9644c;
+    --btn:#eee8dd; --btn-fg:#121110;
+    --inv-bg:#0b0a09; --inv-fg:#eee8dd; --inv-muted:#9a9285;
+    --shadow:0 30px 60px -30px rgba(0,0,0,.8);
+    --p-bg:#1c1a17; --p-fg:#eee8dd; --p-fg-rgb:238,232,221; --p-acc:#eee8dd; --p-acc-rgb:238,232,221;
+    color-scheme:dark;
+  }
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:'Thmanyah Sans',system-ui,sans-serif;background:var(--bg);color:var(--fg);line-height:1.8;-webkit-font-smoothing:antialiased;transition:background .3s,color .3s}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit}
+svg.logo{display:block;height:auto;fill:currentColor}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--gut)}
+.live-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--accent);margin-inline-end:7px;vertical-align:middle;animation:pulse 2s infinite}
+@keyframes pulse{50%{opacity:.35}}
+
+/* language switching */
+body.lang-en{direction:ltr}
+body.lang-en .lang-ar{display:none}
+body:not(.lang-en) .lang-en-text{display:none}
+body:not(.lang-en) *{letter-spacing:0!important}
+
+/* ---- header ---- */
+.site-header{position:sticky;top:0;z-index:60;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.site-header .wrap{display:flex;align-items:center;justify-content:space-between;height:68px;gap:24px}
+.brand .logo{width:auto;height:30px}
+.site-header nav{display:flex;gap:30px;font-size:.95rem;color:var(--muted)}
+.site-header nav a:hover{color:var(--fg)}
+.tools{display:flex;align-items:center;gap:8px}
+.icon-btn,.lang-toggle{height:32px;min-width:32px;display:inline-grid;place-items:center;border:1px solid var(--line-2);border-radius:2px;background:transparent;cursor:pointer;color:var(--fg-2);font-size:.8rem;padding:0 10px}
+.icon-btn{padding:0}
+.icon-btn:hover,.lang-toggle:hover{border-color:var(--fg);color:var(--fg)}
+.icon-btn svg{width:16px;height:16px;fill:currentColor}
+.icon-btn .sun{display:none}
+:root[data-theme="dark"] .icon-btn .sun{display:block}
+:root[data-theme="dark"] .icon-btn .moon{display:none}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]) .icon-btn .sun{display:block}
+  :root:not([data-theme="light"]) .icon-btn .moon{display:none}
+}
+
+/* ---- hero ---- */
+.hero{padding:clamp(40px,7vh,80px) 0 clamp(56px,9vh,96px)}
+.hero .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,96px);align-items:center}
+.kicker{display:flex;align-items:center;gap:12px;font-size:.9rem;color:var(--accent);margin-bottom:22px}
+.kicker::before{content:'';width:32px;height:1px;background:currentColor}
+.hero .logo{width:min(100%,320px)}
+.hero h1{font:700 clamp(1.4rem,2.4vw,1.75rem)/1.4 'Thmanyah Serif Display',serif;margin-top:24px;padding-top:16px;border-top:3px solid var(--fg);display:inline-block}
+.hero h1 small{display:block;font:400 .9rem 'Thmanyah Sans',sans-serif;color:var(--muted);letter-spacing:.04em;direction:ltr;text-align:right}
+body.lang-en .hero h1 small{text-align:left}
+.hero .verse{font:400 1.1rem 'Thmanyah Serif Text',serif;color:var(--fg-2);margin-top:20px}
+.ctas{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:13px 24px;border-radius:2px;font-weight:500;font-size:.95rem;transition:background .2s,color .2s,border-color .2s;cursor:pointer}
+.btn.primary{background:var(--btn);color:var(--btn-fg);border:1px solid var(--btn)}
+.btn.primary:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn.ghost{border:1px solid var(--fg)}
+.btn.ghost:hover{background:var(--fg);color:var(--bg)}
+.btn svg{width:14px;height:14px;fill:currentColor}
+.years{display:flex;gap:40px;margin-top:32px;padding-top:24px;border-top:1px solid var(--line);font-size:.85rem;color:var(--muted)}
+.years b{display:block;font:700 1.9rem/1.2 'Thmanyah Serif Display',serif;color:var(--fg)}
+.portrait{position:relative;width:100%;max-width:320px;justify-self:center}
+.portrait picture,.portrait img{display:block;width:100%;height:auto}
+.portrait img{aspect-ratio:765/1024;object-fit:cover;border-radius:2px;box-shadow:var(--shadow)}
+.portrait figcaption{margin-top:12px;font-size:.8rem;color:var(--muted);display:flex;justify-content:space-between}
+
+/* ---- sections ---- */
+section.block{padding:clamp(56px,10vh,112px) 0;border-top:1px solid var(--line)}
+.head{display:grid;grid-template-columns:auto 1fr;gap:6px 22px;align-items:end;margin-bottom:clamp(32px,5vh,56px)}
+.head .num{font:700 1rem 'Thmanyah Serif Display',serif;color:var(--accent);grid-row:span 2;align-self:start;padding-top:10px}
+.head h2{font:700 clamp(2rem,4.6vw,3.4rem)/1.15 'Thmanyah Serif Display',serif}
+.head p{color:var(--muted)}
+
+/* bio */
+.bio{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(28px,4vw,56px) clamp(32px,5vw,72px)}
+.chapter h3{font:700 1.45rem 'Thmanyah Serif Display',serif;margin-bottom:12px;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.chapter h3 .label{font:500 .8rem 'Thmanyah Sans',sans-serif;color:var(--accent)}
+.chapter p{font:400 1.08rem/2 'Thmanyah Serif Text',serif;color:var(--fg-2);margin-bottom:14px;text-align:justify}
+.chapter p strong{font-weight:400;color:var(--fg)}
+.pull{grid-column:1/-1;border-block:3px solid var(--fg);padding:28px 0;font:700 clamp(1.3rem,2.6vw,1.9rem)/1.6 'Thmanyah Serif Display',serif;text-align:center}
+.pull cite{display:block;font:400 .9rem 'Thmanyah Sans',sans-serif;color:var(--muted);font-style:normal;margin-top:8px}
+
+/* timeline */
+.timeline{list-style:none;border-top:1px solid var(--fg)}
+.timeline li{display:grid;grid-template-columns:140px 1fr;gap:24px;padding:20px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.timeline b{font:700 2rem/1 'Thmanyah Serif Display',serif}
+.timeline span{font:400 1.05rem 'Thmanyah Serif Text',serif;color:var(--fg-2)}
+.timeline li:hover b{color:var(--accent)}
+
+/* recitations */
+#library{background:var(--bg-2)}
+.lib-bar{display:flex;gap:12px;justify-content:space-between;align-items:center;flex-wrap:wrap;margin-bottom:22px}
+.recitation-toggle{display:inline-flex;border:1px solid var(--fg);border-radius:2px}
+.recitation-btn{font:500 .92rem 'Thmanyah Sans',sans-serif;border:0;background:transparent;padding:9px 22px;cursor:pointer;color:var(--fg)}
+.recitation-btn.active{background:var(--fg);color:var(--bg)}
+.search-box{flex:1;max-width:360px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--fg);padding:6px 2px}
+.search-box svg{width:16px;height:16px;fill:var(--muted);flex:none}
+.search-box input{flex:1;border:0;background:transparent;font:400 1rem 'Thmanyah Sans',sans-serif;color:var(--fg);outline:0;min-width:0}
+.search-box input::placeholder{color:var(--muted)}
+.lib-stats{font-size:.85rem;color:var(--muted)}
+.lib-stats strong{font-weight:500;color:var(--fg)}
+.surahs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.surah-card{display:flex;align-items:center;gap:14px;padding:16px 18px;background:var(--card);cursor:pointer;transition:background .15s}
+.surah-card:hover{background:var(--bg)}
+.surah-num{font:700 1.05rem 'Thmanyah Serif Display',serif;color:var(--muted);min-width:2.2ch}
+.surah-info{display:block;color:inherit;min-width:0}
+.surah-name{display:block;font:700 1.15rem/1.3 'Thmanyah Serif Display',serif}
+.surah-name-en{display:block;color:var(--muted);font-size:.78rem}
+.play-icon{margin-inline-start:auto;width:30px;height:30px;border-radius:50%;border:1px solid var(--line-2);display:grid;place-items:center;flex:none}
+.surah-card.playing{background:var(--fg);color:var(--bg)}
+.surah-card.playing .surah-num,.surah-card.playing .surah-name-en{color:color-mix(in srgb,var(--bg) 65%,var(--fg))}
+.surah-card.playing .play-icon{border-color:color-mix(in srgb,var(--bg) 30%,transparent)}
+.lib-more{margin-top:18px;font-size:.9rem;color:var(--muted)}
+.lib-more a{border-bottom:1px solid var(--line-2);color:var(--fg)}
+
+/* radio */
+.live-radio{background:var(--inv-bg);color:var(--inv-fg);padding:clamp(64px,11vh,120px) 0;text-align:center}
+.live-badge{display:inline-flex;align-items:center;font-size:.85rem;border:1px solid color-mix(in srgb,var(--inv-fg) 22%,transparent);padding:4px 14px;border-radius:2px;line-height:1.6}
+.live-radio-title{font:700 clamp(2rem,4.6vw,3.2rem)/1.25 'Thmanyah Serif Display',serif;margin-top:22px}
+.live-radio-subtitle{color:var(--inv-muted);margin-top:10px}
+.radio-speaker{width:160px;height:160px;border-radius:50%;border:1px solid color-mix(in srgb,var(--inv-fg) 22%,transparent);margin:96px auto 84px;display:grid;place-items:center;position:relative}
+.radio-ring{position:absolute;border-radius:50%;border:1px solid color-mix(in srgb,var(--inv-fg) 9%,transparent);pointer-events:none}
+.radio-ring:nth-child(1){inset:-22px}
+.radio-ring:nth-child(2){inset:-48px;border-color:color-mix(in srgb,var(--inv-fg) 5%,transparent)}
+.radio-ring:nth-child(3){inset:0;opacity:0}
+.live-radio.radio-playing .radio-ring{animation:ring 2.4s ease-out infinite}
+.live-radio.radio-playing .radio-ring:nth-child(2){animation-delay:.8s}
+.live-radio.radio-playing .radio-ring:nth-child(3){animation-delay:1.6s}
+@keyframes ring{0%{transform:scale(.9);opacity:.9}100%{transform:scale(1.35);opacity:0}}
+.radio-play-btn{width:84px;height:84px;border-radius:50%;border:0;background:var(--inv-fg);color:var(--inv-bg);display:grid;place-items:center;cursor:pointer;transition:transform .2s}
+.radio-play-btn:hover{transform:scale(1.05)}
+.radio-play-btn svg{width:30px;height:30px;fill:currentColor}
+.radio-status{display:block;color:var(--inv-muted);font-size:.9rem}
+.radio-station{color:var(--inv-muted);font-size:.85rem;margin-top:6px;opacity:.8}
+
+/* footer */
+.site-footer{padding:64px 0 140px;text-align:center;border-top:1px solid var(--line)}
+.site-footer .logo{width:150px;margin:0 auto}
+.site-footer .verse{font:400 1.2rem 'Thmanyah Serif Text',serif;margin-top:24px}
+.site-footer nav{display:flex;justify-content:center;flex-wrap:wrap;gap:12px 24px;margin-top:22px;font-size:.92rem}
+.site-footer nav a{border-bottom:1px solid var(--line-2)}
+.site-footer .fine{color:var(--muted);font-size:.8rem;max-width:620px;margin:26px auto 0}
+
+/* fade in */
+.fade-in{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
+.fade-in.visible{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.fade-in{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+
+/* ---- media player: Midad skin over the original player rules ---- */
+.media-player{background:var(--p-bg)!important;box-shadow:0 -10px 30px rgba(0,0,0,.25)!important;border-top:1px solid rgba(var(--p-fg-rgb),.12)!important}
+.media-player::before{display:none!important}
+.player-cover{border-radius:2px!important;background:rgba(var(--p-fg-rgb),.08)!important;border:1px solid rgba(var(--p-fg-rgb),.2)!important;box-shadow:none!important}
+.player-btn.main{background:var(--p-fg)!important;color:var(--p-bg)!important;box-shadow:none!important}
+.player-btn.main svg{fill:var(--p-bg)!important}
+.progress-fill,.player-mini-progress-fill{background:var(--p-fg)!important;box-shadow:none!important}
+.progress-thumb{background:var(--p-fg)!important;box-shadow:none!important}
+.queue-panel,.player-expanded{background:var(--p-bg)!important}
+.expanded-cover{border-radius:2px!important;background:rgba(var(--p-fg-rgb),.06)!important;border:1px solid rgba(var(--p-fg-rgb),.2)!important;box-shadow:none!important}
+.expanded-cover::before{opacity:.06!important}
+.media-player.is-radio .player-cover,.player-expanded.is-radio .expanded-cover{border-color:var(--accent)!important}
+.player-title,.expanded-title{font-family:'Thmanyah Serif Display',serif!important}
+
+@media (max-width:900px){
+  .site-header .wrap{flex-wrap:wrap;height:auto;padding-top:12px;gap:0}
+  .brand .logo{height:28px}
+  .site-header nav{order:3;width:100%;gap:22px;overflow-x:auto;white-space:nowrap;padding:10px 0 12px;margin-top:8px;border-top:1px solid var(--line);font-size:.9rem;scrollbar-width:none}
+  .site-header nav::-webkit-scrollbar{display:none}
+
+  .hero{padding:28px 0 48px}
+  .hero .wrap{grid-template-columns:1fr;text-align:center;gap:28px}
+  .hero .portrait{max-width:180px;margin:0 auto;order:-1}
+  .hero .portrait figcaption{display:none}
+  .hero .logo{width:min(62%,230px);margin:0 auto}
+  .kicker,.years{justify-content:center}
+  .hero h1{display:block}
+  .hero h1 small,body.lang-en .hero h1 small{text-align:center}
+  .ctas{flex-direction:column;align-items:stretch;max-width:320px;margin-inline:auto}
+  .years{gap:0}
+  .years span{flex:1}
+
+  section.block{padding:56px 0}
+  .head{display:block;margin-bottom:28px}
+  .head .num{display:inline-block;padding:0;margin-bottom:6px;font-size:.9rem}
+  .head h2{font-size:2rem}
+  .bio{grid-template-columns:1fr;gap:32px}
+  .chapter p{text-align:start;font-size:1.05rem;line-height:1.95}
+  .pull{padding:22px 0;font-size:1.25rem}
+  .timeline li{grid-template-columns:64px 1fr;gap:12px;padding:16px 0}
+  .timeline b{font-size:1.35rem}
+  .timeline span{font-size:1rem}
+
+  .lib-bar{flex-direction:column;align-items:stretch;gap:14px}
+  .recitation-toggle{display:flex}
+  .recitation-btn{flex:1}
+  .search-box{max-width:none}
+  .lib-stats{text-align:center}
+  .surahs-grid{grid-template-columns:repeat(2,1fr)}
+  .surah-card{padding:12px;gap:10px}
+  .play-icon{display:none}
+  .surah-name{font-size:1.05rem}
+
+  .live-radio{padding:64px 0}
+  .radio-speaker{width:132px;height:132px;margin:76px auto 66px}
+  .radio-play-btn{width:72px;height:72px}
+
+  /* original player's mobile layout */
+  .player-compact{grid-template-columns:1fr auto;gap:.75rem;padding:.6rem 1rem;min-height:auto}
+  .player-compact .player-extras{grid-column:2;grid-row:1}
+  .player-compact .player-controls-wrapper{grid-column:1/-1;grid-row:2}
+  .player-extras .volume-control{display:none}
+  .player-info{gap:.6rem}
+  .player-cover{width:44px;height:44px;font-size:1.1rem}
+  .player-fav{display:none}
+  .player-buttons{gap:.75rem}
+  .expanded-title{font-size:1.8rem}
+  .expanded-cover{width:min(280px,60vw);height:min(280px,60vw)}
+  .expanded-cover .num{font-size:3.5rem}
+  .expanded-cover::before{font-size:10rem}
+  .expanded-controls{gap:1.25rem}
+  .expanded-extras{gap:1rem;flex-wrap:wrap}
+  .expanded-extras .volume-control{display:none}
+}
+
+/* ---- very light motion ---- */
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes ink{from{opacity:0;clip-path:inset(0 0 0 100%)}to{opacity:1;clip-path:inset(0 0 0 0)}}
+.hero .kicker,.hero h1,.hero .verse,.hero .ctas,.hero .years{animation:rise .8s cubic-bezier(.2,.7,.2,1) both}
+.hero .logo{animation:ink 1.1s cubic-bezier(.6,0,.2,1) .15s both}
+.hero h1{animation-delay:.45s}
+.hero .verse{animation-delay:.55s}
+.hero .ctas{animation-delay:.65s}
+.hero .years{animation-delay:.75s}
+.hero .portrait{animation:rise 1s cubic-bezier(.2,.7,.2,1) .2s both}
+.surah-card{transition:background .15s,transform .15s}
+.surah-card:hover{transform:translateY(-1px)}
+.btn,.recitation-btn{transition:background .2s,color .2s,border-color .2s,transform .15s}
+.btn:active,.recitation-btn:active,.radio-play-btn:active{transform:scale(.97)}
+.site-header nav a{position:relative}
+.site-header nav a::after{content:'';position:absolute;inset-inline:0;bottom:-4px;height:1px;background:currentColor;transform:scaleX(0);transition:transform .25s}
+.site-header nav a:hover::after{transform:scaleX(1)}
+@media (prefers-reduced-motion:reduce){
+  .hero *,.hero .logo,.hero .portrait{animation:none!important}
+  .surah-card:hover{transform:none}
+}
+
+/* dark theme: keep the radio block distinct from the page */
+:root[data-theme="dark"] .live-radio{border-block:1px solid var(--line)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .live-radio{border-block:1px solid var(--line)}}
