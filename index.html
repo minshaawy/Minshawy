@@ -1576,6 +1576,12 @@ section.block{padding:clamp(56px,10vh,112px) 0;border-top:1px solid var(--line)}
 .site-footer{padding-bottom:calc(140px + env(safe-area-inset-bottom,0px))}
 body{padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inset-right,0px)}
 
+/* Playback controls, progress and volume run left→right in every language, like a timeline
+   (prev on the left, next on the right; time grows to the right). Only the labels stay Arabic. */
+.player-buttons,.expanded-controls,.player-progress-row,.volume-wrapper{direction:ltr}
+.progress-fill,.player-mini-progress-fill{right:auto!important;left:0!important}
+.progress-thumb{left:auto!important;right:0!important;transform:translate(50%,-50%)!important}
+
 </style>
 </head>
 <body>
@@ -2860,9 +2866,8 @@ function setupProgressClick(container) {
   container.addEventListener('click', (e) => {
     if (!audio.duration) return;
     const rect = container.getBoundingClientRect();
-    const isRtl = document.documentElement.dir === 'rtl';
     const x = e.clientX - rect.left;
-    const ratio = isRtl ? (1 - x / rect.width) : (x / rect.width);
+    const ratio = x / rect.width;  // the bar runs left→right in every language
     audio.currentTime = Math.max(0, Math.min(audio.duration, ratio * audio.duration));
   });
 }
@@ -2877,10 +2882,9 @@ if (progressTooltip) {
       return;
     }
     const rect = progressContainer.getBoundingClientRect();
-    const isRtl = document.documentElement.dir === 'rtl';
     const x = e.clientX - rect.left;
     const clampedX = Math.max(0, Math.min(rect.width, x));
-    const ratio = isRtl ? (1 - clampedX / rect.width) : (clampedX / rect.width);
+    const ratio = clampedX / rect.width;
     const time = ratio * audio.duration;
     progressTooltip.textContent = formatTime(time);
     progressTooltip.style.left = clampedX + 'px';
@@ -2942,10 +2946,7 @@ document.addEventListener('keydown', (e) => {
         e.preventDefault();
         audio.currentTime = Math.max(0, audio.currentTime - 5);
       } else {
-        // RTL: Left arrow = next, Right = prev
-        const isRtl = document.documentElement.dir === 'rtl';
-        if (isRtl) playNext();
-        else playPrev();
+        playPrev();  // controls run left→right in every language
       }
       break;
     case 'ArrowRight':
@@ -2953,9 +2954,7 @@ document.addEventListener('keydown', (e) => {
         e.preventDefault();
         audio.currentTime = Math.min(audio.duration || 0, audio.currentTime + 5);
       } else {
-        const isRtl = document.documentElement.dir === 'rtl';
-        if (isRtl) playPrev();
-        else playNext();
+        playNext();
       }
       break;
     case 'ArrowUp':
