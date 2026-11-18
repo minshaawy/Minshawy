@@ -1582,6 +1582,19 @@ body{padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inse
 .progress-fill,.player-mini-progress-fill{right:auto!important;left:0!important}
 .progress-thumb{left:auto!important;right:0!important;transform:translate(50%,-50%)!important}
 
+/* Live radio: no seeking, no tracks. Keep play/pause and volume only, and say it's live where the bar was. */
+.media-player.is-radio .player-fav,.media-player.is-radio #shuffleBtn,.media-player.is-radio #prevBtn,
+.media-player.is-radio #rewindBtn,.media-player.is-radio #forwardBtn,.media-player.is-radio #nextBtn,
+.media-player.is-radio #repeatBtn,.media-player.is-radio #downloadBtn,.media-player.is-radio .player-queue-chevron,
+.media-player.is-radio .player-progress-row,.media-player.is-radio .player-mini-progress,
+.player-expanded.is-radio .expanded-controls>button:not(#playPauseBtnExp),.player-expanded.is-radio .expanded-progress,
+.player-expanded.is-radio #downloadBtnExp,.player-expanded.is-radio #favBtnExp{display:none!important}
+.media-player.is-radio .player-controls-wrapper::after,.player-expanded.is-radio .expanded-controls::after{
+  content:"●  بث مباشر";display:flex;align-items:center;justify-content:center;gap:8px;margin-top:10px;
+  font-size:.78rem;letter-spacing:.02em;color:rgba(var(--p-fg-rgb),.7)}
+.player-expanded.is-radio .expanded-controls{flex-direction:column}
+body.lang-en .media-player.is-radio .player-controls-wrapper::after,body.lang-en .player-expanded.is-radio .expanded-controls::after{content:"●  LIVE"}
+
 </style>
 </head>
 <body>
