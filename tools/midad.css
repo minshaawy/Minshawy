@@ -447,3 +447,9 @@ body{padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inse
   font-size:.78rem;letter-spacing:.02em;color:rgba(var(--p-fg-rgb),.7)}
 .player-expanded.is-radio .expanded-controls{flex-direction:column}
 body.lang-en .media-player.is-radio .player-controls-wrapper::after,body.lang-en .player-expanded.is-radio .expanded-controls::after{content:"●  LIVE"}
+
+/* Other pages opened while listening (surah pages, the surah index) sit over the home page in a frame:
+   above its header, ending where the player bar starts, so the bar stays and keeps playing. */
+.page-sheet{position:fixed;top:0;left:0;right:0;z-index:80;background:var(--bg);padding-top:env(safe-area-inset-top,0px)}
+.page-sheet iframe{display:block;width:100%;height:100%;border:0;background:var(--bg)}
+html.sheet-open{overflow:hidden}

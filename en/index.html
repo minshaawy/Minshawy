@@ -1597,6 +1597,12 @@ body{padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inse
 .player-expanded.is-radio .expanded-controls{flex-direction:column}
 body.lang-en .media-player.is-radio .player-controls-wrapper::after,body.lang-en .player-expanded.is-radio .expanded-controls::after{content:"●  LIVE"}
 
+/* Other pages opened while listening (surah pages, the surah index) sit over the home page in a frame:
+   above its header, ending where the player bar starts, so the bar stays and keeps playing. */
+.page-sheet{position:fixed;top:0;left:0;right:0;z-index:80;background:var(--bg);padding-top:env(safe-area-inset-top,0px)}
+.page-sheet iframe{display:block;width:100%;height:100%;border:0;background:var(--bg)}
+html.sheet-open{overflow:hidden}
+
 </style>
 </head>
 <body class="lang-en">
@@ -3421,6 +3427,161 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
   });
   // (Al-Fatihah is already loaded on page open by autoPlayFatihah above —
   //  a second delayed load here used to override a surah the visitor had just picked.)
+})();
+
+// ============ KEEP LISTENING WHILE BROWSING ============
+// While a surah or the live radio is playing, the site's other pages (the surah index and
+// each surah's page) open over the home page in a frame, so the player bar stays and keeps
+// playing. The address, title and back button follow the page in the frame, and the
+// recitations on a surah page play in this player instead of their own.
+(function keepPlayingAcrossPages() {
+  const PAGE_RE = /^\/(en\/)?surah\//;
+  const HOME_RE = /^\/(en\/)?(index\.html)?$/;
+  const PLAY_SVG = '<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
+  const PAUSE_SVG = '<svg viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
+  let sheet = null, frame = null;
+
+  // Something is on: a playing surah or radio, or a surah paused part-way through
+  const listening = () => isAnythingPlaying() ||
+    (currentSurah && !currentSurah.isRadio && audio.currentTime > 1 && !audio.ended);
+  const plain = e => e.button === 0 && !e.metaKey && !e.ctrlKey && !e.shiftKey && !e.altKey;
+  const pathOf = u => u.pathname + u.search + u.hash;
+
+  // The frame ends where the player bar starts
+  function fit() {
+    if (!sheet) return;
+    const top = player.classList.contains('active') ? player.getBoundingClientRect().top : innerHeight;
+    sheet.style.height = Math.max(0, Math.round(top)) + 'px';
+  }
+  window.addEventListener('resize', fit);
+  if (window.ResizeObserver) new ResizeObserver(fit).observe(player);
+
+  function open(path, push) {
+    if (!sheet) {
+      sheet = document.createElement('div');
+      sheet.className = 'page-sheet';
+      frame = document.createElement('iframe');
+      frame.title = isEnglish() ? 'Page' : 'صفحة';
+      sheet.appendChild(frame);
+      document.body.appendChild(sheet);
+      frame.addEventListener('load', wire);
+      document.documentElement.classList.add('sheet-open');
+      fit();
+    }
+    if (push) history.pushState({ sheet: path }, '', path);
+    frame.contentWindow.location.replace(path); // no extra history entries from the frame
+  }
+
+  function close() {
+    if (!sheet) return;
+    sheet.remove();
+    sheet = frame = null;
+    document.documentElement.classList.remove('sheet-open');
+    document.title = PAGE_TITLES[isEnglish() ? 'en' : 'ar'];
+  }
+
+  // Back to the home page from inside the frame (logo, "home", "#library"…)
+  function goHome(u, push) {
+    close();
+    const en = /^\/en\//.test(u.pathname);
+    if (push) history.pushState(null, '', (en ? '/en/' : '/') + u.hash);
+    if (en !== isEnglish()) applyLang(en ? 'en' : 'ar');
+    const t = u.hash && document.getElementById(decodeURIComponent(u.hash.slice(1)));
+    if (t) t.scrollIntoView();
+  }
+
+  // A recitation on the page in the frame: play it here (or pause / resume it if it's on)
+  function isOn(type, num) {
+    return currentSurah && !currentSurah.isRadio && !isJadid(currentSurah) &&
+      currentSurah.num === num && currentRecitationType === type;
+  }
+  function playFromPage(type, num) {
+    if (isOn(type, num)) { togglePlayPause(); return; }
+    audio.pause(); // so switching murattal/mujawwad doesn't restart the old surah first
+    setRecitationType(type);
+    playSurah(num);
+  }
+  function syncPageButtons() {
+    const doc = frame && frame.contentDocument;
+    if (!doc) return;
+    const en = doc.documentElement.lang === 'en';
+    doc.querySelectorAll('button[data-rec]').forEach(b => {
+      const on = isOn(b.dataset.rec, +b.dataset.num) && !audio.paused;
+      const html = on ? PAUSE_SVG + (en ? 'Pause' : 'إيقاف مؤقت') : PLAY_SVG + (en ? 'Play' : 'تشغيل');
+      if (b.innerHTML !== html) b.innerHTML = html;
+    });
+  }
+  audio.addEventListener('play', syncPageButtons);
+  audio.addEventListener('pause', syncPageButtons);
+
+  // Every page loaded in the frame: follow it in the address bar, keep its links in the
+  // frame, and swap its own audio players for buttons that use the player bar
+  function wire() {
+    let doc, loc;
+    try { doc = frame.contentDocument; loc = frame.contentWindow.location; } catch (e) { return; }
+    if (!doc || !doc.body || loc.href === 'about:blank') return;
+    if (!PAGE_RE.test(loc.pathname)) {
+      if (HOME_RE.test(loc.pathname)) { history.replaceState(null, '', pathOf(loc)); goHome(new URL(loc.href), false); }
+      else location.href = loc.href;
+      return;
+    }
+    document.title = doc.title;
+    frame.title = doc.title;
+    history.replaceState({ sheet: pathOf(loc) }, '', pathOf(loc));
+
+    doc.addEventListener('click', e => {
+      const a = e.target.closest && e.target.closest('a[href]');
+      if (!a || e.defaultPrevented || !plain(e)) return;
+      const u = new URL(a.href, loc.href);
+      e.preventDefault();
+      if (u.origin !== location.origin) window.open(u.href, '_blank', 'noopener'); // MP3 downloads etc.
+      else if (PAGE_RE.test(u.pathname)) open(pathOf(u), true);
+      else if (HOME_RE.test(u.pathname)) goHome(u, true);
+      else location.href = u.href;
+    });
+
+    doc.querySelectorAll('audio[src]').forEach(a => {
+      const m = a.getAttribute('src').match(/\/r([12])\/(\d{3})\.mp3$/);
+      if (!m) return;
+      const b = doc.createElement('button');
+      b.type = 'button';
+      b.className = 'btn';
+      b.dataset.rec = m[1] === '1' ? 'murattal' : 'mujawwad';
+      b.dataset.num = +m[2];
+      b.style.cssText = 'border:0;cursor:pointer;font-family:inherit';
+      b.addEventListener('click', () => playFromPage(b.dataset.rec, +b.dataset.num));
+      a.style.display = 'none'; // (the page's CSS shows audio as a block, so `hidden` alone isn't enough)
+      a.after(b);
+    });
+    syncPageButtons();
+  }
+
+  // Links to the other pages from the home page, while something is on
+  document.addEventListener('click', e => {
+    if (sheet || e.defaultPrevented || !plain(e)) return;
+    const a = e.target.closest && e.target.closest('a[href]');
+    if (!a || a.target === '_blank') return;
+    const u = new URL(a.href, location.href);
+    if (u.origin !== location.origin || !PAGE_RE.test(u.pathname) || !listening()) return;
+    e.preventDefault();
+    open(pathOf(u), true);
+  });
+
+  // Back / forward between the home page and the pages in the frame
+  window.addEventListener('popstate', e => {
+    const path = e.state && e.state.sheet;
+    if (path) { open(path, false); return; }
+    if (!sheet) return;
+    close();
+    const en = /^\/en\//.test(location.pathname);
+    if (en !== isEnglish()) applyLang(en ? 'en' : 'ar');
+  });
+
+  // Theme changed on a page in the frame
+  window.addEventListener('storage', e => {
+    if (e.key === 'theme' && (e.newValue === 'dark' || e.newValue === 'light'))
+      document.documentElement.setAttribute('data-theme', e.newValue);
+  });
 })();
 </script>
 
