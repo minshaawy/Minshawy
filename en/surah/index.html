@@ -76,6 +76,8 @@ h1{font:700 clamp(2.2rem,9vw,4rem)/1.1 'Thmanyah Serif Display',serif;overflow-w
 .rec .dl{font-size:.85rem;color:var(--muted);border-bottom:1px solid var(--line-2)}
 .rec .dl:hover{color:var(--fg)}
 .rec audio{display:block;width:100%;height:44px}
+.rec.is-from{border-color:var(--accent)}
+.from-t{margin-top:10px;font-size:.85rem;color:var(--accent)}
 .about{font:400 1.08rem/2 'Thmanyah Serif Text',serif;color:var(--fg-2);margin:30px 0 22px}
 .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 22px;border-radius:2px;font-weight:500;font-size:.95rem;background:var(--btn);color:var(--btn-fg);transition:background .2s}
 .btn:hover{background:var(--accent);color:#fff}
@@ -285,6 +287,16 @@ html[dir=ltr] .pager .next{text-align:right}
       title:a.dataset.title,artist:en?'Sheikh Muhammad Siddiq Al-Minshawi':'الشيخ محمد صديق المنشاوي',album:a.dataset.album,
       artwork:[{src:'/images/icons/icon-512.png',sizes:'512x512',type:'image/png'}]});}
   });});
+  // A shared link can start a recitation part-way: ?t=754 or ?t=12:34 (and &r=2 for the mujawwad)
+  var q=new URLSearchParams(location.search),sec=(q.get('t')||'').split(':').reduce(function(x,y){return x*60+(+y||0);},0),a=list[q.get('r')==='2'?1:0];
+  if(a&&sec>0){
+    a.src=a.getAttribute('src').split('#')[0]+'#t='+sec;a.preload='metadata';
+    a.addEventListener('loadedmetadata',function f(){a.removeEventListener('loadedmetadata',f);if(a.currentTime<1)a.currentTime=sec;});
+    var h=Math.floor(sec/3600),m=Math.floor(sec/60)%60,lbl=(h?h+':'+('0'+m).slice(-2):m)+':'+('0'+sec%60).slice(-2);
+    if(!en)lbl=lbl.replace(/\d/g,function(d){return '٠١٢٣٤٥٦٧٨٩'[d];});
+    var n=document.createElement('p');n.className='from-t';n.textContent=en?'This link starts at '+lbl:'الرابط يبدأ من '+lbl;
+    a.after(n);var box=a.closest('.rec');box.classList.add('is-from');setTimeout(function(){box.scrollIntoView({block:'center'});},60);
+  }
 })();
 </script>
 </body>

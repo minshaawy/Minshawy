@@ -453,3 +453,42 @@ body.lang-en .media-player.is-radio .player-controls-wrapper::after,body.lang-en
 .page-sheet{position:fixed;top:0;left:0;right:0;z-index:80;background:var(--bg);padding-top:env(safe-area-inset-top,0px)}
 .page-sheet iframe{display:block;width:100%;height:100%;border:0;background:var(--bg)}
 html.sheet-open{overflow:hidden}
+
+/* Share from here · sleep timer (player buttons, menu, full-view chips) */
+.player-mini-btn svg{fill:currentColor}
+#sleepBtn.on{color:rgb(var(--p-fg-rgb))}
+#sleepBtn .sleep-left{display:none;position:absolute;top:-3px;inset-inline-end:-5px;min-width:17px;height:17px;padding:0 4px;border-radius:9px;
+  background:rgb(var(--p-fg-rgb));color:var(--p-bg);font:500 .62rem/17px 'Thmanyah Sans',sans-serif;text-align:center}
+#sleepBtn.on .sleep-left{display:block}
+.expanded-extras{flex-wrap:wrap;gap:.75rem 1rem!important}
+.exp-chip{display:inline-flex;align-items:center;gap:8px;background:none;border:1px solid rgba(var(--p-fg-rgb),.25);color:rgba(var(--p-fg-rgb),.85);
+  font:inherit;font-size:.85rem;padding:8px 14px;border-radius:2px;cursor:pointer}
+.exp-chip:hover,.exp-chip.on{border-color:rgba(var(--p-fg-rgb),.7);color:rgb(var(--p-fg-rgb))}
+.exp-chip svg{width:16px;height:16px;fill:currentColor;flex:none}
+.sleep-menu{position:fixed;z-index:260;min-width:190px;padding:6px;background:var(--p-bg);color:rgb(var(--p-fg-rgb));
+  border:1px solid rgba(var(--p-fg-rgb),.16);border-radius:2px;box-shadow:0 18px 40px -12px rgba(0,0,0,.6)}
+.sleep-menu .sm-title{font-size:.75rem;opacity:.6;padding:6px 12px 4px}
+.sleep-menu button{display:block;width:100%;text-align:start;background:none;border:0;color:inherit;font:inherit;font-size:.92rem;padding:9px 12px;border-radius:2px;cursor:pointer}
+.sleep-menu button:hover,.sleep-menu button:focus-visible{background:rgba(var(--p-fg-rgb),.08);outline:none}
+.sleep-menu button.on::after{content:'✓';margin-inline-start:10px;opacity:.8}
+
+/* Continue listening chip and short notes, just above the player bar */
+.resume-chip,.player-toast{position:fixed;left:50%;bottom:calc(var(--player-h,0px) + 12px);transform:translateX(-50%);
+  background:var(--fg);color:var(--bg);border-radius:2px;box-shadow:0 14px 32px -12px rgba(0,0,0,.5)}
+.resume-chip{z-index:95;display:flex;align-items:stretch;max-width:calc(100vw - 24px)}
+.resume-chip button{background:none;border:0;color:inherit;font:inherit;cursor:pointer}
+.rc-go{display:flex;align-items:center;gap:12px;padding:10px 16px;text-align:start;min-width:0}
+.rc-go svg{width:14px;height:14px;fill:currentColor;flex:none}
+.rc-text{display:flex;flex-direction:column;min-width:0;font-size:.78rem;line-height:1.4;opacity:.95}
+.rc-text b{font:700 1.02rem/1.35 'Thmanyah Serif Display',serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rc-x{padding:0 14px;opacity:.7;border-inline-start:1px solid color-mix(in srgb,var(--bg) 25%,transparent)!important}
+.rc-x:hover{opacity:1}
+.player-toast{z-index:250;padding:10px 18px;font-size:.88rem;white-space:nowrap;opacity:0;pointer-events:none;
+  transform:translate(-50%,8px);transition:opacity .25s,transform .25s}
+.player-toast.show{opacity:1;transform:translate(-50%,0)}
+.player-expanded.show~.player-toast{bottom:24px}
+/* phones, tablets and foldables: the bar keeps share + timer + full view; download moves to the full view */
+@media (max-width:1000px){.player-compact #downloadBtn{display:none!important}}
+@media (min-width:1001px){#downloadBtnExp{display:none}}
+@media (min-width:601px) and (max-width:1000px){.player-compact{grid-template-columns:minmax(170px,1fr) minmax(260px,2fr) auto!important}}
+@media (min-width:601px) and (max-width:700px){.player-buttons{gap:.25rem!important}}
